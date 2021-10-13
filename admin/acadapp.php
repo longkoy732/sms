@@ -608,6 +608,42 @@ $(document).ready(function(){
     	}
 	});
 
+	$(document).on('click', '.delete_button', function(){
+
+	var id = $(this).data('id');
+
+	if(confirm("Are you sure you want to remove it?"))
+	{
+
+		$.ajax({
+
+			url:"acadapp_action.php",
+
+			method:"POST",
+
+			data:{id:id, action:'delete'},
+
+			success:function(data)
+			{
+
+				$('#message').html(data);
+
+				dataTable.ajax.reload();
+
+				setTimeout(function(){
+
+					$('#message').html('');
+
+				}, 5000);
+
+			}
+
+		})
+
+	}
+
+	});
+
     $(document).on('click', '.view_button', function(){
         var sacad_id = $(this).data('id');
 
@@ -693,42 +729,6 @@ $(document).ready(function(){
         })
     });
 
-	$(document).on('click', '.delete_button', function(){
-
-    	var id = $(this).data('id');
-
-    	if(confirm("Are you sure you want to remove it?"))
-    	{
-
-      		$.ajax({
-
-        		url:"acadapp_action.php",
-
-        		method:"POST",
-
-        		data:{id:id, action:'delete'},
-
-        		success:function(data)
-        		{
-
-          			$('#message').html(data);
-
-          			dataTable.ajax.reload();
-
-          			setTimeout(function(){
-
-            			$('#message').html('');
-
-          			}, 5000);
-
-        		}
-
-      		})
-
-    	}
-
-  	});
-
 	  $(document).on('click', '.select_all', function(){
     	var inputs = $("check_all");
 		for(var i = 0; i < inputs.length; i++) 
@@ -756,6 +756,76 @@ $(document).ready(function(){
         else
         {
             $(this).closest('tr').removeClass('removeRow');
+        }
+    	});
+
+	$('#approve_all').click(function(){
+        var checkbox = $('.checkbox:checked');
+		var approve_status = 'Approved';
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+
+            $.ajax({
+                url:"acadapp_action.php",
+                method:"POST",
+                data:{checkbox_value:checkbox_value, approve_status:approve_status, action:'approve_all'},
+                success:function(data)
+                {
+                    $('.removeRow').fadeOut(1500);
+					$('#message').html(data);
+
+          			dataTable.ajax.reload();
+
+          			setTimeout(function(){
+
+            			$('#message').html('');
+
+          			}, 5000);
+                }
+            });
+        }
+        else
+        {
+            alert("Please select at least one records");
+        }
+    });
+
+	$('#reject_all').click(function(){
+        var checkbox = $('.checkbox:checked');
+		var reject_status = 'Rejected';
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+
+            $.ajax({
+                url:"acadapp_action.php",
+                method:"POST",
+                data:{checkbox_value:checkbox_value, reject_status:reject_status, action:'reject_all'},
+                success:function(data)
+                {
+                    $('.removeRow').fadeOut(1500);
+					$('#message').html(data);
+
+          			dataTable.ajax.reload();
+
+          			setTimeout(function(){
+
+            			$('#message').html('');
+
+          			}, 5000);
+                }
+            });
+        }
+        else
+        {
+            alert("Please select at least one records");
         }
     });
 
@@ -789,7 +859,7 @@ $(document).ready(function(){
         }
         else
         {
-            alert("Select atleast one records");
+            alert("Please select at least one records");
         }
     });
 

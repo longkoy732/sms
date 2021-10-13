@@ -445,17 +445,45 @@ if(isset($_POST["action"]))
 		echo '<div class="alert alert-success">Class Status change to '.$_POST['next_status'].'</div>';
 	}
 
+	if($_POST["action"] == 'approve_all')
+	{
+		for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
+		{
+		$object->query = "
+			UPDATE tbl_acad 
+			SET sascholarstat = 'Approved'
+			WHERE sacad_id = '".$_POST["checkbox_value"][$count]."'";
+
+			$object->execute();
+		}
+		echo '<div class="alert alert-success">Selected Applicant Data Approved</div>';
+	}
+
+	if($_POST["action"] == 'reject_all')
+	{
+		for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
+		{
+		$object->query = "
+			UPDATE tbl_acad 
+			SET sascholarstat = 'Rejected'
+			WHERE sacad_id = '".$_POST["checkbox_value"][$count]."'";
+
+			$object->execute();
+		}
+		echo '<div class="alert alert-success">Selected Applicant Data Rejected</div>';
+	}
+
 	if($_POST["action"] == 'delete_all')
 	{
-	for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
-	{
-	$object->query = "
-		DELETE FROM tbl_acad 
-		WHERE sacad_id = '".$_POST["checkbox_value"][$count]."'";
+		for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
+		{
+		$object->query = "
+			DELETE FROM tbl_acad 
+			WHERE sacad_id = '".$_POST["checkbox_value"][$count]."'";
 
-		$object->execute();
-	}
-	echo '<div class="alert alert-success">Selected Applicant Data Deleted</div>';
+			$object->execute();
+		}
+		echo '<div class="alert alert-success">Selected Applicant Data Deleted</div>';
 	}
 
 	if($_POST["action"] == 'delete')
