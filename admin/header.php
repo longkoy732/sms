@@ -63,13 +63,18 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="acadapp.php">
-                    <i class="fas fa-file-alt"></i>
+                    <i class="fas fa-user-clock"></i>
                     <span>Application</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="acadgrants.php">
-                    <i class="fas fa-user-graduate"></i>
-                    <span>Grantees</span></a>
+                    <i class="fas fa-user-check"></i>
+                    <span>Approved Scholars</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="acadreject.php">
+                    <i class="fas fa-user-times"></i>
+                    <span>Rejected Scholars</span></a>
             </li>
             <?php
             }
