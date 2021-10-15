@@ -17,7 +17,7 @@ if(isset($_POST["action"]))
 		$output = array();
 		
 		$main_query = "
-		SELECT * FROM tbl_acad WHERE sascholarstat = 'Pending'
+		SELECT * FROM tbl_acad WHERE sascholarstat = 'Approved'
 		";
 
 		$search_query = '';
@@ -28,8 +28,9 @@ if(isset($_POST["action"]))
 			OR sfname LIKE "%'.$_POST['search']['value'].'%" 
 			OR smname LIKE "%'.$_POST['search']['value'].'%" 
 			OR saddress LIKE "%'.$_POST['search']['value'].'%" 
+			OR semail LIKE "%'.$_POST['search']['value'].'%"
 			OR scontact LIKE "%'.$_POST['search']['value'].'%"
-			OR semail LIKE "%'.$_POST['search']['value'].'%")';
+			OR sgender LIKE "%'.$_POST['search']['value'].'%")';
 		}
 
 		if(isset($_POST["order"]))
@@ -112,112 +113,112 @@ if(isset($_POST["action"]))
 	  		
 	}
 
-	if($_POST["action"] == 'Add')
-	{
-		$error = '';
+	// if($_POST["action"] == 'Add')
+	// {
+	// 	$error = '';
 
-		$success = '';
+	// 	$success = '';
 
-		$data = array(
-			':saemail'	=>	$_POST["saemail"]
-		);
+	// 	$data = array(
+	// 		':saemail'	=>	$_POST["saemail"]
+	// 	);
 
-		$object->query = "
-		SELECT * FROM tbl_acad
-		WHERE saemail = :saemail
-		";
+	// 	$object->query = "
+	// 	SELECT * FROM tbl_acad
+	// 	WHERE saemail = :saemail
+	// 	";
 
-		$object->execute($data);
+	// 	$object->execute($data);
 
-		if($object->row_count() > 0)
-		{
-			$error = '<div class="alert alert-danger">Email Address Already Exists</div>';
-		}
-		else
-		{
-				$object->query = "
-				INSERT INTO tbl_acad
-				(saemail, sapass, sfname, smname, slname, sdbirth, sctship, saddress, semail, scontact, sgender, gfname, gmname,
-				glname, gaddress, gcontact, goccu, gcompany, ffname, fmname, flname, faddress, fcontact, foccu,
-				fcompany, mfname, mmname, mlname, maddress, mcontact, moccu, mcompany, spcyincome, sagwa, sraward, 
-				sdawardrceive, sadsprc, sadspgm, sadspcr, sacapstype, sascholarstat, sadapply) 
-				VALUES (:saemail, :sapass, :sfname, :smname, :slname, :sdbirth, :sctship,:saddress, :semail, :scontact, :sgender, 
-				:gfname, :gmname, :glname, :gaddress, :gcontact, :goccu, :gcompany, :ffname, :fmname, :flname, 
-				:faddress, :fcontact, :foccu, :fcompany, :mfname, :mmname, :mlname, :maddress, 
-				:mcontact, :moccu, :mcompany, :spcyincome, :sagwa, :sraward, :sdawardrceive, 
-				:sadsprc, :sadspgm, :sadspcr, :sacapstype, 'Pending', '$object->now')
-				";
+	// 	if($object->row_count() > 0)
+	// 	{
+	// 		$error = '<div class="alert alert-danger">Email Address Already Exists</div>';
+	// 	}
+	// 	else
+	// 	{
+	// 			$object->query = "
+	// 			INSERT INTO tbl_acad
+	// 			(saemail, sapass, sfname, smname, slname, sdbirth, sctship, saddress, semail, scontact, sgender, gfname, gmname,
+	// 			glname, gaddress, gcontact, goccu, gcompany, ffname, fmname, flname, faddress, fcontact, foccu,
+	// 			fcompany, mfname, mmname, mlname, maddress, mcontact, moccu, mcompany, spcyincome, sagwa, sraward, 
+	// 			sdawardrceive, sadsprc, sadspgm, sadspcr, sacapstype, sascholarstat, sadapply) 
+	// 			VALUES (:saemail, :sapass, :sfname, :smname, :slname, :sdbirth, :sctship,:saddress, :semail, :scontact, :sgender, 
+	// 			:gfname, :gmname, :glname, :gaddress, :gcontact, :goccu, :gcompany, :ffname, :fmname, :flname, 
+	// 			:faddress, :fcontact, :foccu, :fcompany, :mfname, :mmname, :mlname, :maddress, 
+	// 			:mcontact, :moccu, :mcompany, :spcyincome, :sagwa, :sraward, :sdawardrceive, 
+	// 			:sadsprc, :sadspgm, :sadspcr, :sacapstype, 'Pending', '$object->now')
+	// 			";
 
-				$password_hash = password_hash($_POST["sapass"], PASSWORD_DEFAULT);
+	// 			$password_hash = password_hash($_POST["sapass"], PASSWORD_DEFAULT);
 
-			if($error == '')
-			{
-				$data = array(
-					// Account Details
-					':saemail'			      		=>	$object->clean_input($_POST["saemail"]),
-					':sapass'				      	=>  $password_hash,
-					// Personal Details
-                    ':sfname'					    =>	$object->clean_input($_POST["sfname"]),
-                    ':smname'					    =>	$object->clean_input($_POST["smname"]),
-                    ':slname'					    =>	$object->clean_input($_POST["slname"]),
-                    ':sdbirth'					  	=>	$object->clean_input($_POST["sdbirth"]),
-					':sctship'				    	=>	$object->clean_input($_POST["sctship"]),
-                    ':saddress'					  	=>	$object->clean_input($_POST["saddress"]),
-                    ':semail'					    =>	$object->clean_input($_POST["semail"]),
-                    ':scontact'					  	=>	$object->clean_input($_POST["scontact"]),
-                    ':sgender'					  	=>	$object->clean_input($_POST["sgender"]),
-					// Family Details
-					// Guardian Details
-					':gfname'				      	=>	$object->clean_input($_POST["gfname"]),
-					':gmname'				      	=>	$object->clean_input($_POST["gmname"]),
-					':glname'			        	=>	$object->clean_input($_POST["glname"]),
-                    ':gaddress'					  	=>	$object->clean_input($_POST["gaddress"]),
-                    ':gcontact'					  	=>	$object->clean_input($_POST["gcontact"]),
-                    ':goccu'					    =>	$object->clean_input($_POST["goccu"]),
-                    ':gcompany'					  	=>	$object->clean_input($_POST["gcompany"]),
-					// Father Details
-					':ffname'				      	=>	$object->clean_input($_POST["ffname"]),
-                    ':fmname'					    =>	$object->clean_input($_POST["fmname"]),
-                    ':flname'					    =>	$object->clean_input($_POST["flname"]),
-                    ':faddress'					  	=>	$object->clean_input($_POST["faddress"]),
-                    ':fcontact'					  	=>	$object->clean_input($_POST["fcontact"]),
-					':foccu'				      	=>	$object->clean_input($_POST["foccu"]),
-					':fcompany'				    	=>	$object->clean_input($_POST["fcompany"]),
-					// Mother Details
-					':mfname'				      	=>	$object->clean_input($_POST["mfname"]),
-                    ':mmname'					    =>	$object->clean_input($_POST["mmname"]),
-                    ':mlname'					    =>	$object->clean_input($_POST["mlname"]),
-                    ':maddress'					  	=>	$object->clean_input($_POST["maddress"]),
-                    ':mcontact'					  	=>	$object->clean_input($_POST["mcontact"]),
-					':moccu'				      	=>	$object->clean_input($_POST["moccu"]),
-					':mcompany'				    	=>	$object->clean_input($_POST["mcompany"]),
-                    ':spcyincome'				  	=>	$object->clean_input($_POST["spcyincome"]),
-					// Achievement Details
-                    ':sagwa'				      	=>	$object->clean_input($_POST["sagwa"]),
-                    ':sraward'					  	=>	$object->clean_input($_POST["sraward"]),
-                    ':sdawardrceive'		  		=>	$object->clean_input($_POST["sdawardrceive"]),
-					// Requirement Details
-                    ':sadsprc'					  	=>	$object->clean_input($_POST["sadsprc"]),
-                    ':sadspgm'					  	=>	$object->clean_input($_POST["sadspgm"]),
-					':sadspcr'				    	=>	$object->clean_input($_POST["sadspcr"]),
-					// Scholar Type
-					':sacapstype'				    =>	$object->clean_input($_POST["sacapstype"])
- 				);
+	// 		if($error == '')
+	// 		{
+	// 			$data = array(
+	// 				// Account Details
+	// 				':saemail'			      		=>	$object->clean_input($_POST["saemail"]),
+	// 				':sapass'				      	=>  $password_hash,
+	// 				// Personal Details
+    //                 ':sfname'					    =>	$object->clean_input($_POST["sfname"]),
+    //                 ':smname'					    =>	$object->clean_input($_POST["smname"]),
+    //                 ':slname'					    =>	$object->clean_input($_POST["slname"]),
+    //                 ':sdbirth'					  	=>	$object->clean_input($_POST["sdbirth"]),
+	// 				':sctship'				    	=>	$object->clean_input($_POST["sctship"]),
+    //                 ':saddress'					  	=>	$object->clean_input($_POST["saddress"]),
+    //                 ':semail'					    =>	$object->clean_input($_POST["semail"]),
+    //                 ':scontact'					  	=>	$object->clean_input($_POST["scontact"]),
+    //                 ':sgender'					  	=>	$object->clean_input($_POST["sgender"]),
+	// 				// Family Details
+	// 				// Guardian Details
+	// 				':gfname'				      	=>	$object->clean_input($_POST["gfname"]),
+	// 				':gmname'				      	=>	$object->clean_input($_POST["gmname"]),
+	// 				':glname'			        	=>	$object->clean_input($_POST["glname"]),
+    //                 ':gaddress'					  	=>	$object->clean_input($_POST["gaddress"]),
+    //                 ':gcontact'					  	=>	$object->clean_input($_POST["gcontact"]),
+    //                 ':goccu'					    =>	$object->clean_input($_POST["goccu"]),
+    //                 ':gcompany'					  	=>	$object->clean_input($_POST["gcompany"]),
+	// 				// Father Details
+	// 				':ffname'				      	=>	$object->clean_input($_POST["ffname"]),
+    //                 ':fmname'					    =>	$object->clean_input($_POST["fmname"]),
+    //                 ':flname'					    =>	$object->clean_input($_POST["flname"]),
+    //                 ':faddress'					  	=>	$object->clean_input($_POST["faddress"]),
+    //                 ':fcontact'					  	=>	$object->clean_input($_POST["fcontact"]),
+	// 				':foccu'				      	=>	$object->clean_input($_POST["foccu"]),
+	// 				':fcompany'				    	=>	$object->clean_input($_POST["fcompany"]),
+	// 				// Mother Details
+	// 				':mfname'				      	=>	$object->clean_input($_POST["mfname"]),
+    //                 ':mmname'					    =>	$object->clean_input($_POST["mmname"]),
+    //                 ':mlname'					    =>	$object->clean_input($_POST["mlname"]),
+    //                 ':maddress'					  	=>	$object->clean_input($_POST["maddress"]),
+    //                 ':mcontact'					  	=>	$object->clean_input($_POST["mcontact"]),
+	// 				':moccu'				      	=>	$object->clean_input($_POST["moccu"]),
+	// 				':mcompany'				    	=>	$object->clean_input($_POST["mcompany"]),
+    //                 ':spcyincome'				  	=>	$object->clean_input($_POST["spcyincome"]),
+	// 				// Achievement Details
+    //                 ':sagwa'				      	=>	$object->clean_input($_POST["sagwa"]),
+    //                 ':sraward'					  	=>	$object->clean_input($_POST["sraward"]),
+    //                 ':sdawardrceive'		  		=>	$object->clean_input($_POST["sdawardrceive"]),
+	// 				// Requirement Details
+    //                 ':sadsprc'					  	=>	$object->clean_input($_POST["sadsprc"]),
+    //                 ':sadspgm'					  	=>	$object->clean_input($_POST["sadspgm"]),
+	// 				':sadspcr'				    	=>	$object->clean_input($_POST["sadspcr"]),
+	// 				// Scholar Type
+	// 				':sacapstype'				    =>	$object->clean_input($_POST["sacapstype"])
+ 	// 			);
 
-				$object->execute($data);
+	// 			$object->execute($data);
 
-				$success = '<div class="alert alert-success">Academic Scholar Applicant Added</div>';
-			}
-		}
+	// 			$success = '<div class="alert alert-success">Academic Scholar Applicant Added</div>';
+	// 		}
+	// 	}
 
-		$output = array(
-			'error'		=>	$error,
-			'success'	=>	$success
-		);
+	// 	$output = array(
+	// 		'error'		=>	$error,
+	// 		'success'	=>	$success
+	// 	);
 
-		echo json_encode($output);
+	// 	echo json_encode($output);
 
-	}
+	// }
 
 	if($_POST["action"] == 'fetch_single')
 	{

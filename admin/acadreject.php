@@ -19,7 +19,7 @@ include('header.php');
 ?>
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Academic Application Management</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Academic Rejected Grantees Management</h1>
 
                     <!-- DataTales Example -->
                     <span id="message"></span>
@@ -27,13 +27,13 @@ include('header.php');
                         <div class="card-header py-3">
                         	<div class="row">
                             	<div class="col">
-                            		<h6 class="m-0 font-weight-bold text-primary">Applicant List</h6>
+                            		<h6 class="m-0 font-weight-bold text-primary">Grant List</h6>
                             	</div>
                             	<div class="col" align="right">
-                            		<button type="button" name="add_acad" id="add_acad" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+                            		<!-- <button type="button" name="add_acad" id="add_acad" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button> -->
 									<button type="button" name="delete_all" id="delete_all" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-times"></i></button>
 									<button type="button" name="approve_all" id="approve_all" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-thumbs-up"></i></button>
-									<button type="button" name="reject_all" id="reject_all" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-thumbs-down"></i></button>
+									<!-- <button type="button" name="reject_all" id="reject_all" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-thumbs-down"></i></button> -->
                             	</div>
                             </div>
                         </div>
@@ -379,7 +379,7 @@ $(document).ready(function(){
 		"serverSide" : true,
 		"order" : [],
 		"ajax" : {
-			url:"acadapp_action.php",
+			url:"acadreject_action.php",
 			type:"POST",
 			data:{action:'fetch'}
 		},
@@ -419,67 +419,67 @@ $(document).ready(function(){
         autoclose: true
     });
 
-	$('#add_acad').click(function(){
+	// $('#add_acad').click(function(){
 		
-		$('#acad_form')[0].reset();
+	// 	$('#acad_form')[0].reset();
 
-		$('#acad_form').parsley().reset();
+	// 	$('#acad_form').parsley().reset();
 
-    	$('#modal_title').text('Add Academic Scholar');
+    // 	$('#modal_title').text('Add Academic Scholar');
 
-    	$('#action').val('Add');
+    // 	$('#action').val('Add');
 
-    	$('#submit_button').val('Add');
+    // 	$('#submit_button').val('Add');
 
-    	$('#acadModal').modal('show');
+    // 	$('#acadModal').modal('show');
 
-    	$('#form_message').html('');
+    // 	$('#form_message').html('');
 
-	});
+	// });
 
-	$('#acad_form').parsley();
+	// $('#acad_form').parsley();
 
-	$('#acad_form').on('submit', function(event){
-		event.preventDefault();
-		if($('#acad_form').parsley().isValid())
-		{		
-			$.ajax({
-				url:"acadapp_action.php",
-				method:"POST",
-				data: new FormData(this),
-				dataType:'json',
-                contentType: false,
-                cache: false,
-                processData:false,
-				beforeSend:function()
-				{
-					$('#submit_button').attr('disabled', 'disabled');
-					$('#submit_button').val('wait...');
-				},
-				success:function(data)
-				{
-					$('#submit_button').attr('disabled', false);
-					if(data.error != '')
-					{
-						$('#form_message').html(data.error);
-						$('#submit_button').val('Add');
-					}
-					else
-					{
-						$('#acadModal').modal('hide');
-						$('#message').html(data.success);
-						dataTable.ajax.reload();
+	// $('#acad_form').on('submit', function(event){
+	// 	event.preventDefault();
+	// 	if($('#acad_form').parsley().isValid())
+	// 	{		
+	// 		$.ajax({
+	// 			url:"acadgrants_action.php",
+	// 			method:"POST",
+	// 			data: new FormData(this),
+	// 			dataType:'json',
+    //             contentType: false,
+    //             cache: false,
+    //             processData:false,
+	// 			beforeSend:function()
+	// 			{
+	// 				$('#submit_button').attr('disabled', 'disabled');
+	// 				$('#submit_button').val('wait...');
+	// 			},
+	// 			success:function(data)
+	// 			{
+	// 				$('#submit_button').attr('disabled', false);
+	// 				if(data.error != '')
+	// 				{
+	// 					$('#form_message').html(data.error);
+	// 					$('#submit_button').val('Add');
+	// 				}
+	// 				else
+	// 				{
+	// 					$('#acadModal').modal('hide');
+	// 					$('#message').html(data.success);
+	// 					dataTable.ajax.reload();
 
-						setTimeout(function(){
+	// 					setTimeout(function(){
 
-				            $('#message').html('');
+	// 			            $('#message').html('');
 
-				        }, 5000);
-					}
-				}
-			})
-		}
-	});
+	// 			        }, 5000);
+	// 				}
+	// 			}
+	// 		})
+	// 	}
+	// });
 
 	$(document).on('click', '.edit_button', function(){
 
@@ -493,7 +493,7 @@ $(document).ready(function(){
 
 		$.ajax({
 
-	      	url:"acadapp_action.php",
+	      	url:"acadreject_action.php",
 
 	      	method:"POST",
 
@@ -553,7 +553,7 @@ $(document).ready(function(){
 				// Requirement Details
 				$('#sacapstype').val(data.sacapstype);
 
-	        	$('#modal_title').text('Edit Applicant Info');
+	        	$('#modal_title').text('Edit Scholar Info');
 
 	        	$('#action').val('Edit');
 
@@ -582,7 +582,7 @@ $(document).ready(function(){
 
       		$.ajax({
 
-        		url:"acadapp_action.php",
+        		url:"acadreject_action.php",
 
         		method:"POST",
 
@@ -617,7 +617,7 @@ $(document).ready(function(){
 
 		$.ajax({
 
-			url:"acadapp_action.php",
+			url:"acadreject_action.php",
 
 			method:"POST",
 
@@ -649,7 +649,7 @@ $(document).ready(function(){
 
         $.ajax({
 
-            url:"acadapp_action.php",
+            url:"acadreject_action.php",
 
             method:"POST",
 
@@ -770,7 +770,7 @@ $(document).ready(function(){
             });
 
             $.ajax({
-                url:"acadapp_action.php",
+                url:"acadreject_action.php",
                 method:"POST",
                 data:{checkbox_value:checkbox_value, approve_status:approve_status, action:'approve_all'},
                 success:function(data)
@@ -794,40 +794,40 @@ $(document).ready(function(){
         }
     });
 
-	$('#reject_all').click(function(){
-        var checkbox = $('.checkbox:checked');
-		var reject_status = 'Rejected';
-        if(checkbox.length > 0)
-        {
-            var checkbox_value = [];
-            $(checkbox).each(function(){
-                checkbox_value.push($(this).val());
-            });
+	// $('#reject_all').click(function(){
+    //     var checkbox = $('.checkbox:checked');
+	// 	var reject_status = 'Rejected';
+    //     if(checkbox.length > 0)
+    //     {
+    //         var checkbox_value = [];
+    //         $(checkbox).each(function(){
+    //             checkbox_value.push($(this).val());
+    //         });
 
-            $.ajax({
-                url:"acadapp_action.php",
-                method:"POST",
-                data:{checkbox_value:checkbox_value, reject_status:reject_status, action:'reject_all'},
-                success:function(data)
-                {
-                    $('.removeRow').fadeOut(1500);
-					$('#message').html(data);
+    //         $.ajax({
+    //             url:"acadgrants_action.php",
+    //             method:"POST",
+    //             data:{checkbox_value:checkbox_value, reject_status:reject_status, action:'reject_all'},
+    //             success:function(data)
+    //             {
+    //                 $('.removeRow').fadeOut(1500);
+	// 				$('#message').html(data);
 
-          			dataTable.ajax.reload();
+    //       			dataTable.ajax.reload();
 
-          			setTimeout(function(){
+    //       			setTimeout(function(){
 
-            			$('#message').html('');
+    //         			$('#message').html('');
 
-          			}, 5000);
-                }
-            });
-        }
-        else
-        {
-            alert("Please select at least one records");
-        }
-    });
+    //       			}, 5000);
+    //             }
+    //         });
+    //     }
+    //     else
+    //     {
+    //         alert("Please select at least one records");
+    //     }
+    // });
 
     $('#delete_all').click(function(){
         var checkbox = $('.checkbox:checked');
@@ -839,7 +839,7 @@ $(document).ready(function(){
             });
 
             $.ajax({
-                url:"acadapp_action.php",
+                url:"acadreject_action.php",
                 method:"POST",
                 data:{checkbox_value:checkbox_value, action:'delete_all'},
                 success:function(data)

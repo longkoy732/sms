@@ -16,7 +16,7 @@ if($_SESSION['type'] != 'Admin')
 
 
 $object->query = "
-SELECT * FROM admin_table
+SELECT * FROM tbl_admin 
 WHERE admin_id = '".$_SESSION["admin_id"]."'
 ";
 
@@ -61,21 +61,21 @@ include('header.php');
                                             <input type="password" name="admin_password" id="admin_password" class="form-control" required data-parsley-maxlength="16" data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Hospital Name</label>
-                                            <input type="text" name="hospital_name" id="hospital_name" class="form-control" required  data-parsley-trigger="keyup" />
+                                            <label>School Name</label>
+                                            <input type="text" name="school_name" id="school_name" class="form-control" required  data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Hospital Address</label>
-                                            <textarea name="hospital_address" id="hospital_address" class="form-control" required ></textarea>
+                                            <label>School Address</label>
+                                            <textarea name="school_address" id="school_address" class="form-control" required ></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label>Hospital Contact No.</label>
-                                            <input type="text" name="hospital_contact_no" id="hospital_contact_no" class="form-control" required  data-parsley-trigger="keyup" />
+                                            <label>School Contact No.</label>
+                                            <input type="text" name="school_contact_no" id="school_contact_no" class="form-control" required  data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Hospital Logo</label><br />
-                                            <input type="file" name="hospital_logo" id="hospital_logo" />
-                                            <span id="uploaded_hospital_logo"></span>
+                                            <label>School Logo</label><br />
+                                            <input type="file" name="school_logo" id="school_logo" />
+                                            <span id="uploaded_school_logo"></span>
                                         </div>
                                     <!--</div>
                                 </div>!-->
@@ -96,21 +96,21 @@ $(document).ready(function(){
     $('#admin_email_address').val("<?php echo $row['admin_email_address']; ?>");
     $('#admin_password').val("<?php echo $row['admin_password']; ?>");
     $('#admin_name').val("<?php echo $row['admin_name']; ?>");
-    $('#hospital_name').val("<?php echo $row['hospital_name']; ?>");
-    $('#hospital_address').val("<?php echo $row['hospital_address']; ?>");
-    $('#hospital_contact_no').val("<?php echo $row['hospital_contact_no']; ?>");
+    $('#school_name').val("<?php echo $row['school_name']; ?>");
+    $('#school_address').val("<?php echo $row['school_address']; ?>");
+    $('#school_contact_no').val("<?php echo $row['school_contact_no']; ?>");
     <?php
-        if($row['hospital_logo'] != '')
+        if($row['school_logo'] != '')
         {
     ?>
-    $("#uploaded_hospital_logo").html("<img src='<?php echo $row["hospital_logo"]; ?>' class='img-thumbnail' width='100' /><input type='hidden' name='hidden_hospital_logo' value='<?php echo $row['hospital_logo']; ?>' />");
+    $("#uploaded_school_logo").html("<img src='<?php echo $row["school_logo"]; ?>' class='img-thumbnail' width='100' /><input type='hidden' name='hidden_school_logo' value='<?php echo $row['school_logo']; ?>' />");
 
     <?php
         }
         else
         {
     ?>
-    $("#uploaded_hospital_logo").html("<input type='hidden' name='hidden_hospital_logo' value='' />");
+    $("#uploaded_school_logo").html("<input type='hidden' name='hidden_school_logo' value='' />");
     <?php
         }
     }
@@ -150,17 +150,17 @@ $(document).ready(function(){
                         $('#admin_password').val(data.admin_password);
                         $('#admin_name').val(data.admin_name);
 
-                        $('#hospital_name').val(data.hospital_name);
-                        $('#hospital_address').val(data.hospital_address);
-                        $('#hospital_contact_no').val(data.hospital_contact_no);
+                        $('#school_name').val(data.school_name);
+                        $('#school_address').val(data.school_address);
+                        $('#school_contact_no').val(data.school_contact_no);
 
-                        if(data.hospital_logo != '')
+                        if(data.school_logo != '')
                         {
-                            $("#uploaded_hospital_logo").html("<img src='"+data.hospital_logo+"' class='img-thumbnail' width='100' /><input type='hidden' name='hidden_hospital_logo' value='"+data.hospital_logo+"'");
+                            $("#uploaded_school_logo").html("<img src='"+data.school_logo+"' class='img-thumbnail' width='100' /><input type='hidden' name='hidden_school_logo' value='"+data.school_logo+"'");
                         }
                         else
                         {
-                            $("#uploaded_hospital_logo").html("<input type='hidden' name='hidden_hospital_logo' value='"+data.hospital_logo+"'");
+                            $("#uploaded_school_logo").html("<input type='hidden' name='hidden_school_logo' value='"+data.school_logo+"'");
                         }
 
                         $('#message').html(data.success);

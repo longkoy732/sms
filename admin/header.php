@@ -63,18 +63,23 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="acadapp.php">
-                    <i class="fas fa-user-md"></i>
+                    <i class="fas fa-user-clock"></i>
                     <span>Application</span></a>
-            <!-- </li>
+            </li>
             <li class="nav-item">
-                <a class="nav-link" href="patient.php">
-                    <i class="fas fa-procedures"></i>
-                    <span>Patient</span></a>
+                <a class="nav-link" href="acadgrants.php">
+                    <i class="fas fa-user-check"></i>
+                    <span>Approved Scholars</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="acadreject.php">
+                    <i class="fas fa-user-times"></i>
+                    <span>Rejected Scholars</span></a>
             </li>
             <?php
             }
             ?>
-            <li class="nav-item">
+             <!-- <li class="nav-item">
                 <a class="nav-link" href="doctor_schedule.php">
                     <i class="fas fa-user-clock"></i>
                     <span>Doctor Schedule</span></a>
