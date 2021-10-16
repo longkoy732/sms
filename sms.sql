@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2021 at 03:14 PM
+-- Generation Time: Oct 16, 2021 at 12:37 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -131,6 +131,66 @@ INSERT INTO `tbl_admin` (`admin_id`, `admin_email_address`, `admin_password`, `a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_nonacad`
+--
+
+CREATE TABLE `tbl_nonacad` (
+  `sacad_id` int(11) NOT NULL,
+  `sfname` varchar(50) NOT NULL,
+  `smname` varchar(50) NOT NULL,
+  `slname` varchar(50) NOT NULL,
+  `snext` varchar(10) NOT NULL,
+  `sdbirth` date NOT NULL,
+  `sctship` varchar(50) NOT NULL,
+  `saddress` varchar(100) NOT NULL,
+  `semail` varchar(50) NOT NULL,
+  `scontact` varchar(50) NOT NULL,
+  `sgender` varchar(50) NOT NULL,
+  `scourse` varchar(100) NOT NULL,
+  `syrlvl` varchar(10) NOT NULL,
+  `gfname` varchar(50) NOT NULL,
+  `gmname` varchar(50) NOT NULL,
+  `glname` varchar(50) NOT NULL,
+  `gaddress` varchar(50) NOT NULL,
+  `gcontact` varchar(50) NOT NULL,
+  `goccu` varchar(50) NOT NULL,
+  `gcompany` varchar(50) NOT NULL,
+  `ffname` varchar(50) NOT NULL,
+  `fmname` varchar(50) NOT NULL,
+  `flname` varchar(50) NOT NULL,
+  `faddress` varchar(100) NOT NULL,
+  `fcontact` varchar(50) NOT NULL,
+  `foccu` varchar(50) NOT NULL,
+  `fcompany` varchar(50) NOT NULL,
+  `mfname` varchar(50) NOT NULL,
+  `mmname` varchar(50) NOT NULL,
+  `mlname` varchar(50) NOT NULL,
+  `maddress` varchar(100) NOT NULL,
+  `mcontact` varchar(50) NOT NULL,
+  `moccu` varchar(50) NOT NULL,
+  `mcompany` varchar(50) NOT NULL,
+  `spcyincome` varchar(50) NOT NULL,
+  `srappnas` varchar(200) NOT NULL,
+  `sbos` varchar(100) NOT NULL,
+  `ssskills` varchar(100) NOT NULL,
+  `stwinterest` varchar(100) NOT NULL,
+  `spschatt` varchar(100) NOT NULL,
+  `spschadd` varchar(100) NOT NULL,
+  `spyrlvl` varchar(100) NOT NULL,
+  `snasprc` date DEFAULT NULL,
+  `snapgm` date DEFAULT NULL,
+  `stbytpic` date DEFAULT NULL,
+  `spbrgyin` date DEFAULT NULL,
+  `snacapstype` varchar(30) NOT NULL,
+  `snaemail` varchar(50) NOT NULL,
+  `snapass` varchar(50) NOT NULL,
+  `snascholarstat` varchar(30) NOT NULL,
+  `snadapply` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_secretary`
 --
 
@@ -209,6 +269,12 @@ ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
+-- Indexes for table `tbl_nonacad`
+--
+ALTER TABLE `tbl_nonacad`
+  ADD PRIMARY KEY (`sacad_id`);
+
+--
 -- Indexes for table `tbl_secretary`
 --
 ALTER TABLE `tbl_secretary`
@@ -235,6 +301,12 @@ ALTER TABLE `tbl_acad`
 --
 ALTER TABLE `tbl_admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_nonacad`
+--
+ALTER TABLE `tbl_nonacad`
+  MODIFY `sacad_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_secretary`
