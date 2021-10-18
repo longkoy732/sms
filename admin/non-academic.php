@@ -22,54 +22,54 @@ if(isset($_POST["sfname"]))
      
      $password_hash = password_hash($_POST["snapass"], PASSWORD_DEFAULT);
  $data = array(
-                    ':sfname'					    =>	$_POST["sfname"],
-                    ':smname'					    =>	$_POST["smname"],
-                    ':slname'					    =>	$_POST["slname"],
-                    ':snext'					    =>	$_POST["snext"],
+                    ':sfname'					      =>	$_POST["sfname"],
+                    ':smname'					      =>	$_POST["smname"],
+                    ':slname'					      =>	$_POST["slname"],
+                    ':snext'					      =>	$_POST["snext"],
                     ':sdbirth'					    =>	$_POST["sdbirth"],
-					':sctship'				        =>	$_POST["sctship"],
+					          ':sctship'				      =>	$_POST["sctship"],
                     ':saddress'					    =>	$_POST["saddress"],
-                    ':semail'					    =>	$_POST["semail"],
+                    ':semail'					      =>	$_POST["semail"],
                     ':scontact'					    =>	$_POST["scontact"],
                     ':sgender'					    =>	$_POST["sgender"],
                     ':scourse'					    =>	$_POST["scourse"],
-                    ':syrlvl'					    =>	$_POST["syrlvl"],
-					':gfname'				        =>	$_POST["gfname"],
-					':gmname'				        =>	$_POST["gmname"],
-					':glname'			            =>	$_POST["glname"],
+                    ':syrlvl'					      =>	$_POST["syrlvl"],
+					          ':gfname'				        =>	$_POST["gfname"],
+					          ':gmname'				        =>	$_POST["gmname"],
+					          ':glname'			          =>	$_POST["glname"],
                     ':gaddress'					    =>	$_POST["gaddress"],
                     ':gcontact'					    =>	$_POST["gcontact"],
-                    ':goccu'					    =>	$_POST["goccu"],
+                    ':goccu'					      =>	$_POST["goccu"],
                     ':gcompany'					    =>	$_POST["gcompany"],
-					':ffname'				        =>	$_POST["ffname"],
-                    ':fmname'					    =>	$_POST["fmname"],
-                    ':flname'					    =>	$_POST["flname"],
+					          ':ffname'				        =>	$_POST["ffname"],
+                    ':fmname'					      =>	$_POST["fmname"],
+                    ':flname'					      =>	$_POST["flname"],
                     ':faddress'					    =>	$_POST["faddress"],
                     ':fcontact'					    =>	$_POST["fcontact"],
-					':foccu'				        =>	$_POST["foccu"],
-					':fcompany'				        =>	$_POST["fcompany"],
-					':mfname'				        =>	$_POST["mfname"],
-                    ':mmname'					    =>	$_POST["mmname"],
-                    ':mlname'					    =>	$_POST["mlname"],
+					          ':foccu'				        =>	$_POST["foccu"],
+					          ':fcompany'				      =>	$_POST["fcompany"],
+					          ':mfname'				        =>	$_POST["mfname"],
+                    ':mmname'					      =>	$_POST["mmname"],
+                    ':mlname'					      =>	$_POST["mlname"],
                     ':maddress'					    =>	$_POST["maddress"],
                     ':mcontact'					    =>	$_POST["mcontact"],
-					':moccu'				        =>	$_POST["moccu"],
-					':mcompany'			            =>	$_POST["mcompany"],
+					          ':moccu'				        =>	$_POST["moccu"],
+					          ':mcompany'			        =>	$_POST["mcompany"],
                     ':spcyincome'				    =>	$_POST["spcyincome"],
-                    ':srappnas'				        =>	$_POST["srappnas"],
-                    ':sbos'				            =>	$_POST["sbos"],
-                    ':ssskills'				        =>	$_POST["ssskills"],
-                    ':stwinterest'				    =>	$_POST["stwinterest"],
-                    ':spschatt'				        =>	$_POST["spschatt"],
-                    ':spschadd'				        =>	$_POST["spschadd"],
-                    ':spyrlvl'				        =>	$_POST["spyrlvl"],
-                    ':snasprc'				        =>	$_POST["snasprc"],
+                    ':srappnas'				      =>	$_POST["srappnas"],
+                    ':sbos'				          =>	$_POST["sbos"],
+                    ':ssskills'				      =>	$_POST["ssskills"],
+                    ':stwinterest'				  =>	$_POST["stwinterest"],
+                    ':spschatt'				      =>	$_POST["spschatt"],
+                    ':spschadd'				      =>	$_POST["spschadd"],
+                    ':spyrlvl'				      =>	$_POST["spyrlvl"],
+                    ':snasprc'				      =>	$_POST["snasprc"],
                     ':snapgm'				        =>	$_POST["snapgm"],
                     ':stbytpic'					    =>	$_POST["stbytpic"],
-                    ':spbrgyin'		                =>	$_POST["spbrgyin"],
+                    ':spbrgyin'		          =>	$_POST["spbrgyin"],
                     ':snacapstype'					=>	$_POST["snacapstype"],
-                    ':snaemail'			            =>	$_POST["snaemail"],
-					':snapass'				        =>  $password_hash
+                    ':snaemail'			        =>	$_POST["snaemail"],
+					          ':snapass'				      =>  $password_hash
  );
 
 $object->execute($data);
@@ -87,6 +87,7 @@ $object->execute($data);
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scholarship Management System</title>
   <!-- Javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -151,121 +152,102 @@ $object->execute($data);
      </li>
     </ul>
     <div class="tab-content" style="margin-top:16px;">
-<!-- Personal Details -->
-     <div class="tab-pane active" id="personal_details">
-      <div class="panel panel-default">
-       <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Personal Details</div>
-       <div class="panel-body" style="margin: 5px;">
-            <div class="form-group">
-                    <div class="row">
-                        <div class="col">
-                            <label>First Name</label>
-                            <input type="text" name="sfname" id="sfname" class="form-control" />
-                            <span id="error_sfname" class="text-danger"></span>
-                        </div>
-                        <div class="col">
-                            <label>Middle Name</label>
-                            <input type="text" name="smname" id="smname" class="form-control" />
-                            <span id="error_smname" class="text-danger"></span>
-                        </div>
-                        <div class="col">
-                            <label>Last Name</label>
-                            <input type="text" name="slname" id="slname" class="form-control" />
-                            <span id="error_slname" class="text-danger"></span>
-                        </div>
-                        <div class="col-1">
-                            <label>Suffix</label>
-                            <input type="text" name="snext" id="snext" class="form-control" />
-                            <span id="error_snext" class="text-danger"></span>
-                        </div>
-                    </div>    
-            </div>
-            <div class="form-group">
-                    <div class="row">
-                        <div class="col-4">
-                            <label>Date of Birth</label>
-                                <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' name="sdbirth" id="sdbirth" class="form-control">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                </div>
-                            <span id="error_sdbirth" class="text-danger"></span>
-                        </div>
-                        <div class="col-4 offset-4">
-                            <label>Citizenship</label>
-                            <input type="text" name="sctship" id="sctship" class="form-control" />
-                            <span id="error_sctship" class="text-danger"></span>
-                        </div>
-                    </div>
-            </div>
-            <div class="form-group">
-                    <div class="row">
-                        <div class="col">
-                            <label>Address</label>
-                            <textarea name="saddress" id="saddress" class="form-control"></textarea>
-                            <span id="error_saddress" class="text-danger"></span>
-                        </div>
-                    </div>
-            </div>
-            <div class="form-group">
-                    <div class="row">
-                        <div class="col-4">
-                            <label>Email Address</label>
-                            <input type="text" name="semail" id="semail" class="form-control" />
-                            <span id="error_semail" class="text-danger"></span>
-                        </div>
-                        <div class="col-4 offset-4">
-                            <label>Contact Number</label>
-                            <input type="text" name="scontact" id="scontact" class="form-control" />
-                            <span id="error_scontact" class="text-danger"></span>
-                        </div>
-                    </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-4">
-                        <label>Course</label>
-                        <input type="text" name="semail" id="semail" class="form-control" />
-                        <span id="error_semail" class="text-danger"></span>
-                    </div>
-                    <div class="col-4 offset-4">
-                        <label>Grade/Year Level</label>
-                        <input type="text" name="scontact" id="scontact" class="form-control" />
-                        <span id="error_scontact" class="text-danger"></span>
-                    </div>
+  <!-- Personal Details -->
+  <div class="tab-pane active" id="personal_details">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Personal Details</div>
+          <div class="panel-body">
+              <div class="d-flex flex-row justify-content-between">
+                <div class="d-flex flex-column align-items-start">
+                  <label>First Name</label>
+                  <input type="text" name="sfname" id="sfname" class="form-control" />
+                  <span id="error_sfname" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-4">
-                        <label>Gender</label>
-                            <label class="radio-inline">
-                                <input type="radio" name="sgender" value="Male" checked> Male
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="sgender" value="Female"> Female
-                            </label>
-                    </div>
+                <div class="d-flex flex-column align-items-start">
+                  <label>Middle Name</label>
+                  <input type="text" name="smname" id="smname" class="form-control" />
+                  <span id="error_smname" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="col-md-12" align="center">
+                <div class="d-flex flex-column align-items-start">
+                  <label>Last Name</label>
+                  <input type="text" name="slname" id="slname" class="form-control" />
+                  <span id="error_slname" class="text-danger"></span>
+                </div>
+                <div class="d-flex flex-column align-items-start">
+                    <label>Suffix</label>
+                    <input type="text" name="snext" id="snext" size="4" class="form-control" />
+                    <span id="error_snext" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="d-flex flex-row justify-content-between">
+                  <div class="d-flex flex-column align-items-start">
+                      <label>Date of Birth</label>
+                      <div class='input-group date' id='datetimepicker1'>
+                          <input type='text' name="sdbirth" id="sdbirth" class="form-control">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                      </div>
+                    <span id="error_sdbirth" class="text-danger"></span>
+                  </div>
+                  <div class="d-flex flex-column align-items-start">
+                    <label>Citizenship</label>
+                    <input type="text" name="sctship" id="sctship" class="form-control" />
+                    <span id="error_sctship" class="text-danger"></span>
+                  </div>
+              </div>
+              <div class="d-flex flex-row justify-content-around">
+                  <div class="d-flex flex-column align-items-start w-100">
+                    <label>Address</label>
+                    <textarea name="saddress" id="saddress" class="form-control"></textarea>
+                    <span id="error_saddress" class="text-danger"></span>
+                  </div>
+              </div>
+              <div class="d-flex flex-row justify-content-between">
+                  <div class="d-flex flex-column align-items-start">
+                    <label>Email Address</label>
+                    <input type="text" name="semail" id="semail" class="form-control" />
+                    <span id="error_semail" class="text-danger"></span>
+                  </div>
+                  <div class="d-flex flex-column align-items-start">
+                    <label>Contact Number</label>
+                    <input type="text" name="scontact" id="scontact" class="form-control" />
+                    <span id="error_scontact" class="text-danger"></span>
+                  </div>
+                </div>
+                <div class="d-flex flex-row justify-content-start">
+                  <div class="d-flex flex-row justify-content-evenly gap-3">
+                  <label>Gender</label>
+                  <label class="radio-inline">
+                    <input type="radio" name="sgender" value="Male" checked> Male
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="sgender" value="Female"> Female
+                  </label>
+                  </div>
+                </div>
+              <div class="col-md-12" align="center">
                 <button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-info btn-md">Next</button>
+              </div>
             </div>
+          </div>
+        </div>
 <!-- Family Details -->
-     <!-- <div class="tab-pane fade" id="family_details">
+      <div class="tab-pane fade" id="family_details">
       <div class="panel panel-default">
        <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Family Details</div>
-       <div class="panel-body">
-       <div class="d-flex flex-row justify-content-around">
-          <div class="d-flex justify-content-start">
-          <label style="font-weight: bold; font-size: 15px;">Guardian</label>
+       <div class="panel-body" style="margin: 5px;">
+          <div class="form-group">
+            <div class="row justify-content-between" style="margin-left: 100px;">
+              <div class="col">
+                <label style="font-weight: bold; font-size: 15px;">Guardian</label>
+              </div>
+              <div class="col">
+                <label style="font-weight: bold; font-size: 15px;">Father</label>
+              </div>
+              <div class="col">
+                <label style="font-weight: bold; font-size: 15px;">Mother</label>
+              </div>
+            </div>
           </div>
-          <div class="d-flex justify-content-center">
-          <label style="font-weight: bold; font-size: 15px;">Father</label>
-          </div>
-          <div class="d-flex justify-content-end">
-          <label style="font-weight: bold; font-size: 15px;">Mother</label>
-          </div>
-       </div>
        <div class="d-flex flex-row justify-content-evenly">
        <div class="d-flex flex-column justify-content-start">
          <label>First Name</label>
@@ -369,7 +351,7 @@ $object->execute($data);
         <br />
        </div>
       </div>
-     </div> -->
+     </div>
 <!-- Achievements Details -->
      <!-- <div class="tab-pane fade" id="achieve_details">
       <div class="panel panel-default">
@@ -613,7 +595,38 @@ $(document).ready(function(){
 //    }
   }
 
-  if(error_sfname != '' || error_smname != '' || error_slname != '' || error_sdbirth != '' || error_sctship != '' || error_saddress != '' || error_semail != '' || error_scontact != '')
+  if($.trim($('#scourse').val()).length == 0)
+  {
+   error_scourse = 'Course is required';
+   $('#error_scourse').text(error_scourse);
+   $('#scourse').addClass('has-error');
+  }
+  else
+  {
+   error_scourse = '';
+   $('#error_scourse').text(error_scourse);
+   $('#scourse').removeClass('has-error');
+  }
+
+  if($.trim($('#syrlvl').val()).length == 0)
+  {
+   error_syrlvl = 'Grade/Year Level is required';
+   $('#error_syrlvl').text(error_syrlvl);
+   $('#syrlvl').addClass('has-error');
+  }
+  else
+  {
+   error_syrlvl = '';
+   $('#error_syrlvl').text(error_syrlvl);
+   $('#syrlvl').removeClass('has-error');
+  }
+
+  if(error_sfname != '' || error_smname != '' 
+  || error_slname != '' || error_sdbirth != '' 
+  || error_sctship != '' || error_saddress != '' 
+  || error_semail != '' || error_scontact != ''
+  || error_scourse != '' || error_syrlvl != ''
+  )
   {
    return false;
   }

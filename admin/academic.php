@@ -142,191 +142,191 @@ $object->execute($data);
     </ul>
     <div class="tab-content" style="margin-top:16px;">
 <!-- Personal Details -->
-     <div class="tab-pane active" id="personal_details">
-      <div class="panel panel-default">
-       <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Personal Details</div>
-       <div class="panel-body">
-       <div class="d-flex flex-column flex-wrap justify-content-start">
-       <div class="d-flex flex-row justify-content-between">
-        <div class="d-flex flex-column align-items-start">
-         <label>First Name</label>
-         <input type="text" name="sfname" id="sfname" class="form-control" />
-         <span id="error_sfname" class="text-danger"></span>
-        </div>
-        <div class="d-flex flex-column align-items-start">
-         <label>Middle Name</label>
-         <input type="text" name="smname" id="smname" class="form-control" />
-         <span id="error_smname" class="text-danger"></span>
-        </div>
-        <div class="d-flex flex-column align-items-start">
-         <label>Last Name</label>
-         <input type="text" name="slname" id="slname" class="form-control" />
-         <span id="error_slname" class="text-danger"></span>
-        </div>
-       </div>
-       <div class="d-flex flex-row justify-content-between">
-       <div class="d-flex flex-column align-items-start">
-        <label>Date of Birth</label>
-            <div class='input-group date' id='datetimepicker1'>
-                <input type='text' name="sdbirth" id="sdbirth" class="form-control">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+      <div class="tab-pane active" id="personal_details">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Personal Details</div>
+          <div class="panel-body">
+            <div class="d-flex flex-column flex-wrap justify-content-start">
+              <div class="d-flex flex-row justify-content-between">
+                <div class="d-flex flex-column align-items-start">
+                  <label>First Name</label>
+                  <input type="text" name="sfname" id="sfname" class="form-control" />
+                  <span id="error_sfname" class="text-danger"></span>
+                </div>
+                <div class="d-flex flex-column align-items-start">
+                  <label>Middle Name</label>
+                  <input type="text" name="smname" id="smname" class="form-control" />
+                  <span id="error_smname" class="text-danger"></span>
+                </div>
+                <div class="d-flex flex-column align-items-start">
+                  <label>Last Name</label>
+                  <input type="text" name="slname" id="slname" class="form-control" />
+                  <span id="error_slname" class="text-danger"></span>
+                </div>
             </div>
-            <span id="error_sdbirth" class="text-danger"></span>
-        </div>
-        <div class="d-flex flex-column align-items-start">
-         <label>Citizenship</label>
-         <input type="text" name="sctship" id="sctship" class="form-control" />
-         <span id="error_sctship" class="text-danger"></span>
-        </div>
-       </div>
-       <div class="d-flex flex-row justify-content-around">
-       <div class="d-flex flex-column align-items-start w-100">
-         <label>Address</label>
-         <textarea name="saddress" id="saddress" class="form-control"></textarea>
-         <span id="error_saddress" class="text-danger"></span>
-        </div>
-       </div>
-       <div class="d-flex flex-row justify-content-between">
-       <div class="d-flex flex-column align-items-start">
-         <label>Email Address</label>
-         <input type="text" name="semail" id="semail" class="form-control" />
-         <span id="error_semail" class="text-danger"></span>
-        </div>
-        <div class="d-flex flex-column align-items-start">
-         <label>Contact Number</label>
-         <input type="text" name="scontact" id="scontact" class="form-control" />
-         <span id="error_scontact" class="text-danger"></span>
-        </div>
-        </div>
-        <div class="d-flex flex-row justify-content-start">
-        <div class="d-flex flex-row justify-content-evenly gap-3">
-        <label>Gender</label>
-         <label class="radio-inline">
-          <input type="radio" name="sgender" value="Male" checked> Male
-         </label>
-         <label class="radio-inline">
-          <input type="radio" name="sgender" value="Female"> Female
-         </label>
-      </div>
-        </div>
-        </div>
-          <div class="col-md-12" align="center">
-          <button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-info btn-md">Next</button>
+            <div class="d-flex flex-row justify-content-between">
+                <div class="d-flex flex-column align-items-start">
+                    <label>Date of Birth</label>
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' name="sdbirth" id="sdbirth" class="form-control">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                  <span id="error_sdbirth" class="text-danger"></span>
+                </div>
+                <div class="d-flex flex-column align-items-start">
+                  <label>Citizenship</label>
+                  <input type="text" name="sctship" id="sctship" class="form-control" />
+                  <span id="error_sctship" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-around">
+                <div class="d-flex flex-column align-items-start w-100">
+                  <label>Address</label>
+                  <textarea name="saddress" id="saddress" class="form-control"></textarea>
+                  <span id="error_saddress" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div class="d-flex flex-column align-items-start">
+                  <label>Email Address</label>
+                  <input type="text" name="semail" id="semail" class="form-control" />
+                  <span id="error_semail" class="text-danger"></span>
+                </div>
+                <div class="d-flex flex-column align-items-start">
+                  <label>Contact Number</label>
+                  <input type="text" name="scontact" id="scontact" class="form-control" />
+                  <span id="error_scontact" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex flex-row justify-content-evenly gap-3">
+                <label>Gender</label>
+                <label class="radio-inline">
+                  <input type="radio" name="sgender" value="Male" checked> Male
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="sgender" value="Female"> Female
+                </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12" align="center">
+              <button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-info btn-md">Next</button>
+            </div>
           </div>
-       </div>
-       </div>
+        </div>
       </div>
 <!-- Family Details -->
      <div class="tab-pane fade" id="family_details">
       <div class="panel panel-default">
        <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Family Details</div>
-       <div class="panel-body">
-       <div class="d-flex flex-row justify-content-around">
-          <div class="d-flex justify-content-start">
-          <label style="font-weight: bold; font-size: 15px;">Guardian</label>
+        <div class="panel-body">
+            <div class="d-flex flex-row justify-content-around">
+              <div class="d-flex justify-content-start">
+                <label style="font-weight: bold; font-size: 15px;">Guardian</label>
+              </div>
+              <div class="d-flex justify-content-center">
+                <label style="font-weight: bold; font-size: 15px;">Father</label>
+              </div>
+                <div class="d-flex justify-content-end">
+              <label style="font-weight: bold; font-size: 15px;">Mother</label>
+            </div>
           </div>
-          <div class="d-flex justify-content-center">
-          <label style="font-weight: bold; font-size: 15px;">Father</label>
+          <div class="d-flex flex-row justify-content-evenly">
+            <div class="d-flex flex-column justify-content-start">
+              <label>First Name</label>
+              <input type="text" name="gfname" id="gfname" class="form-control" />
+              <span id="error_gfname" class="text-danger"></span>
+        
+              <label>Middle Name</label>
+              <input type="text" name="gmname" id="gmname" class="form-control" />
+              <span id="error_gmname" class="text-danger"></span>
+        
+              <label>Last Name</label>
+              <input type="text" name="glname" id="glname" class="form-control" />
+              <span id="error_glname" class="text-danger"></span>
+              
+              <label>Address</label>
+              <textarea name="gaddress" id="gaddress" class="form-control"></textarea>
+              <span id="error_gaddress" class="text-danger"></span>
+
+              <label>Contact Number</label>
+              <input type="text" name="gcontact" id="gcontact" class="form-control" />
+              <span id="error_gcontact" class="text-danger"></span>
+
+              <label>Occupation/Position</label>
+              <input type="text" name="goccu" id="goccu" class="form-control" />
+              <span id="error_goccu" class="text-danger"></span>
+
+              <label>Company</label>
+              <input type="text" name="gcompany" id="gcompany" class="form-control" />
+              <span id="error_gcompany" class="text-danger"></span>
+            </div>
+            <div class="d-flex flex-column justify-content-start">
+        
+              <label>First Name</label>
+              <input type="text" name="ffname" id="ffname" class="form-control" />
+              <span id="error_ffname" class="text-danger"></span>
+            
+              <label>Middle Name</label>
+              <input type="text" name="fmname" id="fmname" class="form-control" />
+              <span id="error_fmname" class="text-danger"></span>
+            
+              <label>Last Name</label>
+              <input type="text" name="flname" id="flname" class="form-control" />
+              <span id="error_flname" class="text-danger"></span>
+              
+              <label>Address</label>
+              <textarea name="faddress" id="faddress" class="form-control"></textarea>
+              <span id="error_faddress" class="text-danger"></span>
+
+              <label>Contact Number</label>
+              <input type="text" name="fcontact" id="fcontact" class="form-control" />
+              <span id="error_fcontact" class="text-danger"></span>
+
+              <label>Occupation/Position</label>
+              <input type="text" name="foccu" id="foccu" class="form-control" />
+              <span id="error_foccu" class="text-danger"></span>
+
+              <label>Company</label>
+              <input type="text" name="fcompany" id="fcompany" class="form-control" />
+              <span id="error_fcompany" class="text-danger"></span>
+              
+              <label>Parents Combine Yearly Income</label>
+              <input type="text" name="spcyincome" id="spcyincome" class="form-control" />
+              <span id="error_spcyincome" class="text-danger"></span>
+            </div>
+            <div class="d-flex flex-column justify-content-start">
+        
+              <label>First Name</label>
+              <input type="text" name="mfname" id="mfname" class="form-control" />
+              <span id="error_mfname" class="text-danger"></span>
+            
+              <label>Middle Name</label>
+              <input type="text" name="mmname" id="mmname" class="form-control" />
+              <span id="error_mmname" class="text-danger"></span>
+            
+              <label>Last Name</label>
+              <input type="text" name="mlname" id="mlname" class="form-control" />
+              <span id="error_mlname" class="text-danger"></span>
+              
+              <label>Address</label>
+              <textarea name="maddress" id="maddress" class="form-control"></textarea>
+              <span id="error_maddress" class="text-danger"></span>
+
+              <label>Contact Number</label>
+              <input type="text" name="mcontact" id="mcontact" class="form-control" />
+              <span id="error_mcontact" class="text-danger"></span>
+
+              <label>Occupation/Position</label>
+              <input type="text" name="moccu" id="moccu" class="form-control" />
+              <span id="error_moccu" class="text-danger"></span>
+
+              <label>Company</label>
+              <input type="text" name="mcompany" id="mcompany" class="form-control" />
+              <span id="error_mcompany" class="text-danger"></span>
+            </div>
           </div>
-          <div class="d-flex justify-content-end">
-          <label style="font-weight: bold; font-size: 15px;">Mother</label>
-          </div>
-       </div>
-       <div class="d-flex flex-row justify-content-evenly">
-       <div class="d-flex flex-column justify-content-start">
-         <label>First Name</label>
-         <input type="text" name="gfname" id="gfname" class="form-control" />
-         <span id="error_gfname" class="text-danger"></span>
-      
-         <label>Middle Name</label>
-         <input type="text" name="gmname" id="gmname" class="form-control" />
-         <span id="error_gmname" class="text-danger"></span>
-       
-         <label>Last Name</label>
-         <input type="text" name="glname" id="glname" class="form-control" />
-         <span id="error_glname" class="text-danger"></span>
-        
-         <label>Address</label>
-         <textarea name="gaddress" id="gaddress" class="form-control"></textarea>
-         <span id="error_gaddress" class="text-danger"></span>
-
-         <label>Contact Number</label>
-         <input type="text" name="gcontact" id="gcontact" class="form-control" />
-         <span id="error_gcontact" class="text-danger"></span>
-
-         <label>Occupation/Position</label>
-         <input type="text" name="goccu" id="goccu" class="form-control" />
-         <span id="error_goccu" class="text-danger"></span>
-
-         <label>Company</label>
-         <input type="text" name="gcompany" id="gcompany" class="form-control" />
-         <span id="error_gcompany" class="text-danger"></span>
-       </div>
-       <div class="d-flex flex-column justify-content-start">
-       
-         <label>First Name</label>
-         <input type="text" name="ffname" id="ffname" class="form-control" />
-         <span id="error_ffname" class="text-danger"></span>
-      
-         <label>Middle Name</label>
-         <input type="text" name="fmname" id="fmname" class="form-control" />
-         <span id="error_fmname" class="text-danger"></span>
-       
-         <label>Last Name</label>
-         <input type="text" name="flname" id="flname" class="form-control" />
-         <span id="error_flname" class="text-danger"></span>
-        
-         <label>Address</label>
-         <textarea name="faddress" id="faddress" class="form-control"></textarea>
-         <span id="error_faddress" class="text-danger"></span>
-
-         <label>Contact Number</label>
-         <input type="text" name="fcontact" id="fcontact" class="form-control" />
-         <span id="error_fcontact" class="text-danger"></span>
-
-         <label>Occupation/Position</label>
-         <input type="text" name="foccu" id="foccu" class="form-control" />
-         <span id="error_foccu" class="text-danger"></span>
-
-         <label>Company</label>
-         <input type="text" name="fcompany" id="fcompany" class="form-control" />
-         <span id="error_fcompany" class="text-danger"></span>
-         
-         <label>Parents Combine Yearly Income</label>
-         <input type="text" name="spcyincome" id="spcyincome" class="form-control" />
-         <span id="error_spcyincome" class="text-danger"></span>
-       </div>
-       <div class="d-flex flex-column justify-content-start">
-       
-         <label>First Name</label>
-         <input type="text" name="mfname" id="mfname" class="form-control" />
-         <span id="error_mfname" class="text-danger"></span>
-      
-         <label>Middle Name</label>
-         <input type="text" name="mmname" id="mmname" class="form-control" />
-         <span id="error_mmname" class="text-danger"></span>
-       
-         <label>Last Name</label>
-         <input type="text" name="mlname" id="mlname" class="form-control" />
-         <span id="error_mlname" class="text-danger"></span>
-        
-         <label>Address</label>
-         <textarea name="maddress" id="maddress" class="form-control"></textarea>
-         <span id="error_maddress" class="text-danger"></span>
-
-         <label>Contact Number</label>
-         <input type="text" name="mcontact" id="mcontact" class="form-control" />
-         <span id="error_mcontact" class="text-danger"></span>
-
-         <label>Occupation/Position</label>
-         <input type="text" name="moccu" id="moccu" class="form-control" />
-         <span id="error_moccu" class="text-danger"></span>
-
-         <label>Company</label>
-         <input type="text" name="mcompany" id="mcompany" class="form-control" />
-         <span id="error_mcompany" class="text-danger"></span>
-       </div>
-       </div>
         <br />
         <div align="center">
          <button type="button" name="previous_btn_family_details" id="previous_btn_family_details" class="btn btn-default btn-md">Previous</button>
