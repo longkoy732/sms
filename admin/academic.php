@@ -171,7 +171,7 @@ $object->execute($data);
                         <input type='text' name="sdbirth" id="sdbirth" class="form-control">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
-                  <span id="error_sdbirth" class="text-danger"></span>
+                    <span id="error_sdbirth" class="text-danger"></span>
                 </div>
                 <div class="d-flex flex-column align-items-start">
                   <label>Citizenship</label>

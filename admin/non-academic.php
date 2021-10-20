@@ -37,6 +37,7 @@ if(isset($_POST["sfname"]))
 					          ':gfname'				        =>	$_POST["gfname"],
 					          ':gmname'				        =>	$_POST["gmname"],
 					          ':glname'			          =>	$_POST["glname"],
+                    ':gnext'					      =>	$_POST["gnext"],
                     ':gaddress'					    =>	$_POST["gaddress"],
                     ':gcontact'					    =>	$_POST["gcontact"],
                     ':goccu'					      =>	$_POST["goccu"],
@@ -87,19 +88,15 @@ $object->execute($data);
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scholarship Management System</title>
   <!-- Javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js"></script>
    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
   <style>
@@ -133,7 +130,7 @@ $object->execute($data);
    <br />
    <h2 align="center">Academic Scholarship (AS)<br>Application Form</h2><br />
    <?php echo $message; ?> 
-   <form method="post" id="acad_form" class="row g-3">
+   <form method="post" id="acad_form" class="row gap-3">
     <ul class="nav nav-tabs">
      <li class="nav-item">
       <a class="nav-link active_tab1" id="list_personal_details" style="border:1px solid #ccc">Personal Details</a>
@@ -153,304 +150,293 @@ $object->execute($data);
     </ul>
     <div class="tab-content" style="margin-top:16px;">
   <!-- Personal Details -->
-  <div class="tab-pane active" id="personal_details">
+      <div class="tab-pane active" id="personal_details">
         <div class="panel panel-default">
-            <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Personal Details</div>
-          <div class="panel-body">
-              <div class="d-flex flex-row justify-content-between">
-                <div class="d-flex flex-column align-items-start">
-                  <label>First Name</label>
-                  <input type="text" name="sfname" id="sfname" class="form-control" />
-                  <span id="error_sfname" class="text-danger"></span>
-                </div>
-                <div class="d-flex flex-column align-items-start">
-                  <label>Middle Name</label>
-                  <input type="text" name="smname" id="smname" class="form-control" />
-                  <span id="error_smname" class="text-danger"></span>
-                </div>
-                <div class="d-flex flex-column align-items-start">
-                  <label>Last Name</label>
-                  <input type="text" name="slname" id="slname" class="form-control" />
-                  <span id="error_slname" class="text-danger"></span>
-                </div>
-                <div class="d-flex flex-column align-items-start">
-                    <label>Suffix</label>
-                    <input type="text" name="snext" id="snext" size="4" class="form-control" />
-                    <span id="error_snext" class="text-danger"></span>
-                </div>
-              </div>
-              <div class="d-flex flex-row justify-content-between">
-                  <div class="d-flex flex-column align-items-start">
-                      <label>Date of Birth</label>
-                      <div class='input-group date' id='datetimepicker1'>
-                          <input type='text' name="sdbirth" id="sdbirth" class="form-control">
-                          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                      </div>
+          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Personal Details</div>
+            <div class="panel-body">
+              <div class="form-group">
+					      <h4 class="sub-title">Personal Details</h4>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>First Name<span class="text-danger">*</span></label>
+                    <input type="text" name="sfname" id="sfname" class="form-control" />
+                    <span id="error_sfname" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Middle Name<span class="text-danger">*</span></label>
+                    <input type="text" name="smname" id="smname" class="form-control" />
+                    <span id="error_smname" class="text-danger"></span>
+                    </div>
+							    <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Last Name<span class="text-danger">*</span></label>
+                    <input type="text" name="slname" id="slname" class="form-control" />
+                    <span id="error_slname" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Select Suffix</label>
+                    <select name="snext" id="snext" class="form-control" required>
+                      <option value="">N/A</option>
+                      <option value="Jr.">Jr.</option>
+                      <option value="Sr.">Sr.</option>
+                    </select>
+                  </div>
+              <!--  </div>
+               </div>
+              <div class="form-group">
+                <div class="row"> -->
+                  <div class="col-xs-10 col-sm-12 col-md-4">
+                    <label>Date of Birth<span class="text-danger">*</span></label>
+                    <div class='input-group date' id='datetimepicker1'>
+                      <input type='text' name="sdbirth" id="sdbirth" class="form-control">
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
                     <span id="error_sdbirth" class="text-danger"></span>
                   </div>
-                  <div class="d-flex flex-column align-items-start">
-                    <label>Citizenship</label>
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Select Gender<span class="text-danger">*</span></label>
+                    <select name="sgender" id="sgender" class="form-control" required>
+                      <option value="">Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                    <span id="error_sgender" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Citizenship<span class="text-danger">*</span></label>
                     <input type="text" name="sctship" id="sctship" class="form-control" />
                     <span id="error_sctship" class="text-danger"></span>
                   </div>
-              </div>
-              <div class="d-flex flex-row justify-content-around">
-                  <div class="d-flex flex-column align-items-start w-100">
-                    <label>Address</label>
-                    <textarea name="saddress" id="saddress" class="form-control"></textarea>
+              <!--  </div>
+               </div>
+              <div class="form-group">
+                <div class="row"> -->
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Address<span class="text-danger">*</span></label>
+                    <textarea type="text" name="saddress" id="saddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
                     <span id="error_saddress" class="text-danger"></span>
                   </div>
-              </div>
-              <div class="d-flex flex-row justify-content-between">
-                  <div class="d-flex flex-column align-items-start">
-                    <label>Email Address</label>
+              <!--  </div>
+               </div>
+              <div class="form-group">
+                <div class="row"> -->
+                  <div class="col-xs-12 col-sm-12 col-md-5">
+                    <label>Email Address<span class="text-danger">*</span></label>
                     <input type="text" name="semail" id="semail" class="form-control" />
                     <span id="error_semail" class="text-danger"></span>
                   </div>
-                  <div class="d-flex flex-column align-items-start">
-                    <label>Contact Number</label>
+                  <div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-2">
+                    <label>Contact Number<span class="text-danger">*</span></label>
                     <input type="text" name="scontact" id="scontact" class="form-control" />
                     <span id="error_scontact" class="text-danger"></span>
                   </div>
-                </div>
-                <div class="d-flex flex-row justify-content-start">
-                  <div class="d-flex flex-row justify-content-evenly gap-3">
-                  <label>Gender</label>
-                  <label class="radio-inline">
-                    <input type="radio" name="sgender" value="Male" checked> Male
-                  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="sgender" value="Female"> Female
-                  </label>
+              <!--  </div>
+               </div>
+              <div class="form-group">
+                <div class="row"> -->
+                  <div class="col-xs-12 col-sm-12 col-md-5">
+                    <label>Course<span class="text-danger">*</span></label>
+                    <input type="text" name="scourse" id="scourse" class="form-control" />
+                    <span id="error_scourse" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-2">
+                    <label>Grade/Year Level<span class="text-danger">*</span></label>
+                    <input type="text" name="syrlvl" id="syrlvl" class="form-control" />
+                    <span id="error_syrlvl" class="text-danger"></span>
                   </div>
                 </div>
+              </div>
               <div class="col-md-12" align="center">
                 <button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-info btn-md">Next</button>
               </div>
             </div>
-          </div>
         </div>
+      </div>
 <!-- Family Details -->
-      <div class="tab-pane fade" id="family_details">
+     <div class="tab-pane fade" id="family_details">
       <div class="panel panel-default">
        <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Family Details</div>
-       <div class="panel-body" style="margin: 5px;">
+        <div class="panel-body">
           <div class="form-group">
-            <div class="row justify-content-between" style="margin-left: 100px;">
-              <div class="col">
-                <label style="font-weight: bold; font-size: 15px;">Guardian</label>
-              </div>
-              <div class="col">
-                <label style="font-weight: bold; font-size: 15px;">Father</label>
-              </div>
-              <div class="col">
-                <label style="font-weight: bold; font-size: 15px;">Mother</label>
+					      <h4 class="sub-title">Guardian Details</h4>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>First Name<span class="text-danger">*</span></label>
+                    <input type="text" name="gfname" id="gfname" class="form-control" />
+                    <span id="error_gfname" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Middle Name<span class="text-danger">*</span></label>
+                    <input type="text" name="gmname" id="gmname" class="form-control" />
+                    <span id="error_gmname" class="text-danger"></span>
+                    </div>
+							    <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Last Name<span class="text-danger">*</span></label>
+                    <input type="text" name="glname" id="glname" class="form-control" />
+                    <span id="error_glname" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Select Suffix</label>
+                    <select name="gnext" id="gnext" class="form-control" required>
+                      <option value="">N/A</option>
+                      <option value="Jr.">Jr.</option>
+                      <option value="Sr.">Sr.</option>
+                    </select>
+                  </div>
+              <!--  </div>
+               </div>
+              <div class="form-group">
+                <div class="row"> -->
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Address<span class="text-danger">*</span></label>
+                    <textarea type="text" name="gaddress" id="gaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_gaddress" class="text-danger"></span>
+                  </div>
+              <!--  </div>
+               </div>
+              <div class="form-group">
+                <div class="row"> -->
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Contact Number<span class="text-danger">*</span></label>
+                    <input type="text" name="gcontact" id="gcontact" class="form-control" />
+                    <span id="error_gcontact" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Occupation<span class="text-danger">*</span></label>
+                    <input type="text" name="goccu" id="goccu" class="form-control" />
+                    <span id="error_goccu" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Company<span class="text-danger">*</span></label>
+                    <input type="text" name="gcompany" id="gcompany" class="form-control" />
+                    <span id="error_gcompany" class="text-danger"></span>
+                  </div>
               </div>
             </div>
-          </div>
-       <div class="d-flex flex-row justify-content-evenly">
-       <div class="d-flex flex-column justify-content-start">
-         <label>First Name</label>
-         <input type="text" name="gfname" id="gfname" class="form-control" />
-         <span id="error_gfname" class="text-danger"></span>
-      
-         <label>Middle Name</label>
-         <input type="text" name="gmname" id="gmname" class="form-control" />
-         <span id="error_gmname" class="text-danger"></span>
-       
-         <label>Last Name</label>
-         <input type="text" name="glname" id="glname" class="form-control" />
-         <span id="error_glname" class="text-danger"></span>
-        
-         <label>Address</label>
-         <textarea name="gaddress" id="gaddress" class="form-control"></textarea>
-         <span id="error_gaddress" class="text-danger"></span>
-
-         <label>Contact Number</label>
-         <input type="text" name="gcontact" id="gcontact" class="form-control" />
-         <span id="error_gcontact" class="text-danger"></span>
-
-         <label>Occupation/Position</label>
-         <input type="text" name="goccu" id="goccu" class="form-control" />
-         <span id="error_goccu" class="text-danger"></span>
-
-         <label>Company</label>
-         <input type="text" name="gcompany" id="gcompany" class="form-control" />
-         <span id="error_gcompany" class="text-danger"></span>
-       </div>
-       <div class="d-flex flex-column justify-content-start">
-       
-         <label>First Name</label>
-         <input type="text" name="ffname" id="ffname" class="form-control" />
-         <span id="error_ffname" class="text-danger"></span>
-      
-         <label>Middle Name</label>
-         <input type="text" name="fmname" id="fmname" class="form-control" />
-         <span id="error_fmname" class="text-danger"></span>
-       
-         <label>Last Name</label>
-         <input type="text" name="flname" id="flname" class="form-control" />
-         <span id="error_flname" class="text-danger"></span>
-        
-         <label>Address</label>
-         <textarea name="faddress" id="faddress" class="form-control"></textarea>
-         <span id="error_faddress" class="text-danger"></span>
-
-         <label>Contact Number</label>
-         <input type="text" name="fcontact" id="fcontact" class="form-control" />
-         <span id="error_fcontact" class="text-danger"></span>
-
-         <label>Occupation/Position</label>
-         <input type="text" name="foccu" id="foccu" class="form-control" />
-         <span id="error_foccu" class="text-danger"></span>
-
-         <label>Company</label>
-         <input type="text" name="fcompany" id="fcompany" class="form-control" />
-         <span id="error_fcompany" class="text-danger"></span>
-         
-         <label>Parents Combine Yearly Income</label>
-         <input type="text" name="spcyincome" id="spcyincome" class="form-control" />
-         <span id="error_spcyincome" class="text-danger"></span>
-       </div>
-       <div class="d-flex flex-column justify-content-start">
-       
-         <label>First Name</label>
-         <input type="text" name="mfname" id="mfname" class="form-control" />
-         <span id="error_mfname" class="text-danger"></span>
-      
-         <label>Middle Name</label>
-         <input type="text" name="mmname" id="mmname" class="form-control" />
-         <span id="error_mmname" class="text-danger"></span>
-       
-         <label>Last Name</label>
-         <input type="text" name="mlname" id="mlname" class="form-control" />
-         <span id="error_mlname" class="text-danger"></span>
-        
-         <label>Address</label>
-         <textarea name="maddress" id="maddress" class="form-control"></textarea>
-         <span id="error_maddress" class="text-danger"></span>
-
-         <label>Contact Number</label>
-         <input type="text" name="mcontact" id="mcontact" class="form-control" />
-         <span id="error_mcontact" class="text-danger"></span>
-
-         <label>Occupation/Position</label>
-         <input type="text" name="moccu" id="moccu" class="form-control" />
-         <span id="error_moccu" class="text-danger"></span>
-
-         <label>Company</label>
-         <input type="text" name="mcompany" id="mcompany" class="form-control" />
-         <span id="error_mcompany" class="text-danger"></span>
-       </div>
-       </div>
-        <br />
-        <div align="center">
-         <button type="button" name="previous_btn_family_details" id="previous_btn_family_details" class="btn btn-default btn-md">Previous</button>
-         <button type="button" name="btn_family_details" id="btn_family_details" class="btn btn-info btn-md">Next</button>
+            <div class="form-group">
+					      <h4 class="sub-title">Father Details</h4>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>First Name<span class="text-danger">*</span></label>
+                    <input type="text" name="ffname" id="ffname" class="form-control" />
+                    <span id="error_ffname" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Middle Name<span class="text-danger">*</span></label>
+                    <input type="text" name="fmname" id="fmname" class="form-control" />
+                    <span id="error_fmname" class="text-danger"></span>
+                    </div>
+							    <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Last Name<span class="text-danger">*</span></label>
+                    <input type="text" name="flname" id="flname" class="form-control" />
+                    <span id="error_flname" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Select Suffix</label>
+                    <select name="fnext" id="fnext" class="form-control" required>
+                      <option value="">N/A</option>
+                      <option value="Jr.">Jr.</option>
+                      <option value="Sr.">Sr.</option>
+                    </select>
+                  </div>
+              <!--  </div>
+               </div>
+              <div class="form-group">
+                <div class="row"> -->
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Address<span class="text-danger">*</span></label>
+                    <textarea type="text" name="faddress" id="faddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_faddress" class="text-danger"></span>
+                  </div>
+              <!--  </div>
+               </div>
+              <div class="form-group">
+                <div class="row"> -->
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Contact Number<span class="text-danger">*</span></label>
+                    <input type="text" name="fcontact" id="fcontact" class="form-control" />
+                    <span id="error_fcontact" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Occupation<span class="text-danger">*</span></label>
+                    <input type="text" name="foccu" id="foccu" class="form-control" />
+                    <span id="error_foccu" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Company<span class="text-danger">*</span></label>
+                    <input type="text" name="fcompany" id="fcompany" class="form-control" />
+                    <span id="error_fcompany" class="text-danger"></span>
+                  </div>
+              </div>
+            </div>
+            <div class="form-group">
+					      <h4 class="sub-title">Mother Details</h4>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>First Name<span class="text-danger">*</span></label>
+                    <input type="text" name="mfname" id="mfname" class="form-control" />
+                    <span id="error_mfname" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Middle Name<span class="text-danger">*</span></label>
+                    <input type="text" name="mmname" id="mmname" class="form-control" />
+                    <span id="error_mmname" class="text-danger"></span>
+                    </div>
+							    <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Last Name<span class="text-danger">*</span></label>
+                    <input type="text" name="mlname" id="mlname" class="form-control" />
+                    <span id="error_mlname" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <label>Select Suffix</label>
+                    <select name="mnext" id="mnext" class="form-control" required>
+                      <option value="">N/A</option>
+                      <option value="Jr.">Jr.</option>
+                      <option value="Sr.">Sr.</option>
+                    </select>
+                  </div>
+              <!--  </div>
+               </div>
+              <div class="form-group">
+                <div class="row"> -->
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Address<span class="text-danger">*</span></label>
+                    <textarea type="text" name="maddress" id="maddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_maddress" class="text-danger"></span>
+                  </div>
+              <!--  </div>
+               </div>
+              <div class="form-group">
+                <div class="row"> -->
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Contact Number<span class="text-danger">*</span></label>
+                    <input type="text" name="mcontact" id="mcontact" class="form-control" />
+                    <span id="error_mcontact" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Occupation<span class="text-danger">*</span></label>
+                    <input type="text" name="moccu" id="moccu" class="form-control" />
+                    <span id="error_moccu" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Company<span class="text-danger">*</span></label>
+                    <input type="text" name="mcompany" id="mcompany" class="form-control" />
+                    <span id="error_mcompany" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4">
+                    <label>Parents Combine Yearly Income<span class="text-danger">*</span></label>
+                    <input type="text" name="spcyincome" id="spcyincome" class="form-control" />
+                    <span id="error_spcyincome" class="text-danger"></span>
+                  </div>
+              </div>
+            </div>
+            <div align="center">
+              <button type="button" name="previous_btn_family_details" id="previous_btn_family_details" class="btn btn-default btn-md">Previous</button>
+              <button type="button" name="btn_family_details" id="btn_family_details" class="btn btn-info btn-md">Next</button>
+            </div>
         </div>
-        <br />
-       </div>
       </div>
      </div>
-<!-- Achievements Details -->
-     <!-- <div class="tab-pane fade" id="achieve_details">
-      <div class="panel panel-default">
-       <div class="panel-heading">Achievements Award Details</div>
-       <div class="panel-body">
-        <div class="form-group">
-         <label>Grade/GWA</label>
-         <input type="text" name="sagwa" id="sagwa" class="form-control" />
-         <span id="error_sagwa" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-         <label>Award Received</label>
-         <textarea name="sraward" id="sraward" class="form-control"></textarea>
-         <span id="error_sraward" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-        <label>Date Received</label>
-            <div class='input-group date' id='datetimepicker1'>
-                <input type='text' name="sdawardrceive" id="sdawardrceive" class="form-control">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-            </div>
-            <span id="error_sdawardrceive" class="text-danger"></span>
-        </div>
-        <br />
-        <div align="center">
-        <button type="button" name="previous_btn_achieve" id="previous_btn_achieve" class="btn btn-default btn-md">Previous</button>
-        <button type="button" name="btn_achieve" id="btn_achieve" class="btn btn-info btn-md">Next</button>
-        </div>
-        <br />
-       </div>
-      </div>
-     </div> -->
-    <!-- Requirements Details -->
-    <!-- <div class="tab-pane fade" id="require_details">
-      <div class="panel panel-default">
-       <div class="panel-heading">Requirements Details</div>
-       <div class="panel-body">
-       <div class="d-flex flex-row justify-content-evenly">
-       <div class="d-flex flex-column justify-content-start">
-        <div class="form-group">
-        <label>Submit Photocopy of Report Card</label>
-            <div class='input-group date' id='datetimepicker1'>
-                <input type='text' name="sadsprc" id="sadsprc" class="form-control">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-            </div>
-            <span id="error_sadsprc" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-        <label>Submit Photocopy of Good Moral</label>
-            <div class='input-group date' id='datetimepicker1'>
-                <input type='text' name="sadspgm" id="sadspgm" class="form-control">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-            </div>
-            <span id="error_sadspgm" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-        <label>Submit Certificate of Recognition</label>
-            <div class='input-group date' id='datetimepicker1'>
-                <input type='text' name="sadspcr" id="sadspcr" class="form-control">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-            </div>
-            <span id="error_sadspcr" class="text-danger"></span>
-        </div>
-       </div>
-       </div>
-        <br />
-        <div align="center">
-        <button type="button" name="previous_btn_require" id="previous_btn_require" class="btn btn-default btn-md">Previous</button>
-        <button type="button" name="btn_require" id="btn_require" class="btn btn-info btn-md">Next</button>
-        </div>
-        <br />
-       </div>
-      </div>
-     </div> -->
-     <!-- Account Details -->
-     <!-- <div class="tab-pane fade" id="account_details">
-      <div class="panel panel-default">
-       <div class="panel-heading">Account Details</div>
-       <div class="panel-body">
-        <div class="form-group">
-        <label>Email</label>
-         <input type="text" name="saemail" id="saemail" class="form-control" />
-         <span id="error_saemail" class="text-danger"></span>
-        </div>
-         <div class="form-group">
-         <label>Password</label>
-         <input type="text" name="sapass" id="sapass" class="form-control" />
-         <span id="error_sapass" class="text-danger"></span>
-        </div>
-        <br />
-        <div align="center">
-        <button type="button" name="previous_btn_account" id="previous_btn_account" class="btn btn-default btn-md">Previous</button>
-        <button type="submit" name="btn_submit" id="btn_submit" class="btn btn-success">Submit</button>
-        </div>
-        <br />
-       </div>
-      </div> -->
      </div>
-    </div>
    </form>
   </div>
 </body>
@@ -465,6 +451,7 @@ $(document).ready(function(){
   var error_smname = '';
   var error_slname = '';
   var error_sdbirth = '';
+  var error_sgender = '';
   var error_sctship = '';
   var error_saddress = '';
   var error_semail = '';
@@ -524,6 +511,19 @@ $(document).ready(function(){
    error_sdbirth = '';
    $('#error_sdbirth').text(error_sdbirth);
    $('#sdbirth').removeClass('has-error');
+  }
+
+  if($.trim($('#sgender').val()).length == 0)
+  {
+   error_sgender = 'Gender is required';
+   $('#error_sgender').text(error_sgender);
+   $('#sgender').addClass('has-error');
+  }
+  else
+  {
+   error_sgender = '';
+   $('#error_sgender').text(error_sgender);
+   $('#sgender').removeClass('has-error');
   }
 
   if($.trim($('#sctship').val()).length == 0)
@@ -1289,4 +1289,3 @@ $(document).ready(function(){
    bindDatePicker();
  });
 </script>
-h
