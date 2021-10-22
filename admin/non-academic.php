@@ -7,17 +7,17 @@ $message = '';
 if(isset($_POST["sfname"]))
 {
   $object->query = "
-     INSERT INTO tbl_acad
+     INSERT INTO tbl_nonacad
      (sfname, smname, slname, snext, sdbirth, sctship, saddress, semail, scontact, sgender, scourse, syrlvl, 
-     gfname, gmname, glname, gaddress, gcontact, goccu, gcompany, ffname, fmname, flname, faddress, fcontact, 
-     foccu, fcompany, mfname, mmname, mlname, maddress, mcontact, moccu, mcompany, spcyincome, srappnas, sbos, 
-     ssskills, stwinterest, spschatt, spschadd, spyrlvl, snasprc, snapgm, stbytpic, spbrgyin, snacapstype, 
+     gfname, gmname, glname, gnext, gaddress, gcontact, goccu, gcompany, ffname, fmname, flname, fnext, faddress, fcontact, 
+     foccu, fcompany, mfname, mmname, mlname, mnext, maddress, mcontact, moccu, mcompany, spcyincome, srappnas, sbos, 
+     ssskills, stwinterest, spschatt, spschadd, spyrlvl, snasprcstat, snapgmstat, stbytpicstat, spbrgyinstat, snacapstype, 
      snaemail, snapass, snascholarstat, snadapply) 
-     VALUES (:sfname, :smname, :slname, :snext, :sdbirth, :sctship,:saddress, :semail, :scontact, :sgender, 
-     :scourse, :syrlvl, :gfname, :gmname, :glname, :gaddress, :gcontact, :goccu, :gcompany, :ffname, :fmname, 
-     :flname, :faddress, :fcontact, :foccu, :fcompany, :mfname, :mmname, :mlname, :maddress, :mcontact, :moccu, 
-     :mcompany, :spcyincome, :srappnas, :sbos, :ssskills, :stwinterest, :spschatt, :spschadd, :spyrlvl, :snasprc, 
-     :snapgm, :stbytpic, :spbrgyin, :snacapstype, :snaemail, :snapass, 'Pending', '$object->now')
+     VALUES (:sfname, :smname, :slname, :snext, :sdbirth, :sctship, :saddress, :semail, :scontact, :sgender, 
+     :scourse, :syrlvl, :gfname, :gmname, :glname, :gnext, :gaddress, :gcontact, :goccu, :gcompany, :ffname, :fmname, 
+     :flname, :fnext, :faddress, :fcontact, :foccu, :fcompany, :mfname, :mmname, :mlname, :mnext, :maddress, :mcontact, :moccu, 
+     :mcompany, :spcyincome, :srappnas, :sbos, :ssskills, :stwinterest, :spschatt, :spschadd, :spyrlvl, 'Not-Received', 'Not-Received', 
+     'Not-Received', 'Not-Received', 'Non-Academic', :snaemail, :snapass, 'Pending', '$object->now')
      ";
      
      $password_hash = password_hash($_POST["snapass"], PASSWORD_DEFAULT);
@@ -45,6 +45,7 @@ if(isset($_POST["sfname"]))
 					          ':ffname'				        =>	$_POST["ffname"],
                     ':fmname'					      =>	$_POST["fmname"],
                     ':flname'					      =>	$_POST["flname"],
+                    ':fnext'					      =>	$_POST["fnext"],
                     ':faddress'					    =>	$_POST["faddress"],
                     ':fcontact'					    =>	$_POST["fcontact"],
 					          ':foccu'				        =>	$_POST["foccu"],
@@ -52,6 +53,7 @@ if(isset($_POST["sfname"]))
 					          ':mfname'				        =>	$_POST["mfname"],
                     ':mmname'					      =>	$_POST["mmname"],
                     ':mlname'					      =>	$_POST["mlname"],
+                    ':mnext'					      =>	$_POST["mnext"],
                     ':maddress'					    =>	$_POST["maddress"],
                     ':mcontact'					    =>	$_POST["mcontact"],
 					          ':moccu'				        =>	$_POST["moccu"],
@@ -64,11 +66,6 @@ if(isset($_POST["sfname"]))
                     ':spschatt'				      =>	$_POST["spschatt"],
                     ':spschadd'				      =>	$_POST["spschadd"],
                     ':spyrlvl'				      =>	$_POST["spyrlvl"],
-                    ':snasprc'				      =>	$_POST["snasprc"],
-                    ':snapgm'				        =>	$_POST["snapgm"],
-                    ':stbytpic'					    =>	$_POST["stbytpic"],
-                    ':spbrgyin'		          =>	$_POST["spbrgyin"],
-                    ':snacapstype'					=>	$_POST["snacapstype"],
                     ':snaemail'			        =>	$_POST["snaemail"],
 					          ':snapass'				      =>  $password_hash
  );
@@ -88,7 +85,7 @@ $object->execute($data);
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Scholarship Management System</title>
+  <title>SMS | NAS</title>
   <!-- Javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -128,7 +125,7 @@ $object->execute($data);
  <br />
   <div class="container box">
    <br />
-   <h2 align="center">Academic Scholarship (AS)<br>Application Form</h2><br />
+   <h2 align="center">Non-Academic Scholarship (NAS)<br>Application Form</h2><br />
    <?php echo $message; ?> 
    <form method="post" id="acad_form" class="row gap-3">
     <ul class="nav nav-tabs">
@@ -142,14 +139,17 @@ $object->execute($data);
       <a class="nav-link inactive_tab1" id="list_application_details" style="border:1px solid #ccc">Application Details</a>
      </li>
      <li class="nav-item">
-      <a class="nav-link inactive_tab1" id="list_require_details" style="border:1px solid #ccc">Requirements Details</a>
+      <a class="nav-link inactive_tab1" id="list_education_details" style="border:1px solid #ccc">Education Details</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link inactive_tab1" id="list_requirement_details" style="border:1px solid #ccc">Requirements Details</a>
      </li>
      <li class="nav-item">
       <a class="nav-link inactive_tab1" id="list_account_details" style="border:1px solid #ccc">Account Details</a>
      </li>
     </ul>
-    <div class="tab-content" style="margin-top:16px;">
   <!-- Personal Details -->
+    <div class="tab-content" style="margin-top:16px;">
       <div class="tab-pane active" id="personal_details">
         <div class="panel panel-default">
           <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Personal Details</div>
@@ -175,7 +175,7 @@ $object->execute($data);
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Select Suffix</label>
                     <select name="snext" id="snext" class="form-control" required>
-                      <option value="">N/A</option>
+                      <option value="N/A">N/A</option>
                       <option value="Jr.">Jr.</option>
                       <option value="Sr.">Sr.</option>
                     </select>
@@ -245,7 +245,8 @@ $object->execute($data);
                   </div>
                 </div>
               </div>
-              <div class="col-md-12" align="center">
+              <div align="center">
+                <a class="btn btn-primary" href="apply.php" role="button">Back</a>
                 <button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-info btn-md">Next</button>
               </div>
             </div>
@@ -277,7 +278,7 @@ $object->execute($data);
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Select Suffix</label>
                     <select name="gnext" id="gnext" class="form-control" required>
-                      <option value="">N/A</option>
+                      <option value="N/A">N/A</option>
                       <option value="Jr.">Jr.</option>
                       <option value="Sr.">Sr.</option>
                     </select>
@@ -333,7 +334,7 @@ $object->execute($data);
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Select Suffix</label>
                     <select name="fnext" id="fnext" class="form-control" required>
-                      <option value="">N/A</option>
+                      <option value="N/A">N/A</option>
                       <option value="Jr.">Jr.</option>
                       <option value="Sr.">Sr.</option>
                     </select>
@@ -389,7 +390,7 @@ $object->execute($data);
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Select Suffix</label>
                     <select name="mnext" id="mnext" class="form-control" required>
-                      <option value="">N/A</option>
+                      <option value="N/A">N/A</option>
                       <option value="Jr.">Jr.</option>
                       <option value="Sr.">Sr.</option>
                     </select>
@@ -434,6 +435,124 @@ $object->execute($data);
               <button type="button" name="btn_family_details" id="btn_family_details" class="btn btn-info btn-md">Next</button>
             </div>
         </div>
+      </div>
+     </div>
+<!-- Application Details -->
+      <div class="tab-pane fade" id="application_details">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Application Details</div>
+            <div class="panel-body">
+              <div class="form-group">
+					      <h4 class="sub-title">Application Details</h4>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Reasons/Special Circumstances for Applying NAS<span class="text-danger">*</span></label>
+                    <textarea type="text" name="srappnas" id="srappnas" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_srappnas" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Basic Office Skills<span class="text-danger">*</span></label>
+                    <textarea type="text" name="sbos" id="sbos" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_sbos" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Special Skills<span class="text-danger">*</span></label>
+                    <textarea type="text" name="ssskills" id="ssskills" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_ssskills" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Type of Work Interested In<span class="text-danger">*</span></label>
+                    <textarea type="text" name="stwinterest" id="stwinterest" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_stwinterest" class="text-danger"></span>
+                  </div>
+                </div>
+              </div>
+              <div align="center">
+                <button type="button" name="previous_btn_application" id="previous_btn_application" class="btn btn-default btn-md">Previous</button>
+                <button type="button" name="btn_application" id="btn_application" class="btn btn-info btn-md">Next</button>
+              </div>
+            </div>
+        </div>
+      </div>
+      <!-- Education Details -->
+      <div class="tab-pane fade" id="education_details">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Education Details</div>
+            <div class="panel-body">
+              <div class="form-group">
+					      <h4 class="sub-title">Education Details</h4>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Previous School Attended<span class="text-danger">*</span></label>
+                    <textarea type="text" name="spschatt" id="spschatt" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_spschatt" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Year/Grade Level<span class="text-danger">*</span></label>
+                    <input type="text" name="spyrlvl" id="spyrlvl" class="form-control" />
+                    <span id="error_spyrlvl" class="text-danger"></span>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>School Address<span class="text-danger">*</span></label>
+                    <textarea type="text" name="spschadd" id="spschadd" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_spschadd" class="text-danger"></span>
+                  </div>
+                </div>
+              </div>
+              <div align="center">
+                <button type="button" name="previous_btn_education" id="previous_btn_education" class="btn btn-default btn-md">Previous</button>
+                <button type="button" name="btn_education" id="btn_education" class="btn btn-info btn-md">Next</button>
+              </div>
+            </div>
+        </div>
+      </div>
+      <!-- Requirement Details -->
+      <div class="tab-pane fade" id="requirement_details">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
+            <div class="panel-body">
+                    <ul class="list-group d-flex justify-content-center">
+                      <li class="list-group-item">1. Photocopy of Report Card</li>
+                      <li class="list-group-item">2. Photocopy of Certificate of Good Moral</li>
+                      <li class="list-group-item">3. 2x2 ID Picture(1pc.)</li>
+                      <li class="list-group-item">4. Barangay Indigency</li>
+                      <li class="list-group-item">5. Photocopy of Student's Copy Enrollment Form</li>
+                    </ul>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault" style="font-style: italic; font-weight: normal;">
+                        I agree that the requirements above are legit and will submit it on time.
+                      </label><br>
+                      <span id="error_flexCheckDefault" class="text-danger"></span>
+                      <div class="alert alert-warning" role="alert" style="font-style: italic;"><b>Note:</b> Please provide the hard copy of the following requirements, bring it to the Scholarship Office, and hand it over to Mr Gemini Daguplo or Ms Grabrielle Heruela.</div>
+                    </div>
+              <div align="center">
+                <button type="button" name="previous_btn_requirement" id="previous_btn_requirement" class="btn btn-default btn-md">Previous</button>
+                <button type="button" name="btn_requirement" id="btn_requirement" class="btn btn-info btn-md">Next</button>
+              </div>
+            </div>
+        </div>
+      </div>
+      <!-- Account Details -->
+      <div class="tab-pane fade" id="account_details">
+        <div class="panel panel-default">
+          <div class="panel-heading">Account Details</div>
+            <div class="panel-body">
+               <div class="form-group">
+                  <label>Email</label>
+                  <input type="text" name="snaemail" id="snaemail" class="form-control" />
+                  <span id="error_snaemail" class="text-danger"></span>
+                  </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="text" name="snapass" id="snapass" class="form-control" />
+                  <span id="error_snapass" class="text-danger"></span>
+                </div>
+        <div align="center">
+          <button type="button" name="previous_btn_account" id="previous_btn_account" class="btn btn-default btn-md">Previous</button>
+          <button type="submit" name="btn_submit" id="btn_submit" class="btn btn-success">Submit</button>
+        </div>
+       </div>
       </div>
      </div>
      </div>
@@ -1023,19 +1142,19 @@ if($.trim($('#spcyincome').val()).length == 0)
     $('#list_family_details').removeAttr('href data-toggle');
     $('#family_details').removeClass('active');
     $('#list_family_details').addClass('inactive_tab1');
-    $('#list_achievements_details').removeClass('inactive_tab1');
-    $('#list_achievements_details').addClass('active_tab1 active');
-    $('#list_achievements_details').attr('href', '#achieve_details');
-    $('#list_achievements_details').attr('data-toggle', 'tab');
-    $('#achieve_details').addClass('active in');   
+    $('#list_application_details').removeClass('inactive_tab1');
+    $('#list_application_details').addClass('active_tab1 active');
+    $('#list_application_details').attr('href', '#application_details');
+    $('#list_application_details').attr('data-toggle', 'tab');
+    $('#application_details').addClass('active in');   
   }
  });
 
- $('#previous_btn_achieve').click(function(){
-  $('#list_achievements_details').removeClass('active active_tab1');
-  $('#list_achievements_details').removeAttr('href data-toggle');
-  $('#achieve_details').removeClass('active in');
-  $('#list_achievements_details').addClass('inactive_tab1');
+ $('#previous_btn_application').click(function(){
+  $('#list_application_details').removeClass('active active_tab1');
+  $('#list_application_details').removeAttr('href data-toggle');
+  $('#application_details').removeClass('active in');
+  $('#list_application_details').addClass('inactive_tab1');
   $('#list_family_details').removeClass('inactive_tab1');
   $('#list_family_details').addClass('active_tab1 active');
   $('#list_family_details').attr('href', '#family_details');
@@ -1043,139 +1162,199 @@ if($.trim($('#spcyincome').val()).length == 0)
   $('#family_details').addClass('active in');
  });
 
- $('#btn_achieve').click(function(){
+ $('#btn_application').click(function(){
   
-  var error_sagwa = '';
-  var error_sraward = '';
-  var error_sdawardrceive = '';
+  var error_srappnas = '';
+  var error_sbos = '';
+  var error_ssskills = '';
+  var error_stwinterest = '';
   
-  if($.trim($('#sagwa').val()).length == 0)
+  if($.trim($('#srappnas').val()).length == 0)
   {
-   error_sagwa = 'Student GWA is required';
-   $('#error_sagwa').text(error_sagwa);
-   $('#sagwa').addClass('has-error');
+   error_srappnas = 'Reason of Applying NAS is Required';
+   $('#error_srappnas').text(error_srappnas);
+   $('#srappnas').addClass('has-error');
   }
   else
   {
-   error_sagwa = '';
-   $('#error_sagwa').text(error_sagwa);
-   $('#sagwa').removeClass('has-error');
+   error_srappnas = '';
+   $('#error_srappnas').text(error_srappnas);
+   $('#srappnas').removeClass('has-error');
   }
-  if($.trim($('#sraward').val()).length == 0)
+  if($.trim($('#sbos').val()).length == 0)
   {
-   error_sraward = 'Student Award is required';
-   $('#error_sraward').text(error_sraward);
-   $('#sraward').addClass('has-error');
+   error_sbos = 'Basic Office Skills is Required';
+   $('#error_sbos').text(error_sbos);
+   $('#sbos').addClass('has-error');
   }
   else
   {
-   error_sraward = '';
-   $('#error_sraward').text(error_sraward);
-   $('#sraward').removeClass('has-error');
+   error_sbos = '';
+   $('#error_sbos').text(error_sbos);
+   $('#sbos').removeClass('has-error');
   }
 
-  if($.trim($('#sdawardrceive').val()).length == 0)
+  if($.trim($('#ssskills').val()).length == 0)
   {
-   error_sdawardrceive = 'Date Received is required';
-   $('#error_sdawardrceive').text(error_sdawardrceive);
-   $('#sdawardrceive').addClass('has-error');
+   error_ssskills = 'Special Skills is required';
+   $('#error_ssskills').text(error_ssskills);
+   $('#ssskills').addClass('has-error');
   }
   else
   {
-   error_sdawardrceive = '';
-   $('#error_sdawardrceive').text(error_sdawardrceive);
-   $('#sdawardrceive').removeClass('has-error');
+   error_ssskills = '';
+   $('#error_ssskills').text(error_ssskills);
+   $('#ssskills').removeClass('has-error');
   }
 
-  if(error_sagwa != '' || 
-     error_sraward != '' ||
-     error_sdawardrceive != '')
+  if($.trim($('#stwinterest').val()).length == 0)
+  {
+   error_stwinterest = 'Type of Work Interested In is required';
+   $('#error_stwinterest').text(error_stwinterest);
+   $('#stwinterest').addClass('has-error');
+  }
+  else
+  {
+   error_stwinterest = '';
+   $('#error_stwinterest').text(error_stwinterest);
+   $('#stwinterest').removeClass('has-error');
+  } 
+
+  if(error_srappnas != '' || 
+     error_sbos != '' ||
+     error_ssskills != '' ||
+     error_stwinterest != '')
   {
    return false;
   }
   else
   {
-    $('#list_achievements_details').removeClass('active active_tab1');
-    $('#list_achievements_details').removeAttr('href data-toggle');
-    $('#achieve_details').removeClass('active');
-    $('#list_achievements_details').addClass('inactive_tab1');
-    $('#list_require_details').removeClass('inactive_tab1');
-    $('#list_require_details').addClass('active_tab1 active');
-    $('#list_require_details').attr('href', '#require_details');
-    $('#list_require_details').attr('data-toggle', 'tab');
-    $('#require_details').addClass('active in');  
+    $('#list_application_details').removeClass('active active_tab1');
+    $('#list_application_detailss').removeAttr('href data-toggle');
+    $('#application_details').removeClass('active');
+    $('#list_application_details').addClass('inactive_tab1');
+    $('#list_education_details').removeClass('inactive_tab1');
+    $('#list_education_details').addClass('active_tab1 active');
+    $('#list_education_details').attr('href', '#education_details');
+    $('#list_education_details').attr('data-toggle', 'tab');
+    $('#education_details').addClass('active in');  
   }
 });
 
-$('#previous_btn_require').click(function(){
-  $('#list_require_details').removeClass('active active_tab1');
-  $('#list_require_details').removeAttr('href data-toggle');
-  $('#require_details').removeClass('active in');
-  $('#list_require_details').addClass('inactive_tab1');
-  $('#list_achievements_details').removeClass('inactive_tab1');
-  $('#list_achievements_details').addClass('active_tab1 active');
-  $('#list_achievements_details').attr('href', '#achieve_details');
-  $('#list_achievements_details').attr('data-toggle', 'tab');
-  $('#achieve_details').addClass('active in');
+$('#previous_btn_education').click(function(){
+  $('#list_education_details').removeClass('active active_tab1');
+  $('#list_education_details').removeAttr('href data-toggle');
+  $('#education_details').removeClass('active in');
+  $('#list_education_details').addClass('inactive_tab1');
+  $('#list_application_details').removeClass('inactive_tab1');
+  $('#list_application_details').addClass('active_tab1 active');
+  $('#list_application_details').attr('href', '#application_details');
+  $('#list_application_details').attr('data-toggle', 'tab');
+  $('#application_details').addClass('active in');
  });
 
- $('#btn_require').click(function(){
+ $('#btn_education').click(function(){
   
-  var error_sadsprc = '';
-  var error_sadspgm = '';
-  var error_sadspcr = '';
+  var error_spschatt = '';
+  var error_spyrlvl = '';
+  var error_spschadd = '';
   
-  if($.trim($('#sadsprc').val()).length == 0)
+  if($.trim($('#spschatt').val()).length == 0)
   {
-   error_sadsprc = 'Photocopy of Report Card is required';
-   $('#error_sadsprc').text(error_sadsprc);
-   $('#sadsprc').addClass('has-error');
+   error_spschatt = 'Previous School Attended is required';
+   $('#error_spschatt').text(error_spschatt);
+   $('#spschatt').addClass('has-error');
   }
   else
   {
-   error_sadsprc = '';
-   $('#error_sadsprc').text(error_sadsprc);
-   $('#sadsprc').removeClass('has-error');
+   error_spyrlvl = '';
+   $('#error_spschatt').text(error_spyrlvl);
+   $('#spschatt').removeClass('has-error');
   }
 
-  if($.trim($('#sadspgm').val()).length == 0)
+  if($.trim($('#spyrlvl').val()).length == 0)
   {
-   error_sadspgm = 'Photocopy of Good Moral is required';
-   $('#error_sadspgm').text(error_sadspgm);
-   $('#sadspgm').addClass('has-error');
+   error_spyrlvl = 'Grade/Year Level is required';
+   $('#error_spyrlvl').text(error_spyrlvl);
+   $('#spyrlvl').addClass('has-error');
   }
   else
   {
-   error_sadspgm = '';
-   $('#error_sadspgm').text(error_sadspgm);
-   $('#sadspgm').removeClass('has-error');
+   error_spyrlvl = '';
+   $('#error_spyrlvl').text(error_spyrlvl);
+   $('#spyrlvl').removeClass('has-error');
   }
 
-  if($.trim($('#sadspcr').val()).length == 0)
+  if($.trim($('#spschadd').val()).length == 0)
   {
-   error_sadspcr = 'Photocopy of Certificate of Residency is required';
-   $('#error_sadspcr').text(error_sadspcr);
-   $('#sadspcr').addClass('has-error');
+   error_spschadd = 'School Address is required';
+   $('#error_spschadd').text(error_spschadd);
+   $('#spschadd').addClass('has-error');
   }
   else
   {
-   error_sadspcr = '';
-   $('#error_sadspcr').text(error_sadspcr);
-   $('#sadspcr').removeClass('has-error');
+   error_spschadd = '';
+   $('#error_spschadd').text(error_spschadd);
+   $('#spschadd').removeClass('has-error');
   }
 
-  if(error_sadsprc != '' || 
-     error_sadspgm != '' ||
-     error_sadspcr != '')
+  if(error_spschatt != '' || 
+     error_spyrlvl != '' ||
+     error_spschadd != '')
   {
    return false;
   }
   else
   {
-    $('#list_require_details').removeClass('active active_tab1');
-    $('#list_require_details').removeAttr('href data-toggle');
-    $('#require_details').removeClass('active');
-    $('#list_require_details').addClass('inactive_tab1');
+    $('#list_education_details').removeClass('active active_tab1');
+    $('#list_education_details').removeAttr('href data-toggle');
+    $('#education_details').removeClass('active');
+    $('#list_education_details').addClass('inactive_tab1');
+    $('#list_requirement_details').removeClass('inactive_tab1');
+    $('#list_requirement_details').addClass('active_tab1 active');
+    $('#list_requirement_details').attr('href', '#requirement_details');
+    $('#list_requirement_details').attr('data-toggle', 'tab');
+    $('#requirement_details').addClass('active in');    
+  }
+});
+
+$('#previous_btn_requirement').click(function(){
+  $('#list_requirement_details').removeClass('active active_tab1');
+  $('#list_requirement_details').removeAttr('href data-toggle');
+  $('#requirement_details').removeClass('active in');
+  $('#list_requirement_details').addClass('inactive_tab1');
+  $('#list_education_details').removeClass('inactive_tab1');
+  $('#list_education_details').addClass('active_tab1 active');
+  $('#list_education_details').attr('href', '#education_details');
+  $('#list_education_details').attr('data-toggle', 'tab');
+  $('#education_details').addClass('active in');
+ });
+
+ $('#btn_requirement').click(function(){
+  
+  var error_flexCheckDefault = '';
+
+  if($('#flexCheckDefault').not(':checked').length){
+     error_flexCheckDefault = 'Checkbox is required';
+     $('#error_flexCheckDefault').text(error_flexCheckDefault);
+     $('#flexCheckDefault').addClass('has-error');
+  } 
+  else{
+    error_flexCheckDefault = '';
+    $('#error_flexCheckDefault').text(error_flexCheckDefault);
+    $('#flexCheckDefault').removeClass('has-error');
+  }
+
+  if(error_flexCheckDefault != '')
+  {
+   return false;
+  }
+  else
+  {
+    $('#list_requirement_details').removeClass('active active_tab1');
+    $('#list_requirement_details').removeAttr('href data-toggle');
+    $('#requirement_details').removeClass('active');
+    $('#list_requirement_details').addClass('inactive_tab1');
     $('#list_account_details').removeClass('inactive_tab1');
     $('#list_account_details').addClass('active_tab1 active');
     $('#list_account_details').attr('href', '#account_details');
@@ -1189,46 +1368,46 @@ $('#previous_btn_require').click(function(){
   $('#list_account_details').removeAttr('href data-toggle');
   $('#account_details').removeClass('active in');
   $('#list_account_details').addClass('inactive_tab1');
-  $('#list_require_details').removeClass('inactive_tab1');
-  $('#list_require_details').addClass('active_tab1 active');
-  $('#list_require_details').attr('href', '#require_details');
-  $('#list_require_details').attr('data-toggle', 'tab');
-  $('#require_details').addClass('active in');
+  $('#list_requirement_details').removeClass('inactive_tab1');
+  $('#list_requirement_details').addClass('active_tab1 active');
+  $('#list_requirement_details').attr('href', '#requirement_details');
+  $('#list_requirement_details').attr('data-toggle', 'tab');
+  $('#requirement_details').addClass('active in');
  });
 
  $('#btn_submit').click(function(){
   
-  var error_saemail = '';
-  var error_sapass = '';
+  var error_snaemail = '';
+  var error_snapass = '';
   
-  if($.trim($('#saemail').val()).length == 0)
+  if($.trim($('#snaemail').val()).length == 0)
   {
-   error_saemail = 'Account email is required';
-   $('#error_saemail').text(error_saemail);
-   $('#saemail').addClass('has-error');
+   error_snaemail = 'Account email is required';
+   $('#error_snaemail').text(error_snaemail);
+   $('#snaemail').addClass('has-error');
   }
   else
   {
-   error_saemail = '';
-   $('#error_saemail').text(error_saemail);
-   $('#saemail').removeClass('has-error');
+   error_snaemail = '';
+   $('#error_snaemail').text(error_snaemail);
+   $('#snaemail').removeClass('has-error');
   }
   
-  if($.trim($('#sapass').val()).length == 0)
+  if($.trim($('#snapass').val()).length == 0)
   {
-   error_sapass = 'Account password is required';
-   $('#error_sapass').text(error_sapass);
-   $('#sapass').addClass('has-error');
+   error_snapass = 'Account password is required';
+   $('#error_snapass').text(error_snapass);
+   $('#snapass').addClass('has-error');
   }
   else
   {
-   error_sapass = '';
-   $('#error_sapass').text(error_sapass);
-   $('#sapass').removeClass('has-error');
+   error_snapass = '';
+   $('#error_snapass').text(error_snapass);
+   $('#snapass').removeClass('has-error');
   }
 
-  if(error_saemail != '' || 
-     error_sapass != '')
+  if(error_snapass != '' || 
+     error_snapass != '')
   {
    return false;
   }
