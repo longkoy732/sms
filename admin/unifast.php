@@ -29,7 +29,7 @@ if(isset($_POST["student_id"]))
                     ':saddress'					    =>	$_POST["saddress"],
                     ':spattend'					    =>	$_POST["spattend"],
                     ':cp'					          =>	$_POST["cp"],
-                    ':syl'					        =>	$_POST["syl"],
+                     ':syl'					        =>	$_POST["syl"],
 					          ':saemail'				      =>	$_POST["saemail"],
 					          ':sflname'				      =>	$_POST["sflname"],
 					          ':sffname'			        =>	$_POST["sffname"],
