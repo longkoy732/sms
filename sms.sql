@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2021 at 02:23 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Nov 09, 2021 at 09:33 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -202,7 +202,8 @@ CREATE TABLE `tbl_nonacad` (
 --
 
 INSERT INTO `tbl_nonacad` (`sacad_id`, `sfname`, `smname`, `slname`, `snext`, `sdbirth`, `sctship`, `saddress`, `semail`, `scontact`, `sgender`, `scourse`, `syrlvl`, `gfname`, `gmname`, `glname`, `gnext`, `gaddress`, `gcontact`, `goccu`, `gcompany`, `ffname`, `fmname`, `flname`, `fnext`, `faddress`, `fcontact`, `foccu`, `fcompany`, `mfname`, `mmname`, `mlname`, `mnext`, `maddress`, `mcontact`, `moccu`, `mcompany`, `spcyincome`, `srappnas`, `sbos`, `ssskills`, `stwinterest`, `spschatt`, `spschadd`, `spyrlvl`, `snasprc`, `snasprcstat`, `snapgm`, `snapgmstat`, `stbytpic`, `stbytpicstat`, `spbrgyin`, `spbrgyinstat`, `snacapstype`, `snaemail`, `snapass`, `snascholarstat`, `snadapply`) VALUES
-(1, 'Sydnee Henderson', 'Brynn Holden', 'Brody Rodriquez', 'Jr.', '2021-10-22', 'In optio dolore eli', 'Sunt et nisi sint ', 'bamad@mailinator.com', 'Ex est ad alias quo', 'Male', 'Vero eligendi natus ', 'Velit eum ', 'Kylan Ray', 'Addison Mccoy', 'Jolie Sears', 'N/A', 'A ut autem expedita ', 'Et quod culpa veniam', 'Voluptatem consequat', 'Miller and Houston Co', 'Winter Wright', 'Ivy Wiggins', 'Noble Sharp', 'Jr.', 'Dolores unde ut nobi', 'Ullam nostrud odio e', 'Placeat vel nostrum', 'Wiley Mullen Plc', 'Tanya Everett', 'Cara Newton', 'Echo Gilbert', 'Sr.', 'Dolor et voluptas ev', 'Aut modi adipisci si', 'Sit sint dolor reic', 'Pollard and Barber LLC', '914', 'In suscipit laborum', 'Quia amet voluptate', 'Ut quia quia incidun', 'Voluptas consequatur', 'Mollit aut beatae di', 'Voluptatem et error ', 'Et enim placeat est', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Non-Academic', 'zyqewyxok@mailinator.com', '$2y$10$RlDL3eBJEfqqgb.FWyHYg.aPEm3AeHg2QMJGXKVrlwn', 'Pending', '2021-10-22 17:23:30');
+(1, 'Sydnee Henderson', 'Brynn Holden', 'Brody Rodriquez', 'Jr.', '2021-10-22', 'In optio dolore eli', 'Sunt et nisi sint ', 'bamad@mailinator.com', 'Ex est ad alias quo', 'Male', 'Vero eligendi natus ', 'Velit eum ', 'Kylan Ray', 'Addison Mccoy', 'Jolie Sears', 'N/A', 'A ut autem expedita ', 'Et quod culpa veniam', 'Voluptatem consequat', 'Miller and Houston Co', 'Winter Wright', 'Ivy Wiggins', 'Noble Sharp', 'Jr.', 'Dolores unde ut nobi', 'Ullam nostrud odio e', 'Placeat vel nostrum', 'Wiley Mullen Plc', 'Tanya Everett', 'Cara Newton', 'Echo Gilbert', 'Sr.', 'Dolor et voluptas ev', 'Aut modi adipisci si', 'Sit sint dolor reic', 'Pollard and Barber LLC', '914', 'In suscipit laborum', 'Quia amet voluptate', 'Ut quia quia incidun', 'Voluptas consequatur', 'Mollit aut beatae di', 'Voluptatem et error ', 'Et enim placeat est', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Non-Academic', 'zyqewyxok@mailinator.com', '$2y$10$RlDL3eBJEfqqgb.FWyHYg.aPEm3AeHg2QMJGXKVrlwn', 'Pending', '2021-10-22 17:23:30'),
+(2, 'Martina Woodard', 'Eliana Cochran', 'Samson Skinner', 'Jr.', '2021-11-09', 'Non laboris aut cill', 'Praesentium quo plac', 'myva@mailinator.com', 'Ex tenetur odit dolo', 'Female', 'Qui praesentium rati', 'Ea aliquip', 'Basil Massey', 'Imogene Chambers', 'Penelope Burton', 'N/A', 'Beatae delectus min', 'Sed omnis eos distin', 'Ullam sunt ducimus', 'Beasley and Fowler Co', 'Kaitlin Merrill', 'Aspen Solomon', 'Thane Mccarty', 'N/A', 'Reiciendis sit exce', 'Voluptatem autem qui', 'Aliqua Laborum Ad ', 'Parks Middleton Associates', 'Iola Bright', 'Tiger Dawson', 'Ruby Sharp', 'Sr.', 'Rem fugiat cum quid', 'Totam excepteur qui ', 'Est odio veniam en', 'Rodriquez and Finch Associates', '208', 'Fugit eveniet est ', 'Culpa vel culpa quis', 'Deserunt dolorem dis', 'Odit necessitatibus ', 'Quia pariatur Paria', 'Consectetur laborum', 'Dolor ipsa aute rep', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Non-Academic', 'qaxizewiz@mailinator.com', '$2y$10$AjX8WkTW6mUBuqY.S4AoI.Tqo/Q68orAywcXpGsDOB0', 'Pending', '2021-11-09 13:44:50');
 
 -- --------------------------------------------------------
 
@@ -268,6 +269,52 @@ INSERT INTO `tbl_student` (`patient_id`, `patient_email_address`, `patient_passw
 (4, 'oliviabaker@gmail.com', 'password', 'Olivia', 'Baker', '2001-04-05', 'Female', 'Diamond street, 115, NYC', '7539518520', 'Married', '2021-02-19 18:28:23', '8902e16ef62a556a8e271c9930068fea', 'Yes'),
 (5, 'web-tutorial@programmer.net', 'password', 'Amber', 'Anderson', '1995-07-25', 'Female', '2083 Cameron Road Buffalo, NY 14202', '75394511442', 'Single', '2021-02-23 17:50:06', '1909d59e254ab7e433d92f014d82ba3d', 'Yes');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_unifast`
+--
+
+CREATE TABLE `tbl_unifast` (
+  `sunifast_id` int(11) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `slname` varchar(50) NOT NULL,
+  `sfname` varchar(50) NOT NULL,
+  `smname` varchar(50) NOT NULL,
+  `gnext` varchar(10) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `sdbirth` date NOT NULL,
+  `scontact` varchar(20) NOT NULL,
+  `saddress` varchar(100) NOT NULL,
+  `spattend` varchar(100) NOT NULL,
+  `cp` varchar(100) NOT NULL,
+  `syl` varchar(50) NOT NULL,
+  `saemail` varchar(20) NOT NULL,
+  `sflname` varchar(50) NOT NULL,
+  `sffname` varchar(50) NOT NULL,
+  `sfmname` varchar(50) NOT NULL,
+  `gfs` varchar(20) NOT NULL,
+  `smlname` varchar(50) NOT NULL,
+  `smfname` varchar(50) NOT NULL,
+  `smmname` varchar(50) NOT NULL,
+  `gmnext` varchar(20) NOT NULL,
+  `famh` varchar(100) NOT NULL,
+  `hmc` varchar(50) NOT NULL,
+  `fms` varchar(100) NOT NULL,
+  `fdf` date NOT NULL,
+  `snemail` varchar(100) NOT NULL,
+  `snapass` varchar(100) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `sudateapply` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_unifast`
+--
+
+INSERT INTO `tbl_unifast` (`sunifast_id`, `student_id`, `slname`, `sfname`, `smname`, `gnext`, `gender`, `sdbirth`, `scontact`, `saddress`, `spattend`, `cp`, `syl`, `saemail`, `sflname`, `sffname`, `sfmname`, `gfs`, `smlname`, `smfname`, `smmname`, `gmnext`, `famh`, `hmc`, `fms`, `fdf`, `snemail`, `snapass`, `status`, `sudateapply`) VALUES
+(1, 'Nemo doloremque expl', 'Kirby Johnston', 'Jakeem Harris', 'Phelan Patrick', 'Jr.', 'Female', '2021-11-09', 'Est eveniet omnis e', 'Qui in dolore provid', 'Voluptate ullamco ap', 'Dolor voluptatem ac', 'Et nihil sed et qui ', 'gige@mailinator.com', 'Sylvia Sullivan', 'Melyssa Stevens', 'Jerry Whitley', 'Jr.', 'Kessie Graham', 'Eagan Chase', 'Mary Chambers', 'Jr.', 'Irure voluptas volup', 'Minus blanditiis et ', 'Eum quis debitis con', '2021-11-09', 'baret@mailinator.com', '$2y$10$6s9kmie38H02XOXr0wtIP.RPtg6D/E33jHRlHHv8Nl0eTHuuPhzpi', 'Pending', '2021-11-09');
+
 --
 -- Indexes for dumped tables
 --
@@ -303,6 +350,12 @@ ALTER TABLE `tbl_student`
   ADD PRIMARY KEY (`patient_id`);
 
 --
+-- Indexes for table `tbl_unifast`
+--
+ALTER TABLE `tbl_unifast`
+  ADD PRIMARY KEY (`sunifast_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -322,7 +375,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_nonacad`
 --
 ALTER TABLE `tbl_nonacad`
-  MODIFY `sacad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sacad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_secretary`
@@ -335,6 +388,12 @@ ALTER TABLE `tbl_secretary`
 --
 ALTER TABLE `tbl_student`
   MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_unifast`
+--
+ALTER TABLE `tbl_unifast`
+  MODIFY `sunifast_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
