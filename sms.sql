@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2021 at 09:33 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.27
+-- Generation Time: Nov 15, 2021 at 09:10 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -129,6 +129,66 @@ CREATE TABLE `tbl_admin` (
 
 INSERT INTO `tbl_admin` (`admin_id`, `admin_email_address`, `admin_password`, `admin_name`, `school_name`, `school_address`, `school_contact_no`, `school_logo`) VALUES
 (1, 'admin@gmail.com', 'password', 'Administrator', 'St. Cecilia\'s College Cebu, Inc.', 'Natalio B. Bacalso S National Hwy, Minglanilla, Cebu', '(032) 490 8511', '../images/1940074418.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_ched`
+--
+
+CREATE TABLE `tbl_ched` (
+  `sched_id` int(11) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `middlename` varchar(50) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
+  `suffix` varchar(20) NOT NULL,
+  `dob` date NOT NULL,
+  `gender` varchar(20) NOT NULL,
+  `civilstat` varchar(20) NOT NULL,
+  `pob` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `zipcode` varchar(20) NOT NULL,
+  `schoolname` varchar(100) NOT NULL,
+  `schooladdress` varchar(100) NOT NULL,
+  `stype` varchar(20) NOT NULL,
+  `grade` varchar(50) NOT NULL,
+  `citizenship` varchar(50) NOT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `disability` varchar(100) NOT NULL,
+  `flastname` varchar(50) NOT NULL,
+  `ffirstname` varchar(50) NOT NULL,
+  `fmiddlename` varchar(50) NOT NULL,
+  `fstatus` varchar(20) NOT NULL,
+  `faddress` varchar(100) NOT NULL,
+  `foccupation` varchar(50) NOT NULL,
+  `feduc` varchar(50) NOT NULL,
+  `mlastname` varchar(100) NOT NULL,
+  `mfirstname` varchar(100) NOT NULL,
+  `mmiddlename` varchar(50) NOT NULL,
+  `mstatus` varchar(20) NOT NULL,
+  `maddress` varchar(100) NOT NULL,
+  `moccupation` varchar(50) NOT NULL,
+  `meduc` varchar(50) NOT NULL,
+  `totalgross` varchar(20) NOT NULL,
+  `sibling` varchar(20) NOT NULL,
+  `schoolintend` varchar(100) NOT NULL,
+  `schooladd` varchar(100) NOT NULL,
+  `schooltype` varchar(10) NOT NULL,
+  `course` varchar(50) NOT NULL,
+  `coursestat` varchar(20) NOT NULL,
+  `snaemail` varchar(50) NOT NULL,
+  `snapass` varchar(100) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `dateapply` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_ched`
+--
+
+INSERT INTO `tbl_ched` (`sched_id`, `firstname`, `middlename`, `lastname`, `suffix`, `dob`, `gender`, `civilstat`, `pob`, `address`, `zipcode`, `schoolname`, `schooladdress`, `stype`, `grade`, `citizenship`, `mobile`, `email`, `disability`, `flastname`, `ffirstname`, `fmiddlename`, `fstatus`, `faddress`, `foccupation`, `feduc`, `mlastname`, `mfirstname`, `mmiddlename`, `mstatus`, `maddress`, `moccupation`, `meduc`, `totalgross`, `sibling`, `schoolintend`, `schooladd`, `schooltype`, `course`, `coursestat`, `snaemail`, `snapass`, `status`, `dateapply`) VALUES
+(1, 'Heidi', 'Mercedes Emerson', 'Mosley', 'Sr.', '2021-11-15', 'Female', 'Married', 'Deserunt deserunt vi', 'Ut sed eum tempore ', 'Quia temporibus dolo', 'Incididunt exercitat', 'Repellendus Eu volu', 'Public', 'Neque incidunt reru', 'Incidunt asperiores', 'Reiciendis iusto et ', 'mulemiqu@mailinator.com', 'Aut eaque aut ipsa ', 'Workman', 'Lester', 'Irene Burns', 'Deceased', 'Tempora rerum evenie', 'Consequatur Illum ', 'Quidem officia esse ', 'Lindsay', 'Guy', 'Fredericka Graham', 'Living', 'Dicta aliquid culpa', 'Esse esse lorem ev', 'Ad rerum sunt totam ', 'Maiores dolore dolor', 'Quos dolor architect', 'Id aperiam et ipsum', 'Tenetur qui autem di', 'Private', 'Proident Nam elit ', 'Not Priority', 'tusurevaq@mailinator.com', '$2y$10$E9BCv.jI2sGI8zF7xcmrgur3KYDkwJZgxBZQCx6R2GgO1l1sb4zWe', 'Pending', '2021-11-15');
 
 -- --------------------------------------------------------
 
@@ -313,7 +373,8 @@ CREATE TABLE `tbl_unifast` (
 --
 
 INSERT INTO `tbl_unifast` (`sunifast_id`, `student_id`, `slname`, `sfname`, `smname`, `gnext`, `gender`, `sdbirth`, `scontact`, `saddress`, `spattend`, `cp`, `syl`, `saemail`, `sflname`, `sffname`, `sfmname`, `gfs`, `smlname`, `smfname`, `smmname`, `gmnext`, `famh`, `hmc`, `fms`, `fdf`, `snemail`, `snapass`, `status`, `sudateapply`) VALUES
-(1, 'Nemo doloremque expl', 'Kirby Johnston', 'Jakeem Harris', 'Phelan Patrick', 'Jr.', 'Female', '2021-11-09', 'Est eveniet omnis e', 'Qui in dolore provid', 'Voluptate ullamco ap', 'Dolor voluptatem ac', 'Et nihil sed et qui ', 'gige@mailinator.com', 'Sylvia Sullivan', 'Melyssa Stevens', 'Jerry Whitley', 'Jr.', 'Kessie Graham', 'Eagan Chase', 'Mary Chambers', 'Jr.', 'Irure voluptas volup', 'Minus blanditiis et ', 'Eum quis debitis con', '2021-11-09', 'baret@mailinator.com', '$2y$10$6s9kmie38H02XOXr0wtIP.RPtg6D/E33jHRlHHv8Nl0eTHuuPhzpi', 'Pending', '2021-11-09');
+(1, 'Nemo doloremque expl', 'Kirby Johnston', 'Jakeem Harris', 'Phelan Patrick', 'Jr.', 'Female', '2021-11-09', 'Est eveniet omnis e', 'Qui in dolore provid', 'Voluptate ullamco ap', 'Dolor voluptatem ac', 'Et nihil sed et qui ', 'gige@mailinator.com', 'Sylvia Sullivan', 'Melyssa Stevens', 'Jerry Whitley', 'Jr.', 'Kessie Graham', 'Eagan Chase', 'Mary Chambers', 'Jr.', 'Irure voluptas volup', 'Minus blanditiis et ', 'Eum quis debitis con', '2021-11-09', 'baret@mailinator.com', '$2y$10$6s9kmie38H02XOXr0wtIP.RPtg6D/E33jHRlHHv8Nl0eTHuuPhzpi', 'Pending', '2021-11-09'),
+(2, 'Cumque consequat Se', 'Emerson Chang', 'Blake Copeland', 'Florence Hill', 'Sr.', 'Female', '2021-11-13', 'Ut in beatae perspic', 'Architecto magna pro', 'Molestiae lorem duci', 'Irure amet consecte', 'Enim id aut omnis se', 'qywalejet@mailinator', 'Lawrence Heath', 'Macaulay Buchanan', 'James Morton', 'Sr.', 'Sonia Norman', 'Ciaran Cervantes', 'Renee Hill', 'Jr.', 'Est sint commodi fa', 'Explicabo Animi re', 'Quod dignissimos bla', '2021-11-13', 'loda@mailinator.com', '$2y$10$q77SGU.FtmIjUqnblqRsuu94A5ChwBmHFTlr3bwYrJuYcE3KShaeW', 'Pending', '2021-11-13');
 
 --
 -- Indexes for dumped tables
@@ -330,6 +391,12 @@ ALTER TABLE `tbl_acad`
 --
 ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `tbl_ched`
+--
+ALTER TABLE `tbl_ched`
+  ADD PRIMARY KEY (`sched_id`);
 
 --
 -- Indexes for table `tbl_nonacad`
@@ -372,6 +439,12 @@ ALTER TABLE `tbl_admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `tbl_ched`
+--
+ALTER TABLE `tbl_ched`
+  MODIFY `sched_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_nonacad`
 --
 ALTER TABLE `tbl_nonacad`
@@ -393,7 +466,7 @@ ALTER TABLE `tbl_student`
 -- AUTO_INCREMENT for table `tbl_unifast`
 --
 ALTER TABLE `tbl_unifast`
-  MODIFY `sunifast_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sunifast_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
