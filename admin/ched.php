@@ -10,12 +10,12 @@ if(isset($_POST["firstname"]))
      INSERT INTO tbl_ched
      (firstname, middlename, lastname, suffix, dob, gender, civilstat, pob, address, zipcode, schoolname,schooladdress,  
      stype, grade, citizenship, mobile, email, disability, flastname, ffirstname, fmiddlename, fstatus, faddress, foccupation, feduc, mlastname, 
-     mfirstname, mmiddlename, mstatus, maddress, moccupation, meduc, totalgross, sibling, schoolintend, schooladd, schooltype, course, coursestat, 
-     snaemail,snapass, status, dateapply) 
+     mfirstname, mmiddlename, mstatus, maddress, moccupation, meduc, totalgross, sibling, schoolintend, schooladd, schooltype, course, coursestat,  
+     scdrprcstat, scdrbrgyinstat, scdrpgmstat, scstype, snaemail,snapass, status, dateapply) 
      VALUES (:firstname, :middlename, :lastname, :suffix, :dob, :gender, :civilstat, :pob, :address, :zipcode, 
       :schoolname, :schooladdress,:stype, :grade, :citizenship, :mobile, :email, :disability, :flastname, :ffirstname, :fmiddlename, :fstatus, 
      :faddress, :foccupation, :feduc, :mlastname, :mfirstname, :mmiddlename, :mstatus, :maddress, :moccupation, :meduc, :totalgross, :sibling, :schoolintend, 
-     :schooladd, :schooltype, :course, :coursestat, :snaemail, :snapass, 'Pending', '$object->now')
+     :schooladd, :schooltype, :course, :coursestat, 'Not-Received', 'Not-Received', 'Not-Received', 'CHED', :snaemail, :snapass, 'Pending', '$object->now')
      ";
      
      $password_hash = password_hash($_POST["snapass"], PASSWORD_DEFAULT);

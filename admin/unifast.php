@@ -9,11 +9,11 @@ if(isset($_POST["student_id"]))
   $object->query = "
      INSERT INTO tbl_unifast
      (student_id, slname, sfname, smname, gnext, gender, sdbirth, scontact, saddress, spattend, cp, syl, 
-     saemail, sflname, sffname, sfmname, gfs, smlname, smfname, smmname, gmnext, famh, hmc, fms, fdf, snemail, 
-     snapass, status, sudateapply) 
+     saemail, sflname, sffname, sfmname, gfs, smlname, smfname, smmname, gmnext, famh, hmc, fms, fdf, sudrpicstat, 
+     sudrpsastat, sudrobrstat, sustype, snemail, snapass, status, sudateapply) 
      VALUES (:student_id, :slname, :sfname, :smname, :gnext, :gender, :sdbirth, :scontact, :saddress, :spattend, 
      :cp, :syl, :saemail, :sflname, :sffname, :sfmname, :gfs, :smlname, :smfname, :smmname, :gmnext, :famh, 
-     :hmc, :fms, :fdf, :snemail, :snapass,'Pending', '$object->now')
+     :hmc, :fms, :fdf, 'Not-Received', 'Not-Received', 'Not-Received', 'Unifast',:snemail, :snapass,'Pending', '$object->now')
      ";
      
      $password_hash = password_hash($_POST["snapass"], PASSWORD_DEFAULT);
