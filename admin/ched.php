@@ -4,63 +4,65 @@ include('../class/dbcon.php');
 $object = new sms;
 
 $message = '';
-if(isset($_POST["firstname"]))
+if(isset($_POST["scfname"]))
 {
   $object->query = "
      INSERT INTO tbl_ched
-     (firstname, middlename, lastname, suffix, dob, gender, civilstat, pob, address, zipcode, schoolname,schooladdress,  
-     stype, grade, citizenship, mobile, email, disability, flastname, ffirstname, fmiddlename, fstatus, faddress, foccupation, feduc, mlastname, 
-     mfirstname, mmiddlename, mstatus, maddress, moccupation, meduc, totalgross, sibling, schoolintend, schooladd, schooltype, course, coursestat,  
-     scdrprcstat, scdrbrgyinstat, scdrpgmstat, scstype, snaemail,snapass, status, dateapply) 
-     VALUES (:firstname, :middlename, :lastname, :suffix, :dob, :gender, :civilstat, :pob, :address, :zipcode, 
-      :schoolname, :schooladdress,:stype, :grade, :citizenship, :mobile, :email, :disability, :flastname, :ffirstname, :fmiddlename, :fstatus, 
-     :faddress, :foccupation, :feduc, :mlastname, :mfirstname, :mmiddlename, :mstatus, :maddress, :moccupation, :meduc, :totalgross, :sibling, :schoolintend, 
-     :schooladd, :schooltype, :course, :coursestat, 'Not-Received', 'Not-Received', 'Not-Received', 'CHED', :snaemail, :snapass, 'Pending', '$object->now')
+     (scfname, scmname, sclname, scnext, scdbirth, scgender, sccivilstat, scpbirth, scaddress, sczcode, scschname, scsaddress,  
+     scstype, schygrade, scctship, scmnum, scpemail, scdisability, scflname, scffname, scfmname, scfstatus, scfaddress, scfoccu, 
+     scfeduc, scmlname, scmfname, scmmname, scmstatus, scmaddress, scmoccu, scmeduc, scptgross, scnsibling, scsintend, scsadd, 
+     scschooltype, sccourse, sccoursestat, scdrprcstat, scdrbrgyinstat, scdrpgmstat, scschtype, scaemail, scapass, scgrantstat, 
+     scschstat, scdapply) 
+     VALUES (:scfname, :scmname, :sclname, :scnext, :scdbirth, :scgender, :sccivilstat, :scpbirth, :scaddress, :sczcode, 
+      :scschname, :scsaddress, :scstype, :schygrade, :scctship, :scmnum, :scpemail, :scdisability, :scflname, :scffname, :scfmname, 
+      :scfstatus, :scfaddress, :scfoccu, :scfeduc, :scmlname, :scmfname, :scmmname, :scmstatus, :scmaddress, :scmoccu, :scmeduc, 
+      :scptgross, :scnsibling, :scsintend, :scsadd, :scschooltype, :sccourse, :sccoursestat, 'Not-Received', 'Not-Received', 
+      'Not-Received', 'CHED', :scaemail, :scapass, 'New', 'Pending', '$object->now')
      ";
      
-     $password_hash = password_hash($_POST["snapass"], PASSWORD_DEFAULT);
+     $password_hash = password_hash($_POST["scapass"], PASSWORD_DEFAULT);
  $data = array(
-                    ':firstname'					      =>	$_POST["firstname"],
-                    ':middlename'					      =>	$_POST["middlename"],
-                    ':lastname'					      =>	$_POST["lastname"],
-                    ':suffix'					      =>	$_POST["suffix"],
-                    ':dob'					    =>	$_POST["dob"],
-					          ':gender'				      =>	$_POST["gender"],
-                    ':civilstat'					    =>	$_POST["civilstat"],
-                    ':pob'					      =>	$_POST["pob"],
-                    ':address'					    =>	$_POST["address"],
-                    ':zipcode'					    =>	$_POST["zipcode"],
-                    ':schoolname'					    =>	$_POST["schoolname"],
-                    ':schooladdress'					      =>	$_POST["schooladdress"],
-					          ':stype'				        =>	$_POST["stype"],
-					          ':grade'				        =>	$_POST["grade"],
-					          ':citizenship'			          =>	$_POST["citizenship"],
-                    ':mobile'					      =>	$_POST["mobile"],
-                    ':email'					    =>	$_POST["email"],
-                    ':disability'					    =>	$_POST["disability"],
-                    ':flastname'					      =>	$_POST["flastname"],
-                    ':ffirstname'					    =>	$_POST["ffirstname"],
-					          ':fmiddlename'				        =>	$_POST["fmiddlename"],
-                    ':fstatus'					      =>	$_POST["fstatus"],
-                    ':faddress'					      =>	$_POST["faddress"],
-                    ':foccupation'					      =>	$_POST["foccupation"],
-                    ':feduc'					    =>	$_POST["feduc"],
-                    ':mlastname'					    =>	$_POST["mlastname"],
-					          ':mfirstname'				        =>	$_POST["mfirstname"],
-					          ':mmiddlename'				      =>	$_POST["mmiddlename"],
-					          ':mstatus'				        =>	$_POST["mstatus"],
-                    ':maddress'					      =>	$_POST["maddress"],
-                    ':moccupation'					      =>	$_POST["moccupation"],
-                    ':meduc'					      =>	$_POST["meduc"],
-                    ':totalgross'					    =>	$_POST["totalgross"],
-                    ':sibling'					    =>	$_POST["sibling"],
-					          ':schoolintend'				        =>	$_POST["schoolintend"],
-					          ':schooladd'			        =>	$_POST["schooladd"],
-                    ':schooltype'				    =>	$_POST["schooltype"],
-                    ':course'				      =>	$_POST["course"],
-                    ':coursestat'				          =>	$_POST["coursestat"],
-                    ':snaemail'				      =>	$_POST["snaemail"],
-		               ':snapass'				      =>  $password_hash
+                    ':scfname'					      =>	$_POST["scfname"],
+                    ':scmname'					      =>	$_POST["scmname"],
+                    ':sclname'					      =>	$_POST["sclname"],
+                    ':scnext'					        =>	$_POST["scnext"],
+                    ':scdbirth'					      =>	$_POST["scdbirth"],
+					          ':scgender'				        =>	$_POST["scgender"],
+                    ':sccivilstat'					  =>	$_POST["sccivilstat"],
+                    ':scpbirth'					      =>	$_POST["scpbirth"],
+                    ':scaddress'					    =>	$_POST["scaddress"],
+                    ':sczcode'					      =>	$_POST["sczcode"],
+                    ':scschname'					    =>	$_POST["scschname"],
+                    ':scsaddress'					    =>	$_POST["scsaddress"],
+					          ':scstype'				        =>	$_POST["scstype"],
+					          ':schygrade'				      =>	$_POST["schygrade"],
+					          ':scctship'			          =>	$_POST["scctship"],
+                    ':scmnum'					        =>	$_POST["scmnum"],
+                    ':scpemail'					      =>	$_POST["scpemail"],
+                    ':scdisability'					  =>	$_POST["scdisability"],
+                    ':scflname'					      =>	$_POST["scflname"],
+                    ':scffname'					      =>	$_POST["scffname"],
+					          ':scfmname'				        =>	$_POST["scfmname"],
+                    ':scfstatus'					    =>	$_POST["scfstatus"],
+                    ':scfaddress'					    =>	$_POST["scfaddress"],
+                    ':scfoccu'					      =>	$_POST["scfoccu"],
+                    ':scfeduc'					      =>	$_POST["scfeduc"],
+                    ':scmlname'					      =>	$_POST["scmlname"],
+					          ':scmfname'				        =>	$_POST["scmfname"],
+					          ':scmmname'				        =>	$_POST["scmmname"],
+					          ':scmstatus'				      =>	$_POST["scmstatus"],
+                    ':scmaddress'					    =>	$_POST["scmaddress"],
+                    ':scmoccu'					      =>	$_POST["scmoccu"],
+                    ':scmeduc'					      =>	$_POST["scmeduc"],
+                    ':scptgross'					    =>	$_POST["scptgross"],
+                    ':scnsibling'					    =>	$_POST["scnsibling"],
+					          ':scsintend'				      =>	$_POST["scsintend"],
+					          ':scsadd'			            =>	$_POST["scsadd"],
+                    ':scschooltype'				    =>	$_POST["scschooltype"],
+                    ':sccourse'				        =>	$_POST["sccourse"],
+                    ':sccoursestat'				    =>	$_POST["sccoursestat"],
+                    ':scaemail'				        =>	$_POST["scaemail"],
+		                ':scapass'				        =>  $password_hash
  );
 
 $object->execute($data);
@@ -149,141 +151,114 @@ $object->execute($data);
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>First Name<span class="text-danger">*</span></label>
-                    <input type="text" name="firstname" id="firstname" class="form-control" />
-                    <span id="error_firstname" class="text-danger"></span>
+                    <input type="text" name="scfname" id="scfname" class="form-control" />
+                    <span id="error_scfname" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="middlename" id="middlename" class="form-control" placeholder="Put N/A if none" />
-                    <span id="error_middlename" class="text-danger"></span>
+                    <input type="text" name="scmname" id="scmname" class="form-control" placeholder="Put N/A if none" />
+                    <span id="error_scmname" class="text-danger"></span>
                     </div>
 							    <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Last Name<span class="text-danger">*</span></label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" />
-                    <span id="error_lastname" class="text-danger"></span>
+                    <input type="text" name="sclname" id="sclname" class="form-control" />
+                    <span id="error_sclname" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Select Suffix</label>
-                    <select name="suffix" id="suffix" class="form-control" required>
+                    <select name="scnext" id="scnext" class="form-control" required>
                     <option value="">-Select-</option>
                     <option value="N/A">N/A</option>
                       <option value="Jr.">Jr.</option>
                       <option value="Sr.">Sr.</option>
                     </select>
-                    <span id="error_suffix" class="text-danger"></span>
+                    <span id="error_scnext" class="text-danger"></span>
                   </div>
-              <!--  </div>
-               </div>
-              <div class="form-group">
-                <div class="row"> -->
                   <div class="col-xs-10 col-sm-12 col-md-4">
                     <label>Date of Birth<span class="text-danger">*</span></label>
                     <div class='input-group date' id='datetimepicker1'>
-                      <input type='text' name="dob" id="dob" class="form-control">
+                      <input type='text' name="scdbirth" id="scdbirth" class="form-control">
                       <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
-                    <span id="error_dob" class="text-danger"></span>
+                    <span id="error_scdbirth" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Select Gender<span class="text-danger">*</span></label>
-                    <select name="gender" id="gender" class="form-control" required>
+                    <select name="scgender" id="scgender" class="form-control" required>
                       <option value="">Select Gender</option>
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
                     </select>
-                    <span id="error_gender" class="text-danger"></span>
+                    <span id="error_scgender" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Civil Status<span class="text-danger">*</span></label>
-                    <select name="civilstat" id="civilstat" class="form-control" required>
+                    <select name="sccivilstat" id="sccivilstat" class="form-control" required>
                       <option value="">Select Status</option>
                       <option value="Single">Single</option>
                       <option value="Married">Married</option>
                     </select>
-                    <span id="error_civilstat" class="text-danger"></span>
+                    <span id="error_sccivilstat" class="text-danger"></span>
                   </div>
-                
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <label>Place of birth<span class="text-danger">*</span></label>
-                    <textarea type="text" name="pob" id="pob" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="pob" class="text-danger"></span>
-                    <span id="error_pob" class="text-danger"></span>
+                    <textarea type="text" name="scpbirth" id="scpbirth" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_scpbirth" class="text-danger"></span>
                   </div>
-                 
-                
-              <!--  </div>
-               </div>
-              <div class="form-group">
-                <div class="row"> -->
                   <div class="col-xs-12 col-sm-12 col-md-8">
                     <label>Permanent Mailing Address<span class="text-danger">*</span></label>
-                    <textarea type="text" name="address" id="address" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_address" class="text-danger"></span>
+                    <textarea type="text" name="scaddress" id="scaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_scaddress" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Zip Code<span class="text-danger">*</span></label>
-                    <textarea type="text" name="zipcode" id="zipcode" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_zipcode" class="text-danger"></span>
+                    <textarea type="text" name="sczcode" id="sczcode" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_sczcode" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
                     <label>School Name<span class="text-danger">*</span></label>
-                    <textarea type="text" name="schoolname" id="schoolname" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_schoolname" class="text-danger"></span>
+                    <textarea type="text" name="scschname" id="scschname" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_scschname" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
                     <label>School Address<span class="text-danger">*</span></label>
-                    <textarea type="text" name="schooladdress" id="schooladdress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_schooladdress" class="text-danger"></span>
+                    <textarea type="text" name="scsaddress" id="scsaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_scsaddress" class="text-danger"></span>
                   </div>
-
                   <div class="col-xs-12 col-sm-12 col-md-3">
                   <label>School Type<span class="text-danger">*</span></label>
-                    <select name="stype" id="stype" class="form-control" required>
+                    <select name="scstype" id="scstype" class="form-control" required>
                       <option value="">Select Type</option>
                       <option value="Private">Private</option>
                       <option value="Public">Public</option>
                     </select>
-                    <span id="error_stype" class="text-danger"></span>
+                    <span id="error_scstype" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Highest Grade/Year<span class="text-danger">*</span></label>
-                    <input type="text" name="grade" id="grade" class="form-control" />
-                    <span id="error_grade" class="text-danger"></span>
+                    <input type="text" name="schygrade" id="schygrade" class="form-control" />
+                    <span id="error_schygrade" class="text-danger"></span>
                     </div>
-
-                
-                 
-              <!--  </div>
-               </div>
-              <div class="form-group">
-                <div class="row"> -->
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Citizenship<span class="text-danger">*</span></label>
-                    <input type="text" name="citizenship" id="citizenship" class="form-control" />
-                    <span id="error_citizenship" class="text-danger"></span>
+                    <input type="text" name="scctship" id="scctship" class="form-control" />
+                    <span id="error_scctship" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Mobile Number<span class="text-danger">*</span></label>
-                    <input type="text" name="mobile" id="mobile" class="form-control" />
-                    <span id="error_mobile" class="text-danger"></span>
+                    <input type="text" name="scmnum" id="scmnum" class="form-control" />
+                    <span id="error_scmnum" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
                     <label>Email<span class="text-danger">*</span></label>
-                    <input type="text" name="email" id="email" class="form-control" />
-                    <span id="error_email" class="text-danger"></span>
+                    <input type="text" name="scpemail" id="scpemail" class="form-control" />
+                    <span id="error_scpemail" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
                     <label>Type of Disability(if applicable)<span class="text-danger">*</span></label>
-                    <input type="text" name="disability" id="disability" class="form-control" placeholder="Put N/A if none"/>
-                    <span id="error_disability" class="text-danger"></span>
-                  </div>
-                 
-              <!--  </div>
-               </div>
-              <div class="form-group">
-                <div class="row"> -->
-                 
-                 
+                    <input type="text" name="scdisability" id="scdisability" class="form-control" placeholder="Put N/A if none"/>
+                    <span id="error_scdisability" class="text-danger"></span>
+                  </div>      
                 </div>
               </div>
               <div align="center">
@@ -293,7 +268,6 @@ $object->execute($data);
             </div>
         </div>
       </div>
-
 <!-- Family Details -->
 <div class="tab-pane fade" id="family_details">
         <div class="panel panel-default">
@@ -305,107 +279,100 @@ $object->execute($data);
                 <div class="row" >
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Last Name<span class="text-danger">*</span></label>
-                    <input type="text" name="flastname" id="flastname" class="form-control" />
-                    <span id="error_flastname" class="text-danger"></span>
+                    <input type="text" name="scflname" id="scflname" class="form-control" />
+                    <span id="error_scflname" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Given Name<span class="text-danger">*</span></label>
-                    <input type="text" name="ffirstname" id="ffirstname" class="form-control" />
-                    <span id="error_ffirstname" class="text-danger"></span>
+                    <input type="text" name="scffname" id="scffname" class="form-control" />
+                    <span id="error_scffname" class="text-danger"></span>
                     </div>
 							    <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="fmiddlename" id="fmiddlename" class="form-control" placeholder="Put N/A if none" />
-                    <span id="error_fmiddlename" class="text-danger"></span>
+                    <input type="text" name="scfmname" id="scfmname" class="form-control" placeholder="Put N/A if none" />
+                    <span id="error_scfmname" class="text-danger"></span>
                   </div>
                
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Status<span class="text-danger">*</label>
-                    <select name="fstatus" id="fstatus" class="form-control" required>
+                    <select name="scfstatus" id="scfstatus" class="form-control" required>
                       <option value="">-Select-</option>
                       <option value="Living">Living</option>
                       <option value="Deceased">Deceased</option>
                     </select>
-                    <span id="error_fstatus" class="text-danger"></span>
+                    <span id="error_scfstatus" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Address<span class="text-danger">*</span></label>
-                    <textarea type="text" name="faddress" id="faddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <textarea type="text" name="scfaddress" id="scfaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
                     <span id="pob" class="text-danger"></span>
-                    <span id="error_faddress" class="text-danger"></span>
+                    <span id="error_scfaddress" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Occupation<span class="text-danger">*</span></label>
-                    <textarea type="text" name="foccupation" id="foccupation" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <textarea type="text" name="scfoccu" id="scfoccu" class="form-control" required data-parsley-trigger="keyup"></textarea>
                     <span id="pob" class="text-danger"></span>
-                    <span id="error_foccupation" class="text-danger"></span>
+                    <span id="error_scfoccu" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Educational Attainment<span class="text-danger">*</span></label>
-                    <textarea type="text" name="feduc" id="feduc" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_feduc" class="text-danger"></span>
+                    <textarea type="text" name="scfeduc" id="scfeduc" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_scfeduc" class="text-danger"></span>
                   </div>
-
-
                </div>
-
                <h4 class="sub-title">Mother's Details</h4>
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Last Name<span class="text-danger">*</span></label>
-                    <input type="text" name="mlastname" id="mlastname" class="form-control" />
-                    <span id="error_mlastname" class="text-danger"></span>
+                    <input type="text" name="scmlname" id="scmlname" class="form-control" />
+                    <span id="error_scmlname" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Given Name<span class="text-danger">*</span></label>
-                    <input type="text" name="mfirstname" id="mfirstname" class="form-control" />
-                    <span id="error_mfirstname" class="text-danger"></span>
+                    <input type="text" name="scmfname" id="scmfname" class="form-control" />
+                    <span id="error_scmfname" class="text-danger"></span>
                     </div>
 							    <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="mmiddlename" id="mmiddlename" placeholder ="Put N/A if none" class="form-control" placeholder="Put N/A if none" />
-                    <span id="error_mmiddlename" class="text-danger"></span>
+                    <input type="text" name="scmmname" id="scmmname" placeholder ="Put N/A if none" class="form-control" placeholder="Put N/A if none" />
+                    <span id="error_scmmname" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Status<span class="text-danger">*</label>
-                    <select name="mstatus" id="mstatus" class="form-control" required>
+                    <select name="scmstatus" id="scmstatus" class="form-control" required>
                       <option value="">-Select-</option>
                       <option value="Living">Living</option>
                       <option value="Deceased">Deceased</option>
                     </select>
-                    <span id="error_mstatus" class="text-danger"></span>
+                    <span id="error_scmstatus" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-8">
                     <label>Address<span class="text-danger">*</span></label>
-                    <textarea type="text" name="maddress" id="maddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                   
-                    <span id="error_maddress" class="text-danger"></span>
+                    <textarea type="text" name="scmaddress" id="scmaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_scmaddress" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Occupation<span class="text-danger">*</span></label>
-                    <textarea type="text" name="moccupation" id="moccupation" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_moccupation" class="text-danger"></span>
+                    <textarea type="text" name="scmoccu" id="scmoccu" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_scmoccu" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Educational Attainment<span class="text-danger">*</span></label>
-                    <input type="text" name="meduc" id="meduc" class="form-control" />
-                    <span id="error_meduc" class="text-danger"></span>
+                    <input type="text" name="scmeduc" id="scmeduc" class="form-control" />
+                    <span id="error_scmeduc" class="text-danger"></span>
                     </div>
-
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Total Parent Gross Income<span class="text-danger">*</span></label>
-                    <input type="text" name="totalgross" id="totalgross" class="form-control" />
-                    <span id="error_totalgross" class="text-danger"></span>
+                    <input type="text" name="scptgross" id="scptgross" class="form-control" />
+                    <span id="error_scptgross" class="text-danger"></span>
                     </div>
-
                     <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>No. of Siblings in the family<span class="text-danger">*</span></label>
-                    <input type="text" name="sibling" id="sibling" class="form-control" />
-                    <span id="error_sibling" class="text-danger"></span>
+                    <input type="text" name="scnsibling" id="scnsibling" class="form-control" />
+                    <span id="error_scnsibling" class="text-danger"></span>
                     </div>
+                  </div>
                </div>
-               </div>
-        
               <div align="center">
                 <button type="button" name="previous_btn_family_details" id="previous_btn_family_details" class="btn btn-default btn-md">Previous</button>
                 <button type="button" name="btn_family_details" id="btn_family_details" class="btn btn-info btn-md">Next</button>
@@ -413,7 +380,6 @@ $object->execute($data);
             </div>
         </div>
       </div>
-
       <!-- Education Details -->
       <div class="tab-pane fade" id="education_details">
         <div class="panel panel-default">
@@ -424,37 +390,36 @@ $object->execute($data);
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <label>School intended to enroll in <span class="text-danger">*</span></label>
-                    <textarea type="text" name="schoolintend" id="schoolintend" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_schoolintend" class="text-danger"></span>
+                    <textarea type="text" name="scsintend" id="scsintend" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_scsintend" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <label>School Address <span class="text-danger">*</span></label>
-                    <textarea type="text" name="schooladd" id="schooladd" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_schooladd" class="text-danger"></span>
+                    <textarea type="text" name="scsadd" id="scsadd" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <span id="error_scsadd" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                   <label>Type of School<span class="text-danger">*</span></label>
-                    <select name="schooltype" id="schooltype" class="form-control" required>
+                    <select name="scschooltype" id="scschooltype" class="form-control" required>
                       <option value="">Select Type</option>
                       <option value="Private">Private</option>
                       <option value="Public">Public</option>
                     </select>
-                    <span id="error_schooltype" class="text-danger"></span>
+                    <span id="error_scschooltype" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Course<span class="text-danger">*</span></label>
-                    <input type="text" name="course" id="course" class="form-control" />
-                    <span id="error_course" class="text-danger"></span>
+                    <input type="text" name="sccourse" id="sccourse" class="form-control" />
+                    <span id="error_sccourse" class="text-danger"></span>
                     </div>
-
                     <div class="col-xs-12 col-sm-12 col-md-4">
                   <label>Course Priority/Not Priority<span class="text-danger">*</span></label>
-                    <select name="coursestat" id="coursestat" class="form-control" required>
+                    <select name="sccoursestat" id="sccoursestat" class="form-control" required>
                       <option value="">Select </option>
                       <option value="Priority">Piority</option>
                       <option value="Not Priority">Not Priority</option>
                     </select>
-                    <span id="error_coursestat" class="text-danger"></span>
+                    <span id="error_sccoursestat" class="text-danger"></span>
                   </div>
                 </div>
               </div>
@@ -487,7 +452,6 @@ $object->execute($data);
                       <li class="list-group-item">2. Photocopy of Good Moral</li>
                       <li class="list-group-item">3. Original Barangay Indigency</li>
                     </ul>
-                   
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                       <label class="form-check-label" for="flexCheckDefault" style="font-style: italic; font-weight: normal;">
@@ -510,13 +474,13 @@ $object->execute($data);
             <div class="panel-body">
                <div class="form-group">
                   <label>Email</label>
-                  <input type="text" name="snaemail" id="snaemail" class="form-control" />
-                  <span id="error_snaemail" class="text-danger"></span>
+                  <input type="text" name="scaemail" id="scaemail" class="form-control" />
+                  <span id="error_scaemail" class="text-danger"></span>
                   </div>
                 <div class="form-group">
                   <label>Password</label>
-                  <input type="text" name="snapass" id="snapass" class="form-control" />
-                  <span id="error_snapass" class="text-danger"></span>
+                  <input type="text" name="scapass" id="scapass" class="form-control" />
+                  <span id="error_scapass" class="text-danger"></span>
                 </div>
         <div align="center">
           <button type="button" name="previous_btn_account" id="previous_btn_account" class="btn btn-default btn-md">Previous</button>
@@ -536,24 +500,24 @@ $object->execute($data);
 $(document).ready(function(){
  
  $('#btn_personal_details').click(function(){
-    var error_firstname = '';
-  var error_middlename = '';
-  var error_lastname= '';
-  var error_suffix = '';
-  var error_dob = '';
-  var error_gender = '';
-  var error_civilstat = '';
-  var error_pob = '';
-  var error_address = '';
-  var error_zipcode = '';
-  var error_schoolname = '';
-  var error_schooladdress = '';
-  var error_stype = '';
-  var error_grade = '';
-  var error_citizenship = '';
-  var error_mobile = '';
-  var error_email = '';
-  var error_disability = '';
+  var error_scfname = '';
+  var error_scmname = '';
+  var error_sclname= '';
+  var error_scnext = '';
+  var error_scdbirth = '';
+  var error_scgender = '';
+  var error_sccivilstat = '';
+  var error_scpbirth = '';
+  var error_scaddress = '';
+  var error_sczcode = '';
+  var error_scschname = '';
+  var error_scsaddress = '';
+  var error_scstype = '';
+  var error_schygrade = '';
+  var error_scctship = '';
+  var error_scmnum = '';
+  var error_scpemail = '';
+  var error_scdisability = '';
   var emailval = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!outlook.com)([\w-]+\.)+[\w-]{2,4})?$/;
   var pcnumval = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
   
@@ -561,272 +525,272 @@ $(document).ready(function(){
 
  //Firstname
 
- if($.trim($('#firstname').val()).length == 0)
+ if($.trim($('#scfname').val()).length == 0)
   {
-   error_firstname = 'First Name is required';
-   $('#error_firstname').text(error_firstname);
-   $('#firstname').addClass('has-error');
+   error_scfname = 'First Name is required';
+   $('#error_scfname').text(error_scfname);
+   $('#scfname').addClass('has-error');
   }
   else
   {
-   error_firstname = '';
-   $('#error_firstname').text(error_firstname);
-   $('#firstname').removeClass('has-error');
+   error_scfname = '';
+   $('#error_scfname').text(error_scfname);
+   $('#scfname').removeClass('has-error');
   }
 
 //Middlename
 
-if($.trim($('#middlename').val()).length == 0)
+if($.trim($('#scmname').val()).length == 0)
   {
-   error_middlename = 'Put N/A if None';
-   $('#error_middlename').text(error_middlename);
-   $('#middlename').addClass('has-error');
+   error_scmname = 'Put N/A if None';
+   $('#error_scmname').text(error_scmname);
+   $('#scmname').addClass('has-error');
   }
   else
   {
-   error_middlename = '';
-   $('#error_middlename').text(error_middlename);
-   $('#middlename').removeClass('has-error');
+   error_scmname = '';
+   $('#error_scmname').text(error_scmname);
+   $('#scmname').removeClass('has-error');
   }
 
   // Lastname
   
-  if($.trim($('#lastname').val()).length == 0)
+  if($.trim($('#sclname').val()).length == 0)
   {
-   error_lastname = 'Last Name is required';
-   $('#error_lastname').text(error_lastname);
-   $('#lastname').addClass('has-error');
+   error_sclname = 'Last Name is required';
+   $('#error_sclname').text(error_sclname);
+   $('#sclname').addClass('has-error');
   }
   else
   {
-   error_lastname = '';
-   $('#error_lastname').text(error_lastname);
-   $('#lastname').removeClass('has-error');
+   error_sclname = '';
+   $('#error_sclname').text(error_sclname);
+   $('#sclname').removeClass('has-error');
   }
 
    //Suffix
 
-   if($.trim($('#suffix').val()).length == 0)
+   if($.trim($('#scnext').val()).length == 0)
   {
-   error_suffix = 'Put N/A if None';
-   $('#error_suffix').text(error_suffix);
-   $('#suffix').addClass('has-error');
+   error_scnext = 'Put N/A if None';
+   $('#error_scnext').text(error_scnext);
+   $('#scnext').addClass('has-error');
   }
   else
   {
-   error_suffix = '';
-   $('#error_suffix').text(error_suffix);
-   $('#suffix').removeClass('has-error');
+   error_scnext = '';
+   $('#error_scnext').text(error_scnext);
+   $('#scnext').removeClass('has-error');
   }
 
    //Date of Birth
-   if($.trim($('#dob').val()).length == 0)
+   if($.trim($('#scdbirth').val()).length == 0)
   {
-   error_dob = 'Date of Birth is required';
-   $('#error_dob').text(error_dob);
-   $('#dob').addClass('has-error');
+   error_scdbirth = 'Date of Birth is required';
+   $('#error_scdbirth').text(error_scdbirth);
+   $('#scdbirth').addClass('has-error');
   }
   else
   {
-   error_dob = '';
-   $('#error_dob').text(error_dob);
-   $('#dob').removeClass('has-error');
+   error_scdbirth = '';
+   $('#error_scdbirth').text(error_scdbirth);
+   $('#scdbirth').removeClass('has-error');
   }
   
   //Gender
 
-  if($.trim($('#gender').val()).length == 0)
+  if($.trim($('#scgender').val()).length == 0)
   {
-   error_gender = 'Gender is required';
-   $('#error_gender').text(error_gender);
-   $('#gender').addClass('has-error');
+   error_scgender = 'Gender is required';
+   $('#error_scgender').text(error_scgender);
+   $('#scgender').addClass('has-error');
   }
   else
   {
-   error_gender = '';
-   $('#error_gender').text(error_gender);
-   $('#gender').removeClass('has-error');
+   error_scgender = '';
+   $('#error_scgender').text(error_scgender);
+   $('#scgender').removeClass('has-error');
   }
 
   //Civil Status
-  if($.trim($('#civilstat').val()).length == 0)
+  if($.trim($('#sccivilstat').val()).length == 0)
   {
-   error_civilstat = 'Civil status is required';
-   $('#error_civilstat').text(error_civilstat);
-   $('#civilstat').addClass('has-error');
+   error_sccivilstat = 'Civil status is required';
+   $('#error_sccivilstat').text(error_sccivilstat);
+   $('#sccivilstat').addClass('has-error');
   }
   else
   {
-   error_civilstat = '';
-   $('#error_civilstat').text(error_civilstat);
-   $('#civilstat').removeClass('has-error');
+   error_sccivilstat = '';
+   $('#error_sccivilstat').text(error_sccivilstat);
+   $('#sccivilstat').removeClass('has-error');
   }
 
   //Place of Birth
 
-  if($.trim($('#pob').val()).length == 0)
+  if($.trim($('#scpbirth').val()).length == 0)
   {
-   error_pob = 'Place of birth is required';
-   $('#error_pob').text(error_pob);
-   $('#pob').addClass('has-error');
+   error_scpbirth = 'Place of birth is required';
+   $('#error_scpbirth').text(error_scpbirth);
+   $('#scpbirth').addClass('has-error');
   }
   else
   {
-   error_pob = '';
-   $('#error_pob').text(error_pob);
-   $('#pob').removeClass('has-error');
+   error_scpbirth = '';
+   $('#error_scpbirth').text(error_scpbirth);
+   $('#scpbirth').removeClass('has-error');
    }
 
 //Address
 
-  if($.trim($('#address').val()).length == 0)
+  if($.trim($('#scaddress').val()).length == 0)
   {
-   error_address = 'Mail Address is required';
-   $('#error_address').text(error_address);
-   $('#address').addClass('has-error');
+   error_scaddress = 'Mail Address is required';
+   $('#error_scaddress').text(error_scaddress);
+   $('#scaddress').addClass('has-error');
   }
   else
   {
 
-    error_address = '';
-    $('#error_address').text(error_address);
-    $('#address').removeClass('has-error');
+    error_scaddress = '';
+    $('#error_scaddress').text(error_scaddress);
+    $('#scaddress').removeClass('has-error');
 
   }
   //Zipcode
 
-  if($.trim($('#zipcode').val()).length == 0)
+  if($.trim($('#sczcode').val()).length == 0)
   {
-   error_zipcode = 'Zip Code is required';
-   $('#error_zipcode').text(error_zipcode);
-   $('#zipcode').addClass('has-error');
+   error_sczcode = 'Zip Code is required';
+   $('#error_sczcode').text(error_sczcode);
+   $('#sczcode').addClass('has-error');
   }
   else
   {
-   error_zipcode = '';
-   $('#error_zipcode').text(error_zipcode);
-   $('#zipcode').removeClass('has-error');
+   error_sczcode = '';
+   $('#error_sczcode').text(error_sczcode);
+   $('#sczcode').removeClass('has-error');
   }
 
   //School Name
-  if($.trim($('#schoolname').val()).length == 0)
+  if($.trim($('#scschname').val()).length == 0)
   {
-   error_schoolname = 'School Name is required';
-   $('#error_schoolname').text(error_schoolname);
-   $('#schoolname').addClass('has-error');
+   error_scschname = 'School Name is required';
+   $('#error_scschname').text(error_scschname);
+   $('#scschname').addClass('has-error');
   }
   else
   {
-   error_schoolname = '';
-   $('#error_schoolname').text(error_schoolname);
-   $('#schoolname').removeClass('has-error');
+   error_scschname = '';
+   $('#error_scschname').text(error_scschname);
+   $('#scschname').removeClass('has-error');
   }
 
   //School Address
-  if($.trim($('#schooladdress').val()).length == 0)
+  if($.trim($('#scsaddress').val()).length == 0)
   {
-   error_schooladdress = 'School Address is required';
-   $('#error_schooladdress').text(error_schooladdress);
-   $('#schooladdress').addClass('has-error');
+   error_scsaddress = 'School Address is required';
+   $('#error_scsaddress').text(error_scsaddress);
+   $('#scsaddress').addClass('has-error');
   }
   else
   {
-   error_schooladdress = '';
-   $('#error_schooladdress').text(error_schooladdress);
-   $('#schooladdress').removeClass('has-error');
+   error_scsaddress = '';
+   $('#error_scsaddress').text(error_scsaddress);
+   $('#scsaddress').removeClass('has-error');
   }
 
   //School Type
- if($.trim($('#stype').val()).length == 0)
+ if($.trim($('#scstype').val()).length == 0)
   {
-   error_stype = 'School Type is required';
-   $('#error_stype').text(error_stype);
-   $('#stype').addClass('has-error');
+   error_scstype = 'School Type is required';
+   $('#error_scstype').text(error_scstype);
+   $('#scstype').addClass('has-error');
   }
   else
   {
-   error_stype = '';
-   $('#error_stype').text(error_stype);
-   $('#stype').removeClass('has-error');
+   error_scstype = '';
+   $('#error_scstype').text(error_scstype);
+   $('#scstype').removeClass('has-error');
   }
   //Grade or Year
 
-  if($.trim($('#grade').val()).length == 0)
+  if($.trim($('#schygrade').val()).length == 0)
   {
-   error_grade = 'Grade/Year is required';
-   $('#error_grade').text(error_grade);
-   $('#grade').addClass('has-error');
+   error_schygrade = 'Grade/Year is required';
+   $('#error_schygrade').text(error_schygrade);
+   $('#schygrade').addClass('has-error');
   }
   else
   {
-   error_grade = '';
-   $('#error_grade').text(error_grade);
-   $('#grade').removeClass('has-error');
+   error_schygrade = '';
+   $('#error_schygrade').text(error_schygrade);
+   $('#schygrade').removeClass('has-error');
   }
   //Citizenship
-  if($.trim($('#citizenship').val()).length == 0)
+  if($.trim($('#scctship').val()).length == 0)
   {
-   error_citizenship= 'Citizenship is required';
-   $('#error_citizenship').text(error_citizenship);
-   $('#citizenship').addClass('has-error');
+   error_scctship= 'Citizenship is required';
+   $('#error_scctship').text(error_scctship);
+   $('#scctship').addClass('has-error');
   }
   else
   {
-   error_citizenship= '';
-   $('#error_citizenship').text(error_citizenship);
-   $('#citizenship').removeClass('has-error');
+   error_scctship= '';
+   $('#error_scctship').text(error_scctship);
+   $('#scctship').removeClass('has-error');
   }
   //Mobile Number
 
-  if($.trim($('#mobile').val()).length == 0)
+  if($.trim($('#scmnum').val()).length == 0)
   {
-   error_mobile = 'Mobile Number is required';
-   $('#error_mobile').text(error_mobile);
-   $('#mobile').addClass('has-error');
+   error_scmnum = 'Mobile Number is required';
+   $('#error_scmnum').text(error_scmnum);
+   $('#scmnum').addClass('has-error');
   }
   else
   {
-   error_mobile = '';
-   $('#error_mobile').text(error_mobile);
-   $('#mobile').removeClass('has-error');
+   error_scmnum = '';
+   $('#error_scmnum').text(error_scmnum);
+   $('#scmnum').removeClass('has-error');
   }
   //Email
-  if($.trim($('#email').val()).length == 0)
+  if($.trim($('#scpemail').val()).length == 0)
   {
-   error_email = 'Email is required';
-   $('#error_email').text(error_email);
-   $('#email').addClass('has-error');
+   error_scpemail = 'Email is required';
+   $('#error_scpemail').text(error_scpemail);
+   $('#scpemail').addClass('has-error');
   }
   else
   {
-   error_email = '';
-   $('#error_email').text(error_email);
-   $('#email').removeClass('has-error');
+   error_scpemail = '';
+   $('#error_scpemail').text(error_scpemail);
+   $('#scpemail').removeClass('has-error');
   }
   //Specify Disability
 
-  if($.trim($('#disability').val()).length == 0)
+  if($.trim($('#scdisability').val()).length == 0)
   {
-   error_disability = 'Put N/A if None';
-   $('#error_disability').text(error_disability);
-   $('#disability').addClass('has-error');
+   error_scdisability = 'Put N/A if None';
+   $('#error_scdisability').text(error_scdisability);
+   $('#scdisability').addClass('has-error');
   }
   else
   {
-   error_disability= '';
-   $('#error_disability').text(error_disability);
-   $('#disability').removeClass('has-error');
+   error_scdisability= '';
+   $('#error_scdisability').text(error_scdisability);
+   $('#scdisability').removeClass('has-error');
   }
 
-  if(error_firstname != '' || error_middlename != '' 
-  || error_lastname != '' || error_suffix != '' 
-  || error_dob != '' || error_gender != '' 
-  || error_civilstat != '' || error_pob != '' 
-  || error_address != '' || error_zipcode != '' 
-  || error_schoolname != '' || error_schooladdress != '' 
-  || error_stype != '' || error_grade != '' 
-  || error_citizenship != '' || error_mobile != '' 
-  || error_email != '' || error_disability != '' 
+  if(error_scfname != '' || error_scmname != '' 
+  || error_sclname != '' || error_scnext != '' 
+  || error_scdbirth != '' || error_scgender != '' 
+  || error_sccivilstat != '' || error_scpbirth != '' 
+  || error_scaddress != '' || error_sczcode != '' 
+  || error_scschname != '' || error_scsaddress != '' 
+  || error_scstype != '' || error_schygrade != '' 
+  || error_scctship != '' || error_scmnum != '' 
+  || error_scpemail != '' || error_scdisability != '' 
   
 
   )
@@ -862,260 +826,260 @@ if($.trim($('#middlename').val()).length == 0)
 
 // Family Details
  $('#btn_family_details').click(function(){
-  var error_flastname = '';
-  var error_ffirstname = '';
-  var error_fmiddlename= '';
-  var error_fstatus = '';
-  var error_faddress = '';
-  var error_foccupation = '';
-  var error_feduc = '';
-  var error_mlastname = '';
-  var error_mfirstname = '';
-  var error_mmiddlename = '';
-  var error_mstatus = '';
-  var error_maddress = '';
-  var error_moccupation = '';
-  var error_meduc = '';
-  var error_totalgross = '';
-  var error_sibling = '';
+  var error_scflname = '';
+  var error_scffname = '';
+  var error_scfmname= '';
+  var error_scfstatus = '';
+  var error_scfaddress = '';
+  var error_scfoccu = '';
+  var error_scfeduc = '';
+  var error_scmlname = '';
+  var error_scmfname = '';
+  var error_scmmname = '';
+  var error_scmstatus = '';
+  var error_scmaddress = '';
+  var error_scmoccu = '';
+  var error_scmeduc = '';
+  var error_scptgross = '';
+  var error_scnsibling = '';
  
 // Father's Last Name
-  if($.trim($('#flastname ').val()).length == 0)
+  if($.trim($('#scflname ').val()).length == 0)
   {
-   error_flastname = 'Last Name is required';
-   $('#error_flastname').text(error_flastname);
-   $('#flastname').addClass('has-error');
+   error_scflname = 'Last Name is required';
+   $('#error_scflname').text(error_scflname);
+   $('#scflname').addClass('has-error');
   }
   else
   {
-   error_flastname = '';
-   $('#error_flastname').text(error_flastname);
-   $('#flastname').removeClass('has-error');
+   error_scflname = '';
+   $('#error_scflname').text(error_scflname);
+   $('#scflname').removeClass('has-error');
   }
 
   //Father's First Name
-  if($.trim($('#ffirstname').val()).length == 0)
+  if($.trim($('#scffname').val()).length == 0)
   {
-   error_ffirstname = 'First Name is required';
-   $('#error_ffirstname').text(error_ffirstname);
-   $('#ffirstname').addClass('has-error');
+   error_scffname = 'First Name is required';
+   $('#error_scffname').text(error_scffname);
+   $('#scffname').addClass('has-error');
   }
   else
   {
-   error_ffirstname = '';
-   $('#error_ffirstname').text(error_ffirstname);
-   $('#ffirstname').removeClass('has-error');
+   error_scffname = '';
+   $('#error_scffname').text(error_scffname);
+   $('#scffname').removeClass('has-error');
   }
 
   //Father's Middle Name
 
-  if($.trim($('#fmiddlename').val()).length == 0)
+  if($.trim($('#scfmname').val()).length == 0)
   {
-   error_fmiddlename = 'Put N/A if none';
-   $('#error_fmiddlename').text(error_fmiddlename);
-   $('#fmiddlename').addClass('has-error');
+   error_scfmname = 'Put N/A if none';
+   $('#error_scfmname').text(error_scfmname);
+   $('#scfmname').addClass('has-error');
   }
   else
   {
-   error_fmiddlename= '';
-   $('#error_fmiddlename').text(error_fmiddlename);
-   $('#fmiddlename').removeClass('has-error');
+   error_scfmname= '';
+   $('#error_scfmname').text(error_scfmname);
+   $('#scfmname').removeClass('has-error');
   }
 
   //Father Status
 
-  if($.trim($('#fstatus').val()).length == 0)
+  if($.trim($('#scfstatus').val()).length == 0)
   {
-   error_fstatus = 'Status is required';
-   $('#error_fstatus').text(error_fstatus);
-   $('#fstatus').addClass('has-error');
+   error_scfstatus = 'Status is required';
+   $('#error_scfstatus').text(error_scfstatus);
+   $('#scfstatus').addClass('has-error');
   }
   else
   {
-   error_fstatus = '';
-   $('#error_fstatus').text(error_fstatus);
-   $('#fstatus').removeClass('has-error');
+   error_scfstatus = '';
+   $('#error_scfstatus').text(error_scfstatus);
+   $('#scfstatus').removeClass('has-error');
   }
 
   //Father Address
 
-  if($.trim($('#faddress').val()).length == 0)
+  if($.trim($('#scfaddress').val()).length == 0)
   {
-   error_faddress = 'Address is required';
-   $('#error_faddress').text(error_faddress);
-   $('#faddress').addClass('has-error');
+   error_scfaddress = 'Address is required';
+   $('#error_scfaddress').text(error_scfaddress);
+   $('#scfaddress').addClass('has-error');
   }
   else
   {
-   error_faddress = '';
-   $('#error_faddress').text(error_faddress);
-   $('#faddress').removeClass('has-error');
+   error_scfaddress = '';
+   $('#error_scfaddress').text(error_scfaddress);
+   $('#scfaddress').removeClass('has-error');
   }
 
   //Occupation
 
-  if($.trim($('#foccupation').val()).length == 0)
+  if($.trim($('#scfoccu').val()).length == 0)
   {
-   error_foccupation= 'Put N/A if none';
-   $('#error_foccupation').text(error_foccupation);
-   $('#foccupation').addClass('has-error');
+   error_scfoccu= 'Put N/A if none';
+   $('#error_scfoccu').text(error_scfoccu);
+   $('#scfoccu').addClass('has-error');
   }
   else
   {
-   error_foccupation = '';
-   $('#error_foccupation').text(error_foccupation);
-   $('#foccupation').removeClass('has-error');
+   error_scfoccu = '';
+   $('#error_scfoccu').text(error_scfoccu);
+   $('#scfoccu').removeClass('has-error');
   }
 
 //Educational Attainment
 
-  if($.trim($('#feduc').val()).length == 0)
+  if($.trim($('#scfeduc').val()).length == 0)
   {
-   error_feduc = 'Educational Attainment is required';
-   $('#error_feduc').text(error_feduc);
-   $('#feduc').addClass('has-error');
+   error_scfeduc = 'Educational Attainment is required';
+   $('#error_scfeduc').text(error_scfeduc);
+   $('#scfeduc').addClass('has-error');
   }
   else
   {
-   error_feduc = '';
-   $('#error_feduc').text(error_feduc);
-   $('#feduc').removeClass('has-error');
+   error_scfeduc = '';
+   $('#error_scfeduc').text(error_scfeduc);
+   $('#scfeduc').removeClass('has-error');
   }
 
 
 
   // Mothers's Last Name
-  if($.trim($('#mlastname').val()).length == 0)
+  if($.trim($('#scmlname').val()).length == 0)
   {
-   error_mlastname = 'Last Name is required';
-   $('#error_mlastname').text(error_mlastname);
-   $('#mlastname').addClass('has-error');
+   error_scmlname = 'Last Name is required';
+   $('#error_scmlname').text(error_scmlname);
+   $('#scmlname').addClass('has-error');
   }
   else
   {
-   error_mlastname = '';
-   $('#error_mlastname').text(error_mlastname);
-   $('#mlastname').removeClass('has-error');
+   error_scmlname = '';
+   $('#error_scmlname').text(error_scmlname);
+   $('#scmlname').removeClass('has-error');
   }
 
   //Mother's First Name
-  if($.trim($('#mfirstname').val()).length == 0)
+  if($.trim($('#scmfname').val()).length == 0)
   {
-   error_mfirstname = 'First Name is required';
-   $('#error_mfirstname').text(error_mfirstname);
-   $('#mfirstname').addClass('has-error');
+   error_scmfname = 'First Name is required';
+   $('#error_scmfname').text(error_scmfname);
+   $('#scmfname').addClass('has-error');
   }
   else
   {
-   error_mfirstname = '';
-   $('#error_mfirstname').text(error_mfirstname);
-   $('#mfirstname').removeClass('has-error');
+   error_scmfname = '';
+   $('#error_scmfname').text(error_scmfname);
+   $('#scmfname').removeClass('has-error');
   }
 
   //Mother's Middle Name
 
-  if($.trim($('#mmiddlename').val()).length == 0)
+  if($.trim($('#scmmname').val()).length == 0)
   {
-   error_mmiddlename = 'Put N/A if none';
-   $('#error_mmiddlename').text(error_mmiddlename);
-   $('#mmiddlename').addClass('has-error');
+   error_scmmname = 'Put N/A if none';
+   $('#error_scmmname').text(error_scmmname);
+   $('#scmmname').addClass('has-error');
   }
   else
   {
-   error_mmiddlename= '';
-   $('#error_mmiddlename').text(error_mmiddlename);
-   $('#mmiddlename').removeClass('has-error');
+   error_scmmname= '';
+   $('#error_scmmname').text(error_scmmname);
+   $('#scmmname').removeClass('has-error');
   }
 
   //Mother Status
 
-  if($.trim($('#mstatus').val()).length == 0)
+  if($.trim($('#scmstatus').val()).length == 0)
   {
-   error_mstatus = 'Status is required';
-   $('#error_mstatus').text(error_mstatus);
-   $('#mstatus').addClass('has-error');
+   error_scmstatus = 'Status is required';
+   $('#error_scmstatus').text(error_scmstatus);
+   $('#scmstatus').addClass('has-error');
   }
   else
   {
-   error_mstatus = '';
-   $('#error_mstatus').text(error_mstatus);
-   $('#mstatus').removeClass('has-error');
+   error_scmstatus = '';
+   $('#error_scmstatus').text(error_scmstatus);
+   $('#scmstatus').removeClass('has-error');
   }
 
   //Father Address
 
-  if($.trim($('#maddress').val()).length == 0)
+  if($.trim($('#scmaddress').val()).length == 0)
   {
-   error_maddress= 'Address is required';
-   $('#error_maddress').text(error_maddress);
-   $('#maddress').addClass('has-error');
+   error_scmaddress= 'Address is required';
+   $('#error_scmaddress').text(error_scmaddress);
+   $('#scmaddress').addClass('has-error');
   }
   else
   {
-   error_maddress = '';
-   $('#error_maddress').text(error_maddress);
-   $('#maddress').removeClass('has-error');
+   error_scmaddress = '';
+   $('#error_scmaddress').text(error_scmaddress);
+   $('#scmaddress').removeClass('has-error');
   }
 
   //Occupation
 
-  if($.trim($('#moccupation').val()).length == 0)
+  if($.trim($('#scmoccu').val()).length == 0)
   {
-   error_moccupation= 'Put N/A if none';
-   $('#error_moccupation').text(error_moccupation);
-   $('#moccupation').addClass('has-error');
+   error_scmoccu= 'Put N/A if none';
+   $('#error_scmoccu').text(error_scmoccu);
+   $('#scmoccu').addClass('has-error');
   }
   else
   {
-   error_moccupation = '';
-   $('#error_moccupation').text(error_moccupation);
-   $('#moccupation').removeClass('has-error');
+   error_scmoccu = '';
+   $('#error_scmoccu').text(error_scmoccu);
+   $('#scmoccu').removeClass('has-error');
   }
 
 //Educational Attainment
 
-  if($.trim($('#meduc').val()).length == 0)
+  if($.trim($('#scmeduc').val()).length == 0)
   {
-   error_meduc = 'Educational Attainment is required';
-   $('#error_meduc').text(error_meduc);
-   $('#meduc').addClass('has-error');
+   error_scmeduc = 'Educational Attainment is required';
+   $('#error_scmeduc').text(error_scmeduc);
+   $('#scmeduc').addClass('has-error');
   }
   else
   {
-   error_meduc= '';
-   $('#error_meduc').text(error_meduc);
-   $('#meduc').removeClass('has-error');
+   error_scmeduc= '';
+   $('#error_scmeduc').text(error_scmeduc);
+   $('#scmeduc').removeClass('has-error');
   }
 
 
   //Total Gross Income
 
-  if($.trim($('#totalgross').val()).length == 0)
+  if($.trim($('#scptgross').val()).length == 0)
   {
-   error_totalgross = 'Total Gross income is required';
-   $('#error_totalgross').text(error_totalgross);
-   $('#totalgross').addClass('has-error');
+   error_scptgross = 'Total Gross income is required';
+   $('#error_scptgross').text(error_scptgross);
+   $('#scptgross').addClass('has-error');
   }
   else
   {
-   error_totalgross = '';
-   $('#error_totalgross').text(error_totalgross);
-   $('#totalgross').removeClass('has-error');
+   error_scptgross = '';
+   $('#error_scptgross').text(error_scptgross);
+   $('#scptgross').removeClass('has-error');
   }
 
   //Total Siblings in the Family
 
-  if($.trim($('#sibling').val()).length == 0)
+  if($.trim($('#scnsibling').val()).length == 0)
   {
-   error_sibling = 'Total Sibling is required';
-   $('#error_sibling').text(error_sibling);
-   $('#sibling').addClass('has-error');
+   error_scnsibling = 'Total Sibling is required';
+   $('#error_scnsibling').text(error_scnsibling);
+   $('#scnsibling').addClass('has-error');
   }
   else
   {
-   error_sibling= '';
-   $('#error_sibling').text(error_sibling);
-   $('#sibling').removeClass('has-error');
+   error_scnsibling= '';
+   $('#error_scnsibling').text(error_scnsibling);
+   $('#scnsibling').removeClass('has-error');
   }
 
 
@@ -1124,22 +1088,22 @@ if($.trim($('#middlename').val()).length == 0)
 
 
 
-  if( error_flastname != '' ||
-  error_ffirstname != '' ||
-  error_fmiddlename != '' ||
-  error_fstatus != '' ||
-  error_faddress != '' ||
-  error_foccupation != '' ||
-  error_feduc != '' ||
-  error_mlastname != '' ||
-  error_mfirstname != '' ||
-  error_mmiddlename != '' ||
-  error_mstatus != '' ||
-  error_maddress != '' ||
-  error_moccupation != '' ||
-  error_meduc != '' ||
-  error_totalgross != '' ||
-  error_sibling != '' )
+  if( error_scflname != '' ||
+  error_scffname != '' ||
+  error_scfmname != '' ||
+  error_scfstatus != '' ||
+  error_scfaddress != '' ||
+  error_scfoccu != '' ||
+  error_scfeduc != '' ||
+  error_scmlname != '' ||
+  error_scmfname != '' ||
+  error_scmmname != '' ||
+  error_scmstatus != '' ||
+  error_scmaddress != '' ||
+  error_scmoccu != '' ||
+  error_scmeduc != '' ||
+  error_scptgross != '' ||
+  error_scnsibling != '' )
   {
    return false;
   }
@@ -1262,83 +1226,83 @@ $('#previous_btn_education').click(function(){
 
  $('#btn_education').click(function(){
   
-  var error_schoolintend = '';
-  var error_schooladd = '' ;
-  var error_schooltype = '';
-  var error_course= '';
-  var error_coursestat= '';
+  var error_scsintend = '';
+  var error_scsadd = '' ;
+  var error_scschooltype = '';
+  var error_sccourse= '';
+  var error_sccoursestat= '';
 
   
-  if($.trim($('#schoolintend').val()).length == 0)
+  if($.trim($('#scsintend').val()).length == 0)
   {
-   error_schoolintend = 'School intended to enroll is required';
-   $('#error_schoolintend').text(error_schoolintend );
-   $('#schoolintend').addClass('has-error');
+   error_scsintend = 'School intended to enroll is required';
+   $('#error_scsintend').text(error_scsintend );
+   $('#scsintend').addClass('has-error');
   }
   else
   {
-   error_schoolintend = '';
-   $('#error_schoolintend').text(error_schoolintend);
-   $('#schoolintend').removeClass('has-error');
+   error_scsintend = '';
+   $('#error_scsintend').text(error_scsintend);
+   $('#scsintend').removeClass('has-error');
   }
 
-  if($.trim($('#schooladd').val()).length == 0)
+  if($.trim($('#scsadd').val()).length == 0)
   {
-   error_schooladd = 'School Address is required';
-   $('#error_schooladd').text(error_schooladd );
-   $('#schooladd').addClass('has-error');
+   error_scsadd = 'School Address is required';
+   $('#error_scsadd').text(error_scsadd );
+   $('#scsadd').addClass('has-error');
   }
   else
   {
-   error_schooladd = '';
-   $('#error_schooladd').text(error_schooladd);
-   $('#schooladd').removeClass('has-error');
+   error_scsadd = '';
+   $('#error_scsadd').text(error_scsadd);
+   $('#scsadd').removeClass('has-error');
   }
 
-  if($.trim($('#schooltype').val()).length == 0)
+  if($.trim($('#scschooltype').val()).length == 0)
   {
-   error_schooltype = 'School Type is required';
-   $('#error_schooltype').text(error_schooltype);
-   $('#schooltype').addClass('has-error');
+   error_scschooltype = 'School Type is required';
+   $('#error_scschooltype').text(error_scschooltype);
+   $('#scschooltype').addClass('has-error');
   }
   else
   {
-   error_schooltype = '';
-   $('#error_schooltype').text(error_schooltype);
-   $('#schooltype').removeClass('has-error');
+   error_scschooltype = '';
+   $('#error_scschooltype').text(error_scschooltype);
+   $('#scschooltype').removeClass('has-error');
   }
 
-  if($.trim($('#course').val()).length == 0)
+  if($.trim($('#sccourse').val()).length == 0)
   {
-   error_course = 'Course is required';
-   $('#error_course').text(error_course);
-   $('#course').addClass('has-error');
+   error_sccourse = 'Course is required';
+   $('#error_sccourse').text(error_sccourse);
+   $('#sccourse').addClass('has-error');
   }
   else
   {
-   error_course = '';
-   $('#error_course').text(error_course);
-   $('#course').removeClass('has-error');
+   error_sccourse = '';
+   $('#error_sccourse').text(error_sccourse);
+   $('#sccourse').removeClass('has-error');
   }
 
-  if($.trim($('#coursestat').val()).length == 0)
+  if($.trim($('#sccoursestat').val()).length == 0)
   {
-   error_coursestat = 'Course Status required';
-   $('#error_coursestat').text(error_coursestat);
-   $('#coursestat').addClass('has-error');
+   error_sccoursestat = 'Course Status required';
+   $('#error_sccoursestat').text(error_sccoursestat);
+   $('#sccoursestat').addClass('has-error');
   }
   else
   {
-   error_coursestat = '';
-   $('#error_coursestat').text(error_coursestat);
-   $('#coursestat').removeClass('has-error');
+   error_sccoursestat = '';
+   $('#error_sccoursestat').text(error_sccoursestat);
+   $('#sccoursestat').removeClass('has-error');
   }
 
-  if(error_schoolintend != '' || 
-     error_schooladd != '' ||
-     error_schooltype != '' ||
-     error_course != '' ||
-     error_coursestat != '' 
+  if(error_scsintend != '' || 
+     error_scsadd != '' ||
+     error_scschooltype != '' ||
+     error_sccourse != '' ||
+     error_sccoursestat != '' 
     )
   {
    return false;
@@ -1416,37 +1380,37 @@ $('#previous_btn_requirement').click(function(){
 
  $('#btn_submit').click(function(){
   
-  var error_snaemail = '';
-  var error_snapass = '';
+  var error_scaemail = '';
+  var error_scapass = '';
   
-  if($.trim($('#snaemail').val()).length == 0)
+  if($.trim($('#scaemail').val()).length == 0)
   {
-   error_snaemail = 'Account email is required';
-   $('#error_snaemail').text(error_snaemail);
-   $('#snaemail').addClass('has-error');
+   error_scaemail = 'Email is required';
+   $('#error_scaemail').text(error_scaemail);
+   $('#scaemail').addClass('has-error');
   }
   else
   {
-   error_snaemail = '';
-   $('#error_snaemail').text(error_snaemail);
-   $('#snaemail').removeClass('has-error');
+   error_scaemail = '';
+   $('#error_scaemail').text(error_scaemail);
+   $('#scaemail').removeClass('has-error');
   }
   
-  if($.trim($('#snapass').val()).length == 0)
+  if($.trim($('#scapass').val()).length == 0)
   {
-   error_snapass = 'Account password is required';
-   $('#error_snapass').text(error_snapass);
-   $('#snapass').addClass('has-error');
+   error_scapass = 'Password is required';
+   $('#error_scapass').text(error_scapass);
+   $('#scapass').addClass('has-error');
   }
   else
   {
-   error_snapass = '';
-   $('#error_snapass').text(error_snapass);
-   $('#snapass').removeClass('has-error');
+   error_scapass = '';
+   $('#error_scapass').text(error_scapass);
+   $('#scapass').removeClass('has-error');
   }
 
-  if(error_snapass != '' || 
-     error_snapass != '')
+  if(error_scaemail != '' || 
+     error_scapass != '')
   {
    return false;
   }
