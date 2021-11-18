@@ -66,7 +66,7 @@
                     <i class="fas fa-user-clock"></i>
                     <span>Application</span></a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="acadgrants.php">
                     <i class="fas fa-user-check"></i>
                     <span>Approved Scholars</span></a>
@@ -75,7 +75,7 @@
                 <a class="nav-link" href="acadreject.php">
                     <i class="fas fa-user-times"></i>
                     <span>Rejected Scholars</span></a>
-            </li>
+            </li> -->
             <?php
             }
             ?>

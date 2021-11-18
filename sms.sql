@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2021 at 03:14 PM
+-- Generation Time: Nov 18, 2021 at 11:49 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -29,80 +29,67 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_acad` (
   `sacad_id` int(11) NOT NULL,
-  `sfname` varchar(50) NOT NULL,
-  `smname` varchar(50) NOT NULL,
-  `slname` varchar(50) NOT NULL,
-  `sdbirth` date NOT NULL,
-  `sctship` varchar(50) NOT NULL,
-  `saddress` varchar(100) NOT NULL,
-  `semail` varchar(50) NOT NULL,
-  `scontact` varchar(50) NOT NULL,
-  `sgender` varchar(50) NOT NULL,
-  `gfname` varchar(50) NOT NULL,
-  `gmname` varchar(50) NOT NULL,
-  `glname` varchar(50) NOT NULL,
-  `gaddress` varchar(50) NOT NULL,
-  `gcontact` varchar(50) NOT NULL,
-  `goccu` varchar(50) NOT NULL,
-  `gcompany` varchar(50) NOT NULL,
-  `ffname` varchar(50) NOT NULL,
-  `fmname` varchar(50) NOT NULL,
-  `flname` varchar(50) NOT NULL,
-  `faddress` varchar(100) NOT NULL,
-  `fcontact` varchar(50) NOT NULL,
-  `foccu` varchar(50) NOT NULL,
-  `fcompany` varchar(50) NOT NULL,
-  `mfname` varchar(50) NOT NULL,
-  `mmname` varchar(50) NOT NULL,
-  `mlname` varchar(50) NOT NULL,
-  `maddress` varchar(100) NOT NULL,
-  `mcontact` varchar(50) NOT NULL,
-  `moccu` varchar(50) NOT NULL,
-  `mcompany` varchar(50) NOT NULL,
-  `spcyincome` varchar(50) NOT NULL,
+  `safname` varchar(50) NOT NULL,
+  `samname` varchar(50) NOT NULL,
+  `salname` varchar(50) NOT NULL,
+  `sanext` varchar(10) NOT NULL,
+  `sadbirth` date NOT NULL,
+  `sactship` varchar(50) NOT NULL,
+  `saaddress` varchar(100) NOT NULL,
+  `sapemail` varchar(50) NOT NULL,
+  `sacontact` varchar(50) NOT NULL,
+  `sagender` varchar(50) NOT NULL,
+  `sagfname` varchar(50) NOT NULL,
+  `sagmname` varchar(50) NOT NULL,
+  `saglname` varchar(50) NOT NULL,
+  `sagnext` varchar(10) NOT NULL,
+  `sagaddress` varchar(50) NOT NULL,
+  `sagcontact` varchar(50) NOT NULL,
+  `sagoccu` varchar(50) NOT NULL,
+  `sagcompany` varchar(50) NOT NULL,
+  `saffname` varchar(50) NOT NULL,
+  `safmname` varchar(50) NOT NULL,
+  `saflname` varchar(50) NOT NULL,
+  `safnext` varchar(10) NOT NULL,
+  `safaddress` varchar(100) NOT NULL,
+  `safcontact` varchar(50) NOT NULL,
+  `safoccu` varchar(50) NOT NULL,
+  `safcompany` varchar(50) NOT NULL,
+  `samfname` varchar(50) NOT NULL,
+  `sammname` varchar(50) NOT NULL,
+  `samlname` varchar(50) NOT NULL,
+  `samnext` varchar(10) NOT NULL,
+  `samaddress` varchar(100) NOT NULL,
+  `samcontact` varchar(50) NOT NULL,
+  `samoccu` varchar(50) NOT NULL,
+  `samcompany` varchar(50) NOT NULL,
+  `saspcyincome` varchar(50) NOT NULL,
   `sagwa` varchar(50) NOT NULL,
-  `sraward` varchar(50) NOT NULL,
-  `sdawardrceive` date DEFAULT NULL,
+  `saraward` varchar(50) NOT NULL,
+  `sadawardrceive` date DEFAULT NULL,
   `sadsprc` date DEFAULT NULL,
+  `sadsprcstat` varchar(50) DEFAULT NULL,
   `sadspgm` date DEFAULT NULL,
+  `sadspgmstat` varchar(50) DEFAULT NULL,
   `sadspcr` date DEFAULT NULL,
+  `sadspcrstat` varchar(50) DEFAULT NULL,
   `sacapstype` varchar(30) NOT NULL,
-  `saemail` varchar(50) NOT NULL,
+  `saaemail` varchar(50) NOT NULL,
   `sapass` varchar(50) NOT NULL,
+  `sagrantstat` varchar(20) NOT NULL,
   `sascholarstat` varchar(30) NOT NULL,
-  `sadapply` datetime DEFAULT NULL
+  `sadapply` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_acad`
 --
 
-INSERT INTO `tbl_acad` (`sacad_id`, `sfname`, `smname`, `slname`, `sdbirth`, `sctship`, `saddress`, `semail`, `scontact`, `sgender`, `gfname`, `gmname`, `glname`, `gaddress`, `gcontact`, `goccu`, `gcompany`, `ffname`, `fmname`, `flname`, `faddress`, `fcontact`, `foccu`, `fcompany`, `mfname`, `mmname`, `mlname`, `maddress`, `mcontact`, `moccu`, `mcompany`, `spcyincome`, `sagwa`, `sraward`, `sdawardrceive`, `sadsprc`, `sadspgm`, `sadspcr`, `sacapstype`, `saemail`, `sapass`, `sascholarstat`, `sadapply`) VALUES
-(2, 'John', 'Aiko Wright', 'Collins', '2021-10-13', 'Corporis sit numquam', 'Provident temporibu', 'kuhyjer@mailinator.com', 'Sed perferendis debi', 'Female', 'Nyssa Johns', 'Quintessa Cline', 'Rina Jackson', 'Ad in quis proident', 'Dolores assumenda ne', 'Sit quam eaque volu', 'Rollins and Cole Inc', 'Drake Whitney', 'Noelani Ramsey', 'Patrick Hester', 'Dolor et et et anim', 'Nulla et mollitia au', 'Optio nostrud aut a', 'Burt and Coffey Trading', 'Craig Mcintyre', 'Illana Simmons', 'Yeo Owen', 'Pariatur Fugit tem', 'Nisi architecto eos', 'Et in doloribus cons', 'Gibson Farley Traders', '31', 'Voluptatum voluptas', 'Mollitia autem perfe', '2021-10-06', '2021-10-21', '2021-10-29', '2021-10-19', 'New', 'kits@mailinator.com', '$2y$10$PqVxVPjbPmlX1BJCwTgDt.vQ6qFQE7V/3ubdh6B.S2d', 'Approved', '2021-10-07 14:06:33'),
-(3, 'Angel', 'Aiko Wright', 'Singkol', '2021-10-13', 'Corporis sit numquam', 'Provident temporibu', 'kuhyjer@mailinator.com', 'Sed perferendis debi', 'Female', 'Nyssa Johns', 'Quintessa Cline', 'Rina Jackson', 'Ad in quis proident', 'Dolores assumenda ne', 'Sit quam eaque volu', 'Rollins and Cole Inc', 'Drake Whitney', 'Noelani Ramsey', 'Patrick Hester', 'Dolor et et et anim', 'Nulla et mollitia au', 'Optio nostrud aut a', 'Burt and Coffey Trading', 'Craig Mcintyre', 'Illana Simmons', 'Yeo Owen', 'Pariatur Fugit tem', 'Nisi architecto eos', 'Et in doloribus cons', 'Gibson Farley Traders', '31', 'Voluptatum voluptas', 'Mollitia autem perfe', '2021-10-06', '2021-10-21', '2021-10-29', '2021-10-19', 'New', 'kitys@mailinar.com', '$2y$10$e3PKL5uuVD6vNnfuDV/xlevR6apexAm37izMrMVTfx6', 'Approved', '2021-10-07 14:18:06'),
-(6, 'Sigourney Moss', 'Madison Cleveland', 'Jenette Murray', '2021-10-19', 'Laboriosam consequa', 'Perferendis suscipit', 'monixyn@mailinator.com', 'Nisi dolor ullam est', 'Male', 'Leigh Wall', 'Odysseus Cantu', 'Abra Spencer', 'Veniam adipisci acc', 'Ratione aliquip quis', 'In laborum dolore di', 'Peck Henderson LLC', 'Martha Stevenson', 'Alice Bradford', 'Hedda Hutchinson', 'Et nulla ullamco nat', 'Eiusmod qui cillum p', 'Qui in aliquip ea ve', 'Sosa and Ryan Associates', 'Walter Wagner', 'Berk Contreras', 'Quynn Frye', 'Nulla dolor voluptat', 'Alias voluptatem iur', 'Ut ipsum in ex ipsam', 'Holden and Carpenter Trading', '304', 'Laborum Dolores des', 'Sit possimus repud', '2021-10-07', '2021-10-28', '2021-10-25', '2021-10-12', 'Old Scholar', 'qokacat@mailinator.com', '$2y$10$fYE6RyKTtQ5D166HRCMCbOEm4H44LbEFRS4RQUv7IHO', 'Approved', '2021-10-09 12:42:37'),
-(7, 'Steven Myers', 'Demetrius Burgess', 'Cullen Salinas', '2021-10-13', 'Sunt quae reiciendis', 'Sed aut laborum Rer', 'xuboxe@mailinator.com', 'Dolor dolorum minim', 'Female', 'Rhoda Hayden', 'Teegan Bailey', 'Jakeem Nguyen', 'Provident iste nihi', 'Quis eius eum laboru', 'Iusto aut et eius et', 'Faulkner and Day Co', 'Walker Wise', 'Christian Vincent', 'Allistair Patrick', 'Et voluptatum possim', 'Necessitatibus ab ut', 'Sint consequatur ven', 'Dominguez and Hernandez LLC', 'Eliana Figueroa', 'Oscar Burgess', 'Yvonne Mcgowan', 'Aut ut temporibus bl', 'Vel ut rerum molesti', 'Et cupidatat laborum', 'Greene and Barnett Co', '67', 'Doloribus est sint q', 'Natus quia sed offic', '2021-10-20', '2021-10-21', '2021-10-26', '2021-10-18', 'New', 'cufap@mailinator.com', '$2y$10$bOGuF0/wJYPJUiyNtRQnvO3m6pEMnColmUmZbsUkTO0', 'Approved', '2021-10-09 14:35:43'),
-(9, 'Maya Foreman', 'Germane Buckley', 'Ifeoma Robbins', '2021-10-13', 'Velit voluptate inv', 'Eum expedita natus e', 'xenuvory@mailinator.com', 'Modi veniam reprehe', 'Female', 'Germane Stout', 'Stewart Hendricks', 'Rhona Jenkins', 'In tempore maiores', 'Nostrum dicta enim c', 'Ea dicta dolorem tem', 'Bishop Snow Traders', 'Dacey Dunn', 'Kirestin Raymond', 'Darryl Mitchell', 'Est laborum numquam', 'Ut ut rem voluptatem', 'Magnam pariatur Sap', 'Perkins Bell Associates', 'Timothy Castro', 'Kenyon Mcfarland', 'Brendan Middleton', 'Ad accusantium vel e', 'Sequi ex et lorem do', 'Nulla at nostrum sin', 'Warner Potter LLC', '587', 'Commodo nihil lorem', 'Iste ad excepteur qu', '2021-10-27', '2021-10-12', '2021-10-20', '2021-10-17', 'New', 'sefale@mailinator.com', '$2y$10$TUHbwOx/64XMWAHh3/xn9.cl20nXRD/sPG4lzO7O5Aa', 'Approved', '2021-10-09 14:50:45'),
-(13, 'Benedict Walls', 'Prescott Blackburn', 'Rachel Pate', '2021-10-19', 'Itaque autem quasi v', 'Atque adipisci qui e', 'bodycyfici@mailinator.com', 'Labore sed alias cup', 'Female', 'Taylor Franco', 'Keaton Evans', 'Emmanuel Weaver', 'Natus excepteur cons', 'Dolore facere est u', 'Adipisicing a aut qu', 'Kerr and Jarvis Trading', 'Scarlett Ellison', 'Indigo Oneill', 'Noah Hopper', 'In non ad in enim qu', 'Architecto aperiam o', 'Mollit reprehenderit', 'Vaughn Daniels Associates', 'Ebony Albert', 'Cullen Ramirez', 'Rajah Roach', 'Corporis porro minim', 'In nihil occaecat es', 'Minim velit excepte', 'Tyler Stanton Inc', '179', 'Minima sit consectet', 'Consectetur a enim n', '2021-10-14', '2021-10-20', '2021-10-28', '2021-11-22', 'New', 'pymenocune@mailinator.com', '$2y$10$jnivMCQJGogYdqsHBstPJuICnOWEvpEAe02U6y2YzIP', 'Approved', '2021-10-09 15:10:57'),
-(14, 'Dana Watson', 'Isaiah Gould', 'Orla Stein', '2021-10-14', 'Velit anim dolor ut', 'Vero ut repellendus', 'nemenar@mailinator.com', 'Qui aut vel voluptat', 'Male', 'Elvis Tran', 'Freya Robertson', 'Nola Webb', 'Accusantium aut repe', 'Esse deserunt et su', 'Officiis tempor esse', 'Mendez Roach LLC', 'Myra Bowers', 'Asher Gardner', 'Candace Carroll', 'Unde omnis aute ad u', 'Nostrud et eum sed a', 'Consequatur totam ap', 'Glass Huff Co', 'September Weiss', 'Martina Beard', 'Felix Kirby', 'Vel non iusto deseru', 'Dolore sint sit err', 'Eos eligendi possim', 'Mcfarland and Oconnor Associates', '908', 'Eaque expedita place', 'Recusandae Voluptat', '2021-10-14', '2021-10-29', '2021-10-27', '2021-10-13', 'New', 'qupu@mailinator.com', '$2y$10$d2ubnVkmkBpLldSBc8llJ.idvJIbzHBgBVZCWItT6Bl', 'Rejected', '2021-10-12 18:55:41'),
-(15, 'Eden Quinn', 'Amber Joyner', 'Idola English', '2021-10-12', 'Minim minima nihil c', 'Atque ipsa quis sed', 'pijarasuh@mailinator.com', 'Sunt praesentium sit', 'Female', 'Sonia Pollard', 'MacKenzie Carver', 'Cameran Suarez', 'Commodo earum provid', 'Inventore dolores ni', 'Deleniti Nam qui qui', 'Rhodes and Stewart Trading', 'Shelly Rojas', 'Zia Rutledge', 'Vivien Chase', 'Id sit doloribus re', 'Aut aut expedita des', 'Officiis commodi con', 'Bryant and Riley Traders', 'Ifeoma Andrews', 'Bradley Graham', 'Colton Durham', 'Asperiores iusto vol', 'Quam deleniti offici', 'Iusto est ex illo of', 'Carney and Bishop Trading', '30', 'Corporis et qui quib', 'Optio suscipit aliq', '2021-10-08', '2021-10-27', '2021-10-18', '2021-10-25', 'New', 'komavepyk@mailinator.com', '$2y$10$kJriO6uvY1IkZsJO7v5tu.HR3GuIjTADoLMweIckzr2', 'Approved', '2021-10-13 13:21:04'),
-(16, 'Echo Buchanan', 'Nell Peterson', 'Michelle Whitaker', '2021-10-07', 'Dolores aut officiis', 'Nisi qui do sit acc', 'rutuzyz@mailinator.com', 'Amet temporibus ut', 'Male', 'Raja Farrell', 'Conan Boyer', 'Nayda Silva', 'Eos illo veritatis e', 'Voluptatem nihil sus', 'Voluptate rem eligen', 'Conner and Rosales Traders', 'September Russell', 'Judith Decker', 'Deirdre Mckee', 'Voluptas officia ver', 'Culpa qui explicabo', 'Voluptas quia recusa', 'Thompson Harmon Associates', 'Britanni Gentry', 'Wanda Hill', 'Pamela Brady', 'Dolore omnis reprehe', 'Tempor sapiente obca', 'Veritatis aute fugit', 'Banks Potter Associates', '114', 'Excepturi ab non dic', 'Aut nisi ut eveniet', '2021-10-23', '2021-10-29', '2021-10-27', '2021-10-25', 'New', 'ryruzecy@mailinator.com', '$2y$10$1aEsa98I7APQ6maCZQouIOXSGBpmi8NnOwo28PsPFQB', 'Approved', '2021-10-13 13:49:02'),
-(17, 'Kirby Cotton', 'Judith Morgan', 'Harlan Osborne', '2021-10-12', 'Cillum dolores aliqu', 'Labore adipisci volu', 'texida@mailinator.com', 'Consequuntur perspic', 'Male', 'Rinah Rivers', 'Quamar Mejia', 'Azalia Joseph', 'Et dolores nisi quia', 'In quidem non unde a', 'Dolores quia vel per', 'Aguilar and Byrd Co', 'Jada Stein', 'Herman Dennis', 'Hamish Cooley', 'Dolore modi eos repu', 'Hic rerum sed dolor', 'Sapiente consequat', 'Horton and Horne Plc', 'Dean Little', 'Shoshana Jacobson', 'Amir Young', 'Sapiente eaque aperi', 'Velit dolorem facere', 'Minus ratione quidem', 'Woods and Nichols Plc', '488', 'Rerum aliquid cillum', 'Id odio suscipit nos', '2021-10-22', '2021-10-21', '2021-10-19', '2021-10-22', 'New', 'geqom@mailinator.com', '$2y$10$YS/oeE2X1iUqrAh6CFVikOOnp4J3uSAvAcwtiCzev4f', 'Approved', '2021-10-13 13:49:30'),
-(18, 'Reese Atkinson', 'Victor Gallegos', 'Angela Dickson', '2021-10-14', 'Beatae iure porro de', 'Voluptatum cumque it', 'janu@mailinator.com', 'Dolores ullam labore', 'Male', 'Nasim Gomez', 'Chancellor Rivera', 'Gregory Shepherd', 'Sed eius qui sapient', 'Omnis eiusmod sed et', 'Nihil autem ut eum q', 'Daniels and Rutledge Associates', 'Yuri Mccall', 'Rowan Lindsey', 'Hamish Vance', 'Dolor cillum ullamco', 'In enim illo consect', 'Est blanditiis hic s', 'Willis and Pacheco Plc', 'Cyrus Stanton', 'Cheyenne James', 'Kylynn Moore', 'Dolores porro ullamc', 'Libero et voluptatem', 'Ducimus quod repell', 'Key and Cotton Plc', '680', 'Voluptate veniam si', 'Eiusmod libero verit', '2021-10-22', '2021-10-21', '2021-10-15', '2021-10-26', 'New', 'rurew@mailinator.com', '$2y$10$co4Wbn9ZDEVrZyxVdZn.8.TENZjzgq8pKxL.vLbgHjf', 'Approved', '2021-10-13 13:50:01'),
-(19, 'Tana Howe', 'Curran Pierce', 'Carl Moses', '2021-10-26', 'Animi quam nulla ma', 'Do deserunt assumend', 'ludegeha@mailinator.com', 'Dolore eligendi expl', 'Female', 'Aladdin Wynn', 'Nehru Warner', 'Wendy Kerr', 'Eveniet et dicta la', 'Dolorem distinctio', 'Do quis quo adipisci', 'Rutledge and Meyer Inc', 'Kenneth Reynolds', 'Hedley Dean', 'Branden Serrano', 'Ipsam asperiores vol', 'Eaque voluptatum sit', 'Pariatur Dolore do', 'Ryan and Dale Associates', 'Adria Mitchell', 'Blossom Goodwin', 'Kirby Jacobson', 'Laborum et ea sed co', 'Et dolor eveniet co', 'Vel unde temporibus', 'Gilbert and Kline LLC', '960', 'Iure non nemo nihil', 'Rerum doloribus repr', '2021-10-15', '2021-10-20', '2021-10-21', '2021-10-15', 'New', 'rolujar@mailinator.com', '$2y$10$hFdqKFsG5M3wBwqcflJGJelnWw9KOY80zSZFaOKtybH', 'Approved', '2021-10-13 13:50:20'),
-(20, 'Audrey Hendricks', 'Kathleen Faulkner', 'Sandra Hyde', '2021-10-21', 'Quae inventore ad cu', 'Aliqua Porro ipsum', 'bodo@mailinator.com', 'Dolorem et vero iust', 'Female', 'Shellie Mitchell', 'Cameron Carney', 'Sonya Whitaker', 'Consequatur exceptur', 'Odit adipisicing et', 'Excepteur nostrum es', 'Navarro Lawrence Co', 'Inez Holt', 'Pascale Chase', 'Lila Mcdaniel', 'Est anim totam vitae', 'Reprehenderit ea eum', 'Aut nesciunt dolor', 'Dickson and Clark Trading', 'Acton Mathews', 'Wylie Schultz', 'Aladdin Klein', 'Velit sed quis non s', 'Quaerat atque omnis', 'Cumque aut nulla et', 'Rios Burt Associates', '97', 'Et eos cupiditate ip', 'Deleniti Nam dolorum', '2021-10-14', '2021-10-26', '2021-10-28', '2021-10-25', 'New', 'kikuti@mailinator.com', '$2y$10$tDwWbkriJBQOU9j6JDTOv.rlPh7B5aSzqDO3sdxSb7c', 'Approved', '2021-10-13 14:18:23'),
-(21, 'Ingrid Shaffer', 'Alexander Norris', 'Kuame Slater', '2021-10-22', 'Dicta totam aperiam', 'Earum exercitationem', 'miref@mailinator.com', 'Magni ex nostrud dis', 'Female', 'Eagan Mann', 'Jorden Sheppard', 'Lila Delacruz', 'Eu adipisicing omnis', 'Cillum adipisicing u', 'Nulla et commodo ame', 'Terrell and Leon Trading', 'Solomon Hall', 'Luke Craig', 'Geraldine Hamilton', 'Quia nemo magni haru', 'Voluptas irure Nam a', 'In omnis officia eum', 'Thomas Lewis Co', 'Len Wise', 'Vernon Matthews', 'Burton Ferguson', 'Ullam et qui tempore', 'Debitis in do dolore', 'Et ad in omnis elige', 'Rosario Case Co', '932', 'Velit itaque tempor', 'Velit Nam cupidatat', '2021-10-15', '2021-10-29', '2021-10-26', '2021-10-19', 'New', 'conad@mailinator.com', '$2y$10$Bp5dQrGceDOngjj2WMH1bOZGQQX.YsE5IZYWNq4mMYs', 'Rejected', '2021-10-13 14:20:11'),
-(22, 'Alfreda Pena', 'Ulysses Miller', 'Nero Middleton', '2021-10-23', 'Est quod molestiae o', 'Accusantium consecte', 'woluxyk@mailinator.com', 'Ut sed qui aute omni', 'Female', 'Ria Mosley', 'Vera Ramirez', 'Hyacinth Dawson', 'Mollit earum incidun', 'Quos est maiores no', 'Voluptas sint iste d', 'Burt and Wall Inc', 'Hedwig Austin', 'Charissa Luna', 'Randall Nixon', 'Praesentium laborum', 'Aut anim qui fuga I', 'Sunt corporis sed ad', 'Beard Martin LLC', 'Riley Casey', 'Brock Conway', 'Nero Ramirez', 'Aut omnis ut anim es', 'Placeat sed incidid', 'Error aut et qui ad', 'Torres and Wood Co', '931', 'Non modi eveniet cu', 'Officia ducimus et', '2021-10-21', '2021-10-23', '2021-10-25', '2021-10-28', 'New', 'befu@mailinator.com', '$2y$10$Xl5T8ihDZNs5hJGaEF1y7O6LK7MPcHntNz7jx2O4u43', 'Rejected', '2021-10-13 14:20:33'),
-(25, 'Tana Reyes', 'Sigourney Roy', 'Barrett Aguirre', '2021-10-22', 'Explicabo Molestias', 'Enim sequi porro dol', 'vixe@mailinator.com', 'Delectus vel volupt', 'Female', 'Quynn Clay', 'Maris Whitley', 'Scott Webb', 'Consequatur voluptat', 'Fugit aut qui qui d', 'Voluptas eu mollit c', 'Patrick Conway LLC', 'Petra Mercado', 'Quail Pittman', 'Heidi Booth', 'Molestiae hic dolore', 'Voluptatem Quam sun', 'Occaecat anim dolore', 'Mendoza Davidson Trading', 'Tatiana Freeman', 'Keelie Farrell', 'Tamara Bradley', 'Consectetur reprehen', 'Soluta qui eum culpa', 'Ab totam anim elit', 'Wooten and Head Co', '80', 'Aliquip magna magna', 'Quidem blanditiis ne', '2021-10-15', '2021-10-26', '2021-10-21', '2021-10-22', 'New', 'dyqiwur@mailinator.com', '$2y$10$8ioqYEmWAdu9yfECuUJ48OrBN11d3jZEkqF6RB2Bk9z', 'Rejected', '2021-10-13 14:21:35'),
-(26, 'Rafael Farley', 'Alec Dorsey', 'Geoffrey Larson', '2021-10-21', 'Et exercitation in l', 'Assumenda nulla ipsu', 'junogan@mailinator.com', 'Quae facilis quo et', 'Male', 'Linus Gates', 'Aquila Mitchell', 'Lars Adkins', 'Culpa maxime cupidit', 'Expedita eiusmod aut', 'Dolor necessitatibus', 'Farmer Winters Associates', 'Jolie Gilliam', 'Gwendolyn Albert', 'Lara Gillespie', 'Odio ex dolor volupt', 'Corrupti sunt quisq', 'Cupidatat magnam eos', 'Ingram Hardin Co', 'Madaline Vaughan', 'Giselle Harrison', 'Raphael Hayden', 'Eiusmod ut sint enim', 'Asperiores tempor mo', 'Similique sint eu do', 'Nelson Bass Plc', '648', 'Ut ipsum possimus', 'Sapiente officia rep', '2021-10-15', '2021-10-22', '2021-10-30', '2021-10-25', 'Old Scholar', 'haguhok@mailinator.com', '$2y$10$Sd3E3f8DvTpgBccV/4n6EO4tHB/1l1Gll.Qdbehi0jj', 'Rejected', '2021-10-13 14:21:57'),
-(27, 'Carl Clay', 'Ariel Montoya', 'Zahir Parker', '2021-10-29', 'Quibusdam consequatu', 'Sapiente aut enim vo', 'wyxunuguho@mailinator.com', 'Incididunt eos sit', 'Male', 'Jaime Good', 'Avram Rice', 'Edward Hawkins', 'Itaque tempor dolore', 'Quam natus quidem id', 'Modi distinctio Adi', 'Lindsey and Cochran LLC', 'Regan Houston', 'Erica Flynn', 'Jenette Mccall', 'Corporis veritatis d', 'Repudiandae reprehen', 'Ex commodi aliquam q', 'Boyer and Guerrero Co', 'Hall Buckley', 'Hannah Keith', 'Mallory Calhoun', 'Minus ea nihil quam', 'Elit voluptate quid', 'Dignissimos minim et', 'Waller and Zamora LLC', '969', 'Nesciunt neque simi', 'Pariatur Aute proid', '2021-10-16', '2021-10-27', '2021-10-18', '2021-10-20', 'New', 'zuhuva@mailinator.com', '$2y$10$nmPzKuTtNfznGvWN3Q1RreY/zg1OdD3VMlfIWnpaE8.', 'Rejected', '2021-10-13 14:22:24'),
-(28, 'Irma Brennan', 'Shafira Galloway', 'Deirdre Dejesus', '2021-10-22', 'Aut soluta rerum dol', 'Blanditiis tempora q', 'gicodaco@mailinator.com', 'Rerum sunt est aut', 'Female', 'Baxter Carroll', 'Nicole Montgomery', 'Hedy Sosa', 'Illum qui suscipit', 'Dicta est eos dolor', 'Ut sunt voluptatibus', 'Gates and Copeland Traders', 'Macy Williamson', 'Hedy Walton', 'Vladimir Warner', 'Adipisci eum rem off', 'Dignissimos atque au', 'Aut iure doloribus c', 'Higgins Sims Associates', 'Kevin Bradshaw', 'Giacomo Cohen', 'Demetria Farrell', 'Cumque nesciunt nul', 'Deserunt sit aliquam', 'Deserunt dicta aliqu', 'Mclaughlin Davis Associates', '525', 'Reprehenderit ut nec', 'Laboris beatae enim', '2021-10-15', '2021-10-26', '2021-10-30', '2021-10-25', 'New', 'socum@mailinator.com', '$2y$10$RgVRGpDyAhdKugslXjWNG./IhcC.iU9y4gN7hJ0Oi/h', 'Rejected', '2021-10-13 14:22:43'),
-(29, 'Ramona Rodgers', 'Rigel Cannon', 'Tad Chaney', '2021-10-29', 'Quis qui nostrud quo', 'Iusto eiusmod deseru', 'qufez@mailinator.com', 'Sint quidem asperio', 'Male', 'Amy Shaw', 'Phyllis Rogers', 'Geoffrey Deleon', 'Ipsum nemo molestia', 'Cupiditate est corpo', 'Id ullam ut consequa', 'Short and Garrett Co', 'Daphne Hooper', 'Jolie Mcknight', 'Aristotle Rasmussen', 'Aute pariatur Verit', 'Vitae et eius ea ex', 'Fugiat nihil impedi', 'Strickland Walker LLC', 'Ingrid Powers', 'Uriel Flynn', 'Lilah Hodges', 'Quisquam dolore itaq', 'Harum distinctio Ma', 'A sunt velit est qu', 'Campbell and Mcintyre Co', '991', 'Molestiae ab sunt ve', 'Voluptates expedita', '2021-10-23', '2021-10-23', '2021-10-19', '2021-10-27', 'New', 'kyfigixov@mailinator.com', '$2y$10$2XxqnHc1bFCSrz5rcRQxzumDDHCLllItroYNZqLOsOl', 'Approved', '2021-10-13 14:24:11'),
-(30, 'Caryn Duncan', 'Olympia Wall', 'Angelica Kirby', '2021-10-21', 'Aliquam dolor id re', 'Et praesentium est e', 'qawa@mailinator.com', 'Nulla Nam et in omni', 'Female', 'Kylie Marquez', 'Blake Morales', 'Ishmael Duran', 'Et adipisci ex aliqu', 'Accusantium laudanti', 'Qui adipisci non sed', 'Snider Mcdowell LLC', 'Cecilia Howard', 'Noel Rivas', 'Giselle Beard', 'Proident aut velit', 'Et cillum animi mol', 'Voluptates velit ne', 'Riggs and Greene Associates', 'Elliott Weiss', 'Zephr Hampton', 'Zachary Perry', 'Ut aute dolor aut ne', 'Laboriosam et nulla', 'Pariatur Delectus', 'Conner Yang Traders', '409', 'Deleniti sed excepte', 'Sed ad eos in volup', '2021-10-22', '2021-10-22', '2021-10-23', '2021-10-27', 'Old Scholar', 'vimytuju@mailinator.com', '$2y$10$CNJAyv55U8EQAHOmIBtua.yaN9uFsvrOWrrz1mt/AJl', 'Approved', '2021-10-13 14:24:28'),
-(31, 'Hop Mccray', 'Fritz Rosa', 'Beverly Ortega', '2021-10-27', 'Assumenda ducimus n', 'Odio odio quisquam v', 'zafyso@mailinator.com', 'Maxime fugiat tempo', 'Female', 'Heidi Petersen', 'Robin Horton', 'Whitney Nash', 'Porro officia commod', 'Et qui eos cupidita', 'Officiis error est r', 'Moody Casey Trading', 'Xena Walton', 'Martina Rollins', 'Patricia Mccray', 'Qui quod adipisci do', 'Itaque maxime except', 'Tempor sint ipsum', 'Hart Mccarty Traders', 'Paki Boyle', 'Abdul Allen', 'Coby Stein', 'Laboris nemo et face', 'Ut iure sunt consequ', 'Facere ipsum dicta', 'Gillespie Sweet Co', '669', 'Sit aliqua Quis ear', 'Rerum veritatis quis', '2021-10-15', '2021-10-22', '2021-10-28', '2021-10-18', 'New', 'cegi@mailinator.com', '$2y$10$Y5LMWSbKRNgPkHxvcCeWbOal0CptU5vIsfvE2XBPfT3', 'Pending', '2021-10-13 14:39:42'),
-(32, 'Ezekiel Mooney', 'Gay Cantrell', 'Beverly Morrison', '2021-10-20', 'Alias sed autem reic', 'Consectetur quia sa', 'gepym@mailinator.com', 'Amet accusantium ex', 'Female', 'Latifah Mcmillan', 'Ebony Chen', 'Scarlet Huber', 'Nihil dolorem illo r', 'Fugiat eum et nostru', 'Pariatur Amet moll', 'Murray Casey Inc', 'Jameson Nielsen', 'Wyoming Obrien', 'Leslie Johnson', 'Aut aliquam cumque s', 'Non minim enim asper', 'Molestias ea beatae', 'Rosa and Dorsey LLC', 'Denton Cleveland', 'Constance Hardin', 'Ivor Briggs', 'Nemo occaecat omnis', 'Suscipit reprehender', 'Ut tempora odio moll', 'Vance and Reyes Associates', '752', 'Dolor sed repellendu', 'Amet sunt nesciunt', '2021-10-14', '2021-10-23', '2021-10-14', '2021-10-21', 'New', 'timuryrun@mailinator.com', '$2y$10$fpzdDDGpI6tNU2cU.bumGuxhj7R0LmXCzMBvcIV4xRx', 'Pending', '2021-10-13 15:08:21'),
-(33, 'Tyler Black', 'Paki Soto', 'Rama Lara', '2016-02-11', 'Magni soluta ipsum', 'Sunt amet error a p', 'vida@mailinator.com', 'Maiores deserunt vol', 'Male', 'Connor Serrano', 'Harrison Wise', 'Owen Bell', 'Explicabo Porro eve', 'Molestias tempor tem', 'Occaecat sunt mollit', 'Bowers Johnston LLC', 'Macy Rosario', 'Celeste Beard', 'Gail Harrell', 'Iusto veniam quos e', 'Quia ab assumenda un', 'Sit tempore atque d', 'Pitts Delgado Plc', 'Cassandra Bowers', 'Warren Osborne', 'Adria Phillips', 'Magna ducimus aliqu', 'Nostrum voluptatum u', 'Maxime enim eveniet', 'Sawyer and Roach Trading', '465', 'Aperiam suscipit ame', 'Laboriosam id ipsam', '2021-10-20', '2021-10-19', '2021-10-19', '2021-10-19', 'Old Scholar', 'nadybip@mailinator.com', '$2y$10$Z0E.Qju0m7ExGGSebTX6lefBLq/L6Gi8D6Qplvk8/An', 'Pending', '2021-10-13 15:15:45'),
-(34, 'jhezer', 'arabic', 'jhonson', '2000-11-29', 'Filipino', 'langtad, city of naga cebu', 'jhonsonjhezer01@outlook.com', '09127564335', 'Male', 'Aladdin', 'Wilkinson', 'Jackson', 'city of naga, cebu', '09123456543', 'grandfather', 'none', 'Addison', 'Ramsey', 'Patrick', 'talisay city, cebu', '09453273533', 'none', 'none', 'Quentin', 'Quinn', 'Anderson', 'barili, cebu city', '09143647435', 'none', 'none', '10000-below', '89.5', 'best in attendance', '2015-03-31', '2015-04-01', '2015-04-01', '2015-04-01', 'Old Scholar', 'jhonsonjhezer01@outlook.com', '$2y$10$eRN3CD.WjfwHF8CVI9pAFeDHAm.gkPXPhSWMl19I7dE', 'Pending', '2021-10-13 15:33:11');
+INSERT INTO `tbl_acad` (`sacad_id`, `safname`, `samname`, `salname`, `sanext`, `sadbirth`, `sactship`, `saaddress`, `sapemail`, `sacontact`, `sagender`, `sagfname`, `sagmname`, `saglname`, `sagnext`, `sagaddress`, `sagcontact`, `sagoccu`, `sagcompany`, `saffname`, `safmname`, `saflname`, `safnext`, `safaddress`, `safcontact`, `safoccu`, `safcompany`, `samfname`, `sammname`, `samlname`, `samnext`, `samaddress`, `samcontact`, `samoccu`, `samcompany`, `saspcyincome`, `sagwa`, `saraward`, `sadawardrceive`, `sadsprc`, `sadsprcstat`, `sadspgm`, `sadspgmstat`, `sadspcr`, `sadspcrstat`, `sacapstype`, `saaemail`, `sapass`, `sagrantstat`, `sascholarstat`, `sadapply`) VALUES
+(43, 'Dahlia Tanner', 'Althea Hooper', 'Eliana Washington', 'N/A', '2021-11-18', 'Magnam culpa blandi', 'Tempor amet volupta', 'muxu@mailinator.com', 'Repellendus Tempor ', 'Male', 'Kadeem Molina', 'Hadassah Brewer', 'Ivan Abbott', 'N/A', 'Reprehenderit autem ', 'Omnis nihil qui labo', 'Dolorem voluptate vi', 'Carroll and Delgado Traders', 'Pascale Tucker', 'Cheyenne Copeland', 'Kevin Serrano', 'N/A', 'Ut lorem quasi error', 'Et assumenda facere ', 'Et voluptate facere ', 'Church and Clarke Inc', 'Ryder Haynes', 'Walker Huffman', 'Jennifer Sosa', 'N/A', 'Recusandae Voluptat', 'Nihil ad non laudant', 'Nemo sed quod animi', 'Everett and Oconnor Co', '438', 'Proident ullamco ea', 'Quae nemo corrupti ', '2021-11-18', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Academic', 'fucacysoju@mailinator.com', '$2y$10$oi4xJlQuHbXDS5w1dZY85euGETaULdIAO1QIwwYAZm1', 'New', 'Pending', '2021-11-18'),
+(45, 'Lenore Ryan', 'Benedict Santos', 'Lucas Massey', 'N/A', '2021-11-18', 'Iure ratione est ani', 'Veritatis sapiente o', 'byxozysap@mailinator.com', 'Asperiores enim sed ', 'Female', 'Amity Barry', 'Ora Phelps', 'Caldwell Hood', 'Sr.', 'Excepteur voluptas q', 'Eiusmod voluptate al', 'Molestiae cum nostru', 'Kirby and Rosa Co', 'Uta William', 'Oleg Fleming', 'Aline Hood', 'Jr.', 'Perspiciatis nobis ', 'Sapiente sequi ut se', 'Dolore laborum amet', 'Kirkland Mcclain LLC', 'Stone Snider', 'Vivien Hester', 'Moses Reilly', 'Jr.', 'Cupidatat aut ipsum', 'Ea consectetur et pe', 'Occaecat eiusmod eni', 'Colon and Sanders Inc', '933', 'Qui ut magni natus a', 'Dolores eaque vel no', '2021-11-18', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Academic', 'pyrugy@mailinator.com', '$2y$10$7E/A79PJW.kP4bInHDb8V.fTSYJL8ioUdeNJbZwyLzg', 'New', 'Pending', '2021-11-18'),
+(46, 'Madonna Frank', 'Vernon Savage', 'Leandra Lee', 'Sr.', '2021-11-18', 'Suscipit perspiciati', 'Quis nulla ex dignis', 'copy@mailinator.com', 'Officiis in eum qui ', 'Male', 'Quamar Snow', 'Kevyn Franco', 'Yoshio Cherry', 'Jr.', 'Tempora a quia fugit', 'Enim vitae possimus', 'Rerum qui molestiae ', 'Lowe Olson Associates', 'Amethyst Hardin', 'Roth Hebert', 'Rafael Baird', 'N/A', 'Do saepe cupidatat d', 'Est sit molestias e', 'Error quos est labo', 'Willis Ortega Inc', 'Shaine Leblanc', 'Abbot Lindsay', 'Emerson Benson', 'Sr.', 'Accusamus veniam si', 'Cupidatat voluptas d', 'Ea elit quasi excep', 'Phillips and Farmer LLC', '4', 'Perspiciatis alias ', 'Deserunt repellendus', '2021-11-18', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Academic', 'qupagu@mailinator.com', '$2y$10$G1HXx83B39V68gEgEwiF6O1wAcEvwpI/sMJdI2Q4DmL', 'New', 'Pending', '2021-11-18'),
+(47, 'Brooke Tyson', 'Forrest Huffman', 'Reece Mason', 'N/A', '2021-11-18', 'Do sint sit non ea s', 'Accusamus cumque dol', 'gikux@mailinator.com', 'Eveniet ducimus ma', 'Female', 'Bruno Spence', 'Hope Herring', 'Julie Sweet', 'Sr.', 'Eligendi esse autem', 'Molestiae nulla sit', 'Molestiae facilis au', 'Hahn Meyer Traders', 'Larissa Molina', 'Nadine Reeves', 'Amos Hammond', 'Jr.', 'Nemo nihil officia m', 'Dolorum magna cupidi', 'Perspiciatis iure d', 'Strickland and Hayes Co', 'Nayda Byers', 'Hedley Webster', 'Kadeem Cooper', 'Sr.', 'Ea nisi similique do', 'Sint sit enim labor', 'Vel qui ipsam velit ', 'Bradford and Gonzales Co', '949', 'Pariatur Officia qu', 'Quia labore enim sit', '2021-11-18', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Academic', 'wurix@mailinator.com', '$2y$10$zrw3wl35p9oU57sFTyA/lOcz773Knbm0XZt8sDff7DN', 'New', 'Pending', '2021-11-18');
 
 -- --------------------------------------------------------
 
@@ -127,6 +114,150 @@ CREATE TABLE `tbl_admin` (
 
 INSERT INTO `tbl_admin` (`admin_id`, `admin_email_address`, `admin_password`, `admin_name`, `school_name`, `school_address`, `school_contact_no`, `school_logo`) VALUES
 (1, 'admin@gmail.com', 'password', 'Administrator', 'St. Cecilia\'s College Cebu, Inc.', 'Natalio B. Bacalso S National Hwy, Minglanilla, Cebu', '(032) 490 8511', '../images/1940074418.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_ched`
+--
+
+CREATE TABLE `tbl_ched` (
+  `sched_id` int(11) NOT NULL,
+  `scfname` varchar(50) NOT NULL,
+  `scmname` varchar(50) NOT NULL,
+  `sclname` varchar(100) NOT NULL,
+  `scnext` varchar(20) NOT NULL,
+  `scdbirth` date NOT NULL,
+  `scgender` varchar(20) NOT NULL,
+  `sccivilstat` varchar(20) NOT NULL,
+  `scpbirth` varchar(100) NOT NULL,
+  `scaddress` varchar(100) NOT NULL,
+  `sczcode` varchar(20) NOT NULL,
+  `scschname` varchar(100) NOT NULL,
+  `scsaddress` varchar(100) NOT NULL,
+  `scstype` varchar(20) NOT NULL,
+  `schygrade` varchar(50) NOT NULL,
+  `scctship` varchar(50) NOT NULL,
+  `scmnum` varchar(20) NOT NULL,
+  `scpemail` varchar(50) NOT NULL,
+  `scdisability` varchar(100) NOT NULL,
+  `scflname` varchar(50) NOT NULL,
+  `scffname` varchar(50) NOT NULL,
+  `scfmname` varchar(50) NOT NULL,
+  `scfstatus` varchar(20) NOT NULL,
+  `scfaddress` varchar(100) NOT NULL,
+  `scfoccu` varchar(50) NOT NULL,
+  `scfeduc` varchar(50) NOT NULL,
+  `scmlname` varchar(100) NOT NULL,
+  `scmfname` varchar(100) NOT NULL,
+  `scmmname` varchar(50) NOT NULL,
+  `scmstatus` varchar(20) NOT NULL,
+  `scmaddress` varchar(100) NOT NULL,
+  `scmoccu` varchar(50) NOT NULL,
+  `scmeduc` varchar(50) NOT NULL,
+  `scptgross` varchar(20) NOT NULL,
+  `scnsibling` varchar(20) NOT NULL,
+  `scsintend` varchar(100) NOT NULL,
+  `scsadd` varchar(100) NOT NULL,
+  `scschooltype` varchar(10) NOT NULL,
+  `sccourse` varchar(50) NOT NULL,
+  `sccoursestat` varchar(20) NOT NULL,
+  `scdrprc` date DEFAULT NULL,
+  `scdrprcstat` varchar(50) DEFAULT NULL,
+  `scdrbrgyin` date DEFAULT NULL,
+  `scdrbrgyinstat` varchar(50) DEFAULT NULL,
+  `scdrpgm` date DEFAULT NULL,
+  `scdrpgmstat` varchar(50) DEFAULT NULL,
+  `scschtype` varchar(50) DEFAULT NULL,
+  `scaemail` varchar(50) NOT NULL,
+  `scapass` varchar(100) NOT NULL,
+  `scgrantstat` varchar(50) NOT NULL,
+  `scschstat` varchar(10) NOT NULL,
+  `scdapply` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_ched`
+--
+
+INSERT INTO `tbl_ched` (`sched_id`, `scfname`, `scmname`, `sclname`, `scnext`, `scdbirth`, `scgender`, `sccivilstat`, `scpbirth`, `scaddress`, `sczcode`, `scschname`, `scsaddress`, `scstype`, `schygrade`, `scctship`, `scmnum`, `scpemail`, `scdisability`, `scflname`, `scffname`, `scfmname`, `scfstatus`, `scfaddress`, `scfoccu`, `scfeduc`, `scmlname`, `scmfname`, `scmmname`, `scmstatus`, `scmaddress`, `scmoccu`, `scmeduc`, `scptgross`, `scnsibling`, `scsintend`, `scsadd`, `scschooltype`, `sccourse`, `sccoursestat`, `scdrprc`, `scdrprcstat`, `scdrbrgyin`, `scdrbrgyinstat`, `scdrpgm`, `scdrpgmstat`, `scschtype`, `scaemail`, `scapass`, `scgrantstat`, `scschstat`, `scdapply`) VALUES
+(5, 'Nomlanga Walls', 'Claudia English', 'Mariko Velazquez', 'N/A', '2021-11-18', 'Male', 'Single', 'Fugiat eum vero cupi', 'Aut ipsa quis est c', 'Dolores labore repre', 'Ut enim vero ut cupi', 'Doloremque reprehend', 'Private', 'Numquam illo id qui', 'Qui aut exercitation', 'Voluptatem itaque vo', 'vejep@mailinator.com', 'Iure anim doloribus ', 'Karleigh Salazar', 'Deborah Harding', 'Chava Santos', 'Deceased', 'Est exercitation sit', 'Minus nobis culpa c', 'Minima facere lorem ', 'Clare Manning', 'Sylvia Crawford', 'Sade Hendricks', 'Deceased', 'Ut nulla minima dolo', 'Exercitationem nihil', 'Laudantium aliqua ', 'Sit ex provident i', 'Soluta assumenda fac', 'Veniam vel illum e', 'Labore laudantium u', 'Private', 'Minim aut et veniam', 'Priority', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'CHED', 'decen@mailinator.com', '$2y$10$7U3HZQ.59eX2wTNKuYbgT.n5kL/b/jiIM6KVBhenN0jfneCB9923O', 'New', 'Pending', '2021-11-18'),
+(6, 'Burke Molina', 'Quon Espinoza', 'Sonya Tyler', 'Sr.', '2021-11-18', 'Female', 'Married', 'Impedit et eos par', 'Doloremque consectet', 'In quas quam maxime ', 'Illo labore ad quo q', 'Ullam explicabo Id ', 'Private', 'Sed officia quos acc', 'Ea dolore fugit aut', 'Voluptatum nulla qui', 'coqetymula@mailinator.com', 'Pariatur Minim dist', 'Driscoll Villarreal', 'Inga Curry', 'Taylor Lynch', 'Deceased', 'Tenetur recusandae ', 'Excepteur dolorem ac', 'Velit aut corporis v', 'Hasad Gilbert', 'Sara Norton', 'Kiona Elliott', 'Living', 'Illo doloremque ut a', 'Rem non ut quisquam ', 'Esse laborum do ut ', 'Nihil sunt voluptas', 'Nulla consequuntur e', 'Ut occaecat voluptat', 'Aliquid minus dolor ', 'Public', 'Qui ad aliqua Lauda', 'Not Priority', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'CHED', 'kyfebo@mailinator.com', '$2y$10$3BEEYrhamKbDkiakcg9NVOCj71gUJgS1pMiqgX1HqgyVISRIBx.Um', 'New', 'Pending', '2021-11-18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_nonacad`
+--
+
+CREATE TABLE `tbl_nonacad` (
+  `snacad_id` int(11) NOT NULL,
+  `snfname` varchar(50) NOT NULL,
+  `snmname` varchar(50) NOT NULL,
+  `snlname` varchar(50) NOT NULL,
+  `snnext` varchar(10) NOT NULL,
+  `sndbirth` date NOT NULL,
+  `snctship` varchar(50) NOT NULL,
+  `snaddress` varchar(100) NOT NULL,
+  `snpemail` varchar(50) NOT NULL,
+  `sncontact` varchar(50) NOT NULL,
+  `sngender` varchar(50) NOT NULL,
+  `sncourse` varchar(100) NOT NULL,
+  `snyrlvl` varchar(10) NOT NULL,
+  `sngfname` varchar(50) NOT NULL,
+  `sngmname` varchar(50) NOT NULL,
+  `snglname` varchar(50) NOT NULL,
+  `sngnext` varchar(10) NOT NULL,
+  `sngaddress` varchar(50) NOT NULL,
+  `sngcontact` varchar(50) NOT NULL,
+  `sngoccu` varchar(50) NOT NULL,
+  `sngcompany` varchar(50) NOT NULL,
+  `snffname` varchar(50) NOT NULL,
+  `snfmname` varchar(50) NOT NULL,
+  `snflname` varchar(50) NOT NULL,
+  `snfnext` varchar(10) NOT NULL,
+  `snfaddress` varchar(100) NOT NULL,
+  `snfcontact` varchar(50) NOT NULL,
+  `snfoccu` varchar(50) NOT NULL,
+  `snfcompany` varchar(50) NOT NULL,
+  `snmfname` varchar(50) NOT NULL,
+  `snmmname` varchar(50) NOT NULL,
+  `snmlname` varchar(50) NOT NULL,
+  `snmnext` varchar(10) NOT NULL,
+  `snmaddress` varchar(100) NOT NULL,
+  `snmcontact` varchar(50) NOT NULL,
+  `snmoccu` varchar(50) NOT NULL,
+  `snmcompany` varchar(50) NOT NULL,
+  `snspcyincome` varchar(50) NOT NULL,
+  `snrappnas` varchar(200) NOT NULL,
+  `snbos` varchar(100) NOT NULL,
+  `snsskills` varchar(100) NOT NULL,
+  `sntwinterest` varchar(100) NOT NULL,
+  `snpschatt` varchar(100) NOT NULL,
+  `snpschadd` varchar(100) NOT NULL,
+  `snpyrlvl` varchar(100) NOT NULL,
+  `snasprc` date DEFAULT NULL,
+  `snasprcstat` varchar(50) DEFAULT NULL,
+  `snapgm` date DEFAULT NULL,
+  `snapgmstat` varchar(50) DEFAULT NULL,
+  `sntbytpic` date DEFAULT NULL,
+  `sntbytpicstat` varchar(50) DEFAULT NULL,
+  `snpbrgyin` date DEFAULT NULL,
+  `snpbrgyinstat` varchar(50) DEFAULT NULL,
+  `snacapstype` varchar(30) NOT NULL,
+  `snaemail` varchar(50) NOT NULL,
+  `snapass` varchar(50) NOT NULL,
+  `sngrantstat` varchar(20) NOT NULL,
+  `snascholarstat` varchar(30) NOT NULL,
+  `snadapply` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_nonacad`
+--
+
+INSERT INTO `tbl_nonacad` (`snacad_id`, `snfname`, `snmname`, `snlname`, `snnext`, `sndbirth`, `snctship`, `snaddress`, `snpemail`, `sncontact`, `sngender`, `sncourse`, `snyrlvl`, `sngfname`, `sngmname`, `snglname`, `sngnext`, `sngaddress`, `sngcontact`, `sngoccu`, `sngcompany`, `snffname`, `snfmname`, `snflname`, `snfnext`, `snfaddress`, `snfcontact`, `snfoccu`, `snfcompany`, `snmfname`, `snmmname`, `snmlname`, `snmnext`, `snmaddress`, `snmcontact`, `snmoccu`, `snmcompany`, `snspcyincome`, `snrappnas`, `snbos`, `snsskills`, `sntwinterest`, `snpschatt`, `snpschadd`, `snpyrlvl`, `snasprc`, `snasprcstat`, `snapgm`, `snapgmstat`, `sntbytpic`, `sntbytpicstat`, `snpbrgyin`, `snpbrgyinstat`, `snacapstype`, `snaemail`, `snapass`, `sngrantstat`, `snascholarstat`, `snadapply`) VALUES
+(10, 'Idola Foreman', 'James Klein', 'Fitzgerald Barron', 'Jr.', '2021-11-18', 'Commodi aut necessit', 'Neque sint dolorum ', 'zutoryra@mailinator.com', 'Veritatis qui eaque ', 'Male', 'Cupiditate suscipit ', 'Molestias ', 'Rhona Head', 'Harriet Calhoun', 'Jarrod Barron', 'Jr.', 'Nostrum cupiditate i', 'Suscipit harum minus', 'Voluptatem Dolore s', 'Blake and Chan Co', 'Wallace Macias', 'Lacy Mcguire', 'Hector Floyd', 'Sr.', 'Sint officia tempori', 'Ad fugiat molestiae ', 'Qui est consequatur', 'Lopez and Vaughan Traders', 'Donovan Dunn', 'Forrest Pratt', 'Allen Simmons', 'N/A', 'Irure cumque dolorib', 'Rerum quis consequat', 'Delectus accusamus ', 'Grimes Fox Associates', '640', 'Magnam quis facilis ', 'Nihil eu magna earum', 'Eiusmod omnis quo qu', 'Aperiam possimus cu', 'Sint omnis ab volup', 'Ut molestias id cons', 'Inventore ut volupta', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Non-Academic', 'lovuguhyhi@mailinator.com', '$2y$10$gZqbU0y0EraQW/RCE1y5dug2byLv53TunI8o1arvyfQ', 'New', 'Pending', '2021-11-18');
 
 -- --------------------------------------------------------
 
@@ -192,6 +323,63 @@ INSERT INTO `tbl_student` (`patient_id`, `patient_email_address`, `patient_passw
 (4, 'oliviabaker@gmail.com', 'password', 'Olivia', 'Baker', '2001-04-05', 'Female', 'Diamond street, 115, NYC', '7539518520', 'Married', '2021-02-19 18:28:23', '8902e16ef62a556a8e271c9930068fea', 'Yes'),
 (5, 'web-tutorial@programmer.net', 'password', 'Amber', 'Anderson', '1995-07-25', 'Female', '2083 Cameron Road Buffalo, NY 14202', '75394511442', 'Single', '2021-02-23 17:50:06', '1909d59e254ab7e433d92f014d82ba3d', 'Yes');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_unifast`
+--
+
+CREATE TABLE `tbl_unifast` (
+  `sunifast_id` int(11) NOT NULL,
+  `sustudent_id` varchar(50) NOT NULL,
+  `suslname` varchar(50) NOT NULL,
+  `susfname` varchar(50) NOT NULL,
+  `susmname` varchar(50) NOT NULL,
+  `susnext` varchar(10) NOT NULL,
+  `susgender` varchar(10) NOT NULL,
+  `susdbirth` date NOT NULL,
+  `suscontact` varchar(20) NOT NULL,
+  `susaddress` varchar(100) NOT NULL,
+  `susspattended` varchar(100) NOT NULL,
+  `suscp` varchar(100) NOT NULL,
+  `susyl` varchar(50) NOT NULL,
+  `suspemail` varchar(20) NOT NULL,
+  `susflname` varchar(50) NOT NULL,
+  `susffname` varchar(50) NOT NULL,
+  `susfmname` varchar(50) NOT NULL,
+  `susfnext` varchar(20) NOT NULL,
+  `susmlname` varchar(50) NOT NULL,
+  `susmfname` varchar(50) NOT NULL,
+  `susmmname` varchar(50) NOT NULL,
+  `susmnext` varchar(20) NOT NULL,
+  `susdswd` varchar(100) NOT NULL,
+  `sushci` varchar(50) NOT NULL,
+  `susdid` varchar(100) NOT NULL,
+  `susdfilled` date NOT NULL,
+  `sudrpic` date DEFAULT NULL,
+  `sudrpicstat` varchar(50) DEFAULT NULL,
+  `sudrpsa` date DEFAULT NULL,
+  `sudrpsastat` varchar(50) DEFAULT NULL,
+  `sudrobr` date DEFAULT NULL,
+  `sudrobrstat` varchar(50) DEFAULT NULL,
+  `sustype` varchar(50) NOT NULL,
+  `susaemail` varchar(100) NOT NULL,
+  `susapass` varchar(100) NOT NULL,
+  `susgrantstat` varchar(50) NOT NULL,
+  `susschstat` varchar(20) NOT NULL,
+  `susdapply` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_unifast`
+--
+
+INSERT INTO `tbl_unifast` (`sunifast_id`, `sustudent_id`, `suslname`, `susfname`, `susmname`, `susnext`, `susgender`, `susdbirth`, `suscontact`, `susaddress`, `susspattended`, `suscp`, `susyl`, `suspemail`, `susflname`, `susffname`, `susfmname`, `susfnext`, `susmlname`, `susmfname`, `susmmname`, `susmnext`, `susdswd`, `sushci`, `susdid`, `susdfilled`, `sudrpic`, `sudrpicstat`, `sudrpsa`, `sudrpsastat`, `sudrobr`, `sudrobrstat`, `sustype`, `susaemail`, `susapass`, `susgrantstat`, `susschstat`, `susdapply`) VALUES
+(8, 'Qui pariatur Ea inc', 'Stephen Franks', 'Isadora Bond', 'Jordan Gates', 'Jr.', 'Female', '2021-11-18', 'Consequat Ex qui sa', 'Voluptate accusantiu', 'Facere voluptas sit', 'Sunt aut qui qui ut ', 'Et et consequuntur p', 'pyvyh@mailinator.com', 'Brendan Murphy', 'Edan Heath', 'Quinn Burch', 'Sr.', 'Gwendolyn Montgomery', 'Kirby Booth', 'Blaine Morin', 'Sr.', 'Cupidatat numquam Na', 'Sunt qui sint asper', 'Quia quibusdam et ea', '2021-11-18', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Unifast', 'raxo@mailinator.com', '$2y$10$uqhpvDPd1zHCJWAad40se.qQ86UmuRZeqouKtWrhr5/ANHNNjmy1m', 'New', 'Pending', '2021-11-18'),
+(9, 'Incididunt deserunt ', 'Vanna Goodman', 'Brendan Nguyen', 'Ferris Torres', 'Sr.', 'Male.', '2021-11-18', 'Aute iure irure omni', 'Et at magnam cupidit', 'Laborum quam et quis', 'Repudiandae aperiam ', 'Reprehenderit aute n', 'mecirebe@mailinator.', 'Jermaine Stewart', 'Hilel Randolph', 'Marny Jackson', 'Jr.', 'Vladimir Nguyen', 'Bernard Frazier', 'Ethan Lopez', 'Jr.', 'Et qui deserunt qui ', 'Ex facere laboriosam', 'Minim recusandae Es', '2021-11-18', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Unifast', 'ruvehy@mailinator.com', '$2y$10$VUFnvRnP2n8SmVHnC5V06.UcUa5tpsW5sXvjIvQRbxs3xdetd725O', 'New', 'Pending', '2021-11-18'),
+(10, 'Quo itaque sapiente ', 'Alice Guerrero', 'Dane Dixon', 'Jasper Lang', 'Jr.', 'Male.', '2021-11-18', 'Sit vero dolor quo ', 'Quia minima cum duis', 'Magna veniam qui es', 'Et veniam praesenti', 'Non sit do excepteu', 'jyba@mailinator.com', 'Lysandra Sheppard', 'Thane Scott', 'Whitney Fletcher', 'N/A', 'Erich Odonnell', 'Micah Hamilton', 'Isabelle Wyatt', 'Jr.', 'Dolorem aut ad nesci', 'Laboris nostrum et a', 'Quo quis libero libe', '2021-11-18', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Unifast', 'myxigoxig@mailinator.com', '$2y$10$cp9la5MwZo5Rrqsy2rBHJektmnwTxdFklFjN1I8MN4WPL156rmiIe', 'New', 'Pending', '2021-11-18'),
+(11, 'Et sunt recusandae', 'Kaye Holman', 'Eleanor Sims', 'Lee Graves', 'Sr.', 'Female', '2021-11-18', 'Ea sed Nam omnis mol', 'Soluta quos id cupi', 'Voluptatum ea atque ', 'Anim quasi fuga Ani', 'Ipsa irure sapiente', 'jele@mailinator.com', 'Hadassah Wyatt', 'Karen Martinez', 'Evan Delaney', 'Jr.', 'Inga Logan', 'Phillip Santiago', 'Kelsey Clemons', 'Sr.', 'Ipsam enim quod dese', 'Quasi quasi nesciunt', 'Sed consequuntur ut ', '2021-11-18', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'Unifast', 'jequko@mailinator.com', '$2y$10$13pzmwsgOgGSTJFFwJvrU.47nkWofWKzYriCAQ4WSDJD2xcub6oYW', 'New', 'Pending', '2021-11-18');
+
 --
 -- Indexes for dumped tables
 --
@@ -209,6 +397,18 @@ ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
+-- Indexes for table `tbl_ched`
+--
+ALTER TABLE `tbl_ched`
+  ADD PRIMARY KEY (`sched_id`);
+
+--
+-- Indexes for table `tbl_nonacad`
+--
+ALTER TABLE `tbl_nonacad`
+  ADD PRIMARY KEY (`snacad_id`);
+
+--
 -- Indexes for table `tbl_secretary`
 --
 ALTER TABLE `tbl_secretary`
@@ -221,6 +421,12 @@ ALTER TABLE `tbl_student`
   ADD PRIMARY KEY (`patient_id`);
 
 --
+-- Indexes for table `tbl_unifast`
+--
+ALTER TABLE `tbl_unifast`
+  ADD PRIMARY KEY (`sunifast_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -228,13 +434,25 @@ ALTER TABLE `tbl_student`
 -- AUTO_INCREMENT for table `tbl_acad`
 --
 ALTER TABLE `tbl_acad`
-  MODIFY `sacad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `sacad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_ched`
+--
+ALTER TABLE `tbl_ched`
+  MODIFY `sched_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_nonacad`
+--
+ALTER TABLE `tbl_nonacad`
+  MODIFY `snacad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_secretary`
@@ -247,6 +465,12 @@ ALTER TABLE `tbl_secretary`
 --
 ALTER TABLE `tbl_student`
   MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_unifast`
+--
+ALTER TABLE `tbl_unifast`
+  MODIFY `sunifast_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
