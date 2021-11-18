@@ -41,6 +41,7 @@
     </form>
     <br>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary" href="index.php" role="button">Back</a>
         <button type="submit" onclick="getval()" class="btn btn-success">Submit</button>
     </div>
     </div>
