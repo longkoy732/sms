@@ -128,7 +128,6 @@ if(isset($_POST["sustudent_id"]))
           <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Student ID Details</div>
             <div  align="center" class="panel-body">
               <div class="form-group">
-					      
                 <div  style="padding-bottom: 25px;" class="row">
                 <div style="margin-left: 280px; width: auto;"  class="col-xs-12 col-sm-12 col-md-8">
                     <label  >Student ID NO.<span class="text-danger">*</span></label>
@@ -144,7 +143,6 @@ if(isset($_POST["sustudent_id"]))
             </div>
         </div>
       </div>
-
 <!-- Personal Details -->
      <div class="tab-pane fade" id="family_details">
       <div class="panel panel-default">
@@ -162,10 +160,10 @@ if(isset($_POST["sustudent_id"]))
                     <label>Given Name<span class="text-danger">*</span></label>
                     <input type="text" name="susfname" id="susfname" class="form-control" />
                     <span id="error_susfname" class="text-danger"></span>
-                    </div>
+                  </div>
 							    <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="susmname" id="susmname" class="form-control" placeholder="Put N/A if none" />
+                    <input type="text" name="susmname" id="susmname" class="form-control" />
                     <span id="error_susmname" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
@@ -178,15 +176,6 @@ if(isset($_POST["sustudent_id"]))
                     </select>
                     <span id="error_susnext" class="text-danger"></span>
                   </div>
-               </div>
-               </div>
-              <div class="form-group">
-                <div class="row">
-                
-               </div>
-               </div>
-              <div class="form-group">
-                <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-4">
                   <label>Gender<span class="text-danger">*</label>
                     <select name="susgender" id="susgender" class="form-control" required>
@@ -196,7 +185,6 @@ if(isset($_POST["sustudent_id"]))
                     </select>
                     <span id="error_susgender" class="text-danger"></span>
                   </div>
-                
                   <div class="col-xs-12 col-sm-12 col-md-4">
                   <label>Date of Birth<span class="text-danger">*</label>
                     <div class='input-group date' id='datetimepicker1'>
@@ -224,24 +212,19 @@ if(isset($_POST["sustudent_id"]))
                   <label>Course/Program<span class="text-danger">*</span></label>
                     <input type="text" name="suscp" id="suscp" class="form-control" />
                     <span id="error_suscp" class="text-danger"></span>
-                    
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                   <label>Year Level<span class="text-danger">*</span></label>
                     <input type="text" name="susyl" id="susyl" class="form-control" />
                     <span id="error_susyl" class="text-danger"></span>
-                    
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                   <label>Email Address<span class="text-danger">*</span></label>
-                <input type="text" name="suspemail" id="suspemail" class="form-control" />
+                    <input type="text" name="suspemail" id="suspemail" class="form-control" />
                     <span id="error_suspemail" class="text-danger"></span>
-                    
                   </div>
               </div>
             </div>
-            
-         
             <div align="center">
               <button type="button" name="previous_btn_family_details" id="previous_btn_family_details" class="btn btn-default btn-md">Previous</button>
               <button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-info btn-md">Next</button>
@@ -249,13 +232,11 @@ if(isset($_POST["sustudent_id"]))
         </div>
       </div>
      </div>
-
      <!-- Family Details -->
      <div class="tab-pane fade" id="application_details">
         <div class="panel panel-default">
           <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Family Details</div>
             <div class="panel-body">
-
             <div class="form-group">
 					      <h4 class="sub-title">Father's Details</h4>
                 <div class="row" >
@@ -271,10 +252,9 @@ if(isset($_POST["sustudent_id"]))
                     </div>
 							    <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="susfmname" id="susfmname" class="form-control" placeholder="Put N/A if none" />
+                    <input type="text" name="susfmname" id="susfmname" class="form-control" />
                     <span id="error_susfmname" class="text-danger"></span>
                   </div>
-               
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Select Suffix<span class="text-danger">*</label>
                     <select name="susfnext" id="susfnext" class="form-control" required>
@@ -285,10 +265,7 @@ if(isset($_POST["sustudent_id"]))
                     </select>
                     <span id="error_susfnext" class="text-danger"></span>
                   </div>
-
-
                </div>
-
                <h4 class="sub-title">Mother's Details</h4>
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-3">
@@ -303,7 +280,7 @@ if(isset($_POST["sustudent_id"]))
                     </div>
 							    <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="susmmname" id="susmmname" class="form-control" placeholder="Put N/A if none" />
+                    <input type="text" name="susmmname" id="susmmname" class="form-control" />
                     <span id="error_susmmname" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
@@ -318,7 +295,7 @@ if(isset($_POST["sustudent_id"]))
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
                     <label>DSWD Household / 4ps No.<span class="text-danger">*</label>
-                    <input type="text" name="susdswd" id="susdswd" class="form-control" placeholder="Put N/A if none" />
+                    <input type="text" name="susdswd" id="susdswd" class="form-control" />
                     <span id="error_susdswd" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
@@ -328,7 +305,7 @@ if(isset($_POST["sustudent_id"]))
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
                     <label>Specify Disability / Attached PWD Id<span class="text-danger">*</label>
-                    <input type="text" name="susdid" id="susdid" class="form-control" placeholder="Put N/A if none" />
+                    <input type="text" name="susdid" id="susdid" class="form-control" />
                     <span id="error_susdid" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
@@ -336,13 +313,11 @@ if(isset($_POST["sustudent_id"]))
                   <div class='input-group date' id='datetimepicker2'>
                         <input type='text' name="susdfilled" id="susdfilled" class="form-control">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                       
                     </div>
                     <span id="error_susdfilled" class="text-danger"></span>
                   </div>
                </div>
                </div>
-        
               <div align="center">
                 <button type="button" name="previous_btn_application" id="previous_btn_application" class="btn btn-default btn-md">Previous</button>
                 <button type="button" name="btn_family_details" id="btn_family_details" class="btn btn-info btn-md">Next</button>
@@ -350,21 +325,6 @@ if(isset($_POST["sustudent_id"]))
             </div>
         </div>
       </div>
-
-
-       <!-- Requirement Details -->
-
-       <!-- <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
-          <div class="panel-body">
-                    <ul class="list-group d-flex justify-content-center">
-                      <li class="list-group-item">1. Photocopy of PSA(1pc.)</li>
-                      <li class="list-group-item">2. 2x2 ID Picture(1pc.)</li>
-                      <li class="list-group-item">3. Original Barangay Residency</li>
-                    </ul>
-                   
-                    
-              
-            </div> -->
        <div class="tab-pane fade" id="requirements_details">
         <div class="panel panel-default">
           <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Applicant Must Be:</div>
@@ -402,8 +362,6 @@ if(isset($_POST["sustudent_id"]))
             </div>
         </div>
       </div>
-      
-     
       <!-- Account Details -->
       <div class="tab-pane fade" id="account_details">
         <div class="panel panel-default">
@@ -470,9 +428,7 @@ $(document).ready(function(){
    $('#family_details').addClass('active in');
 
   }
-
-
-    });
+});
 
 
     //Personal Details
@@ -519,7 +475,7 @@ $(document).ready(function(){
   
   if($.trim($('#susmname').val()).length == 0)
   {
-   error_susmname = 'Middle Name is required';
+   error_susmname = 'Put N/A if None';
    $('#error_susmname').text(error_susmname);
    $('#susmname').addClass('has-error');
   }
@@ -640,7 +596,7 @@ $(document).ready(function(){
 
   if($.trim($('#susgender').val()).length == 0)
   {
-   error_susgender = 'susgender is required';
+   error_susgender = 'Gender is required';
    $('#error_susgender').text(error_susgender);
    $('#susgender').addClass('has-error');
   }
