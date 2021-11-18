@@ -1,5 +1,5 @@
 <?php 
-
+// Finish
 include('../class/dbcon.php');
 $object = new sms;
 
