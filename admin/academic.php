@@ -431,7 +431,19 @@ $object->execute($data);
      </div>
 <!-- Requirement Details -->
 <div class="tab-pane fade" id="require_details">
-  <div class="panel panel-default">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Applicant Must Be:</div>
+        <div class="panel-body">
+          <ul class="list-group d-flex justify-content-center">
+            <li class="list-group-item">1. Senior High Graduate</li>
+            <li class="list-group-item">2. College Level</li>
+            <li class="list-group-item">3. 4th year High School Graduate(Old Curriculum)</li>
+            <li class="list-group-item">4. ALS Passer Promoted to College</li>
+            <li class="list-group-item">5. Enrolled of the said Institution</li>
+          </ul>
+        </div>
+    </div>
+    <div class="panel panel-default">
     <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
       <div class="panel-body">
         <ul class="list-group d-flex justify-content-center">
@@ -451,8 +463,8 @@ $object->execute($data);
             <button type="button" name="previous_btn_requirement" id="previous_btn_requirement" class="btn btn-default btn-md">Previous</button>
             <button type="button" name="btn_requirement" id="btn_requirement" class="btn btn-info btn-md">Next</button>
           </div>
+      </div>
     </div>
-  </div>
 </div>
 <!-- Account Details -->
   <div class="tab-pane fade" id="account_details">

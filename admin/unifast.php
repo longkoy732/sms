@@ -327,39 +327,38 @@ if(isset($_POST["sustudent_id"]))
       </div>
        <div class="tab-pane fade" id="requirements_details">
         <div class="panel panel-default">
-          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Applicant Must Be:</div>
-          <div class="panel panel-default">
-          <div class="panel-body">
-          <ul class="list-group d-flex justify-content-center">
-                      <li class="list-group-item">1. Senior High Graduate</li>
-                      <li class="list-group-item">2. College Level</li>
-                      <li class="list-group-item">3. 4th year High School Graduate(Old Curriculum)</li>
-                      <li class="list-group-item">4. ALS Passer Promoted to College</li>
-                      <li class="list-group-item">5. Enrolled of the said Institution</li>
-                    </ul>
-            </div>
-          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
-          </div>
+          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Applicant Must Be:</div>  
             <div class="panel-body">
-                    <ul class="list-group d-flex justify-content-center">
-                      <li class="list-group-item">1. Photocopy of PSA(1pc.)</li>
-                      <li class="list-group-item">2. 2x2 ID Picture(1pc.)</li>
-                      <li class="list-group-item">3. Original Barangay Residency</li>
-                    </ul>
-                   
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault" style="font-style: italic; font-weight: normal;">
-                        I agree that the requirements above are legit and will submit it on time.
-                      </label><br>
-                      <span id="error_flexCheckDefault" class="text-danger"></span>
-                      <div class="alert alert-warning" role="alert" style="font-style: italic;"><b>Note:</b> Please provide the hard copy of the following requirements, bring it to the Scholarship Office, and hand it over to Mr Gemini Daguplo or Ms Grabrielle Heruela.</div>
-                    </div>
-              <div align="center">
-                <button type="button" name="previous_btn_requirement" id="previous_btn_requirement" class="btn btn-default btn-md">Previous</button>
-                <button type="button" name="btn_requirement" id="btn_requirement" class="btn btn-info btn-md">Next</button>
-              </div>
+              <ul class="list-group d-flex justify-content-center">
+                <li class="list-group-item">1. Senior High Graduate</li>
+                <li class="list-group-item">2. College Level</li>
+                <li class="list-group-item">3. 4th year High School Graduate(Old Curriculum)</li>
+                <li class="list-group-item">4. ALS Passer Promoted to College</li>
+                <li class="list-group-item">5. Enrolled of the said Institution</li>
+              </ul>
             </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
+            <div class="panel-body">
+              <ul class="list-group d-flex justify-content-center">
+                <li class="list-group-item">1. Photocopy of PSA(1pc.)</li>
+                <li class="list-group-item">2. 2x2 ID Picture(1pc.)</li>
+                <li class="list-group-item">3. Original Barangay Residency</li>
+              </ul>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault" style="font-style: italic; font-weight: normal;">
+                I agree that the requirements above are legit and will submit it on time.
+              </label><br>
+              <span id="error_flexCheckDefault" class="text-danger"></span>
+              <div class="alert alert-warning" role="alert" style="font-style: italic;"><b>Note:</b> Please provide the hard copy of the following requirements, bring it to the Scholarship Office, and hand it over to Mr Gemini Daguplo or Ms Grabrielle Heruela.</div>
+            </div>
+            <div align="center">
+              <button type="button" name="previous_btn_requirement" id="previous_btn_requirement" class="btn btn-default btn-md">Previous</button>
+              <button type="button" name="btn_requirement" id="btn_requirement" class="btn btn-info btn-md">Next</button>
+            </div>
+          </div>
         </div>
       </div>
       <!-- Account Details -->
@@ -1076,7 +1075,7 @@ $('#previous_btn_education').click(function(){
   
   if($.trim($('#susaemail').val()).length == 0)
   {
-   error_susaemail = 'Account email is required';
+   error_susaemail = 'Email is required';
    $('#error_susaemail').text(error_susaemail);
    $('#susaemail').addClass('has-error');
   }
@@ -1089,7 +1088,7 @@ $('#previous_btn_education').click(function(){
   
   if($.trim($('#susapass').val()).length == 0)
   {
-   error_susapass = 'Account password is required';
+   error_susapass = 'Password is required';
    $('#error_susapass').text(error_susapass);
    $('#susapass').addClass('has-error');
   }
@@ -1100,7 +1099,7 @@ $('#previous_btn_education').click(function(){
    $('#susapass').removeClass('has-error');
   }
 
-  if(error_susapass != '' || 
+  if(error_susaemail != '' || 
      error_susapass != '')
   {
    return false;

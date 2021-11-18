@@ -476,6 +476,18 @@ $object->execute($data);
       <!-- Requirement Details -->
       <div class="tab-pane fade" id="requirement_details">
         <div class="panel panel-default">
+          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Applicant Must Be:</div>
+            <div class="panel-body">
+              <ul class="list-group d-flex justify-content-center">
+                <li class="list-group-item">1. Senior High Graduate</li>
+                <li class="list-group-item">2. College Level</li>
+                <li class="list-group-item">3. 4th year High School Graduate(Old Curriculum)</li>
+                <li class="list-group-item">4. ALS Passer Promoted to College</li>
+                <li class="list-group-item">5. Enrolled of the said Institution</li>
+              </ul>
+          </div>
+        </div>
+        <div class="panel panel-default">
           <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
             <div class="panel-body">
                     <ul class="list-group d-flex justify-content-center">

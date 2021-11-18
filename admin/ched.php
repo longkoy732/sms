@@ -156,7 +156,7 @@ $object->execute($data);
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="scmname" id="scmname" class="form-control" placeholder="Put N/A if none" />
+                    <input type="text" name="scmname" id="scmname" class="form-control" />
                     <span id="error_scmname" class="text-danger"></span>
                     </div>
 							    <div class="col-xs-12 col-sm-12 col-md-3">
@@ -256,7 +256,7 @@ $object->execute($data);
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
                     <label>Type of Disability(if applicable)<span class="text-danger">*</span></label>
-                    <input type="text" name="scdisability" id="scdisability" class="form-control" placeholder="Put N/A if none"/>
+                    <input type="text" name="scdisability" id="scdisability" class="form-control" />
                     <span id="error_scdisability" class="text-danger"></span>
                   </div>      
                 </div>
@@ -289,10 +289,9 @@ $object->execute($data);
                     </div>
 							    <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="scfmname" id="scfmname" class="form-control" placeholder="Put N/A if none" />
+                    <input type="text" name="scfmname" id="scfmname" class="form-control" />
                     <span id="error_scfmname" class="text-danger"></span>
                   </div>
-               
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Status<span class="text-danger">*</label>
                     <select name="scfstatus" id="scfstatus" class="form-control" required>
@@ -334,7 +333,7 @@ $object->execute($data);
                     </div>
 							    <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="scmmname" id="scmmname" placeholder ="Put N/A if none" class="form-control" placeholder="Put N/A if none" />
+                    <input type="text" name="scmmname" id="scmmname" class="form-control" />
                     <span id="error_scmmname" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
@@ -434,37 +433,37 @@ $object->execute($data);
       <div class="tab-pane fade" id="requirement_details">
         <div class="panel panel-default">
           <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Applicant Must Be:</div>
-          <div class="panel panel-default">
           <div class="panel-body">
-          <ul class="list-group d-flex justify-content-center">
-                      <li class="list-group-item">1. Senior High Graduate</li>
-                      <li class="list-group-item">2. College Level</li>
-                      <li class="list-group-item">3. 4th year High School Graduate(Old Curriculum)</li>
-                      <li class="list-group-item">4. ALS Passer Promoted to College</li>
-                      <li class="list-group-item">5. Enrolled of the said Institution</li>
-                    </ul>
-            </div>
-          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
+            <ul class="list-group d-flex justify-content-center">
+              <li class="list-group-item">1. Senior High Graduate</li>
+              <li class="list-group-item">2. College Level</li>
+              <li class="list-group-item">3. 4th year High School Graduate(Old Curriculum)</li>
+              <li class="list-group-item">4. ALS Passer Promoted to College</li>
+              <li class="list-group-item">5. Enrolled of the said Institution</li>
+            </ul>
           </div>
-            <div class="panel-body">
-                    <ul class="list-group d-flex justify-content-center">
-                      <li class="list-group-item">1. Photocopy of Report Card</li>
-                      <li class="list-group-item">2. Photocopy of Good Moral</li>
-                      <li class="list-group-item">3. Original Barangay Indigency</li>
-                    </ul>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault" style="font-style: italic; font-weight: normal;">
-                        I agree that the requirements above are legit and will submit it on time.
-                      </label><br>
-                      <span id="error_flexCheckDefault" class="text-danger"></span>
-                      <div class="alert alert-warning" role="alert" style="font-style: italic;"><b>Note:</b> Please provide the hard copy of the following requirements, bring it to the Scholarship Office, and hand it over to Mr Gemini Daguplo or Ms Grabrielle Heruela.</div>
-                    </div>
-              <div align="center">
-                <button type="button" name="previous_btn_requirement" id="previous_btn_requirement" class="btn btn-default btn-md">Previous</button>
-                <button type="button" name="btn_requirement" id="btn_requirement" class="btn btn-info btn-md">Next</button>
-              </div>
+        </div>
+        <div class="panel panel-default">
+        <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
+          <div class="panel-body">
+            <ul class="list-group d-flex justify-content-center">
+              <li class="list-group-item">1. Photocopy of Report Card</li>
+              <li class="list-group-item">2. Photocopy of Good Moral</li>
+              <li class="list-group-item">3. Original Barangay Indigency</li>
+            </ul>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault" style="font-style: italic; font-weight: normal;">
+                I agree that the requirements above are legit and will submit it on time.
+              </label><br>
+              <span id="error_flexCheckDefault" class="text-danger"></span>
+              <div class="alert alert-warning" role="alert" style="font-style: italic;"><b>Note:</b> Please provide the hard copy of the following requirements, bring it to the Scholarship Office, and hand it over to Mr Gemini Daguplo or Ms Grabrielle Heruela.</div>
             </div>
+            <div align="center">
+              <button type="button" name="previous_btn_requirement" id="previous_btn_requirement" class="btn btn-default btn-md">Previous</button>
+              <button type="button" name="btn_requirement" id="btn_requirement" class="btn btn-info btn-md">Next</button>
+            </div>
+          </div>
         </div>
       </div>
       <!-- Account Details -->
@@ -572,7 +571,7 @@ if($.trim($('#scmname').val()).length == 0)
 
    if($.trim($('#scnext').val()).length == 0)
   {
-   error_scnext = 'Put N/A if None';
+   error_scnext = 'Select N/A if None';
    $('#error_scnext').text(error_scnext);
    $('#scnext').addClass('has-error');
   }
