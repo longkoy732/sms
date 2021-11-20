@@ -28,7 +28,13 @@
     <link rel="stylesheet" type="text/css" href="../vendor/bootstrap-select/bootstrap-select.min.css"/>
 
     <link rel="stylesheet" type="text/css" href="../vendor/datepicker/bootstrap-datepicker.css"/>
-
+<style>
+    .has-error
+  {
+   border-color:#cc0000;
+   background-color:#ffff99;
+  }
+</style>
 </head>
 
 <body id="page-top">
@@ -61,12 +67,24 @@
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="acadapp.php">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-user-clock"></i>
-                    <span>Application</span></a>
+                    <span>Applications</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h4 class="collapse-header">Scholarship Applications:</h4>
+                        <a class="collapse-item" href="acadapp.php">Academic</a>
+                        <a class="collapse-item" href="cards.html">Non-Academic</a>
+                        <a class="collapse-item" href="buttons.html">UNIFAST</a>
+                        <a class="collapse-item" href="cards.html">CHED</a>
+                    </div>
+                </div>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="acadgrants.php">
                     <i class="fas fa-user-check"></i>
                     <span>Approved Scholars</span></a>
@@ -75,7 +93,7 @@
                 <a class="nav-link" href="acadreject.php">
                     <i class="fas fa-user-times"></i>
                     <span>Rejected Scholars</span></a>
-            </li> -->
+            </li>
             <?php
             }
             ?>

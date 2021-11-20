@@ -1,5 +1,5 @@
 <?php 
-// Finish
+
 include('../class/dbcon.php');
 $object = new sms;
 
@@ -8,14 +8,15 @@ if(isset($_POST["safname"]))
 {
   $object->query = "
      INSERT INTO tbl_acad
-     (safname, samname, salname, sanext, sadbirth, sactship, saaddress, sapemail, sacontact, sagender, sagfname, sagmname,
+     (safname, samname, salname, sanext, sadbirth, sactship, saaddress, sapemail, sacontact, sacourse, sagyl, sagender, sagfname, sagmname,
      saglname, sagnext, sagaddress, sagcontact, sagoccu, sagcompany, saffname, safmname, saflname, safnext, safaddress, safcontact, safoccu,
      safcompany, samfname, sammname, samlname, samnext, samaddress, samcontact, samoccu, samcompany, saspcyincome, sagwa, saraward, 
      sadawardrceive, sadsprcstat, sadspgmstat, sadspcrstat, sacapstype, saaemail, sapass, sagrantstat, sascholarstat, sadapply) 
-     VALUES (:safname, :samname, :salname, :sanext, :sadbirth, :sactship,:saaddress, :sapemail, :sacontact, :sagender, 
-     :sagfname, :sagmname, :saglname, :sagnext, :sagaddress, :sagcontact, :sagoccu, :sagcompany, :saffname, :safmname, 
-     :saflname, :safnext, :safaddress, :safcontact, :safoccu, :safcompany, :samfname, :sammname, :samlname, :samnext, 
-     :samaddress, :samcontact, :samoccu, :samcompany, :saspcyincome, :sagwa, :saraward, :sadawardrceive, 'Not-Received', 
+     VALUES (:safname, :samname, :salname, :sanext, :sadbirth, :sactship,:saaddress, :sapemail, :sacontact, 
+     :sacourse, :sagyl, :sagender, :sagfname, :sagmname, :saglname, :sagnext, :sagaddress, :sagcontact, 
+     :sagoccu, :sagcompany, :saffname, :safmname, :saflname, :safnext, :safaddress, :safcontact, 
+     :safoccu, :safcompany, :samfname, :sammname, :samlname, :samnext, :samaddress, :samcontact, 
+     :samoccu, :samcompany, :saspcyincome, :sagwa, :saraward, :sadawardrceive, 'Not-Received', 
      'Not-Received', 'Not-Received', 'Academic', :saaemail, :sapass, 'New', 'Pending', '$object->now')";
      
      $password_hash = password_hash($_POST["sapass"], PASSWORD_DEFAULT);
@@ -29,6 +30,8 @@ if(isset($_POST["safname"]))
                     ':saaddress'					  =>	$_POST["saaddress"],
                     ':sapemail'					    =>	$_POST["sapemail"],
                     ':sacontact'					  =>	$_POST["sacontact"],
+                    ':sacourse'					    =>	$_POST["sacourse"],
+                    ':sagyl'					      =>	$_POST["sagyl"],
                     ':sagender'					    =>	$_POST["sagender"],
 					          ':sagfname'				      =>	$_POST["sagfname"],
 					          ':sagmname'				      =>	$_POST["sagmname"],
@@ -211,13 +214,13 @@ $object->execute($data);
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-5">
                     <label>Course<span class="text-danger">*</span></label>
-                    <input type="text" name="scourse" id="scourse" class="form-control" />
-                    <span id="error_scourse" class="text-danger"></span>
+                    <input type="text" name="sacourse" id="sacourse" class="form-control" />
+                    <span id="error_sacourse" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-2">
                     <label>Grade/Year Level<span class="text-danger">*</span></label>
-                    <input type="text" name="syrlvl" id="syrlvl" class="form-control" />
-                    <span id="error_syrlvl" class="text-danger"></span>
+                    <input type="text" name="sagyl" id="sagyl" class="form-control" />
+                    <span id="error_sagyl" class="text-danger"></span>
                   </div>
                 </div>
               </div>
@@ -398,7 +401,7 @@ $object->execute($data);
 <!-- Achievements Details -->
      <div class="tab-pane fade" id="achievements_details">
       <div class="panel panel-default">
-       <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
+       <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Achievement Details</div>
        <div class="panel-body">
         <div class="form-group">
           <div class="row">
@@ -457,7 +460,7 @@ $object->execute($data);
             I agree that the requirements above are legit and will submit it on time.
           </label><br>
           <span id="error_flexCheckDefault" class="text-danger"></span>
-          <div class="alert alert-warning" role="alert" style="font-style: italic;"><b>Note:</b> Please provide the hard copy of the following requirements, bring it to the Scholarship Office, and hand it over to Mr Gemini Daguplo or Ms Grabrielle Heruela.</div>
+          <div class="alert alert-warning" role="alert" style="font-style: italic;"><b>Note:</b> Please provide the hard copy of the following requirements, bring it to the Scholarship Office, and hand it over to Mr. Gemini Daguplo or Ms. Grabrielle Heruela.</div>
           </div>
           <div align="center">
             <button type="button" name="previous_btn_requirement" id="previous_btn_requirement" class="btn btn-default btn-md">Previous</button>
@@ -469,7 +472,7 @@ $object->execute($data);
 <!-- Account Details -->
   <div class="tab-pane fade" id="account_details">
     <div class="panel panel-default">
-      <div class="panel-heading">Account Details</div>
+    <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Account Details</div>
       <div class="panel-body">
         <div class="form-group">
           <label>Email</label>
@@ -512,8 +515,6 @@ $(document).ready(function(){
   var error_sacontact = '';
   var pcnumval = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
   
-
-
   if($.trim($('#safname').val()).length == 0)
   {
    error_safname = 'First Name is required';
@@ -663,38 +664,38 @@ $(document).ready(function(){
 //    }
   }
 
-  if($.trim($('#scourse').val()).length == 0)
+  if($.trim($('#sacourse').val()).length == 0)
   {
-   error_scourse = 'Course is required';
-   $('#error_scourse').text(error_scourse);
-   $('#scourse').addClass('has-error');
+   error_sacourse = 'Course is required';
+   $('#error_sacourse').text(error_sacourse);
+   $('#sacourse').addClass('has-error');
   }
   else
   {
-   error_scourse = '';
-   $('#error_scourse').text(error_scourse);
-   $('#scourse').removeClass('has-error');
+   error_sacourse = '';
+   $('#error_sacourse').text(error_sacourse);
+   $('#sacourse').removeClass('has-error');
   }
 
-  if($.trim($('#syrlvl').val()).length == 0)
+  if($.trim($('#sagyl').val()).length == 0)
   {
-   error_syrlvl = 'Grade/Year Level is required';
-   $('#error_syrlvl').text(error_syrlvl);
-   $('#syrlvl').addClass('has-error');
+   error_sagyl = 'Grade/Year Level is required';
+   $('#error_sagyl').text(error_sagyl);
+   $('#sagyl').addClass('has-error');
   }
   else
   {
-   error_syrlvl = '';
-   $('#error_syrlvl').text(error_syrlvl);
-   $('#syrlvl').removeClass('has-error');
+   error_sagyl = '';
+   $('#error_sagyl').text(error_sagyl);
+   $('#sagyl').removeClass('has-error');
   }
 
   if(error_safname != '' || error_samname != '' 
   || error_salname != '' || error_sanext != ''
   || error_sadbirth != '' || error_sactship != '' 
   || error_saaddress != '' || error_sapemail != '' 
-  || error_sacontact != '' || error_scourse != '' 
-  || error_syrlvl != ''
+  || error_sacontact != '' || error_sacourse != '' 
+  || error_sagyl != ''
   )
   {
    return false;
