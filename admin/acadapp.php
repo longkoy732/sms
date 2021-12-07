@@ -515,11 +515,13 @@ $(document).ready(function(){
 
 		$('#acadModal').modal('show');
 
+		$('#modal_title').text('Add Academic Scholar');
+
+		$('#submit_button').val('Add');
+
 		$('#acad_form')[0].reset();
 
 		$('#acad_form').parsley().reset();
-
-		$('#modal_title').text('Add Academic Scholar');
 
 		$('#submit_button').click(function(){
 		
@@ -1192,7 +1194,7 @@ $(document).ready(function(){
 
 			if($.trim($('#sagrantstat').val()).length == 0)
 			{
-			error_sagrantstat = 'Date Received is required';
+			error_sagrantstat = 'Grant Status is required';
 			$('#error_sagrantstat').text(error_sagrantstat);
 			$('#sagrantstat').addClass('has-error');
 			}
@@ -1271,7 +1273,6 @@ $(document).ready(function(){
 			|| error_sadsprcstat != ''
 			|| error_sadspgmstat != ''
 			|| error_sadspcrstat != ''
-			|| error_flexCheckDefault != ''
 			|| error_sagrantstat != ''
 			|| error_saaemail != ''
      		|| error_sapass != ''
@@ -1282,8 +1283,6 @@ $(document).ready(function(){
 			else
 			{
 				$('#action').val('Add');
-
-				$('#submit_button').val('Add');
 
 				$('#form_message').html('');
 			}
@@ -1365,48 +1364,58 @@ $(document).ready(function(){
                 $('#safname').val(data.safname);
                 $('#samname').val(data.samname);
 				$('#salname').val(data.salname);
+				$('#sanext').val(data.sanext);
 				$('#sadbirth').val(data.sadbirth);
                 $('#sactship').val(data.sactship);
 				$('#saaddress').val(data.saaddress);
 				$('#sapemail').val(data.sapemail);
                 $('#sacontact').val(data.sacontact);
+				$('#sacourse').val(data.sacourse);
+				$('#sagyl').val(data.sagyl);
 				$('#sagender').val(data.sagender);
 				// Family Details
 				// Guardian Details
-                $('#gfname').val(data.gfname);
-                $('#gmname').val(data.gmname);
-				$('#glname').val(data.glname);
-				$('#gaddress').val(data.gaddress);
-                $('#gcontact').val(data.gcontact);
-				$('#goccu').val(data.goccu);
-				$('#gcompany').val(data.gcompany);
+                $('#sagfname').val(data.sagfname);
+                $('#sagmname').val(data.sagmname);
+				$('#saglname').val(data.saglname);
+				$('#sagnext').val(data.sagnext);
+				$('#sagnext').val(data.sagnext);
+				$('#sagaddress').val(data.sagaddress);
+                $('#sagcontact').val(data.sagcontact);
+				$('#sagoccu').val(data.sagoccu);
+				$('#sagcompany').val(data.sagcompany);
 				// Father Details
-                $('#ffname').val(data.ffname);
-                $('#fmname').val(data.fmname);
-				$('#flname').val(data.flname);
-				$('#faddress').val(data.faddress);
-                $('#fcontact').val(data.fcontact);
-				$('#foccu').val(data.foccu);
-				$('#fcompany').val(data.fcompany);
+                $('#saffname').val(data.saffname);
+                $('#safmname').val(data.safmname);
+				$('#saflname').val(data.saflname);
+				$('#safnext').val(data.safnext);
+				$('#safaddress').val(data.safaddress);
+                $('#safcontact').val(data.safcontact);
+				$('#safoccu').val(data.safoccu);
+				$('#safcompany').val(data.safcompany);
 				// Mother Details
-                $('#mfname').val(data.mfname);
-                $('#mmname').val(data.mmname);
-				$('#mlname').val(data.mlname);
-				$('#maddress').val(data.maddress);
-                $('#mcontact').val(data.mcontact);
-				$('#moccu').val(data.moccu);
-				$('#mcompany').val(data.mcompany);
-				$('#spcyincome').val(data.spcyincome);
+                $('#samfname').val(data.samfname);
+                $('#sammname').val(data.sammname);
+				$('#samlname').val(data.samlname);
+				$('#samnext').val(data.samnext);
+                $('#samaddress').val(data.samaddress);
+				$('#samcontact').val(data.samcontact);
+				$('#samoccu').val(data.samoccu);
+				$('#samcompany').val(data.samcompany);
+				$('#saspcyincome').val(data.saspcyincome);
 				// Achievement Details
                 $('#sagwa').val(data.sagwa);
 				$('#saraward').val(data.saraward);
 				$('#sadawardrceive').val(data.sadawardrceive);
 				// Requirement Details
 				$('#sadsprc').val(data.sadsprc);
+				$('#sadsprcstat').val(data.sadsprcstat);
 				$('#sadspgm').val(data.sadspgm);
+				$('#sadspgmstat').val(data.sadspgmstat);
 				$('#sadspcr').val(data.sadspcr);
-				// Requirement Details
-				$('#sacapstype').val(data.sacapstype);
+				$('#sadspcrstat').val(data.sadspcrstat);
+				// Scholarship Details
+				$('#sagrantstat').val(data.sagrantstat);
 
 	        	$('#modal_title').text('Edit Applicant Info');
 

@@ -78,7 +78,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h4 class="collapse-header">Scholarship Applications:</h4>
                         <a class="collapse-item" href="acadapp.php">Academic</a>
-                        <a class="collapse-item" href="cards.html">Non-Academic</a>
+                        <a class="collapse-item" href="nonacadapp.php">Non-Academic</a>
                         <a class="collapse-item" href="buttons.html">UNIFAST</a>
                         <a class="collapse-item" href="cards.html">CHED</a>
                     </div>

@@ -140,12 +140,12 @@ $object = new sms;
 			(safname, samname, salname, sanext, sadbirth, sactship, saaddress, sapemail, sacontact, sacourse, sagyl, sagender, sagfname, sagmname,
 			saglname, sagnext, sagaddress, sagcontact, sagoccu, sagcompany, saffname, safmname, saflname, safnext, safaddress, safcontact, safoccu,
 			safcompany, samfname, sammname, samlname, samnext, samaddress, samcontact, samoccu, samcompany, saspcyincome, sagwa, saraward, 
-			sadawardrceive, sadsprcstat, sadspgmstat, sadspcrstat, sacapstype, saaemail, sapass, sagrantstat, sascholarstat, sadapply) 
+			sadawardrceive, sadsprc, sadsprcstat, sadspgm, sadspgmstat, sadspcr, sadspcrstat, sacapstype, saaemail, sapass, sagrantstat, sascholarstat, sadapply) 
 			VALUES (:safname, :samname, :salname, :sanext, :sadbirth, :sactship,:saaddress, :sapemail, :sacontact, :sacourse, :sagyl, :sagender, 
 			:sagfname, :sagmname, :saglname, :sagnext, :sagaddress, :sagcontact, :sagoccu, :sagcompany, :saffname, :safmname, 
 			:saflname, :safnext, :safaddress, :safcontact, :safoccu, :safcompany, :samfname, :sammname, :samlname, :samnext, 
-			:samaddress, :samcontact, :samoccu, :samcompany, :saspcyincome, :sagwa, :saraward, :sadawardrceive, 'Not-Received', 
-			'Not-Received', 'Not-Received', 'Academic', :saaemail, :sapass, :sagrantstat, 'Pending', '$object->now')";
+			:samaddress, :samcontact, :samoccu, :samcompany, :saspcyincome, :sagwa, :saraward, :sadawardrceive, :sadsprc, :sadsprcstat, 
+			:sadspgm, :sadspgmstat, :sadspcr, :sadspcrstat, 'Academic', :saaemail, :sapass, :sagrantstat, 'Pending', '$object->now')";
 			
 			$password_hash = password_hash($_POST["sapass"], PASSWORD_DEFAULT);
 
@@ -198,8 +198,15 @@ $object = new sms;
                     ':sagwa'				      	=>	$object->clean_input($_POST["sagwa"]),
                     ':saraward'					  	=>	$object->clean_input($_POST["saraward"]),
                     ':sadawardrceive'		  		=>	$object->clean_input($_POST["sadawardrceive"]),
+					// Requirements Details
+					':sadsprc'				    	=>	$object->clean_input($_POST["sadsprc"]),
+                    ':sadsprcstat'				    =>	$object->clean_input($_POST["sadsprcstat"]),
+					':sadspgm'						=>	$object->clean_input($_POST["sadspgm"]),
+                    ':sadspgmstat'					=>	$object->clean_input($_POST["sadspgmstat"]),
+					':sadspcr'		  				=>	$object->clean_input($_POST["sadspcr"]),
+                    ':sadspcrstat'		  			=>	$object->clean_input($_POST["sadspcrstat"]),
 					// Scholarship Status Details 
-					':sagrantstat'					  	=>	$object->clean_input($_POST["sagrantstat"]),
+					':sagrantstat'					=>	$object->clean_input($_POST["sagrantstat"]),
 					// Account Details
 					':saaemail'			      		=>	$object->clean_input($_POST["saaemail"]),
 					':sapass'				      	=>  $password_hash
@@ -247,6 +254,8 @@ $object = new sms;
 			$data['saaddress'] = $row['saaddress'];
 			$data['sapemail'] = $row['sapemail'];
 			$data['sacontact'] = $row['sacontact'];
+			$data['sacourse'] = $row['sacourse'];
+			$data['sagyl'] = $row['sagyl'];
 			$data['sagender'] = $row['sagender'];
 			// Family Details
 			// Guardian Details
@@ -340,6 +349,8 @@ $object = new sms;
 				saaddress = :saaddress,
 				sapemail = :sapemail,
 				sacontact = :sacontact,
+				sacourse = :sacourse,
+				sagyl = :sagyl,
 				sagender = :sagender,
 				sagfname = :sagfname, 
 				sagmname = :sagmname,
@@ -370,9 +381,12 @@ $object = new sms;
 				saraward = :saraward,
 				sadawardrceive = :sadawardrceive,
 				sadsprc = :sadsprc,
+				sadsprcstat = :sadsprcstat,
 				sadspgm = :sadspgm,
+				sadspgmstat = :sadspgmstat,
 				sadspcr = :sadspcr,
-				sacapstype = :sacapstype
+				sadspcrstat = :sadspcrstat,
+				sagrantstat = :sagrantstat
 				WHERE sacad_id = '".$_POST['hidden_id']."'
 				";
 
@@ -391,7 +405,9 @@ $object = new sms;
 					':sactship'				    	=>	$object->clean_input($_POST["sactship"]),
                     ':saaddress'					=>	$object->clean_input($_POST["saaddress"]),
                     ':sapemail'					    =>	$object->clean_input($_POST["sapemail"]),
-                    ':sacontact'					  	=>	$object->clean_input($_POST["sacontact"]),
+                    ':sacontact'					=>	$object->clean_input($_POST["sacontact"]),
+					':sacourse'						=>	$object->clean_input($_POST["sacourse"]),
+					':sagyl'						=>	$object->clean_input($_POST["sagyl"]),
                     ':sagender'					  	=>	$object->clean_input($_POST["sagender"]),
 					// Family Details
 					// Guardian Details
@@ -428,10 +444,13 @@ $object = new sms;
                     ':sadawardrceive'		  		=>	$object->clean_input($_POST["sadawardrceive"]),
 					// Requirement Details
                     ':sadsprc'					  	=>	$object->clean_input($_POST["sadsprc"]),
-                    ':sadspgm'					  	=>	$object->clean_input($_POST["sadspgm"]),
-					':sadspcr'				    	=>	$object->clean_input($_POST["sadspcr"]),
+                    ':sadsprcstat'					=>	$object->clean_input($_POST["sadsprcstat"]),
+					':sadspgm'				    	=>	$object->clean_input($_POST["sadspgm"]),
+					':sadspgmstat'					=>	$object->clean_input($_POST["sadspgmstat"]),
+                    ':sadspcr'					  	=>	$object->clean_input($_POST["sadspcr"]),
+					':sadspcrstat'				    =>	$object->clean_input($_POST["sadspcrstat"]),
 					// Scholar Type
-					':sacapstype'				    =>	$object->clean_input($_POST["sacapstype"])
+					':sagrantstat'				    =>	$object->clean_input($_POST["sagrantstat"])
  				);
 
 				$object->execute($data);
