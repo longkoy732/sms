@@ -226,7 +226,7 @@
 
 				$object->execute($data);
 
-				$success = '<div class="alert alert-success">Non-Academic Scholar Applicant Added</div>';
+				$success = '<div class="alert alert-success">Applicant Data Added</div>';
 			}
 		}
 
@@ -336,8 +336,8 @@
 		$success = '';
 
 		$data = array(
-			':snaemail'	=>	$_POST["snaemail"],
-			':snacad_id'			=>	$_POST['hidden_id']
+			':snaemail'		=>	$_POST["snaemail"],
+			':snacad_id'	=>	$_POST['hidden_id']
 		);
 
 		$object->query = "

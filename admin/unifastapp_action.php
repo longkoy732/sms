@@ -137,13 +137,14 @@
         {
             $object->query = "
             INSERT INTO tbl_unifast
-            (sustudent_id, suslname, susfname, susmname, susnext, susgender, susdbirth, suscontact, susaddress, susspattended, suscp, susyl, 
-            suspemail, susflname, susffname, susfmname, susfnext, susmlname, susmfname, susmmname, susmnext, susdswd, sushci, susdid, susdfilled, sudrpicstat, 
-            sudrpsastat, sudrobrstat, sustype, susaemail, susapass, susgrantstat, susschstat, susdapply) 
-            VALUES (:sustudent_id, :suslname, :susfname, :susmname, :susnext, :susgender, :susdbirth, :suscontact, :susaddress, :susspattended	, 
+            (sustudent_id, suslname, susfname, susmname, susnext, susgender, susdbirth, suscontact, susaddress, susspattended, suscp, 
+            susyl, suspemail, susflname, susffname, susfmname, susfnext, susmlname, susmfname, susmmname, susmnext, susdswd, sushci, 
+            susdid, susdfilled, sudrpic, sudrpicstat, sudrpsa, sudrpsastat, sudrobr, sudrobrstat, sustype, susaemail, susapass, 
+            susgrantstat, susschstat, susdapply) 
+            VALUES (:sustudent_id, :suslname, :susfname, :susmname, :susnext, :susgender, :susdbirth, :suscontact, :susaddress, :susspattended, 
             :suscp, :susyl, :suspemail, :susflname, :susffname, :susfmname, :susfnext, :susmlname, :susmfname, :susmmname, :susmnext, :susdswd, 
-            :sushci, :susdid, :susdfilled, :sudrpicstat, :sudrpsastat, :sudrobrstat, 'Unifast', :susaemail, :susapass, :susgrantstat, 'Pending', '$object->now')
-            ";
+            :sushci, :susdid, :susdfilled, :sudrpic, :sudrpicstat, :sudrpsa, :sudrpsastat, :sudrobr, :sudrobrstat, 'Unifast', :susaemail, :susapass, 
+            :susgrantstat, 'Pending', '$object->now')";
             
             $password_hash = password_hash($_POST["susapass"], PASSWORD_DEFAULT);
 
@@ -151,56 +152,35 @@
             {
                 $data = array(
                     // Personal Details
+                    ':sustudent_id'					=>	$object->clean_input($_POST["sustudent_id"]),
+                    ':suslname'					    =>	$object->clean_input($_POST["suslname"]),
                     ':susfname'					    =>	$object->clean_input($_POST["susfname"]),
                     ':susmname'					    =>	$object->clean_input($_POST["susmname"]),
-                    ':suslname'					    =>	$object->clean_input($_POST["suslname"]),
-                    ':snnext'					  	=>	$object->clean_input($_POST["snnext"]),
-                    ':sndbirth'					  	=>	$object->clean_input($_POST["sndbirth"]),
-                    ':snctship'				    	=>	$object->clean_input($_POST["snctship"]),
-                    ':susaddress'					=>	$object->clean_input($_POST["susaddress"]),
-                    ':suspemail'					    =>	$object->clean_input($_POST["suspemail"]),
+                    ':susnext'					  	=>	$object->clean_input($_POST["susnext"]),
+                    ':susgender'					=>	$object->clean_input($_POST["susgender"]),
+                    ':susdbirth'					=>	$object->clean_input($_POST["susdbirth"]),
                     ':suscontact'					=>	$object->clean_input($_POST["suscontact"]),
-                    ':susgender'					  	=>	$object->clean_input($_POST["susgender"]),
-                    ':sncourse'						=>	$object->clean_input($_POST["sncourse"]),
-                    ':snyrlvl'						=>	$object->clean_input($_POST["snyrlvl"]),
+                    ':susaddress'					=>	$object->clean_input($_POST["susaddress"]),
+                    ':susspattended'				=>	$object->clean_input($_POST["susspattended"]),
+                    ':suscp'					    =>	$object->clean_input($_POST["suscp"]),
+                    ':susyl'				        =>	$object->clean_input($_POST["susyl"]),
+                    ':suspemail'				    =>	$object->clean_input($_POST["suspemail"]),
                     // Family Details
-                    // Guardian Details
-                    ':sngfname'				      	=>	$object->clean_input($_POST["sngfname"]),
-                    ':sngmname'				      	=>	$object->clean_input($_POST["sngmname"]),
-                    ':snglname'			        	=>	$object->clean_input($_POST["snglname"]),
-                    ':sngnext'			        	=>	$object->clean_input($_POST["sngnext"]),
-                    ':sngaddress'					=>	$object->clean_input($_POST["sngaddress"]),
-                    ':sngcontact'					=>	$object->clean_input($_POST["sngcontact"]),
-                    ':sngoccu'					    =>	$object->clean_input($_POST["sngoccu"]),
-                    ':sngcompany'					=>	$object->clean_input($_POST["sngcompany"]),
                     // Father Details
-                    ':snffname'				      	=>	$object->clean_input($_POST["snffname"]),
-                    ':snfmname'					    =>	$object->clean_input($_POST["snfmname"]),
-                    ':snflname'					    =>	$object->clean_input($_POST["snflname"]),
-                    ':snfnext'			        	=>	$object->clean_input($_POST["snfnext"]),
-                    ':snfaddress'					=>	$object->clean_input($_POST["snfaddress"]),
-                    ':snfcontact'					=>	$object->clean_input($_POST["snfcontact"]),
-                    ':snfoccu'				      	=>	$object->clean_input($_POST["snfoccu"]),
-                    ':snfcompany'				   	=>	$object->clean_input($_POST["snfcompany"]),
+                    ':susflname'					=>	$object->clean_input($_POST["susflname"]),
+                    ':susffname'				    =>	$object->clean_input($_POST["susffname"]),
+                    ':susfmname'					=>	$object->clean_input($_POST["susfmname"]),
+                    ':susfnext'			        	=>	$object->clean_input($_POST["susfnext"]),
                     // Mother Details
-                    ':snmfname'				      	=>	$object->clean_input($_POST["snmfname"]),
-                    ':snmmname'					    =>	$object->clean_input($_POST["snmmname"]),
-                    ':snmlname'					    =>	$object->clean_input($_POST["snmlname"]),
-                    ':snmnext'			        	=>	$object->clean_input($_POST["snmnext"]),
-                    ':snmaddress'					=>	$object->clean_input($_POST["snmaddress"]),
-                    ':snmcontact'					=>	$object->clean_input($_POST["snmcontact"]),
-                    ':snmoccu'				      	=>	$object->clean_input($_POST["snmoccu"]),
-                    ':snmcompany'				    =>	$object->clean_input($_POST["snmcompany"]),
-                    ':snspcyincome'				  	=>	$object->clean_input($_POST["snspcyincome"]),
-                    // Application Details
-                    ':snrappnas'				    =>	$object->clean_input($_POST["snrappnas"]),
-                    ':snbos'					  	=>	$object->clean_input($_POST["snbos"]),
-                    ':snsskills'		  			=>	$object->clean_input($_POST["snsskills"]),
-                    ':sntwinterest'		  			=>	$object->clean_input($_POST["sntwinterest"]),
-                    // Education Details
-                    ':snpschatt'				    =>	$object->clean_input($_POST["snpschatt"]),
-                    ':snpschadd'					=>	$object->clean_input($_POST["snpschadd"]),
-                    ':snpyrlvl'		  				=>	$object->clean_input($_POST["snpyrlvl"]),
+                    ':susmlname'					=>	$object->clean_input($_POST["susmlname"]),
+                    ':susmfname'				    =>	$object->clean_input($_POST["susmfname"]),
+                    ':susmmname'				    =>	$object->clean_input($_POST["susmmname"]),
+                    ':susmnext'			        	=>	$object->clean_input($_POST["susmnext"]),
+                    // Other Details
+                    ':susdswd'				        =>	$object->clean_input($_POST["susdswd"]),
+                    ':sushci'					  	=>	$object->clean_input($_POST["sushci"]),
+                    ':susdid'		  			    =>	$object->clean_input($_POST["susdid"]),
+                    ':susdfilled'		  			=>	$object->clean_input($_POST["susdfilled"]),
                     // Requirements Details
                     ':sudrpic'				   		=>	$object->clean_input($_POST["sudrpic"]),
                     ':sudrpicstat'					=>	$object->clean_input($_POST["sudrpicstat"]),
@@ -208,20 +188,16 @@
                     ':sudrpsastat'				    =>	$object->clean_input($_POST["sudrpsastat"]),
                     ':sudrobr'					    =>	$object->clean_input($_POST["sudrobr"]),
                     ':sudrobrstat'		  		    =>	$object->clean_input($_POST["sudrobrstat"]),
-                    ':snpbrgyin'				    =>	$object->clean_input($_POST["snpbrgyin"]),
-                    ':snpbrgyinstat'				=>	$object->clean_input($_POST["snpbrgyinstat"]),
-                    ':snpscef'		  				=>	$object->clean_input($_POST["snpscef"]),
-                    ':snpscefstat'		  			=>	$object->clean_input($_POST["snpscefstat"]),
                     // Scholarship Status Details 
                     ':susgrantstat'					=>	$object->clean_input($_POST["susgrantstat"]),
                     // Account Details
-                    ':susaemail'			      		=>	$object->clean_input($_POST["susaemail"]),
+                    ':susaemail'			      	=>	$object->clean_input($_POST["susaemail"]),
                     ':susapass'				      	=>  $password_hash
                 );
 
                 $object->execute($data);
 
-                $success = '<div class="alert alert-success">Non-Academic Scholar Applicant Added</div>';
+                $success = '<div class="alert alert-success">Applicant Added</div>';
             }
         }
 
@@ -248,73 +224,48 @@
 
         foreach($result as $row)
         {
-            // Account Details
+        // Account Details
             $data['susaemail'] = $row['susaemail'];
             $data['susapass'] = $row['susapass'];
-            // Personal Details
+        // Personal Details
+            $data['sustudent_id'] = $row['sustudent_id'];
             $data['susfname'] = $row['susfname'];
             $data['susmname'] = $row['susmname'];
             $data['suslname'] = $row['suslname'];
-            $data['snnext'] = $row['snnext'];
-            $data['sndbirth'] = $row['sndbirth'];
-            $data['snctship'] = $row['snctship'];
-            $data['susaddress'] = $row['susaddress'];
-            $data['suspemail'] = $row['suspemail'];
-            $data['suscontact'] = $row['suscontact'];
-            $data['sncourse'] = $row['sncourse'];
-            $data['snyrlvl'] = $row['snyrlvl'];
+            $data['susnext'] = $row['susnext'];
             $data['susgender'] = $row['susgender'];
-            // Family Details
-            // Guardian Details
-            $data['sngfname'] = $row['sngfname'];
-            $data['sngmname'] = $row['sngmname'];
-            $data['snglname'] = $row['snglname'];
-            $data['sngnext'] = $row['sngnext'];
-            $data['sngaddress'] = $row['sngaddress'];
-            $data['sngcontact'] = $row['sngcontact'];
-            $data['sngoccu'] = $row['sngoccu'];
-            $data['sngcompany'] = $row['sngcompany'];
+            $data['susdbirth'] = $row['susdbirth'];
+            $data['suscontact'] = $row['suscontact'];
+            $data['susaddress'] = $row['susaddress'];
+            $data['susspattended'] = $row['susspattended'];
+            $data['suscp'] = $row['suscp'];
+            $data['susyl'] = $row['susyl'];
+            $data['suspemail'] = $row['suspemail'];
+        // Family Details
             // Father Details
-            $data['snffname'] = $row['snffname'];
-            $data['snfmname'] = $row['snfmname'];
-            $data['snflname'] = $row['snflname'];
-            $data['snfnext'] = $row['snfnext'];
-            $data['snfaddress'] = $row['snfaddress'];
-            $data['snfcontact'] = $row['snfcontact'];
-            $data['snfoccu'] = $row['snfoccu'];
-            $data['snfcompany'] = $row['snfcompany'];
+            $data['susffname'] = $row['susffname'];
+            $data['susfmname'] = $row['susfmname'];
+            $data['susflname'] = $row['susflname'];
+            $data['susfnext'] = $row['susfnext'];
             // Mother Details
-            $data['snmfname'] = $row['snmfname'];
-            $data['snmmname'] = $row['snmmname'];
-            $data['snmlname'] = $row['snmlname'];
-            $data['snmnext'] = $row['snmnext'];
-            $data['snmaddress'] = $row['snmaddress'];
-            $data['snmcontact'] = $row['snmcontact'];
-            $data['snmoccu'] = $row['snmoccu'];
-            $data['snmcompany'] = $row['snmcompany'];
-            $data['snspcyincome'] = $row['snspcyincome'];
-            // Application Details
-            $data['snrappnas'] = $row['snrappnas'];
-            $data['snbos'] = $row['snbos'];
-            $data['snsskills'] = $row['snsskills'];
-            $data['sntwinterest'] = $row['sntwinterest'];
-            // Education Details
-            $data['snpschatt'] = $row['snpschatt'];
-            $data['snpschadd'] = $row['snpschadd'];
-            $data['snpyrlvl'] = $row['snpyrlvl']; 
-            // Requirement Details
+            $data['susmfname'] = $row['susmfname'];
+            $data['susmmname'] = $row['susmmname'];
+            $data['susmlname'] = $row['susmlname'];
+            $data['susmnext'] = $row['susmnext'];
+            // Other Details
+            $data['susdswd'] = $row['susdswd'];
+            $data['sushci'] = $row['sushci'];
+            $data['susdid'] = $row['susdid'];
+            $data['susdfilled'] = $row['susdfilled'];
+        // Requirement Details
             $data['sudrpic'] = $row['sudrpic'];
             $data['sudrpicstat'] = $row['sudrpicstat'];
             $data['sudrpsa'] = $row['sudrpsa'];
             $data['sudrpsastat'] = $row['sudrpsastat'];
             $data['sudrobr'] = $row['sudrobr'];
             $data['sudrobrstat'] = $row['sudrobrstat'];
-            $data['snpbrgyin'] = $row['snpbrgyin'];
-            $data['snpbrgyinstat'] = $row['snpbrgyinstat'];
-            $data['snpscef'] = $row['snpscef'];
-            $data['snpscefstat'] = $row['snpscefstat'];
-            // Scholar Type
-            $data['snacapstype'] = $row['snacapstype'];
+        // Scholar Type
+            $data['sustype'] = $row['sustype'];
             $data['susgrantstat'] = $row['susgrantstat'];
             $data['susschstat'] = $row['susschstat'];
             $data['susdapply'] = $row['susdapply'];
@@ -332,7 +283,7 @@
 
         $data = array(
             ':susaemail'	=>	$_POST["susaemail"],
-            ':sunifast_id'			=>	$_POST['hidden_id']
+            ':sunifast_id'	=>	$_POST['hidden_id']
         );
 
         $object->query = "
@@ -354,62 +305,39 @@
             {
                 $object->query = "
                 UPDATE tbl_unifast
-                SET susaemail = :susaemail,
+                SET sustudent_id = :sustudent_id,
+                susaemail = :susaemail,
                 susapass = :susapass,
                 susfname = :susfname,
                 susmname = :susmname,
                 suslname = :suslname,
-                snnext = :snnext,
-                sndbirth = :sndbirth,
-                snctship = :snctship,
-                susaddress = :susaddress,
-                suspemail = :suspemail,
-                suscontact = :suscontact,
-                sncourse = :sncourse,
-                snyrlvl = :snyrlvl,
+                susnext = :susnext,
                 susgender = :susgender,
-                sngfname = :sngfname, 
-                sngmname = :sngmname,
-                snglname = :snglname,
-                sngnext = :sngnext,
-                sngaddress = :sngaddress,
-                sngcontact = :sngcontact,
-                sngoccu = :sngoccu,
-                sngcompany = :sngcompany,
-                snffname = :snffname,
-                snfmname = :snfmname,
-                snflname = :snflname,
-                snfnext = :snfnext,
-                snfaddress = :snfaddress,
-                snfcontact = :snfcontact,
-                snfoccu = :snfoccu,
-                snfcompany = :snfcompany,
-                snmfname = :snmfname,
-                snmmname = :snmmname,
-                snmlname = :snmlname,
-                snmnext = :snmnext,
-                snmaddress = :snmaddress,
-                snmcontact = :snmcontact,
-                snmoccu = :snmoccu,
-                snmcompany = :snmcompany,
-                snspcyincome = :snspcyincome,
-                snrappnas = :snrappnas,
-                snbos = :snbos,
-                snsskills = :snsskills,
-                sntwinterest = :sntwinterest,
-                snpschatt = :snpschatt,
-                snpschadd = :snpschadd,
-                snpyrlvl = :snpyrlvl,
-                sudrpic = :sudrpic,
-                sudrpicstat = :sudrpicstat,
+                susdbirth = :susdbirth,
+                suscontact = :suscontact,
+                susaddress = :susaddress,
+                susspattended = :susspattended,
+                suscp = :suscp,
+                susyl = :susyl,
+                suspemail = :suspemail,
+                susffname = :susffname, 
+                susfmname = :susfmname,
+                susflname = :susflname,
+                susfnext = :susfnext,
+                susmfname = :susmfname,
+                susmmname = :susmmname,
+                susmlname = :susmlname,
+                susmnext = :susmnext,
+                susdswd = :susdswd,
+                sushci = :sushci,
+                susdid = :susdid,
+                susdfilled = :susdfilled,
                 sudrpsa = :sudrpsa,
                 sudrpsastat = :sudrpsastat,
+                sudrpic = :sudrpic,
+                sudrpicstat = :sudrpicstat,
                 sudrobr = :sudrobr,
                 sudrobrstat = :sudrobrstat,
-                snpbrgyin = :snpbrgyin,
-                snpbrgyinstat = :snpbrgyinstat,
-                snpscef = :snpscef,
-                snpscefstat = :snpscefstat,
                 susgrantstat = :susgrantstat
                 WHERE sunifast_id = '".$_POST['hidden_id']."'
                 ";
@@ -418,71 +346,46 @@
 
                 $data = array(
                     // Personal Details
+                    ':sustudent_id'					=>	$object->clean_input($_POST["sustudent_id"]),
+                    ':suslname'					    =>	$object->clean_input($_POST["suslname"]),
                     ':susfname'					    =>	$object->clean_input($_POST["susfname"]),
                     ':susmname'					    =>	$object->clean_input($_POST["susmname"]),
-                    ':suslname'					    =>	$object->clean_input($_POST["suslname"]),
-                    ':snnext'					  	=>	$object->clean_input($_POST["snnext"]),
-                    ':sndbirth'					  	=>	$object->clean_input($_POST["sndbirth"]),
-                    ':snctship'				    	=>	$object->clean_input($_POST["snctship"]),
-                    ':susaddress'					=>	$object->clean_input($_POST["susaddress"]),
-                    ':suspemail'					    =>	$object->clean_input($_POST["suspemail"]),
+                    ':susnext'					  	=>	$object->clean_input($_POST["susnext"]),
+                    ':susgender'					=>	$object->clean_input($_POST["susgender"]),
+                    ':susdbirth'					=>	$object->clean_input($_POST["susdbirth"]),
                     ':suscontact'					=>	$object->clean_input($_POST["suscontact"]),
-                    ':susgender'					  	=>	$object->clean_input($_POST["susgender"]),
-                    ':sncourse'						=>	$object->clean_input($_POST["sncourse"]),
-                    ':snyrlvl'						=>	$object->clean_input($_POST["snyrlvl"]),
+                    ':susaddress'					=>	$object->clean_input($_POST["susaddress"]),
+                    ':susspattended'				=>	$object->clean_input($_POST["susspattended"]),
+                    ':suscp'					    =>	$object->clean_input($_POST["suscp"]),
+                    ':susyl'				        =>	$object->clean_input($_POST["susyl"]),
+                    ':suspemail'				    =>	$object->clean_input($_POST["suspemail"]),
                     // Family Details
-                    // Guardian Details
-                    ':sngfname'				      	=>	$object->clean_input($_POST["sngfname"]),
-                    ':sngmname'				      	=>	$object->clean_input($_POST["sngmname"]),
-                    ':snglname'			        	=>	$object->clean_input($_POST["snglname"]),
-                    ':sngnext'			        	=>	$object->clean_input($_POST["sngnext"]),
-                    ':sngaddress'					=>	$object->clean_input($_POST["sngaddress"]),
-                    ':sngcontact'					=>	$object->clean_input($_POST["sngcontact"]),
-                    ':sngoccu'					    =>	$object->clean_input($_POST["sngoccu"]),
-                    ':sngcompany'					=>	$object->clean_input($_POST["sngcompany"]),
                     // Father Details
-                    ':snffname'				      	=>	$object->clean_input($_POST["snffname"]),
-                    ':snfmname'					    =>	$object->clean_input($_POST["snfmname"]),
-                    ':snflname'					    =>	$object->clean_input($_POST["snflname"]),
-                    ':snfnext'			        	=>	$object->clean_input($_POST["snfnext"]),
-                    ':snfaddress'					=>	$object->clean_input($_POST["snfaddress"]),
-                    ':snfcontact'					=>	$object->clean_input($_POST["snfcontact"]),
-                    ':snfoccu'				      	=>	$object->clean_input($_POST["snfoccu"]),
-                    ':snfcompany'				   	=>	$object->clean_input($_POST["snfcompany"]),
+                    ':susflname'					=>	$object->clean_input($_POST["susflname"]),
+                    ':susffname'				    =>	$object->clean_input($_POST["susffname"]),
+                    ':susfmname'					=>	$object->clean_input($_POST["susfmname"]),
+                    ':susfnext'			        	=>	$object->clean_input($_POST["susfnext"]),
                     // Mother Details
-                    ':snmfname'				      	=>	$object->clean_input($_POST["snmfname"]),
-                    ':snmmname'					    =>	$object->clean_input($_POST["snmmname"]),
-                    ':snmlname'					    =>	$object->clean_input($_POST["snmlname"]),
-                    ':snmnext'			        	=>	$object->clean_input($_POST["snmnext"]),
-                    ':snmaddress'					=>	$object->clean_input($_POST["snmaddress"]),
-                    ':snmcontact'					=>	$object->clean_input($_POST["snmcontact"]),
-                    ':snmoccu'				      	=>	$object->clean_input($_POST["snmoccu"]),
-                    ':snmcompany'				    =>	$object->clean_input($_POST["snmcompany"]),
-                    ':snspcyincome'				  	=>	$object->clean_input($_POST["snspcyincome"]),
-                    // Application Details
-                    ':snrappnas'				    =>	$object->clean_input($_POST["snrappnas"]),
-                    ':snbos'					  	=>	$object->clean_input($_POST["snbos"]),
-                    ':snsskills'		  			=>	$object->clean_input($_POST["snsskills"]),
-                    ':sntwinterest'		  			=>	$object->clean_input($_POST["sntwinterest"]),
-                    // Education Details
-                    ':snpschatt'				    =>	$object->clean_input($_POST["snpschatt"]),
-                    ':snpschadd'					=>	$object->clean_input($_POST["snpschadd"]),
-                    ':snpyrlvl'		  				=>	$object->clean_input($_POST["snpyrlvl"]),
+                    ':susmlname'					=>	$object->clean_input($_POST["susmlname"]),
+                    ':susmfname'				    =>	$object->clean_input($_POST["susmfname"]),
+                    ':susmmname'				    =>	$object->clean_input($_POST["susmmname"]),
+                    ':susmnext'			        	=>	$object->clean_input($_POST["susmnext"]),
+                    // Other Details
+                    ':susdswd'				        =>	$object->clean_input($_POST["susdswd"]),
+                    ':sushci'					  	=>	$object->clean_input($_POST["sushci"]),
+                    ':susdid'		  			    =>	$object->clean_input($_POST["susdid"]),
+                    ':susdfilled'		  			=>	$object->clean_input($_POST["susdfilled"]),
                     // Requirements Details
                     ':sudrpic'				   		=>	$object->clean_input($_POST["sudrpic"]),
                     ':sudrpicstat'					=>	$object->clean_input($_POST["sudrpicstat"]),
                     ':sudrpsa'		  				=>	$object->clean_input($_POST["sudrpsa"]),
                     ':sudrpsastat'				    =>	$object->clean_input($_POST["sudrpsastat"]),
-                    ':sudrobr'					=>	$object->clean_input($_POST["sudrobr"]),
-                    ':sudrobrstat'		  		=>	$object->clean_input($_POST["sudrobrstat"]),
-                    ':snpbrgyin'				    =>	$object->clean_input($_POST["snpbrgyin"]),
-                    ':snpbrgyinstat'				=>	$object->clean_input($_POST["snpbrgyinstat"]),
-                    ':snpscef'		  				=>	$object->clean_input($_POST["snpscef"]),
-                    ':snpscefstat'		  			=>	$object->clean_input($_POST["snpscefstat"]),
+                    ':sudrobr'					    =>	$object->clean_input($_POST["sudrobr"]),
+                    ':sudrobrstat'		  		    =>	$object->clean_input($_POST["sudrobrstat"]),
                     // Scholarship Status Details 
                     ':susgrantstat'					=>	$object->clean_input($_POST["susgrantstat"]),
                     // Account Details
-                    ':susaemail'			      		=>	$object->clean_input($_POST["susaemail"]),
+                    ':susaemail'			      	=>	$object->clean_input($_POST["susaemail"]),
                     ':susapass'				      	=>  $password_hash
                 );
 

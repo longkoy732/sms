@@ -19,53 +19,53 @@
 
     ?>
 <!-- Table -->
-<!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">UNIFAST Application Management</h1>
+    <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">UNIFAST Application Management</h1>
 
-<!-- DataTales Example -->
-    <span id="message"></span>
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <div class="row">
-                <div class="col">
-                    <h6 class="m-0 font-weight-bold text-primary">Applicant List</h6>
+    <!-- DataTales Example -->
+        <span id="message"></span>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <div class="row">
+                    <div class="col">
+                        <h6 class="m-0 font-weight-bold text-primary">Applicant List</h6>
+                    </div>
+                    <div class="col" align="right">
+                        <button type="button" name="add_unifast" id="add_unifast" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+                        <button type="button" name="delete_all" id="delete_all" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-times"></i></button>
+                        <button type="button" name="approve_all" id="approve_all" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-thumbs-up"></i></button>
+                        <button type="button" name="reject_all" id="reject_all" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-thumbs-down"></i></button>
+                    </div>
                 </div>
-                <div class="col" align="right">
-                    <button type="button" name="add_unifast" id="add_unifast" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
-                    <button type="button" name="delete_all" id="delete_all" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-times"></i></button>
-                    <button type="button" name="approve_all" id="approve_all" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-thumbs-up"></i></button>
-                    <button type="button" name="reject_all" id="reject_all" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-thumbs-down"></i></button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="unifast_table" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Middle Name</th>
+                                <th>Address</th>
+                                <th>Contact No.</th>
+                                <th>Gender</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="unifast_table" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Select</th>
-                            <th>Last Name</th>
-                            <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Address</th>
-                            <th>Contact No.</th>
-                            <th>Gender</th>
-                            <th>Email</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 
-<?php
-include('footer.php');
-?>
+    <?php
+    include('footer.php');
+    ?>
 <!-- Add Modal -->
     <div id="unifastModal" class="modal fade">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -134,11 +134,8 @@ include('footer.php');
                                     <span id="error_susgender" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                <label>Date of Birth<span class="text-danger">*</label>
-                                    <div class='input-group date' id='datetimepicker1'>
-                                        <input type='text' name="susdbirth" id="susdbirth" class="form-control">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                    </div>
+                                    <label>Date of Birth<span class="text-danger">*</label>
+                                    <input type='text' name="susdbirth" id="susdbirth" class="form-control">
                                     <span id="error_susdbirth" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
@@ -223,7 +220,7 @@ include('footer.php');
                                     <input type="text" name="susmfname" id="susmfname" class="form-control" />
                                     <span id="error_susmfname" class="text-danger"></span>
                                     </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Middle Name<span class="text-danger">*</span></label>
                                     <input type="text" name="susmmname" id="susmmname" class="form-control" />
                                     <span id="error_susmmname" class="text-danger"></span>
@@ -385,580 +382,72 @@ include('footer.php');
         color:#FFFFFF;
     }
     </style>
-<!-- Script -->
-<script>
-$(document).ready(function(){
-// Table Function
-    var dataTable = $('#unifast_table').DataTable({
-        "processing" : true,
-        "serverSide" : true,
-        "order" : [],
-        "ajax" : {
-            url:"unifastapp_action.php",
-            type:"POST",
-            data:{action:'fetch'}
-        },
-        "columnDefs":[
-            {
-                "targets":[0],
-                "orderable":false,
-                'checkboxes': {
-                'selectRow': true
-            }
-            },
-        ],
-        'select': {
-        'style': 'multi'
-        },
-        // 'order': [[1, 'asc']]	
-    });
+<!-- Table Function -->
+    <!-- Script -->
+    <script>
+    $(document).ready(function(){
 
-    $('#sndbirth').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
-    $('#sudrpic').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
-    $('#sudrpsa').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
-    $('#sudrobr').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
-    $('#snpbrgyin').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
-    $('#snpscef').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
+        var dataTable = $('#unifast_table').DataTable({
+            "processing" : true,
+            "serverSide" : true,
+            "order" : [],
+            "ajax" : {
+                url:"unifastapp_action.php",
+                type:"POST",
+                data:{action:'fetch'}
+            },
+            "columnDefs":[
+                {
+                    "targets":[0],
+                    "orderable":false,
+                    'checkboxes': {
+                    'selectRow': true
+                }
+                },
+            ],
+            'select': {
+            'style': 'multi'
+            },
+            // 'order': [[1, 'asc']]	
+        });
+
+        $('#susdbirth').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
+        $('#sudrpic').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
+        $('#sudrpsa').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
+        $('#sudrobr').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
+        $('#susdfilled').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
 
 // Add Validation&Submit
     $('#add_unifast').click(function(){
-
-        $('#unifastModal').modal('show');
-
-        $('#modal_title').text('Add UNIFAST Scholar');
-
-        $('#submit_button').val('Add');
 
         $('#unifast_form')[0].reset();
 
         $('#unifast_form').parsley().reset();
 
-        $('#submit_button').click(function(){
-// Error Verify
-        var error_sustudent_id = '';
-        var error_suslname = '';
-        var error_susfname = '';
-        var error_susmname = '';
-        var error_susnext = '';
-        var error_susgender = '';
-        var error_susdbirth = '';
-        var error_suscontact = '';
-        var error_susaddress = '';
-        var error_susspattended	= '';
-        var error_suscp = '';
-        var error_susyl = '';
-        var error_suspemail = '';
-        var emailval = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!outlook.com)([\w-]+\.)+[\w-]{2,4})?$/;
-        var pcnumval = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
-        var error_susflname = '';
-        var error_susffname = '';
-        var error_susfmname = '';
-        var error_susfnext = '';
-        var error_susmlname = '';
-        var error_susmfname = '';
-        var error_susmmname	 = '';
-        var error_susmnext = '';
-        var error_susdswd = '';
-        var error_sushci = '';
-        var error_susdid = '';
-        var error_susdfilled = '';
-        var error_sudrpicstat = '';
-        var error_sudrpsastat = '';
-        var error_sudrobrstat = '';
+        $('#modal_title').text('Add UNIFAST Scholar');
 
-// Student ID Details
-        if($.trim($('#sustudent_id').val()).length == 0)
-        {
-        error_sustudent_id = 'Student ID No. is required';
-        $('#error_sustudent_id').text(error_sustudent_id);
-        $('#sustudent_id').addClass('has-error');
-        }
-        else
-        {
-        error_sustudent_id = '';
-        $('#error_sustudent_id').text(error_sustudent_id);
-        $('#sustudent_id').removeClass('has-error');
-        }        
-// Personal Details
-        if($.trim($('#suslname').val()).length == 0)
-        {
-        error_suslname = 'Last Name is required';
-        $('#error_suslname').text(error_suslname);
-        $('#suslname').addClass('has-error');
-        }
-        else
-        {
-        error_suslname = '';
-        $('#error_suslname').text(error_suslname);
-        $('#suslname').removeClass('has-error');
-        }
+        $('#action').val('Add');
 
-        if($.trim($('#susfname').val()).length == 0)
-        {
-        error_susfname = 'First Name is required';
-        $('#error_susfname').text(error_susfname);
-        $('#susfname').addClass('has-error');
-        }
-        else
-        {
-        error_susfname = '';
-        $('#error_susfname').text(error_susfname);
-        $('#susfname').removeClass('has-error');
-        }
-        
-        if($.trim($('#susmname').val()).length == 0)
-        {
-        error_susmname = 'Put N/A if None';
-        $('#error_susmname').text(error_susmname);
-        $('#susmname').addClass('has-error');
-        }
-        else
-        {
-        error_susmname = '';
-        $('#error_susmname').text(error_susmname);
-        $('#susmname').removeClass('has-error');
-        }
+        $('#submit_button').val('Add');
 
-        if($.trim($('#susdbirth').val()).length == 0)
-        {
-        error_susdbirth = 'Date of Birth is required';
-        $('#error_susdbirth').text(error_susdbirth);
-        $('#susdbirth').addClass('has-error');
-        }
-        else
-        {
-        error_susdbirth = '';
-        $('#error_susdbirth').text(error_susdbirth);
-        $('#susdbirth').removeClass('has-error');
-        }
+        $('#unifastModal').modal('show');
 
-        if($.trim($('#suscontact').val()).length == 0)
-        {
-        error_suscontact = 'Contact No. is required';
-        $('#error_suscontact').text(error_suscontact);
-        $('#suscontact').addClass('has-error');
-        }
-        else
-        {
-        error_suscontact = '';
-        $('#error_suscontact').text(error_suscontact);
-        $('#suscontact').removeClass('has-error');
-        }
-
-        if($.trim($('#susaddress').val()).length == 0)
-        {
-        error_susaddress = 'Permanent Home Address is required';
-        $('#error_susaddress').text(error_susaddress);
-        $('#susaddress').addClass('has-error');
-        }
-        else
-        {
-        error_susaddress = '';
-        $('#error_susaddress').text(error_susaddress);
-        $('#susaddress').removeClass('has-error');
-        }
-
-        if($.trim($('#susspattended').val()).length == 0)
-        {
-        error_susspattended = 'Previous School Attended is required';
-        $('#error_susspattended').text(error_susspattended);
-        $('#susspattended').addClass('has-error');
-        }
-        else
-        {
-        error_susspattended = '';
-        $('#error_susspattended').text(error_susspattended);
-        $('#susspattended').removeClass('has-error');
-        }
-
-        if($.trim($('#suspemail').val()).length == 0)
-        {
-        error_suspemail = 'Email is required';
-        $('#error_suspemail').text(error_suspemail);
-        $('#suspemail').addClass('has-error');
-        }
-        else
-        {
-        //     if(emailval.test($('#semail').val()))
-        //    {
-        //     error_semail = 'Invalid Email Only(gmail, hotmail, outlook or yahoo is allowed).';
-        //     $('#error_semail').text(error_semail);
-        //     $('#semail').addClass('has-error');
-        //    }
-        //    else {
-        error_suspemail = '';
-        $('#error_suspemail').text(error_suspemail);
-        $('#suspemail').removeClass('has-error');
-        }
-        //   }
-
-        if($.trim($('#suscp').val()).length == 0)
-        {
-        error_suscp = 'Course/Program is Required';
-        $('#error_suscp').text(error_suscp);
-        $('#suscp').addClass('has-error');
-        }
-        else
-        {
-        //    if (!pcnumval.test($('#suscontact').val()))
-        //    {
-        //     error_suscontact = 'Invalid Contact Number';
-        //     $('#error_suscontact').text(error_suscontact);
-        //     $('#suscontact').addClass('has-error');
-        //    }
-        //    else
-        //    {
-            error_suscp = '';
-            $('#error_suscp').text(error_suscp);
-            $('#suscp').removeClass('has-error');
-        //    }
-        }
-
-        if($.trim($('#susyl').val()).length == 0)
-        {
-        error_susyl = 'Year Level is required';
-        $('#error_susyl').text(error_susyl);
-        $('#susyl').addClass('has-error');
-        }
-        else
-        {
-        error_susyl = '';
-        $('#error_susyl').text(error_susyl);
-        $('#susyl').removeClass('has-error');
-        }
-
-        if($.trim($('#susgender').val()).length == 0)
-        {
-        error_susgender = 'Gender is required';
-        $('#error_susgender').text(error_susgender);
-        $('#susgender').addClass('has-error');
-        }
-        else
-        {
-        error_susgender = '';
-        $('#error_susgender').text(error_susgender);
-        $('#susgender').removeClass('has-error');
-        }
-
-
-        if($.trim($('#susnext').val()).length == 0)
-        {
-        error_susnext = 'Select N/A if none';
-        $('#error_susnext').text(error_susnext);
-        $('#susnext').addClass('has-error');
-        }
-        else
-        {
-        error_susnext = '';
-        $('#error_susnext').text(error_susnext);
-        $('#susnext').removeClass('has-error');
-        }
-// Family Details
-        // Father Last Name
-        if($.trim($('#susflname').val()).length == 0)
-        {
-        error_susflname = 'Last Name is required';
-        $('#error_susflname').text(error_susflname);
-        $('#susflname').addClass('has-error');
-        }
-        else
-        {
-        error_susflname= '';
-        $('#error_susflname').text(error_susflname);
-        $('#susflname').removeClass('has-error');
-        }
-        //Father First Name
-        if($.trim($('#susffname').val()).length == 0)
-        {
-        error_susffname = 'First Name is required';
-        $('#error_susffname').text(error_susffname);
-        $('#susffname').addClass('has-error');
-        }
-        else
-        {
-        error_susffname = '';
-        $('#error_susffname').text(error_susffname);
-        $('#susffname').removeClass('has-error');
-        }
-        //Father Middle Name
-
-        if($.trim($('#susfmname').val()).length == 0)
-        {
-        error_susfmname = 'Put N/A if none';
-        $('#error_susfmname').text(error_susfmname);
-        $('#susfmname').addClass('has-error');
-        }
-        else
-        {
-        error_susfmname = '';
-        $('#error_susfmname').text(error_susfmname);
-        $('#susfmname').removeClass('has-error');
-        }
-        //Father Suffix
-
-        if($.trim($('#susfnext').val()).length == 0)
-        {
-        error_susfnext = 'Select N/A if none';
-        $('#error_susfnext').text(error_susfnext);
-        $('#susfnext').addClass('has-error');
-        }
-        else
-        {
-        error_susfnext = '';
-        $('#error_susfnext').text(error_susfnext);
-        $('#susfnext').removeClass('has-error');
-        }
-
-        //Mother Last Name
-        if($.trim($('#susmlname').val()).length == 0)
-        {
-        error_susmlname = 'Last Name is required';
-        $('#error_susmlname').text(error_susmlname);
-        $('#susmlname').addClass('has-error');
-        }
-        else
-        {
-        error_susmlname = '';
-        $('#error_susmlname').text(error_susmlname);
-        $('#susmlname').removeClass('has-error');
-        }
-        //Mother First Name
-
-        if($.trim($('#susmfname').val()).length == 0)
-        {
-        error_susmfname = 'First Name is required';
-        $('#error_susmfname').text(error_susmfname);
-        $('#susmfname').addClass('has-error');
-        }
-        else
-        {
-        error_susmfname = '';
-        $('#error_susmfname').text(error_susmfname);
-        $('#susmfname').removeClass('has-error');
-        }
-        //Mother Middle Name
-
-        if($.trim($('#susmmname').val()).length == 0)
-        {
-        error_susmmname = 'Put N/A if none';
-        $('#error_susmmname').text(error_susmmname);
-        $('#susmmname').addClass('has-error');
-        }
-        else
-        {
-        error_susmmname = '';
-        $('#error_susmmname').text(error_susmmname);
-        $('#susmmname').removeClass('has-error');
-        }
-        //Mother Suffix
-        if($.trim($('#susmnext').val()).length == 0)
-        {
-        error_susmnext = 'Select N/A if none';
-        $('#error_susmnext').text(error_susmnext);
-        $('#susmnext').addClass('has-error');
-        }
-        else
-        {
-        error_susmnext = '';
-        $('#error_susmnext').text(error_susmnext);
-        $('#susmnext').removeClass('has-error');
-        }
-
-        //DSWD Household
-        if($.trim($('#susdswd').val()).length == 0)
-        {
-        error_susdswd = 'Put N/A if none';
-        $('#error_susdswd').text(error_susdswd);
-        $('#susdswd').addClass('has-error');
-        }
-        else
-        {
-        error_susdswd = '';
-        $('#error_susdswd').text(error_susdswd);
-        $('#susdswd').removeClass('has-error');
-        }
-        // Household Capital Income
-        if($.trim($('#sushci').val()).length == 0)
-        {
-        error_sushci = 'Capital Income is required';
-        $('#error_sushci').text(error_sushci);
-        $('#sushci').addClass('has-error');
-        }
-        else
-        {
-        error_sushci = '';
-        $('#error_sushci').text(error_sushci);
-        $('#sushci').removeClass('has-error');
-        }
-
-        // Specify Disability
-        if($.trim($('#susdid').val()).length == 0)
-        {
-        error_susdid = 'Put N/A if none';
-        $('#error_susdid').text(error_susdid);
-        $('#susdid').addClass('has-error');
-        }
-        else
-        {
-        error_susdid = '';
-        $('#error_susdid').text(error_susdid);
-        $('#susdid').removeClass('has-error');
-        }
-
-        // Date Filed
-        if($.trim($('#susdfilled').val()).length == 0)
-        {
-        error_susdfilled = 'Date Filed is required';
-        $('#error_susdfilled').text(error_susdfilled);
-        $('#susdfilled').addClass('has-error');
-        }
-        else
-        {
-        error_susdfilled = '';
-        $('#error_susdfilled').text(error_susdfilled);
-        $('#susdfilled').removeClass('has-error');
-        }
-    
-// Requirements Details
-        
-        if($.trim($('#sudrpsastat').val()).length == 0)
-        {
-        error_sudrpsastat = 'PSA Status is required';
-        $('#error_sudrpsastat').text(error_sudrpsastat);
-        $('#sudrpsastat').addClass('has-error');
-        }
-        else
-        {
-        error_sudrpsastat = '';
-        $('#error_sudrpsastat').text(error_sudrpsastat);
-        $('#sudrpsastat').removeClass('has-error');
-        }
-
-        if($.trim($('#sudrpicstat').val()).length == 0)
-        {
-        error_sudrpicstat = '2x2 ID pic. Status is required';
-        $('#error_sudrpicstat').text(error_sudrpicstat);
-        $('#sudrpicstat').addClass('has-error');
-        }
-        else
-        {
-        error_sudrpicstat = '';
-        $('#error_sudrpicstat').text(error_sudrpicstat);
-        $('#sudrpicstat').removeClass('has-error');
-        }
-
-        if($.trim($('#sudrobrstat').val()).length == 0)
-        {
-        error_sudrobrstat = 'Brgy. Res. Status is required';
-        $('#error_sudrobrstat').text(error_sudrobrstat);
-        $('#sudrobrstat').addClass('has-error');
-        }
-        else
-        {
-        error_sudrobrstat = '';
-        $('#error_sudrobrstat').text(error_sudrobrstat);
-        $('#sudrobrstat').removeClass('has-error');
-        }
-// Scholarship Details
-    if($.trim($('#susgrantstat').val()).length == 0)
-        {
-        error_susgrantstat = 'Grant Status is required';
-        $('#error_susgrantstat').text(error_susgrantstat);
-        $('#susgrantstat').addClass('has-error');
-        }
-        else
-        {
-        error_susgrantstat = '';
-        $('#error_susgrantstat').text(error_susgrantstat);
-        $('#susgrantstat').removeClass('has-error');
-        }
-// Account Details
-    if($.trim($('#susaemail').val()).length == 0)
-    {
-    error_susaemail = 'Email is required';
-    $('#error_susaemail').text(error_susaemail);
-    $('#susaemail').addClass('has-error');
-    }
-    else
-    {
-    error_susaemail = '';
-    $('#error_susaemail').text(error_susaemail);
-    $('#susaemail').removeClass('has-error');
-    }
-
-    if($.trim($('#susapass').val()).length == 0)
-    {
-    error_susapass = 'Password is required';
-    $('#error_susapass').text(error_susapass);
-    $('#susapass').addClass('has-error');
-    }
-    else
-    {
-    error_susapass = '';
-    $('#error_susapass').text(error_susapass);
-    $('#susapass').removeClass('has-error');
-    }
-// Verification
-            if(error_sustudent_id != ''                     
-            || error_suslname != '' 
-            || error_susfname != ''
-            || error_susmname != '' 
-            || error_susnext != ''
-            || error_susgender != '' 
-            || error_susdbirth != ''
-            || error_suscontact != '' 
-            || error_susaddress != ''
-            || error_susspattended != '' 
-            || error_suscp != ''
-            || error_susyl != '' 
-            || error_suspemail != ''
-            || error_susflname != '' 
-            || error_susffname != '' 
-            || error_susfmname != '' 
-            || error_susfnext != '' 
-            || error_susmlname != '' 
-            || error_susmfname != '' 
-            || error_susmmname	 != '' 
-            || error_susmnext != '' 
-            || error_susdswd != '' 
-            || error_susdid != '' 
-            || error_sushci != '' 
-            || error_susdfilled != ''
-            || error_sudrpicstat != ''
-            || error_sudrpsastat != ''
-            || error_sudrobrstat != ''
-            || error_susaemail != ''
-            || error_ssusapass != ''
-            )
-            {
-            return false;
-            }
-            else
-            {
-                $('#action').val('Add');
-
-                $('#form_message').html('');
-            }
-
-        });
+        $('#form_message').html('');
     });
 // Submit
     $('#unifast_form').parsley();
@@ -1032,72 +521,47 @@ $(document).ready(function(){
                 $('#susaemail').val(data.susaemail);
                 $('#susapass').val(data.susapass);
     // Personal Details
-                $('#snfname').val(data.snfname);
-                $('#snmname').val(data.snmname);
-                $('#snlname').val(data.snlname);
-                $('#snnext').val(data.snnext);
-                $('#sndbirth').val(data.sndbirth);
-                $('#snctship').val(data.snctship);
-                $('#snaddress').val(data.snaddress);
-                $('#snpemail').val(data.snpemail);
-                $('#sncontact').val(data.sncontact);
-                $('#sncourse').val(data.sncourse);
-                $('#snyrlvl').val(data.snyrlvl);
-                $('#sngender').val(data.sngender);
+                $('#sustudent_id').val(data.sustudent_id);
+                $('#susfname').val(data.susfname);
+                $('#susmname').val(data.susmname);
+                $('#suslname').val(data.suslname);
+                $('#susnext').val(data.susnext);
+                $('#susgender').val(data.susgender);
+                $('#susdbirth').val(data.susdbirth);
+                $('#suscontact').val(data.suscontact);
+                $('#susaddress').val(data.susaddress);
+                $('#susspattended').val(data.susspattended);
+                $('#suscp').val(data.suscp);
+                $('#susyl').val(data.susyl);
+                $('#suspemail').val(data.suspemail);     
     // Family Details
-        // Guardian Details
-                $('#sngfname').val(data.sngfname);
-                $('#sngmname').val(data.sngmname);
-                $('#snglname').val(data.snglname);
-                $('#sngnext').val(data.sngnext);
-                $('#sngaddress').val(data.sngaddress);
-                $('#sngcontact').val(data.sngcontact);
-                $('#sngoccu').val(data.sngoccu);
-                $('#sngcompany').val(data.sngcompany);
         // Father Details
-                $('#snffname').val(data.snffname);
-                $('#snfmname').val(data.snfmname);
-                $('#snflname').val(data.snflname);
-                $('#snfnext').val(data.snfnext);
-                $('#snfaddress').val(data.snfaddress);
-                $('#snfcontact').val(data.snfcontact);
-                $('#snfoccu').val(data.snfoccu);
-                $('#snfcompany').val(data.snfcompany);
+                $('#susffname').val(data.susffname);
+                $('#susfmname').val(data.susfmname);
+                $('#susflname').val(data.susflname);
+                $('#susfnext').val(data.susfnext);
         // Mother Details
-                $('#snmfname').val(data.snmfname);
-                $('#snmmname').val(data.snmmname);
-                $('#snmlname').val(data.snmlname);
-                $('#snmnext').val(data.snmnext);
-                $('#snmaddress').val(data.snmaddress);
-                $('#snmcontact').val(data.snmcontact);
-                $('#snmoccu').val(data.snmoccu);
-                $('#snmcompany').val(data.snmcompany);
-                $('#snspcyincome').val(data.snspcyincome);
-    // Application Details
-                $('#snrappnas').val(data.snrappnas);
-                $('#snbos').val(data.snbos);
-                $('#snsskills').val(data.snsskills);
-                $('#sntwinterest').val(data.sntwinterest);
-    // Education Details
-                $('#snpschatt').val(data.snpschatt);
-                $('#snpschadd').val(data.snpschadd);
-                $('#snpyrlvl').val(data.snpyrlvl);
+                $('#susmfname').val(data.susmfname);
+                $('#susmmname').val(data.susmmname);
+                $('#susmlname').val(data.susmlname);
+                $('#susmnext').val(data.susmnext);
+    // Other Details
+                $('#susdswd').val(data.susdswd);
+                $('#sushci').val(data.sushci);
+                $('#susdid').val(data.susdid);
+                $('#susdfilled').val(data.susdfilled);
     // Requirement Details
-                $('#sudrpic').val(data.sudrpic);
-                $('#sudrpicstat').val(data.sudrpicstat);
                 $('#sudrpsa').val(data.sudrpsa);
                 $('#sudrpsastat').val(data.sudrpsastat);
+                $('#sudrpic').val(data.sudrpic);
+                $('#sudrpicstat').val(data.sudrpicstat);
                 $('#sudrobr').val(data.sudrobr);
                 $('#sudrobrstat').val(data.sudrobrstat);
-                $('#snpbrgyin').val(data.snpbrgyin);
-                $('#snpbrgyinstat').val(data.snpbrgyinstat);
-                $('#snpscef').val(data.snpscef);
-                $('#snpscefstat').val(data.snpscefstat);
     // Scholarship Details
-                $('#snacapstype').val(data.snacapstype);
+                $('#sustype').val(data.sustype);
                 $('#susgrantstat').val(data.susgrantstat);
-                $('#snascholarstat').val(data.snascholarstat);
-                $('#snadapply').val(data.snadapply);
+                $('#susschstat').val(data.susschstat);
+                $('#susdapply').val(data.susdapply);
 
                 $('#modal_title').text('Edit Applicant Info');
 
@@ -1215,78 +679,52 @@ $(document).ready(function(){
                 html += '<tr><th width="40%" class="text-right">Email Address</th><td width="60%">'+data.susaemail+'</td></tr>';
             // Personal Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Personal Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.snfname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.snmname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.snlname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.snnext+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date of Birth</th><td width="60%">'+data.sndbirth+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Citizenship</th><td width="60%">'+data.snctship+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.snaddress+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Email Address</th><td width="60%">'+data.snpemail+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.sncontact+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Gender</th><td width="60%">'+data.sngender+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Student ID</th><td width="60%">'+data.sustudent_id+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.susfname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.susmname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.suslname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.susnext+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Gender</th><td width="60%">'+data.susgender+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date of Birth</th><td width="60%">'+data.susdbirth+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.suscontact+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Permanent Home Address</th><td width="60%">'+data.susaddress+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Previous School Attended</th><td width="60%">'+data.susspattended+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Course/Program</th><td width="60%">'+data.suscp+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Year Level</th><td width="60%">'+data.susyl+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Email Address</th><td width="60%">'+data.suspemail+'</td></tr>';
             // Family Details
-                // Guardian Details
-                html += '<tr><th width="40%" class="text-left" style="font-size:20px">Family Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-left" style="font-size:18px">Guardian Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.sngfname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.sngmname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.snglname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.sngnext+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.sngaddress+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.sngcontact+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Occupation/Position</th><td width="60%">'+data.sngoccu+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Company</th><td width="60%">'+data.sngcompany+'</td></tr>';
                 // Father Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:18px">Father Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.snffname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.snfmname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.snflname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.snfnext+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.snfaddress+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.snfcontact+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Occupation/Position</th><td width="60%">'+data.snfoccu+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Company</th><td width="60%">'+data.snfcompany+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.susffname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.susfmname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.susflname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.susfnext+'</td></tr>';
                 // Mother Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:18px">Mother Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.snmfname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.snmmname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.snmlname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.snmnext+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.snmaddress+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.snmcontact+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Occupation/Position</th><td width="60%">'+data.snmoccu+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Company</th><td width="60%">'+data.snmcompany+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Parents Combine Yearly Income</th><td width="60%">'+data.snspcyincome+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.susmfname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.susmmname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.susmlname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.susmnext+'</td></tr>';
             // Achievement Details
-                html += '<tr><th width="40%" class="text-left" style="font-size:20px">Application Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">Grade/GWA</th><td width="60%">'+data.snrappnas+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Award Received</th><td width="60%">'+data.snbos+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Received</th><td width="60%">'+data.snsskills+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Received</th><td width="60%">'+data.sntwinterest+'</td></tr>';
-            // Education Details
-                html += '<tr><th width="40%" class="text-left" style="font-size:20px">Education Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">Grade/GWA</th><td width="60%">'+data.snpschatt+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Award Received</th><td width="60%">'+data.snpschadd+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Received</th><td width="60%">'+data.snpyrlvl+'</td></tr>';
+                html += '<tr><th width="40%" class="text-left" style="font-size:20px">Other Details</th><td width="60%"></td></tr>';
+                html += '<tr><th width="40%" class="text-right">DSWD Household / 4ps No.</th><td width="60%">'+data.susdswd+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Household Capital Income</th><td width="60%">'+data.sushci+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Specify Disability / Attached PWD Id</th><td width="60%">'+data.susdid+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date Filed</th><td width="60%">'+data.susdfilled+'</td></tr>';
             // Requirement Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Requirement Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Report Card</th><td width="60%">'+data.sudrpic+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Report Card Status</th><td width="60%">'+data.sudrpicstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Good Moral</th><td width="60%">'+data.sudrpsa+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Good Moral Status</th><td width="60%">'+data.sudrpsastat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Certificate of Recognition</th><td width="60%">'+data.sudrobr+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Certificate of Recognition Status</th><td width="60%">'+data.sudrobrstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Good Moral</th><td width="60%">'+data.snpbrgyin+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Good Moral Status</th><td width="60%">'+data.snpbrgyinstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Certificate of Recognition</th><td width="60%">'+data.snpscef+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Certificate of Recognition Status</th><td width="60%">'+data.snpscefstat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date Receive Photocopy of PSA</th><td width="60%">'+data.sudrpsa+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Photocopy of PSA Status</th><td width="60%">'+data.sudrpsastat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date Receive 2x2 ID Picture</th><td width="60%">'+data.sudrpic+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">2x2 ID Picture Status</th><td width="60%">'+data.sudrpicstat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date Receive Brgy. Residency</th><td width="60%">'+data.sudrobr+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Brgy. Residency Status</th><td width="60%">'+data.sudrobrstat+'</td></tr>';
             // Scholarship Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">Scholarship Type</th><td width="60%">'+data.snacapstype+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Scholarship Type</th><td width="60%">'+data.sustype+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Grant Status</th><td width="60%">'+data.susgrantstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Scholarship Status</th><td width="60%">'+data.snascholarstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Applied</th><td width="60%">'+data.snadapply+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Scholarship Status</th><td width="60%">'+data.susschstat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date Applied</th><td width="60%">'+data.susdapply+'</td></tr>';
                 html += '</table></div>';
 
                 $('#viewModal').modal('show');
