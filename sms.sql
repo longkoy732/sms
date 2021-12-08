@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2021 at 02:30 PM
+-- Generation Time: Dec 08, 2021 at 05:31 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -260,7 +260,6 @@ CREATE TABLE `tbl_nonacad` (
 --
 
 INSERT INTO `tbl_nonacad` (`snacad_id`, `snfname`, `snmname`, `snlname`, `snnext`, `sndbirth`, `snctship`, `snaddress`, `snpemail`, `sncontact`, `sngender`, `sncourse`, `snyrlvl`, `sngfname`, `sngmname`, `snglname`, `sngnext`, `sngaddress`, `sngcontact`, `sngoccu`, `sngcompany`, `snffname`, `snfmname`, `snflname`, `snfnext`, `snfaddress`, `snfcontact`, `snfoccu`, `snfcompany`, `snmfname`, `snmmname`, `snmlname`, `snmnext`, `snmaddress`, `snmcontact`, `snmoccu`, `snmcompany`, `snspcyincome`, `snrappnas`, `snbos`, `snsskills`, `sntwinterest`, `snpschatt`, `snpschadd`, `snpyrlvl`, `snasprc`, `snasprcstat`, `snapgm`, `snapgmstat`, `sntbytpic`, `sntbytpicstat`, `snpbrgyin`, `snpbrgyinstat`, `snpscef`, `snpscefstat`, `snacapstype`, `snaemail`, `snapass`, `sngrantstat`, `snascholarstat`, `snadapply`) VALUES
-(14, 'Quinlan Merritt', 'Amy Rhodes', 'Aladdin Weiss', 'Sr.', '2021-12-01', 'Corporis sit quo qui', 'Repudiandae hic accu', 'lifo@mailinator.com', 'Ipsum quaerat quibu', 'Male', 'Illo error molestiae', 'Voluptas d', 'Gail Mcintyre', 'Ralph Byers', 'Ryder Hart', 'N/A', 'Non eiusmod vitae la', 'Cum quam possimus d', 'Animi dolore laudan', 'Parrish Harvey LLC', 'Aphrodite Guerrero', 'Travis Cline', 'Aphrodite Ewing', 'Sr.', 'Sed et optio quia e', 'Aliquid qui velit si', 'Sunt omnis aut verit', 'Mosley Santos Associates', 'Norman Valdez', 'Ryder Campbell', 'Nell Snyder', 'Jr.', 'Itaque sit maiores c', 'Aut quia dolorum ani', 'Repudiandae autem fu', 'Underwood Roach Co', '197', 'Commodi quo obcaecat', 'Id voluptatem praese', 'Ut commodi libero ab', 'Ut minima fugiat de', 'Odio dicta voluptate', 'Sunt cupiditate inve', 'Et est omnis dolore', '', 'Not-Received', '', 'Received', '', 'Received', '', 'Received', '', 'Received', 'Non-Academic', 'wonas@mailinator.com', '$2y$10$1KZEu67WFfhQNwTF3HVIUe6ti3YYtBVeWvLMGrMX/vR', 'New', 'Pending', '2021-12-07'),
 (15, 'Jena Henderson', 'Mariam Mercado', 'Christen Salas', 'Jr.', '2021-12-01', 'Iusto eu incididunt', 'Et iusto est id dolo', 'magu@mailinator.com', 'Inventore sit soluta', 'Male', 'Voluptates rerum fug', 'Explicabo ', 'Bryar Sullivan', 'Zane Lloyd', 'Jessamine Watson', 'N/A', 'Voluptatem dolor asp', 'Officiis maiores sin', 'Aut eaque nisi duis', 'Cruz and Heath Associates', 'Walter Mccoy', 'Beck Oconnor', 'Basia Stanton', 'Sr.', 'Possimus obcaecati', 'Commodi aliquid eaqu', 'Odio sunt quibusdam', 'Wilkerson and Mcleod Co', 'Felicia Ramsey', 'Ruth Mann', 'Acton Daniel', 'Jr.', 'Possimus quod volup', 'Eiusmod beatae dicta', 'Dolores deserunt vol', 'Jimenez and Vazquez Trading', '739', 'Voluptate dicta occa', 'Delectus quis et di', 'Sed expedita dolorem', 'Magna sed quod illo', 'Minim eaque cupidata', 'Aut pariatur Consec', 'Tempor quo eligendi', '2021-12-02', 'Received', '2021-12-03', 'Not-Received', '2021-12-04', 'Not-Received', '2021-12-05', 'Received', '2021-12-06', 'Received', 'Non-Academic', 'wawi@mailinator.com', '$2y$10$lR2cDowuyEfFSwoQIt/FOuFkJ9OooGNKdrsFEKxBGTC', 'New', 'Pending', '2021-12-07'),
 (16, 'Katell Kemp', 'Ocean Massey', 'Jacob Knox', 'N/A', '2021-12-01', 'Quae voluptatibus ir', 'Est est pariatur It', 'dobupose@mailinator.com', 'Qui nostrum amet au', 'Female', 'Dolorem possimus qu', 'Incidunt r', 'Honorato Blackwell', 'Camden Hughes', 'Yuri Sweeney', 'N/A', 'In illum cillum fug', 'Fugiat dolores aut e', 'Ut deserunt rem aut', 'Brennan and Richards Traders', 'Ruth Slater', 'Gareth Rodriguez', 'Aimee Wood', 'Sr.', 'Omnis enim laborum', 'Dolorem ea labore ma', 'Fugiat qui dolor vo', 'Reyes Ward Associates', 'Ryder Mathis', 'Bo Tanner', 'Dominic Marquez', 'Jr.', 'Quia nesciunt dolor', 'Qui mollit pariatur', 'Accusamus quasi labo', 'Buchanan and Moody Traders', '686', 'Accusamus molestias', 'Nihil praesentium ra', 'Fuga Provident adi', 'Amet alias est omni', 'Incidunt similique', 'Culpa unde eiusmod', 'Quia qui aut nisi ma', '2021-12-02', 'Not-Received', '2021-12-03', 'Received', '2021-12-04', 'Received', '2021-12-05', 'Received', '', 'Received', 'Non-Academic', 'mydu@mailinator.com', '$2y$10$5TiibImwEB1ZkRKg0lHYMuERIYCUmYAWBQBiluUpKtI', 'New', 'Pending', '2021-12-07');
 
@@ -336,43 +335,43 @@ INSERT INTO `tbl_student` (`patient_id`, `patient_email_address`, `patient_passw
 
 CREATE TABLE `tbl_unifast` (
   `sunifast_id` int(11) NOT NULL,
-  `sustudent_id` varchar(50) NOT NULL,
-  `suslname` varchar(50) NOT NULL,
-  `susfname` varchar(50) NOT NULL,
-  `susmname` varchar(50) NOT NULL,
-  `susnext` varchar(10) NOT NULL,
-  `susgender` varchar(10) NOT NULL,
-  `susdbirth` date NOT NULL,
-  `suscontact` varchar(20) NOT NULL,
-  `susaddress` varchar(100) NOT NULL,
-  `susspattended` varchar(100) NOT NULL,
-  `suscp` varchar(100) NOT NULL,
-  `susyl` varchar(50) NOT NULL,
-  `suspemail` varchar(20) NOT NULL,
-  `susflname` varchar(50) NOT NULL,
-  `susffname` varchar(50) NOT NULL,
-  `susfmname` varchar(50) NOT NULL,
-  `susfnext` varchar(20) NOT NULL,
-  `susmlname` varchar(50) NOT NULL,
-  `susmfname` varchar(50) NOT NULL,
-  `susmmname` varchar(50) NOT NULL,
-  `susmnext` varchar(20) NOT NULL,
-  `susdswd` varchar(100) NOT NULL,
-  `sushci` varchar(50) NOT NULL,
-  `susdid` varchar(100) NOT NULL,
-  `susdfilled` date NOT NULL,
-  `sudrpic` date DEFAULT NULL,
+  `sustudent_id` varchar(50) DEFAULT NULL,
+  `suslname` varchar(50) DEFAULT NULL,
+  `susfname` varchar(50) DEFAULT NULL,
+  `susmname` varchar(50) DEFAULT NULL,
+  `susnext` varchar(10) DEFAULT NULL,
+  `susgender` varchar(10) DEFAULT NULL,
+  `susdbirth` varchar(10) DEFAULT NULL,
+  `suscontact` varchar(20) DEFAULT NULL,
+  `susaddress` varchar(100) DEFAULT NULL,
+  `susspattended` varchar(100) DEFAULT NULL,
+  `suscp` varchar(100) DEFAULT NULL,
+  `susyl` varchar(50) DEFAULT NULL,
+  `suspemail` varchar(20) DEFAULT NULL,
+  `susflname` varchar(50) DEFAULT NULL,
+  `susffname` varchar(50) DEFAULT NULL,
+  `susfmname` varchar(50) DEFAULT NULL,
+  `susfnext` varchar(20) DEFAULT NULL,
+  `susmlname` varchar(50) DEFAULT NULL,
+  `susmfname` varchar(50) DEFAULT NULL,
+  `susmmname` varchar(50) DEFAULT NULL,
+  `susmnext` varchar(20) DEFAULT NULL,
+  `susdswd` varchar(100) DEFAULT NULL,
+  `sushci` varchar(50) DEFAULT NULL,
+  `susdid` varchar(100) DEFAULT NULL,
+  `susdfilled` varchar(10) DEFAULT NULL,
+  `sudrpic` varchar(10) DEFAULT NULL,
   `sudrpicstat` varchar(50) DEFAULT NULL,
-  `sudrpsa` date DEFAULT NULL,
+  `sudrpsa` varchar(10) DEFAULT NULL,
   `sudrpsastat` varchar(50) DEFAULT NULL,
-  `sudrobr` date DEFAULT NULL,
+  `sudrobr` varchar(10) DEFAULT NULL,
   `sudrobrstat` varchar(50) DEFAULT NULL,
-  `sustype` varchar(50) NOT NULL,
-  `susaemail` varchar(100) NOT NULL,
-  `susapass` varchar(100) NOT NULL,
-  `susgrantstat` varchar(50) NOT NULL,
-  `susschstat` varchar(20) NOT NULL,
-  `susdapply` date NOT NULL
+  `sustype` varchar(50) DEFAULT NULL,
+  `susaemail` varchar(100) DEFAULT NULL,
+  `susapass` varchar(100) DEFAULT NULL,
+  `susgrantstat` varchar(50) DEFAULT NULL,
+  `susschstat` varchar(20) DEFAULT NULL,
+  `susdapply` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

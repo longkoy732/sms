@@ -397,7 +397,7 @@ $(document).ready(function(){
 
         var error_sustudent_id = '';
 
-        if($.trim($('#sustudent_id').val()).length == 0)
+  if($.trim($('#sustudent_id').val()).length == 0)
   {
    error_sustudent_id = 'Student ID No. is required';
    $('#error_sustudent_id').text(error_sustudent_id);
@@ -430,7 +430,7 @@ $(document).ready(function(){
 });
 
 
-    //Personal Details
+//Personal Details
 
  $('#btn_personal_details').click(function(){
   var error_suslname = '';

@@ -1,8 +1,8 @@
-<?php
+	<?php
 
-include('../class/dbcon.php');
+	include('../class/dbcon.php');
 
-$object = new sms;
+	$object = new sms;
 
 
 // Search and Table
@@ -12,7 +12,7 @@ $object = new sms;
 		{
 			$order_column = array('snlname', 'snfname', 'snmname', 'snaddress', 'snpemail', 'sncontact', 'sngender', 'snascholarstat', 'snadapply');
 			/* Common Data
-				+snlname, +snfname, +snmname, +sndbirth, +sncontact, +sngender, +snpemail, +snascholarstat		
+				+snlname, +snfname, +snmname, +sncontact, +sngender, +snpemail, +snascholarstat		
 			*/
 			$output = array();
 			
@@ -579,4 +579,4 @@ $object = new sms;
 	}
     }
 
-    ?>
+	?>

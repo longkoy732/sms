@@ -212,7 +212,7 @@
                             </div>
                             </div>
                             <div class="form-group">
-                                        <h4 class="sub-title" style="font-weight: bold; font-size: 16px;">Father Details</h4>
+                                <h4 class="sub-title" style="font-weight: bold; font-size: 16px;">Father Details</h4>
                                 <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>First Name<span class="text-danger">*</span></label>
