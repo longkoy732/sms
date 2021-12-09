@@ -18,7 +18,7 @@
 	include('header.php');
 
 	?>
-	<!-- Table -->
+<!-- Table -->
 		<!-- Page Heading -->
 		<h1 class="h3 mb-4 text-gray-800">Academic Application Management</h1>
 
@@ -69,7 +69,7 @@
 <!-- Add Modal -->
 	<div id="acadModal" class="modal fade">
 		<div class="modal-dialog modal-lg modal-dialog-scrollable">
-			<form method="post" id="acad_form" class="needs-validation" novalidate>
+			<form method="post" id="acad_form">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title" id="modal_title">Add Academic Scholar</h4>
@@ -90,7 +90,7 @@
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-3">
 									<label>Middle Name<span class="text-danger">*</span></label>
-									<input type="text" name="samname" id="samname" class="form-control" required/>
+									<input type="text" name="samname" id="samname" class="form-control" placeholder="Put N/A if none" required/>
 									<span id="error_samname" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-3">
@@ -99,7 +99,7 @@
 									<span id="error_salname" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-3">
-									<label>Select Suffix</label>
+									<label>Select Suffix<span class="text-danger">*</span></label>
 									<select name="sanext" id="sanext" class="form-control" required>
 									<option value="">-Select-</option>
 									<option value="N/A">N/A</option>
@@ -110,7 +110,7 @@
 								</div>
 								<div class="col-xs-10 col-sm-12 col-md-4">
 									<label>Date of Birth<span class="text-danger">*</span></label>
-									<input type="text" name="sadbirth" id="sadbirth" readonly class="form-control" required />
+									<input type="date" name="sadbirth" id="sadbirth" autocomplete="off" class="form-control" required />
 									<span id="error_sadbirth" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
@@ -124,7 +124,7 @@
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<label>Citizenship<span class="text-danger">*</span></label>
-									<input type="text" name="sactship" id="sactship" class="form-control" />
+									<input type="text" name="sactship" id="sactship" class="form-control" required/>
 									<span id="error_sactship" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-12">
@@ -134,22 +134,22 @@
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-5">
 									<label>Email Address<span class="text-danger">*</span></label>
-									<input type="text" name="sapemail" id="sapemail" class="form-control" />
+									<input type="text" name="sapemail" id="sapemail" class="form-control" required/>
 									<span id="error_sapemail" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-5 offset-md-2">
 									<label>Contact Number<span class="text-danger">*</span></label>
-									<input type="text" name="sacontact" id="sacontact" class="form-control" />
+									<input type="text" name="sacontact" id="sacontact" class="form-control" required/>
 									<span id="error_sacontact" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-5">
 									<label>Course<span class="text-danger">*</span></label>
-									<input type="text" name="sacourse" id="sacourse" class="form-control" />
+									<input type="text" name="sacourse" id="sacourse" class="form-control" required/>
 									<span id="error_sacourse" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-5 offset-md-2">
 									<label>Grade/Year Level<span class="text-danger">*</span></label>
-									<input type="text" name="sagyl" id="sagyl" class="form-control" />
+									<input type="text" name="sagyl" id="sagyl" class="form-control" required/>
 									<span id="error_sagyl" class="text-danger"></span>
 								</div>
 								</div>
@@ -166,21 +166,21 @@
 								<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-3">
 									<label>First Name<span class="text-danger">*</span></label>
-									<input type="text" name="sagfname" id="sagfname" class="form-control" />
+									<input type="text" name="sagfname" id="sagfname" class="form-control" required/>
 									<span id="error_sagfname" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-3">
 									<label>Middle Name<span class="text-danger">*</span></label>
-									<input type="text" name="sagmname" id="sagmname" class="form-control" />
+									<input type="text" name="sagmname" id="sagmname" class="form-control" placeholder="Put N/A if none" required/>
 									<span id="error_sagmname" class="text-danger"></span>
 									</div>
 								<div class="col-xs-12 col-sm-12 col-md-3">
 									<label>Last Name<span class="text-danger">*</span></label>
-									<input type="text" name="saglname" id="saglname" class="form-control" />
+									<input type="text" name="saglname" id="saglname" class="form-control" required/>
 									<span id="error_saglname" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-3">
-									<label>Select Suffix</label>
+									<label>Select Suffix<span class="text-danger">*</span></label>
 									<select name="sagnext" id="sagnext" class="form-control" required>
 									<option value="">-Select-</option>
 									<option value="N/A">N/A</option>
@@ -196,17 +196,17 @@
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<label>Contact Number<span class="text-danger">*</span></label>
-									<input type="text" name="sagcontact" id="sagcontact" class="form-control" />
+									<input type="text" name="sagcontact" id="sagcontact" class="form-control" required/>
 									<span id="error_sagcontact" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<label>Occupation<span class="text-danger">*</span></label>
-									<input type="text" name="sagoccu" id="sagoccu" class="form-control" />
+									<input type="text" name="sagoccu" id="sagoccu" class="form-control" placeholder="Put N/A if none" required/>
 									<span id="error_sagoccu" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<label>Company<span class="text-danger">*</span></label>
-									<input type="text" name="sagcompany" id="sagcompany" class="form-control" />
+									<input type="text" name="sagcompany" id="sagcompany" class="form-control" placeholder="Put N/A if none" required/>
 									<span id="error_sagcompany" class="text-danger"></span>
 								</div>
 								</div>
@@ -216,21 +216,21 @@
 								<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-3">
 									<label>First Name<span class="text-danger">*</span></label>
-									<input type="text" name="saffname" id="saffname" class="form-control" />
+									<input type="text" name="saffname" id="saffname" class="form-control" required/>
 									<span id="error_saffname" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-3">
 									<label>Middle Name<span class="text-danger">*</span></label>
-									<input type="text" name="safmname" id="safmname" class="form-control" />
+									<input type="text" name="safmname" id="safmname" class="form-control" placeholder="Put N/A if none" required/>
 									<span id="error_safmname" class="text-danger"></span>
 									</div>
-												<div class="col-xs-12 col-sm-12 col-md-3">
+									<div class="col-xs-12 col-sm-12 col-md-3">
 									<label>Last Name<span class="text-danger">*</span></label>
-									<input type="text" name="saflname" id="saflname" class="form-control" />
+									<input type="text" name="saflname" id="saflname" class="form-control" required/>
 									<span id="error_saflname" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-3">
-									<label>Select Suffix</label>
+									<label>Select Suffix<span class="text-danger">*</span></label>
 									<select name="safnext" id="safnext" class="form-control" required>
 									<option value="">-Select-</option>
 									<option value="N/A">N/A</option>
@@ -246,17 +246,17 @@
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<label>Contact Number<span class="text-danger">*</span></label>
-									<input type="text" name="safcontact" id="safcontact" class="form-control" />
+									<input type="text" name="safcontact" id="safcontact" class="form-control" required/>
 									<span id="error_safcontact" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<label>Occupation<span class="text-danger">*</span></label>
-									<input type="text" name="safoccu" id="safoccu" class="form-control" />
+									<input type="text" name="safoccu" id="safoccu" class="form-control" placeholder="Put N/A if none" required/>
 									<span id="error_safoccu" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<label>Company<span class="text-danger">*</span></label>
-									<input type="text" name="safcompany" id="safcompany" class="form-control" />
+									<input type="text" name="safcompany" id="safcompany" class="form-control" placeholder="Put N/A if none" required/>
 									<span id="error_safcompany" class="text-danger"></span>
 								</div>
 							</div>
@@ -266,21 +266,21 @@
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-3">
 									<label>First Name<span class="text-danger">*</span></label>
-									<input type="text" name="samfname" id="samfname" class="form-control" />
+									<input type="text" name="samfname" id="samfname" class="form-control" required/>
 									<span id="error_samfname" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-3">
 									<label>Middle Name<span class="text-danger">*</span></label>
-									<input type="text" name="sammname" id="sammname" class="form-control" />
+									<input type="text" name="sammname" id="sammname" class="form-control" placeholder="Put N/A if none" required/>
 									<span id="error_sammname" class="text-danger"></span>
 									</div>
-												<div class="col-xs-12 col-sm-12 col-md-3">
+								<div class="col-xs-12 col-sm-12 col-md-3">
 									<label>Last Name<span class="text-danger">*</span></label>
-									<input type="text" name="samlname" id="samlname" class="form-control" />
+									<input type="text" name="samlname" id="samlname" class="form-control" required/>
 									<span id="error_samlname" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-3">
-									<label>Select Suffix</label>
+									<label>Select Suffix<span class="text-danger">*</span></label>
 									<select name="samnext" id="samnext" class="form-control" required>
 									<option value="">-Select-</option>
 									<option value="N/A">N/A</option>
@@ -296,22 +296,22 @@
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<label>Contact Number<span class="text-danger">*</span></label>
-									<input type="text" name="samcontact" id="samcontact" class="form-control" />
+									<input type="text" name="samcontact" id="samcontact" class="form-control" required/>
 									<span id="error_samcontact" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<label>Occupation<span class="text-danger">*</span></label>
-									<input type="text" name="samoccu" id="samoccu" class="form-control" />
+									<input type="text" name="samoccu" id="samoccu" class="form-control" placeholder="Put N/A if none" required/>
 									<span id="error_samoccu" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<label>Company<span class="text-danger">*</span></label>
-									<input type="text" name="samcompany" id="samcompany" class="form-control" />
+									<input type="text" name="samcompany" id="samcompany" class="form-control" placeholder="Put N/A if none" required/>
 									<span id="error_samcompany" class="text-danger"></span>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
 									<label>Parents Combine Yearly Income<span class="text-danger">*</span></label>
-									<input type="text" name="saspcyincome" id="saspcyincome" class="form-control" />
+									<input type="text" name="saspcyincome" id="saspcyincome" class="form-control" required/>
 									<span id="error_saspcyincome" class="text-danger"></span>
 								</div>
 							</div>
@@ -324,18 +324,18 @@
 							<div class="card-header" style="font-weight: bold; font-size: 18px;">Achievement Details</div>
 								<div class="card-body">
 								<div class="form-group">
-								<label>Grade/GWA</label>
-								<input type="text" name="sagwa" id="sagwa" class="form-control" />
+								<label>Grade/GWA<span class="text-danger">*</span></label>
+								<input type="text" name="sagwa" id="sagwa" class="form-control" required/>
 								<span id="error_sagwa" class="text-danger"></span>
 								</div>
 								<div class="form-group">
-								<label>Award Received</label>
-								<textarea name="saraward" id="saraward" class="form-control"></textarea>
-								<span id="error_saraward" class="text-danger"></span>
+								<label>Award Received<span class="text-danger">*</span></label>
+								<textarea name="saraward" id="saraward" class="form-control" required></textarea>
+								<span id="error_saraward" class="text-danger" required></span>
 								</div>
 								<div class="form-group">
-								<label>Date Received</label>
-									<input type='text' name="sadawardrceive" id="sadawardrceive" readonly class="form-control" required>
+								<label>Date Received<span class="text-danger">*</span></label>
+									<input type="date" name="sadawardrceive" id="sadawardrceive" class="form-control" autocomplete="off" required>
 									<span id="error_sadawardrceive" class="text-danger"></span>
 								</div>
 								</div>
@@ -349,15 +349,15 @@
 									<div class="row">
 										<div class="col-xs-12 col-sm-12 col-md-4">
 											<label>Date Receive Report Card<span class="text-danger">*</span></label>
-											<input type="text" name="sadsprc" id="sadsprc" readonly class="form-control" />
+											<input type="date" name="sadsprc" id="sadsprc" autocomplete="off" class="form-control" />
 										</div>
 										<div class="col-xs-12 col-sm-12 col-md-4">
 											<label>Date Receive Good Moral<span class="text-danger">*</span></label>
-											<input type="text" name="sadspgm" id="sadspgm" readonly class="form-control" />
+											<input type="date" name="sadspgm" id="sadspgm" autocomplete="off" class="form-control" />
 										</div>
 										<div class="col-xs-12 col-sm-12 col-md-4">
 											<label>Date Receive Cert. of Recog.<span class="text-danger">*</span></label>
-											<input type="text" name="sadspcr" id="sadspcr" readonly class="form-control" />
+											<input type="date" name="sadspcr" id="sadspcr" autocomplete="off" class="form-control" />
 										</div>
 									</div>
 									<div class="row g-3">
@@ -398,13 +398,13 @@
 							<div class="card-header" style="font-weight: bold; font-size: 18px;">Account Details</div>
 								<div class="card-body">
 									<div class="form-group">
-									<label>Email</label>
-									<input type="text" name="saaemail" id="saaemail" class="form-control" />
+									<label>Email<span class="text-danger">*</span></label>
+									<input type="text" name="saaemail" id="saaemail" class="form-control" required/>
 									<span id="error_saaemail" class="text-danger"></span>
 									</div>
 									<div class="form-group">
-									<label>Password</label>
-									<input type="password" name="sapass" id="sapass" class="form-control" />
+									<label>Password<span class="text-danger">*</span></label>
+									<input type="password" name="sapass" id="sapass" class="form-control" required/>
 									<span id="error_sapass" class="text-danger"></span>
 									</div>
 								</div>
@@ -462,8 +462,8 @@
 		color:#FFFFFF;
 	}
 	</style>
-<script>
-$(document).ready(function(){
+	<script>
+	$(document).ready(function(){
 // Table Function
 	var dataTable = $('#acad_table').DataTable({
 		"processing" : true,
@@ -489,807 +489,46 @@ $(document).ready(function(){
 		// 'order': [[1, 'asc']]	
 	});
 
-    $('#sadbirth').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
-	$('#sadawardrceive').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
-	$('#sadsprc').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
-	$('#sadspgm').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
-	$('#sadspcr').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true
-    });
+    // $('#sadbirth').datepicker({
+    //     format: "dd-mm-yyyy",
+    //     autoclose: true
+    // });
+	// $('#sadawardrceive').datepicker({
+    //     format: "yyyy-mm-dd",
+    //     autoclose: true
+    // });
+	// $('#sadsprc').datepicker({
+    //     format: "yyyy-mm-dd",
+    //     autoclose: true
+    // });
+	// $('#sadspgm').datepicker({
+    //     format: "yyyy-mm-dd",
+    //     autoclose: true
+    // });
+	// $('#sadspcr').datepicker({
+    //     format: "yyyy-mm-dd",
+    //     autoclose: true
+    // });
 
-// Add Validation&Submit
+// Add
 	$('#add_acad').click(function(){
-
-		$('#acadModal').modal('show');
-
-		$('#modal_title').text('Add Academic Scholar');
-
-		$('#submit_button').val('Add');
 
 		$('#acad_form')[0].reset();
 
 		$('#acad_form').parsley().reset();
 
-		$('#submit_button').click(function(){
-		
-			var error_safname = '';
-			var error_samname = '';
-			var error_salname = '';
-			var error_sanext = '';
-			var error_sadbirth = '';
-			var error_sagender = '';
-			var error_sactship = '';
-			var error_saaddress = '';
-			var error_sapemail = '';
-			var emailval = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!outlook.com)([\w-]+\.)+[\w-]{2,4})?$/;
-			var error_sacontact = '';
-			var pcnumval = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
-			var error_sagfname = '';
-			var error_sagmname = '';
-			var error_saglname = '';
-			var error_sagnext = '';
-			var error_sagaddress = '';
-			var error_sagcontact = '';
-			var error_sagoccu = '';
-			var error_sagcompany = '';
-			var error_saffname = '';
-			var error_safmname = '';
-			var error_saflname = '';
-			var error_safnext = '';
-			var error_samfname = '';
-			var error_sammname = '';
-			var error_samlname = '';
-			var error_samnext = '';
-			var error_safaddress = '';
-			var error_samaddress = '';
-			var error_safcontact = '';
-			var error_samcontact = '';
-			var error_safoccu = '';
-			var error_samoccu = '';
-			var error_safcompany = '';
-			var error_samcompany = '';
-			var error_saspcyincome = '';
-			var error_sagwa = '';
-			var error_saraward = '';
-			var error_sadawardrceive = '';
-			var error_sadsprcstat = '';
-			var error_sadspgmstat = '';
-			var error_sadspcrstat = '';
-			var error_flexCheckDefault = '';
-			var error_sagrantstat = '';
-			var error_saaemail = '';
-  			var error_sapass = '';
+		$('#modal_title').text('Add Academic Scholar');
 
-			if($.trim($('#safname').val()).length == 0)
-			{
-			error_safname = 'First Name is required';
-			$('#error_safname').text(error_safname);
-			$('#safname').addClass('has-error');
-			}
-			else
-			{
-			error_safname = '';
-			$('#error_safname').text(error_safname);
-			$('#safname').removeClass('has-error');
-			}
+		$('#action').val('Add');
 
-			if($.trim($('#samname').val()).length == 0)
-			{
-			error_samname = 'Put N/A if None';
-			$('#error_samname').text(error_samname);
-			$('#samname').addClass('has-error');
-			}
-			else
-			{
-			error_samname = '';
-			$('#error_samname').text(error_samname);
-			$('#samname').removeClass('has-error');
-			}
-			
-			if($.trim($('#salname').val()).length == 0)
-			{
-			error_salname = 'Last Name is required';
-			$('#error_salname').text(error_salname);
-			$('#salname').addClass('has-error');
-			}
-			else
-			{
-			error_salname = '';
-			$('#error_salname').text(error_salname);
-			$('#salname').removeClass('has-error');
-			}
+		$('#submit_button').val('Add');
 
-			//Suffix
+		$('#acadModal').modal('show');
 
-			if($.trim($('#sanext').val()).length == 0)
-			{
-			error_sanext = 'Select N/A if None';
-			$('#error_sanext').text(error_sanext);
-			$('#sanext').addClass('has-error');
-			}
-			else
-			{
-			error_sanext = '';
-			$('#error_sanext').text(error_sanext);
-			$('#sanext').removeClass('has-error');
-			}
+		$('#form_message').html('');
 
-			if($.trim($('#sadbirth').val()).length == 0)
-			{
-			error_sadbirth = 'Date of Birth is required';
-			$('#error_sadbirth').text(error_sadbirth);
-			$('#sadbirth').addClass('has-error');
-			}
-			else
-			{
-			error_sadbirth = '';
-			$('#error_sadbirth').text(error_sadbirth);
-			$('#sadbirth').removeClass('has-error');
-			}
-
-			if($.trim($('#sagender').val()).length == 0)
-			{
-			error_sagender = 'Gender is required';
-			$('#error_sagender').text(error_sagender);
-			$('#sagender').addClass('has-error');
-			}
-			else
-			{
-			error_sagender = '';
-			$('#error_sagender').text(error_sagender);
-			$('#sagender').removeClass('has-error');
-			}
-
-			if($.trim($('#sactship').val()).length == 0)
-			{
-			error_sactship = 'Citizenship is required';
-			$('#error_sactship').text(error_sactship);
-			$('#sactship').addClass('has-error');
-			}
-			else
-			{
-			error_sactship = '';
-			$('#error_sactship').text(error_sactship);
-			$('#sactship').removeClass('has-error');
-			}
-
-			if($.trim($('#saaddress').val()).length == 0)
-			{
-			error_saaddress = 'Address is required';
-			$('#error_saaddress').text(error_saaddress);
-			$('#saaddress').addClass('has-error');
-			}
-			else
-			{
-			error_saaddress = '';
-			$('#error_saaddress').text(error_saaddress);
-			$('#saaddress').removeClass('has-error');
-			}
-
-			if($.trim($('#sapemail').val()).length == 0)
-			{
-			error_sapemail = 'Email is required';
-			$('#error_sapemail').text(error_sapemail);
-			$('#sapemail').addClass('has-error');
-			}
-			else
-			{
-			//     if(emailval.test($('#sapemail').val()))
-			//    {
-			//     error_sapemail = 'Invalid Email Only(gmail, hotmail, outlook or yahoo is allowed).';
-			//     $('#error_sapemail').text(error_sapemail);
-			//     $('#sapemail').addClass('has-error');
-			//    }
-			//    else {
-			error_sapemail = '';
-			$('#error_sapemail').text(error_sapemail);
-			$('#sapemail').removeClass('has-error');
-			}
-			//   }
-
-			if($.trim($('#sacontact').val()).length == 0)
-			{
-			error_sacontact = 'Contact Number is required';
-			$('#error_sacontact').text(error_sacontact);
-			$('#sacontact').addClass('has-error');
-			}
-			else
-			{
-			//    if (!pcnumval.test($('#sacontact').val()))
-			//    {
-			//     error_sacontact = 'Invalid Contact Number';
-			//     $('#error_sacontact').text(error_sacontact);
-			//     $('#sacontact').addClass('has-error');
-			//    }
-			//    else
-			//    {
-				error_sacontact = '';
-				$('#error_sacontact').text(error_sacontact);
-				$('#sacontact').removeClass('has-error');
-			//    }
-			}
-
-			if($.trim($('#sacourse').val()).length == 0)
-			{
-			error_sacourse = 'Course is required';
-			$('#error_sacourse').text(error_sacourse);
-			$('#sacourse').addClass('has-error');
-			}
-			else
-			{
-			error_sacourse = '';
-			$('#error_sacourse').text(error_sacourse);
-			$('#sacourse').removeClass('has-error');
-			}
-
-			if($.trim($('#sagyl').val()).length == 0)
-			{
-			error_sagyl = 'Grade/Year Level is required';
-			$('#error_sagyl').text(error_sagyl);
-			$('#sagyl').addClass('has-error');
-			}
-			else
-			{
-			error_sagyl = '';
-			$('#error_sagyl').text(error_sagyl);
-			$('#sagyl').removeClass('has-error');
-			}
-
-			// Complete Name
-			if($.trim($('#sagfname').val()).length == 0)
-			{
-			error_sagfname = 'First Name is required';
-			$('#error_sagfname').text(error_sagfname);
-			$('#sagfname').addClass('has-error');
-			}
-			else
-			{
-			error_sagfname = '';
-			$('#error_sagfname').text(error_sagfname);
-			$('#sagfname').removeClass('has-error');
-			}
-
-			if($.trim($('#sagmname').val()).length == 0)
-			{
-			error_sagmname = 'Put N/A if None';
-			$('#error_sagmname').text(error_sagmname);
-			$('#sagmname').addClass('has-error');
-			}
-			else
-			{
-			error_sagmname = '';
-			$('#error_sagmname').text(error_sagmname);
-			$('#sagmname').removeClass('has-error');
-			}
-
-			if($.trim($('#saglname').val()).length == 0)
-			{
-			error_saglname = 'Last Name is required';
-			$('#error_saglname').text(error_saglname);
-			$('#saglname').addClass('has-error');
-			}
-			else
-			{
-			error_saglname = '';
-			$('#error_saglname').text(error_saglname);
-			$('#saglname').removeClass('has-error');
-			}
-
-			//Guardian Suffix
-
-			if($.trim($('#sagnext').val()).length == 0)
-			{
-			error_sagnext = 'Select N/A if none';
-			$('#error_sagnext').text(error_sagnext);
-			$('#sagnext').addClass('has-error');
-			}
-			else
-			{
-			error_sagnext = '';
-			$('#error_sagnext').text(error_sagnext);
-			$('#sagnext').removeClass('has-error');
-			}
-
-			if($.trim($('#saffname').val()).length == 0)
-			{
-			error_saffname = 'First Name is required';
-			$('#error_saffname').text(error_saffname);
-			$('#saffname').addClass('has-error');
-			}
-			else
-			{
-			error_saffname = '';
-			$('#error_saffname').text(error_saffname);
-			$('#saffname').removeClass('has-error');
-			}
-
-			if($.trim($('#safmname').val()).length == 0)
-			{
-			error_safmname = 'Put N/A if None';
-			$('#error_safmname').text(error_safmname);
-			$('#safmname').addClass('has-error');
-			}
-			else
-			{
-			error_safmname = '';
-			$('#error_safmname').text(error_safmname);
-			$('#safmname').removeClass('has-error');
-			}
-
-			if($.trim($('#saflname').val()).length == 0)
-			{
-			error_saflname = 'Last Name is required';
-			$('#error_saflname').text(error_saflname);
-			$('#saflname').addClass('has-error');
-			}
-			else
-			{
-			error_saflname = '';
-			$('#error_saflname').text(error_saflname);
-			$('#saflname').removeClass('has-error');
-			}
-
-			//Father Suffix
-
-				if($.trim($('#safnext').val()).length == 0)
-			{
-			error_safnext = 'Select N/A if none';
-			$('#error_safnext').text(error_safnext);
-			$('#safnext').addClass('has-error');
-			}
-			else
-			{
-			error_safnext = '';
-			$('#error_safnext').text(error_safnext);
-			$('#safnext').removeClass('has-error');
-			}
-
-			if($.trim($('#samfname').val()).length == 0)
-			{
-			error_samfname = 'First Name is required';
-			$('#error_samfname').text(error_samfname);
-			$('#samfname').addClass('has-error');
-			}
-			else
-			{
-			error_samfname = '';
-			$('#error_samfname').text(error_samfname);
-			$('#samfname').removeClass('has-error');
-			}
-
-			if($.trim($('#sammname').val()).length == 0)
-			{
-			error_sammname = 'Put N/A if None';
-			$('#error_sammname').text(error_sammname);
-			$('#sammname').addClass('has-error');
-			}
-			else
-			{
-			error_sammname = '';
-			$('#error_sammname').text(error_sammname);
-			$('#sammname').removeClass('has-error');
-			}
-
-			if($.trim($('#samlname').val()).length == 0)
-			{
-			error_samlname = 'Last Name is required';
-			$('#error_samlname').text(error_samlname);
-			$('#samlname').addClass('has-error');
-			}
-			else
-			{
-			error_samlname = '';
-			$('#error_samlname').text(error_samlname);
-			$('#samlname').removeClass('has-error');
-			}
-
-			//Father Suffix
-
-			if($.trim($('#samnext').val()).length == 0)
-			{
-			error_samnext = 'Select N/A if none';
-			$('#error_samnext').text(error_samnext);
-			$('#samnext').addClass('has-error');
-			}
-			else
-			{
-			error_samnext = '';
-			$('#error_samnext').text(error_samnext);
-			$('#samnext').removeClass('has-error');
-			}
-
-			// Address
-			if($.trim($('#sagaddress').val()).length == 0)
-			{
-			error_sagaddress = 'Address is required';
-			$('#error_sagaddress').text(error_sagaddress);
-			$('#sagaddress').addClass('has-error');
-			}
-			else
-			{
-			error_sagaddress = '';
-			$('#error_sagaddress').text(error_sagaddress);
-			$('#sagaddress').removeClass('has-error');
-			}
-			if($.trim($('#safaddress').val()).length == 0)
-			{
-			error_safaddress = 'Address is required';
-			$('#error_safaddress').text(error_safaddress);
-			$('#safaddress').addClass('has-error');
-			}
-			else
-			{
-			error_safaddress = '';
-			$('#error_safaddress').text(error_safaddress);
-			$('#safaddress').removeClass('has-error');
-			}
-			if($.trim($('#samaddress').val()).length == 0)
-			{
-			error_samaddress = 'Address is required';
-			$('#error_samaddress').text(error_samaddress);
-			$('#samaddress').addClass('has-error');
-			}
-			else
-			{
-			error_samaddress = '';
-			$('#error_samaddress').text(error_samaddress);
-			$('#samaddress').removeClass('has-error');
-			}
-			// Contact Number
-			if($.trim($('#sagcontact').val()).length == 0)
-			{
-			error_sagcontact = 'Contact Number is required';
-			$('#error_sagcontact').text(error_sagcontact);
-			$('#sagcontact').addClass('has-error');
-			}
-			else
-			{
-			//    if (!pcnumval.test($('#sagcontact').val()))
-			//    {
-			//     error_sagcontact = 'Invalid Contact Number';
-			//     $('#error_sagcontact').text(error_sagcontact);
-			//     $('#sagcontact').addClass('has-error');
-			//    }
-			//    else
-			//    {
-				error_sagcontact = '';
-				$('#error_sagcontact').text(error_sagcontact);
-				$('#sagcontact').removeClass('has-error');
-			//    }
-			}
-			if($.trim($('#safcontact').val()).length == 0)
-			{
-			error_safcontact = 'Contact Number is required';
-			$('#error_safcontact').text(error_safcontact);
-			$('#safcontact').addClass('has-error');
-			}
-			else
-			{
-			//    if (!pcnumval.test($('#scontact').val()))
-			//    {
-			//     error_scontact = 'Invalid Contact Number';
-			//     $('#error_scontact').text(error_scontact);
-			//     $('#scontact').addClass('has-error');
-			//    }
-			//    else
-			//    {
-				error_safcontact = '';
-				$('#error_safcontact').text(error_safcontact);
-				$('#safcontact').removeClass('has-error');
-			//    }
-			}
-			if($.trim($('#samcontact').val()).length == 0)
-			{
-			error_samcontact = 'Contact Number is required';
-			$('#error_samcontact').text(error_samcontact);
-			$('#samcontact').addClass('has-error');
-			}
-			else
-			{
-			//    if (!pcnumval.test($('#scontact').val()))
-			//    {
-			//     error_scontact = 'Invalid Contact Number';
-			//     $('#error_scontact').text(error_scontact);
-			//     $('#scontact').addClass('has-error');
-			//    }
-			//    else
-			//    {
-				error_samcontact = '';
-				$('#error_samcontact').text(error_samcontact);
-				$('#samcontact').removeClass('has-error');
-			//    }
-			}
-
-			// Occupation
-			if($.trim($('#sagoccu').val()).length == 0)
-			{
-			error_sagoccu = 'Put N/A if None';
-			$('#error_sagoccu').text(error_sagoccu);
-			$('#sagoccu').addClass('has-error');
-			}
-			else
-			{
-			error_sagoccu = '';
-			$('#error_sagoccu').text(error_sagoccu);
-			$('#sagoccu').removeClass('has-error');
-			}
-			if($.trim($('#safoccu').val()).length == 0)
-			{
-			error_safoccu = 'Put N/A if None';
-			$('#error_safoccu').text(error_safoccu);
-			$('#safoccu').addClass('has-error');
-			}
-			else
-			{
-			error_safoccu = '';
-			$('#error_safoccu').text(error_safoccu);
-			$('#safoccu').removeClass('has-error');
-			}
-			if($.trim($('#samoccu').val()).length == 0)
-			{
-			error_samoccu = 'Put N/A if None';
-			$('#error_samoccu').text(error_samoccu);
-			$('#samoccu').addClass('has-error');
-			}
-			else
-			{
-			error_samoccu = '';
-			$('#error_samoccu').text(error_samoccu);
-			$('#samoccu').removeClass('has-error');
-			} 
-
-			// Company
-			if($.trim($('#sagcompany').val()).length == 0)
-			{
-			error_sagcompany = 'Put N/A if None';
-			$('#error_sagcompany').text(error_sagcompany);
-			$('#sagcompany').addClass('has-error');
-			}
-			else
-			{
-			error_sagcompany = '';
-			$('#error_sagcompany').text(error_sagcompany);
-			$('#sagcompany').removeClass('has-error');
-			}
-			if($.trim($('#safcompany').val()).length == 0)
-			{
-			error_safcompany = 'Put N/A if None';
-			$('#error_safcompany').text(error_safcompany);
-			$('#safcompany').addClass('has-error');
-			}
-			else
-			{
-			error_safcompany = '';
-			$('#error_safcompany').text(error_safcompany);
-			$('#safcompany').removeClass('has-error');
-			}
-			if($.trim($('#samcompany').val()).length == 0)
-			{
-			error_samcompany = 'Put N/A if None';
-			$('#error_samcompany').text(error_samcompany);
-			$('#samcompany').addClass('has-error');
-			}
-			else
-			{
-			error_samcompany = '';
-			$('#error_samcompany').text(error_samcompany);
-			$('#samcompany').removeClass('has-error');
-			} 
-
-			// ParentYearlyIncome
-			if($.trim($('#saspcyincome').val()).length == 0)
-			{
-			error_saspcyincome = 'Parents Yearly Income is required';
-			$('#error_saspcyincome').text(error_saspcyincome);
-			$('#saspcyincome').addClass('has-error');
-			}
-			else
-			{
-			error_saspcyincome = '';
-			$('#error_saspcyincome').text(error_saspcyincome);
-			$('#saspcyincome').removeClass('has-error');
-			} 
-			
-			// Achievement
-			if($.trim($('#sagwa').val()).length == 0)
-			{
-			error_sagwa = 'Student GWA is required';
-			$('#error_sagwa').text(error_sagwa);
-			$('#sagwa').addClass('has-error');
-			}
-			else
-			{
-			error_sagwa = '';
-			$('#error_sagwa').text(error_sagwa);
-			$('#sagwa').removeClass('has-error');
-			}
-			if($.trim($('#saraward').val()).length == 0)
-			{
-			error_saraward = 'Student Award is required';
-			$('#error_saraward').text(error_saraward);
-			$('#saraward').addClass('has-error');
-			}
-			else
-			{
-			error_saraward = '';
-			$('#error_saraward').text(error_saraward);
-			$('#saraward').removeClass('has-error');
-			}
-
-			if($.trim($('#sadawardrceive').val()).length == 0)
-			{
-			error_sadawardrceive = 'Date Award Received is required';
-			$('#error_sadawardrceive').text(error_sadawardrceive);
-			$('#sadawardrceive').addClass('has-error');
-			}
-			else
-			{
-			error_sadawardrceive = '';
-			$('#error_sadawardrceive').text(error_sadawardrceive);
-			$('#sadawardrceive').removeClass('has-error');
-			}
-
-			if($.trim($('#sadsprcstat').val()).length == 0)
-			{
-			error_sadsprcstat = 'Report Card Status is required';
-			$('#error_sadsprcstat').text(error_sadsprcstat);
-			$('#sadsprcstat').addClass('has-error');
-			}
-			else
-			{
-			error_sadsprcstat = '';
-			$('#error_sadsprcstat').text(error_sadsprcstat);
-			$('#sadsprcstat').removeClass('has-error');
-			}
-
-			if($.trim($('#sadspgmstat').val()).length == 0)
-			{
-			error_sadspgmstat = 'Good Moral Status is required';
-			$('#error_sadspgmstat').text(error_sadspgmstat);
-			$('#sadspgmstat').addClass('has-error');
-			}
-			else
-			{
-			error_sadspgmstat = '';
-			$('#error_sadspgmstat').text(error_sadspgmstat);
-			$('#sadspgmstat').removeClass('has-error');
-			}
-
-			if($.trim($('#sadspcrstat').val()).length == 0)
-			{
-			error_sadspcrstat = 'Cert. of Recog. Status is required';
-			$('#error_sadspcrstat').text(error_sadspcrstat);
-			$('#sadspcrstat').addClass('has-error');
-			}
-			else
-			{
-			error_sadspcrstatt = '';
-			$('#error_sadspcrstat').text(error_sadspcrstat);
-			$('#sadspcrstat').removeClass('has-error');
-			}
-
-			if($('#flexCheckDefault').not(':checked').length){
-				error_flexCheckDefault = 'Checkbox is required';
-				$('#error_flexCheckDefault').text(error_flexCheckDefault);
-				$('#flexCheckDefault').addClass('has-error');
-			} 
-			else{
-				error_flexCheckDefault = '';
-				$('#error_flexCheckDefault').text(error_flexCheckDefault);
-				$('#flexCheckDefault').removeClass('has-error');
-			}
-
-			if($.trim($('#sagrantstat').val()).length == 0)
-			{
-			error_sagrantstat = 'Grant Status is required';
-			$('#error_sagrantstat').text(error_sagrantstat);
-			$('#sagrantstat').addClass('has-error');
-			}
-			else
-			{
-			error_sagrantstat = '';
-			$('#error_sagrantstat').text(error_sagrantstat);
-			$('#sagrantstat').removeClass('has-error');
-			}
-
-			if($.trim($('#saaemail').val()).length == 0)
-			{
-			error_saaemail = 'Email is required';
-			$('#error_saaemail').text(error_saaemail);
-			$('#saaemail').addClass('has-error');
-			}
-			else
-			{
-			error_saaemail = '';
-			$('#error_saaemail').text(error_saaemail);
-			$('#saaemail').removeClass('has-error');
-			}
-			
-			if($.trim($('#sapass').val()).length == 0)
-			{
-			error_sapass = 'Password is required';
-			$('#error_sapass').text(error_sapass);
-			$('#sapass').addClass('has-error');
-			}
-			else
-			{
-			error_sapass = '';
-			$('#error_sapass').text(error_sapass);
-			$('#sapass').removeClass('has-error');
-			}
-
-			if(error_safname != '' 
-			|| error_samname != '' 
-			|| error_salname != '' 
-			|| error_sanext != ''
-			|| error_sadbirth != '' 
-			|| error_sactship != '' 
-			|| error_saaddress != '' 
-			|| error_sapemail != '' 
-			|| error_sacontact != '' 
-			|| error_sacourse != '' 
-			|| error_sagyl != '' 
-			|| error_sagfname != '' 
-			|| error_sagmname != '' 
-			|| error_saglname != '' 
-			|| error_sagnext != '' 
-			|| error_sagaddress != '' 
-			|| error_sagcontact != '' 
-			|| error_sagoccu != '' 
-			|| error_sagcompany != '' 
-			|| error_saffname != '' 
-			|| error_safmname != '' 
-			|| error_saflname != '' 
-			|| error_safnext != '' 
-			|| error_safaddress != '' 
-			|| error_safcontact != '' 
-			|| error_safoccu != '' 
-			|| error_safcompany != '' 
-			|| error_samfname != '' 
-			|| error_sammname != '' 
-			|| error_samlname != '' 
-			|| error_samnext != '' 
-			|| error_samaddress != '' 
-			|| error_samcontact != '' 
-			|| error_samoccu != '' 
-			|| error_samcompany != '' 
-			|| error_saspcyincome != ''
-			|| error_sagwa != ''
-			|| error_saraward != ''
-			|| error_sadawardrceive != ''
-			|| error_sadsprcstat != ''
-			|| error_sadspgmstat != ''
-			|| error_sadspcrstat != ''
-			|| error_sagrantstat != ''
-			|| error_saaemail != ''
-     		|| error_sapass != ''
-			)
-			{
-			return false;
-			}
-			else
-			{
-				$('#action').val('Add');
-
-				$('#form_message').html('');
-			}
-	
-		});
 	});
-
+// Submit
 	$('#acad_form').parsley();
 
 	$('#acad_form').on('submit', function(event){
@@ -1471,7 +710,7 @@ $(document).ready(function(){
 
     	}
 	});
-// Delete Function
+// Delete
 	$(document).on('click', '.delete_button', function(){
 
 	var id = $(this).data('id');
@@ -1602,7 +841,7 @@ $(document).ready(function(){
 
         })
     });
-
+// Select All
 	  $(document).on('click', '.select_all', function(){
     	var inputs = $("check_all");
 		for(var i = 0; i < inputs.length; i++) 
@@ -1632,7 +871,7 @@ $(document).ready(function(){
             $(this).closest('tr').removeClass('removeRow');
         }
     	});
-
+// Approve All
 	$('#approve_all').click(function(){
         var checkbox = $('.checkbox:checked');
 		var approve_status = 'Approved';
@@ -1667,7 +906,7 @@ $(document).ready(function(){
             alert("Please select at least one records");
         }
     });
-
+// Reject All
 	$('#reject_all').click(function(){
         var checkbox = $('.checkbox:checked');
 		var reject_status = 'Rejected';
@@ -1702,7 +941,7 @@ $(document).ready(function(){
             alert("Please select at least one records");
         }
     });
-
+// Delete All
     $('#delete_all').click(function(){
         var checkbox = $('.checkbox:checked');
         if(checkbox.length > 0)
@@ -1737,5 +976,5 @@ $(document).ready(function(){
         }
     });
 
-});
-</script>
+	});
+	</script>

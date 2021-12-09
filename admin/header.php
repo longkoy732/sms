@@ -80,7 +80,7 @@
                         <a class="collapse-item" href="acadapp.php">Academic</a>
                         <a class="collapse-item" href="nonacadapp.php">Non-Academic</a>
                         <a class="collapse-item" href="unifastapp.php">UNIFAST</a>
-                        <a class="collapse-item" href="cards.html">CHED</a>
+                        <a class="collapse-item" href="chedapp.php">CHED</a>
                     </div>
                 </div>
             </li>

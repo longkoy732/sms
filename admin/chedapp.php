@@ -20,7 +20,7 @@
     ?>
 <!-- Table -->
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Non-Academic Application Management</h1>
+    <h1 class="h3 mb-4 text-gray-800">CHED Application Management</h1>
 
     <!-- DataTales Example -->
     <span id="message"></span>
@@ -31,7 +31,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Applicant List</h6>
                 </div>
                 <div class="col" align="right">
-                    <button type="button" name="add_nonacad" id="add_nonacad" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+                    <button type="button" name="add_ched" id="add_ched" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
                     <button type="button" name="delete_all" id="delete_all" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-times"></i></button>
                     <button type="button" name="approve_all" id="approve_all" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-thumbs-up"></i></button>
                     <button type="button" name="reject_all" id="reject_all" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-thumbs-down"></i></button>
@@ -40,13 +40,14 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="nonacad_table" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="ched_table" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Select</th>
                             <th>Last Name</th>
                             <th>First Name</th>
                             <th>Middle Name</th>
+                            <th>Suffix</th>
                             <th>Address</th>
                             <th>Contact No.</th>
                             <th>Gender</th>
@@ -67,12 +68,12 @@
     include('footer.php');
     ?>
 <!-- Add Modal -->
-    <div id="nonacadModal" class="modal fade">
+    <div id="chedModal" class="modal fade">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <form method="post" id="nonacad_form">
+            <form method="post" id="ched_form">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="modal_title">Add Non-Academic Scholar</h4>
+                        <h4 class="modal-title" id="modal_title">Add CHED Scholar</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
@@ -84,295 +85,285 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label for="snfname">First Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="snfname" id="snfname" class="form-control" required/>
+                                    <label>First Name<span class="text-danger">*</span></label>
+                                    <input type="text" name="scfname" id="scfname" class="form-control" required/>
+                                    <span id="error_scfname" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Middle Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="snmname" id="snmname" class="form-control" placeholder="Put N/A if none" required/>
-                                    <span id="error_snmname" class="text-danger"></span>
+                                    <input type="text" name="scmname" id="scmname" class="form-control" placeholder="Put N/A if none" required/>
+                                    <span id="error_scmname" class="text-danger"></span>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Last Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="snlname" id="snlname" class="form-control" required/>
-                                    <span id="error_snlname" class="text-danger"></span>
+                                    <input type="text" name="sclname" id="sclname" class="form-control" required/>
+                                    <span id="error_sclname" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Select Suffix<span class="text-danger">*</span></label>
-                                    <select name="snnext" id="snnext" class="form-control" required>
+                                    <select name="scnext" id="scnext" class="form-control" required>
                                     <option value="">-Select-</option>
                                     <option value="N/A">N/A</option>
                                     <option value="Jr.">Jr.</option>
                                     <option value="Sr.">Sr.</option>
                                     </select>
-                                    <span id="error_snnext" class="text-danger"></span>
+                                    <span id="error_scnext" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-10 col-sm-12 col-md-4">
                                     <label>Date of Birth<span class="text-danger">*</span></label>
-                                    <input type="date" name="sndbirth" id="sndbirth" autocomplete="off" class="form-control" required>
-                                    <span id="error_sndbirth" class="text-danger"></span>
+                                    <input type="date" name="scdbirth" id="scdbirth" class="form-control" required>
+                                    <span id="error_scdbirth" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <label>Select Gender<span class="text-danger">*</span></label>
-                                    <select name="sngender" id="sngender" class="form-control" required>
+                                    <select name="scgender" id="scgender" class="form-control" required>
                                     <option value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     </select>
-                                    <span id="error_sngender" class="text-danger"></span>
+                                    <span id="error_scgender" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <label>Citizenship<span class="text-danger">*</span></label>
-                                    <input type="text" name="snctship" id="snctship" class="form-control" required/>
-                                    <span id="error_snctship" class="text-danger"></span>
+                                    <label>Civil Status<span class="text-danger">*</span></label>
+                                    <select name="sccivilstat" id="sccivilstat" class="form-control" required>
+                                    <option value="">Select Status</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    </select>
+                                    <span id="error_sccivilstat" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <label>Address<span class="text-danger">*</span></label>
-                                    <textarea type="text" name="snaddress" id="snaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                                    <span id="error_snaddress" class="text-danger"></span>
+                                    <label>Place of birth<span class="text-danger">*</span></label>
+                                    <textarea type="text" name="scpbirth" id="scpbirth" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                                    <span id="error_scpbirth" class="text-danger"></span>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-5">
-                                    <label>Email Address<span class="text-danger">*</span></label>
-                                    <input type="text" name="snpemail" id="snpemail" class="form-control" required/>
-                                    <span id="error_snpemail" class="text-danger"></span>
+                                <div class="col-xs-12 col-sm-12 col-md-8">
+                                    <label>Permanent Mailing Address<span class="text-danger">*</span></label>
+                                    <textarea type="text" name="scaddress" id="scaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                                    <span id="error_scaddress" class="text-danger"></span>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-5 offset-md-2">
-                                    <label>Contact Number<span class="text-danger">*</span></label>
-                                    <input type="text" name="sncontact" id="sncontact" class="form-control" required/>
-                                    <span id="error_sncontact" class="text-danger"></span>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Zip Code<span class="text-danger">*</span></label>
+                                    <textarea type="text" name="sczcode" id="sczcode" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                                    <span id="error_sczcode" class="text-danger"></span>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-5">
-                                    <label>Course<span class="text-danger">*</span></label>
-                                    <input type="text" name="sncourse" id="sncourse" class="form-control" required/>
-                                    <span id="error_sncourse" class="text-danger"></span>
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>School Name<span class="text-danger">*</span></label>
+                                    <textarea type="text" name="scschname" id="scschname" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                                    <span id="error_scschname" class="text-danger"></span>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-5 offset-md-2">
-                                    <label>Grade/Year Level<span class="text-danger">*</span></label>
-                                    <input type="text" name="snyrlvl" id="snyrlvl" class="form-control" required/>
-                                    <span id="error_snyrlvl" class="text-danger"></span>
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>School Address<span class="text-danger">*</span></label>
+                                    <textarea type="text" name="scsaddress" id="scsaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                                    <span id="error_scsaddress" class="text-danger"></span>
                                 </div>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                <label>School Type<span class="text-danger">*</span></label>
+                                    <select name="scstype" id="scstype" class="form-control" required>
+                                    <option value="">Select Type</option>
+                                    <option value="Private">Private</option>
+                                    <option value="Public">Public</option>
+                                    </select>
+                                    <span id="error_scstype" class="text-danger"></span>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <label>Highest Grade/Year<span class="text-danger">*</span></label>
+                                    <input type="text" name="schygrade" id="schygrade" class="form-control" required/>
+                                    <span id="error_schygrade" class="text-danger"></span>
+                                    </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <label>Citizenship<span class="text-danger">*</span></label>
+                                    <input type="text" name="scctship" id="scctship" class="form-control" required/>
+                                    <span id="error_scctship" class="text-danger"></span>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <label>Mobile Number<span class="text-danger">*</span></label>
+                                    <input type="text" name="scmnum" id="scmnum" class="form-control" required/>
+                                    <span id="error_scmnum" class="text-danger"></span>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>Email<span class="text-danger">*</span></label>
+                                    <input type="text" name="scpemail" id="scpemail" class="form-control" required/>
+                                    <span id="error_scpemail" class="text-danger"></span>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>Type of Disability(if applicable)<span class="text-danger">*</span></label>
+                                    <input type="text" name="scdisability" id="scdisability" class="form-control" placeholder="Put N/A if none" required/>
+                                    <span id="error_scdisability" class="text-danger"></span>
+                                </div>      
+                                </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
                         <div class="form-group">
                         <div class="card">
                         <div class="card-header" style="font-weight: bold; font-size: 18px;">Family Details</div>
                         <div class="card-body">
-                        <div class="form-group">
-                            <h4 class="sub-title" style="font-weight: bold; font-size: 16px;">Guardian Details</h4>
-                                <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>First Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="sngfname" id="sngfname" class="form-control" required/>
-                                    <span id="error_sngfname" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>Middle Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="sngmname" id="sngmname" class="form-control" placeholder="Put N/A if none" required/>
-                                    <span id="error_sngmname" class="text-danger"></span>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>Last Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="snglname" id="snglname" class="form-control" required/>
-                                    <span id="error_snglname" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>Select Suffix<span class="text-danger">*</span></label>
-                                    <select name="sngnext" id="sngnext" class="form-control" required>
-                                    <option value="">-Select-</option>
-                                    <option value="N/A">N/A</option>
-                                    <option value="Jr.">Jr.</option>
-                                    <option value="Sr.">Sr.</option>
-                                    </select>
-                                    <span id="error_sngnext" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <label>Address<span class="text-danger">*</span></label>
-                                    <textarea type="text" name="sngaddress" id="sngaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                                    <span id="error_sngaddress" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <label>Contact Number<span class="text-danger">*</span></label>
-                                    <input type="text" name="sngcontact" id="sngcontact" class="form-control" required/>
-                                    <span id="error_sngcontact" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <label>Occupation<span class="text-danger">*</span></label>
-                                    <input type="text" name="sngoccu" id="sngoccu" class="form-control" placeholder="Put N/A if none" required/>
-                                    <span id="error_sngoccu" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <label>Company<span class="text-danger">*</span></label>
-                                    <input type="text" name="sngcompany" id="sngcompany" class="form-control" placeholder="Put N/A if none" required/>
-                                    <span id="error_sngcompany" class="text-danger"></span>
-                                </div>
-                            </div>
-                            </div>
                             <div class="form-group">
                                 <h4 class="sub-title" style="font-weight: bold; font-size: 16px;">Father Details</h4>
-                                <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>First Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="snffname" id="snffname" class="form-control" required/>
-                                    <span id="error_snffname" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>Middle Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="snfmname" id="snfmname" class="form-control" placeholder="Put N/A if none" required/>
-                                    <span id="error_snfmname" class="text-danger"></span>
+                                <div class="row" >
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <label>Last Name<span class="text-danger">*</span></label>
+                                        <input type="text" name="scflname" id="scflname" class="form-control" required/>
+                                        <span id="error_scflname" class="text-danger"></span>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>Last Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="snflname" id="snflname" class="form-control" required/>
-                                    <span id="error_snflname" class="text-danger"></span>
+                                        <label>First Name<span class="text-danger">*</span></label>
+                                        <input type="text" name="scffname" id="scffname" class="form-control" required/>
+                                        <span id="error_scffname" class="text-danger"></span>
+                                        </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <label>Middle Name<span class="text-danger">*</span></label>
+                                        <input type="text" name="scfmname" id="scfmname" class="form-control" placeholder="Put N/A if none" required/>
+                                        <span id="error_scfmname" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <label>Select Suffix<span class="text-danger">*</span></label>
+                                        <select name="scfnext" id="scfnext" class="form-control" required>
+                                        <option value="">-Select-</option>
+                                        <option value="N/A">N/A</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="Sr.">Sr.</option>
+                                        </select>
+                                        <span id="error_snnext" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <label>Status<span class="text-danger">*</label>
+                                        <select name="scfstatus" id="scfstatus" class="form-control" required>
+                                        <option value="">-Select-</option>
+                                        <option value="Living">Living</option>
+                                        <option value="Deceased">Deceased</option>
+                                        </select>
+                                        <span id="error_scfstatus" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <label>Occupation<span class="text-danger">*</span></label>
+                                        <input type="text" name="scfoccu" id="scfoccu" class="form-control" placeholder="Put N/A if none" required/>
+                                        <span id="error_scfoccu" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <label>Educational Attainment<span class="text-danger">*</span></label>
+                                        <input type="text" name="scfeduc" id="scfeduc" class="form-control" placeholder="Put N/A if none" required/>
+                                        <span id="error_scfeduc" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <label>Address<span class="text-danger">*</span></label>
+                                        <textarea type="text" name="scfaddress" id="scfaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                                        <span id="pob" class="text-danger"></span>
+                                        <span id="error_scfaddress" class="text-danger"></span>
+                                    </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>Select Suffix<span class="text-danger">*</span></label>
-                                    <select name="snfnext" id="snfnext" class="form-control" required>
-                                    <option value="">-Select-</option>
-                                    <option value="N/A">N/A</option>
-                                    <option value="Jr.">Jr.</option>
-                                    <option value="Sr.">Sr.</option>
-                                    </select>
-                                    <span id="error_snfnext" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <label>Address<span class="text-danger">*</span></label>
-                                    <textarea type="text" name="snfaddress" id="snfaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                                    <span id="error_snfaddress" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <label>Contact Number<span class="text-danger">*</span></label>
-                                    <input type="text" name="snfcontact" id="snfcontact" class="form-control" required/>
-                                    <span id="error_snfcontact" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <label>Occupation<span class="text-danger">*</span></label>
-                                    <input type="text" name="snfoccu" id="snfoccu" class="form-control" placeholder="Put N/A if none" required/>
-                                    <span id="error_snfoccu" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <label>Company<span class="text-danger">*</span></label>
-                                    <input type="text" name="snfcompany" id="snfcompany" class="form-control" placeholder="Put N/A if none" required/>
-                                    <span id="error_snfcompany" class="text-danger"></span>
-                                </div>
-                            </div>
                             </div>
                             <div class="form-group">
                                 <h4 class="sub-title" style="font-weight: bold; font-size: 16px;">Mother Details</h4>
                                 <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>First Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="snmfname" id="snmfname" class="form-control" required/>
-                                    <span id="error_snmfname" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>Middle Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="snmmname" id="snmmname" class="form-control" placeholder="Put N/A if none" required/>
-                                    <span id="error_snmmname" class="text-danger"></span>
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <label>Last Name<span class="text-danger">*</span></label>
+                                        <input type="text" name="scmlname" id="scmlname" class="form-control" required/>
+                                        <span id="error_scmlname" class="text-danger"></span>
                                     </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>Last Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="snmlname" id="snmlname" class="form-control" required/>
-                                    <span id="error_snmlname" class="text-danger"></span>
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <label>First Name<span class="text-danger">*</span></label>
+                                        <input type="text" name="scmfname" id="scmfname" class="form-control" required/>
+                                        <span id="error_scmfname" class="text-danger"></span>
+                                        </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <label>Middle Name<span class="text-danger">*</span></label>
+                                        <input type="text" name="scmmname" id="scmmname" class="form-control" placeholder="Put N/A if none" required/>
+                                        <span id="error_scmmname" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <label>Select Suffix<span class="text-danger">*</span></label>
+                                        <select name="scmnext" id="scmnext" class="form-control" required>
+                                        <option value="">-Select-</option>
+                                        <option value="N/A">N/A</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="Sr.">Sr.</option>
+                                        </select>
+                                        <span id="error_snnext" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <label>Status<span class="text-danger">*</label>
+                                        <select name="scmstatus" id="scmstatus" class="form-control" required>
+                                        <option value="">-Select-</option>
+                                        <option value="Living">Living</option>
+                                        <option value="Deceased">Deceased</option>
+                                        </select>
+                                        <span id="error_scmstatus" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <label>Occupation<span class="text-danger">*</span></label>
+                                        <input type="text" name="scmoccu" id="scmoccu" class="form-control" placeholder="Put N/A if none" required/>
+                                        <span id="error_scmoccu" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <label>Educational Attainment<span class="text-danger">*</span></label>
+                                        <input type="text" name="scmeduc" id="scmeduc" class="form-control" placeholder="Put N/A if none" required/>
+                                        <span id="error_scmeduc" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <label>Address<span class="text-danger">*</span></label>
+                                        <textarea type="text" name="scmaddress" id="scmaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                                        <span id="error_scmaddress" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <label>Total Parent Gross Income<span class="text-danger">*</span></label>
+                                        <input type="text" name="scptgross" id="scptgross" class="form-control" required/>
+                                        <span id="error_scptgross" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
+                                        <label>No. of Siblings in the family<span class="text-danger">*</span></label>
+                                        <input type="text" name="scnsibling" id="scnsibling" class="form-control" placeholder="Put N/A if none" required/>
+                                        <span id="error_scnsibling" class="text-danger"></span>
+                                    </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
-                                    <label>Select Suffix<span class="text-danger">*</span></label>
-                                    <select name="snmnext" id="snmnext" class="form-control" required>
-                                    <option value="">-Select-</option>
-                                    <option value="N/A">N/A</option>
-                                    <option value="Jr.">Jr.</option>
-                                    <option value="Sr.">Sr.</option>
-                                    </select>
-                                    <span id="error_snmnext" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <label>Address<span class="text-danger">*</span></label>
-                                    <textarea type="text" name="snmaddress" id="snmaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                                    <span id="error_snmaddress" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <label>Contact Number<span class="text-danger">*</span></label>
-                                    <input type="text" name="snmcontact" id="snmcontact" class="form-control" required/>
-                                    <span id="error_snmcontact" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <label>Occupation<span class="text-danger">*</span></label>
-                                    <input type="text" name="snmoccu" id="snmoccu" class="form-control" placeholder="Put N/A if none" required/>
-                                    <span id="error_snmoccu" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <label>Company<span class="text-danger">*</span></label>
-                                    <input type="text" name="snmcompany" id="snmcompany" class="form-control" placeholder="Put N/A if none" required/>
-                                    <span id="error_snmcompany" class="text-danger"></span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
-                                    <label>Parents Combine Yearly Income<span class="text-danger">*</span></label>
-                                    <input type="text" name="snspcyincome" id="snspcyincome" class="form-control" required/>
-                                    <span id="error_snspcyincome" class="text-danger"></span>
-                                </div>
-                            </div>
                             </div>
                         </div>
                         </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="card">
-                            <div class="card-header" style="font-weight: bold; font-size: 18px;">Application Details</div>
-                                <div class="card-body">
-                                <div class="form-group">
-                                    <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <label>Reasons/Special Circumstances for Applying NAS<span class="text-danger">*</span></label>
-                                        <textarea type="text" name="snrappnas" id="snrappnas" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                                        <span id="error_snrappnas" class="text-danger"></span>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <label>Basic Office Skills<span class="text-danger">*</span></label>
-                                        <textarea type="text" name="snbos" id="snbos" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                                        <span id="error_snbos" class="text-danger"></span>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <label>Special Skills<span class="text-danger">*</span></label>
-                                        <textarea type="text" name="snsskills" id="snsskills" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                                        <span id="error_snsskills" class="text-danger"></span>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <label>Type of Work Interested In<span class="text-danger">*</span></label>
-                                        <textarea type="text" name="sntwinterest" id="sntwinterest" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                                        <span id="error_sntwinterest" class="text-danger"></span>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="form-group">
                             <div class="card">
                             <div class="card-header" style="font-weight: bold; font-size: 18px;">Education Details</div>
-                                <div class="card-body">
+                            <div class="card-body">
                                 <div class="form-group">
                                     <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <label>Previous School Attended<span class="text-danger">*</span></label>
-                                        <textarea type="text" name="snpschatt" id="snpschatt" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                                        <span id="error_snpschatt" class="text-danger"></span>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <label>Year/Grade Level<span class="text-danger">*</span></label>
-                                        <input type="text" name="snpyrlvl" id="snpyrlvl" class="form-control" required/>
-                                        <span id="error_snpyrlvl" class="text-danger"></span>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <label>School Address<span class="text-danger">*</span></label>
-                                        <textarea type="text" name="snpschadd" id="snpschadd" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                                        <span id="error_snpschadd" class="text-danger"></span>
-                                    </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <label>School intended to enroll in <span class="text-danger">*</span></label>
+                                            <textarea type="text" name="scsintend" id="scsintend" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                                            <span id="error_scsintend" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <label>School Address <span class="text-danger">*</span></label>
+                                            <textarea type="text" name="scsadd" id="scsadd" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                                            <span id="error_scsadd" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <label>Type of School<span class="text-danger">*</span></label>
+                                            <select name="scschooltype" id="scschooltype" class="form-control" required>
+                                            <option value="">Select Type</option>
+                                            <option value="Private">Private</option>
+                                            <option value="Public">Public</option>
+                                            </select>
+                                            <span id="error_scschooltype" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-4">
+                                            <label>Course<span class="text-danger">*</span></label>
+                                            <input type="text" name="sccourse" id="sccourse" class="form-control" required/>
+                                            <span id="error_sccourse" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <label>Course Priority/Not Priority<span class="text-danger">*</span></label>
+                                            <select name="sccoursestat" id="sccoursestat" class="form-control" required>
+                                            <option value="">Select </option>
+                                            <option value="Priority">Piority</option>
+                                            <option value="Not Priority">Not Priority</option>
+                                            </select>
+                                            <span id="error_sccoursestat" class="text-danger"></span>
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -383,68 +374,42 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <label>Date Recv. Report Card<span class="text-danger">*</span></label>
-                                            <input type="date" name="snasprc" id="snasprc" autocomplete="off" class="form-control" />
+                                            <input type="date" name="scdrprc" id="scdrprc" autocomplete="off" class="form-control" />
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <label>Date Recv. Good Moral<span class="text-danger">*</span></label>
-                                            <input type="date" name="snapgm" id="snapgm" autocomplete="off" class="form-control" />
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-4">
-                                            <label>Date Recv. 2x2 ID Picture<span class="text-danger">*</span></label>
-                                            <input type="date" name="sntbytpic" id="sntbytpic" autocomplete="off" class="form-control" />
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-4">
-                                            <label>Select Report Card Status<span class="text-danger">*</span></label>
-                                            <select name="snasprcstat" id="snasprcstat" class="form-control" required>
-                                            <option value="">-Select-</option>
-                                            <option value="Received">Received</option>
-                                            <option value="Not-Received">Not-Received</option>
-                                            </select>
-                                            <span id="error_snasprcstat" class="text-danger"></span>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-4">
-                                            <label>Select Good Moral Status<span class="text-danger">*</span></label>
-                                            <select name="snapgmstat" id="snapgmstat" class="form-control" required>
-                                            <option value="">-Select-</option>
-                                            <option value="Received">Received</option>
-                                            <option value="Not-Received">Not-Received</option>
-                                            </select>
-                                            <span id="error_snapgmstat" class="text-danger"></span>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-4">
-                                            <label>Select 2x2 ID Pic. Status<span class="text-danger">*</span></label>
-                                            <select name="sntbytpicstat" id="sntbytpicstat" class="form-control" required>
-                                            <option value="">-Select-</option>
-                                            <option value="Received">Received</option>
-                                            <option value="Not-Received">Not-Received</option>
-                                            </select>
-                                            <span id="error_sntbytpicstat" class="text-danger"></span>
+                                            <input type="date" name="scdrpgm" id="scdrpgm" autocomplete="off" class="form-control" />
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <label>Date Recv. Brgy. Indigency<span class="text-danger">*</span></label>
-                                            <input type="date" name="snpbrgyin" id="snpbrgyin" autocomplete="off" class="form-control" />
+                                            <input type="date" name="scdrbrgyin" id="scdrbrgyin" autocomplete="off" class="form-control" />
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
-                                            <label>Date Recv. Enrollment Form<span class="text-danger">*</span></label>
-                                            <input type="date" name="snpscef" id="snpscef" autocomplete="off" class="form-control" />
+                                        <div class="col-xs-12 col-sm-12 col-md-4">
+                                            <label>Select Report Card Status<span class="text-danger">*</span></label>
+                                            <select name="scdrprcstat" id="scdrprcstat" class="form-control" required>
+                                            <option value="">-Select-</option>
+                                            <option value="Received">Received</option>
+                                            <option value="Not-Received">Not-Received</option>
+                                            </select>
+                                            <span id="error_scdrprcstat" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-4">
+                                            <label>Select Good Moral Status<span class="text-danger">*</span></label>
+                                            <select name="scdrpgmstat" id="scdrpgmstat" class="form-control" required>
+                                            <option value="">-Select-</option>
+                                            <option value="Received">Received</option>
+                                            <option value="Not-Received">Not-Received</option>
+                                            </select>
+                                            <span id="error_scdrpgmstat" class="text-danger"></span>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <label>Select Brgy. Indigency Status<span class="text-danger">*</span></label>
-                                            <select name="snpbrgyinstat" id="snpbrgyinstat" class="form-control" required>
+                                            <select name="scdrbrgyinstat" id="scdrbrgyinstat" class="form-control" required>
                                             <option value="">-Select-</option>
                                             <option value="Received">Received</option>
                                             <option value="Not-Received">Not-Received</option>
                                             </select>
-                                            <span id="error_snpbrgyinstat" class="text-danger"></span>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
-                                            <label>Select ENRL Form Status<span class="text-danger">*</span></label>
-                                            <select name="snpscefstat" id="snpscefstat" class="form-control" required>
-                                            <option value="">-Select-</option>
-                                            <option value="Received">Received</option>
-                                            <option value="Not-Received">Not-Received</option>
-                                            </select>
-                                            <span id="error_snpscefstat" class="text-danger"></span>
+                                            <span id="error_scdrbrgyinstat" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div> 
@@ -457,13 +422,13 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                     <label>Email<span class="text-danger">*</span></label>
-                                    <input type="text" name="snaemail" id="snaemail" class="form-control" required/>
-                                    <span id="error_snaemail" class="text-danger"></span>
+                                    <input type="text" name="scaemail" id="scaemail" class="form-control" required/>
+                                    <span id="error_scaemail" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
                                     <label>Password<span class="text-danger">*</span></label>
-                                    <input type="password" name="snapass" id="snapass" class="form-control" required/>
-                                    <span id="error_snapass" class="text-danger"></span>
+                                    <input type="password" name="scapass" id="scapass" class="form-control" required/>
+                                    <span id="error_scapass" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -474,12 +439,12 @@
                                 <div class="card-body">
                                     <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
                                         <label>Select Grant Status<span class="text-danger">*</span></label>
-                                        <select name="sngrantstat" id="sngrantstat" class="form-control" required>
+                                        <select name="scgrantstat" id="scgrantstat" class="form-control" required>
                                         <option value="">-Select-</option>
                                         <option value="New">New</option>
                                         <option value="Old">Old</option>
                                         </select>
-                                        <span id="error_sngrantstat" class="text-danger"></span>
+                                        <span id="error_scgrantstat" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -522,104 +487,60 @@
     </style>
 <!-- Script -->
     <script>
-    //  Validation
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-            });
-        }, false);
-        })();
 
     $(document).ready(function(){
 // Table Function
-        var dataTable = $('#nonacad_table').DataTable({
-            "processing" : true,
-            "serverSide" : true,
-            "order" : [],
-            "ajax" : {
-                url:"nonacadapp_action.php",
-                type:"POST",
-                data:{action:'fetch'}
+    var dataTable = $('#ched_table').DataTable({
+        "processing" : true,
+        "serverSide" : true,
+        "order" : [],
+        "ajax" : {
+            url:"chedapp_action.php",
+            type:"POST",
+            data:{action:'fetch'}
+        },
+        "columnDefs":[
+            {
+                "targets":[0],
+                "orderable":false,
+                'checkboxes': {
+                'selectRow': true
+            }
             },
-            "columnDefs":[
-                {
-                    "targets":[0],
-                    "orderable":false,
-                    'checkboxes': {
-                    'selectRow': true
-                }
-                },
-            ],
-            'select': {
-            'style': 'multi'
-            },
-            // 'order': [[1, 'asc']]	
-        });
-
-        // $('#sndbirth').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#snasprc').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#snapgm').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#sntbytpic').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#snpbrgyin').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#snpscef').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
+        ],
+        'select': {
+        'style': 'multi'
+        },
+        // 'order': [[1, 'asc']]	
+    });
 
 // Add
-    $('#add_nonacad').click(function(){
+    $('#add_ched').click(function(){
 
-        $('#nonacad_form')[0].reset();
+        $('#ched_form')[0].reset();
 
-        $('#nonacad_form').parsley().reset();
+        $('#ched_form').parsley().reset();
 
-        $('#modal_title').text('Add Non-Academic Scholar');
+        $('#modal_title').text('Add CHED Scholar');
 
         $('#action').val('Add');
 
         $('#submit_button').val('Add');
 
-        $('#nonacadModal').modal('show');
+        $('#chedModal').modal('show');
 
         $('#form_message').html('');
 
     });
 // Submit
-    $('#nonacad_form').parsley();
+    $('#ched_form').parsley();
 
-    $('#nonacad_form').on('submit', function(event){
+    $('#ched_form').on('submit', function(event){
         event.preventDefault();
-        if($('#nonacad_form').parsley().isValid())
+        if($('#ched_form').parsley().isValid())
         {		
             $.ajax({
-                url:"nonacadapp_action.php",
+                url:"chedapp_action.php",
                 method:"POST",
                 data: new FormData(this),
                 dataType:'json',
@@ -641,7 +562,7 @@
                     }
                     else
                     {
-                        $('#nonacadModal').modal('hide');
+                        $('#chedModal').modal('hide');
                         $('#message').html(data.success);
                         dataTable.ajax.reload();
 
@@ -661,15 +582,15 @@
 
         var snacad_id = $(this).data('id');
 
-        $('#nonacad_form')[0].reset();
+        $('#ched_form')[0].reset();
 
-        $('#nonacad_form').parsley().reset();
+        $('#ched_form').parsley().reset();
 
         $('#form_message').html('');
 
         $.ajax({
 
-            url:"nonacadapp_action.php",
+            url:"chedapp_action.php",
 
             method:"POST",
 
@@ -680,8 +601,8 @@
             success:function(data)
             {
     // Account Details
-                $('#snaemail').val(data.snaemail);
-                $('#snapass').val(data.snapass);
+                $('#scaemail').val(data.scaemail);
+                $('#scapass').val(data.scapass);
     // Personal Details
                 $('#snfname').val(data.snfname);
                 $('#snmname').val(data.snmname);
@@ -734,19 +655,19 @@
                 $('#snpschadd').val(data.snpschadd);
                 $('#snpyrlvl').val(data.snpyrlvl);
     // Requirement Details
-                $('#snasprc').val(data.snasprc);
-                $('#snasprcstat').val(data.snasprcstat);
-                $('#snapgm').val(data.snapgm);
-                $('#snapgmstat').val(data.snapgmstat);
+                $('#scdrprc').val(data.scdrprc);
+                $('#scdrprcstat').val(data.scdrprcstat);
+                $('#scdrpgm').val(data.scdrpgm);
+                $('#scdrpgmstat').val(data.scdrpgmstat);
                 $('#sntbytpic').val(data.sntbytpic);
                 $('#sntbytpicstat').val(data.sntbytpicstat);
-                $('#snpbrgyin').val(data.snpbrgyin);
-                $('#snpbrgyinstat').val(data.snpbrgyinstat);
+                $('#scdrbrgyin').val(data.scdrbrgyin);
+                $('#scdrbrgyinstat').val(data.scdrbrgyinstat);
                 $('#snpscef').val(data.snpscef);
                 $('#snpscefstat').val(data.snpscefstat);
     // Scholarship Details
                 $('#snacapstype').val(data.snacapstype);
-                $('#sngrantstat').val(data.sngrantstat);
+                $('#scgrantstat').val(data.scgrantstat);
                 $('#snascholarstat').val(data.snascholarstat);
                 $('#snadapply').val(data.snadapply);
 
@@ -756,7 +677,7 @@
 
                 $('#submit_button').val('Edit');
 
-                $('#nonacadModal').modal('show');
+                $('#chedModal').modal('show');
 
                 $('#hidden_id').val(snacad_id);
 
@@ -780,7 +701,7 @@
 
             $.ajax({
 
-                url:"nonacadapp_action.php",
+                url:"chedapp_action.php",
 
                 method:"POST",
 
@@ -816,7 +737,7 @@
 
         $.ajax({
 
-            url:"nonacadapp_action.php",
+            url:"chedapp_action.php",
 
             method:"POST",
 
@@ -849,7 +770,7 @@
 
         $.ajax({
 
-            url:"nonacadapp_action.php",
+            url:"chedapp_action.php",
 
             method:"POST",
 
@@ -863,7 +784,7 @@
                 html += '<table class="table">';
             // Account Details
                 html += '<tr><th width="40%" class="text-right" style="font-size:20px">Account Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">Email Address</th><td width="60%">'+data.snaemail+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Email Address</th><td width="60%">'+data.scaemail+'</td></tr>';
             // Personal Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Personal Details</th><td width="60%"></td></tr>';
                 html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.snfname+'</td></tr>';
@@ -924,20 +845,20 @@
                 html += '<tr><th width="40%" class="text-right">Date Received</th><td width="60%">'+data.snpyrlvl+'</td></tr>';
             // Requirement Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Requirement Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Report Card</th><td width="60%">'+data.snasprc+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Report Card Status</th><td width="60%">'+data.snasprcstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Good Moral</th><td width="60%">'+data.snapgm+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Good Moral Status</th><td width="60%">'+data.snapgmstat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date Receive Report Card</th><td width="60%">'+data.scdrprc+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Report Card Status</th><td width="60%">'+data.scdrprcstat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date Receive Good Moral</th><td width="60%">'+data.scdrpgm+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Good Moral Status</th><td width="60%">'+data.scdrpgmstat+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Date Receive Certificate of Recognition</th><td width="60%">'+data.sntbytpic+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Certificate of Recognition Status</th><td width="60%">'+data.sntbytpicstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Good Moral</th><td width="60%">'+data.snpbrgyin+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Good Moral Status</th><td width="60%">'+data.snpbrgyinstat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date Receive Good Moral</th><td width="60%">'+data.scdrbrgyin+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Good Moral Status</th><td width="60%">'+data.scdrbrgyinstat+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Date Receive Certificate of Recognition</th><td width="60%">'+data.snpscef+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Certificate of Recognition Status</th><td width="60%">'+data.snpscefstat+'</td></tr>';
             // Scholarship Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Details</th><td width="60%"></td></tr>';
                 html += '<tr><th width="40%" class="text-right">Scholarship Type</th><td width="60%">'+data.snacapstype+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Grant Status</th><td width="60%">'+data.sngrantstat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Grant Status</th><td width="60%">'+data.scgrantstat+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Scholarship Status</th><td width="60%">'+data.snascholarstat+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Date Applied</th><td width="60%">'+data.snadapply+'</td></tr>';
                 html += '</table></div>';
@@ -994,7 +915,7 @@
             });
 
             $.ajax({
-                url:"nonacadapp_action.php",
+                url:"chedapp_action.php",
                 method:"POST",
                 data:{checkbox_value:checkbox_value, approve_status:approve_status, action:'approve_all'},
                 success:function(data)
@@ -1030,7 +951,7 @@
             });
 
             $.ajax({
-                url:"nonacadapp_action.php",
+                url:"chedapp_action.php",
                 method:"POST",
                 data:{checkbox_value:checkbox_value, reject_status:reject_status, action:'reject_all'},
                 success:function(data)
@@ -1065,7 +986,7 @@
             });
 
             $.ajax({
-                url:"nonacadapp_action.php",
+                url:"chedapp_action.php",
                 method:"POST",
                 data:{checkbox_value:checkbox_value, action:'delete_all'},
                 success:function(data)

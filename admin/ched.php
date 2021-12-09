@@ -1,5 +1,5 @@
 <?php 
-// Finish
+
 include('../class/dbcon.php');
 $object = new sms;
 
@@ -118,6 +118,7 @@ $object->execute($data);
  </head>
  <body>
  <br />
+<!-- Nav -->
   <div class="container box">
    <br />
    <h2 align="center">CHED STUDENT FINANCIAL ASSISTANCE PROGRAMS(StuFAPs)<br>Application Form</h2><br />
@@ -129,7 +130,7 @@ $object->execute($data);
      </li>
      <li class="nav-item">
       <a class="nav-link inactive_tab1" id="list_family_details" style="border:1px solid #ccc">Family Details</a>
-</li>
+    </li>
      <li class="nav-item">
       <a class="nav-link inactive_tab1" id="list_education_details" style="border:1px solid #ccc">Education Details</a>
      </li>
@@ -140,7 +141,7 @@ $object->execute($data);
       <a class="nav-link inactive_tab1" id="list_account_details" style="border:1px solid #ccc">Account Details</a>
      </li>
     </ul>
-  <!-- Personal Details -->
+<!-- Personal Details -->
     <div class="tab-content" style="margin-top:16px;">
     <div class="tab-pane active" id="personal_details">
         <div class="panel panel-default">
@@ -236,22 +237,22 @@ $object->execute($data);
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Highest Grade/Year<span class="text-danger">*</span></label>
-                    <input type="text" name="schygrade" id="schygrade" class="form-control" />
+                    <input type="text" name="schygrade" id="schygrade" class="form-control" required/>
                     <span id="error_schygrade" class="text-danger"></span>
                     </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Citizenship<span class="text-danger">*</span></label>
-                    <input type="text" name="scctship" id="scctship" class="form-control" />
+                    <input type="text" name="scctship" id="scctship" class="form-control" required/>
                     <span id="error_scctship" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Mobile Number<span class="text-danger">*</span></label>
-                    <input type="text" name="scmnum" id="scmnum" class="form-control" />
+                    <input type="text" name="scmnum" id="scmnum" class="form-control" required/>
                     <span id="error_scmnum" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
                     <label>Email<span class="text-danger">*</span></label>
-                    <input type="text" name="scpemail" id="scpemail" class="form-control" />
+                    <input type="text" name="scpemail" id="scpemail" class="form-control" required/>
                     <span id="error_scpemail" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6">
@@ -269,116 +270,115 @@ $object->execute($data);
         </div>
       </div>
 <!-- Family Details -->
-<div class="tab-pane fade" id="family_details">
-        <div class="panel panel-default">
-          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Family Details</div>
-            <div class="panel-body">
-
-            <div class="form-group">
-					      <h4 class="sub-title">Father's Details</h4>
-                <div class="row" >
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Last Name<span class="text-danger">*</span></label>
-                    <input type="text" name="scflname" id="scflname" class="form-control" />
-                    <span id="error_scflname" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Given Name<span class="text-danger">*</span></label>
-                    <input type="text" name="scffname" id="scffname" class="form-control" />
-                    <span id="error_scffname" class="text-danger"></span>
+  <div class="tab-pane fade" id="family_details">
+          <div class="panel panel-default">
+            <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Family Details</div>
+              <div class="panel-body">
+              <div class="form-group">
+                  <h4 class="sub-title">Father's Details</h4>
+                  <div class="row" >
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                      <label>Last Name<span class="text-danger">*</span></label>
+                      <input type="text" name="scflname" id="scflname" class="form-control" />
+                      <span id="error_scflname" class="text-danger"></span>
                     </div>
-							    <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="scfmname" id="scfmname" class="form-control" />
-                    <span id="error_scfmname" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Status<span class="text-danger">*</label>
-                    <select name="scfstatus" id="scfstatus" class="form-control" required>
-                      <option value="">-Select-</option>
-                      <option value="Living">Living</option>
-                      <option value="Deceased">Deceased</option>
-                    </select>
-                    <span id="error_scfstatus" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Address<span class="text-danger">*</span></label>
-                    <textarea type="text" name="scfaddress" id="scfaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="pob" class="text-danger"></span>
-                    <span id="error_scfaddress" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Occupation<span class="text-danger">*</span></label>
-                    <textarea type="text" name="scfoccu" id="scfoccu" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="pob" class="text-danger"></span>
-                    <span id="error_scfoccu" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Educational Attainment<span class="text-danger">*</span></label>
-                    <textarea type="text" name="scfeduc" id="scfeduc" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_scfeduc" class="text-danger"></span>
-                  </div>
-               </div>
-               <h4 class="sub-title">Mother's Details</h4>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Last Name<span class="text-danger">*</span></label>
-                    <input type="text" name="scmlname" id="scmlname" class="form-control" />
-                    <span id="error_scmlname" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Given Name<span class="text-danger">*</span></label>
-                    <input type="text" name="scmfname" id="scmfname" class="form-control" />
-                    <span id="error_scmfname" class="text-danger"></span>
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                      <label>Given Name<span class="text-danger">*</span></label>
+                      <input type="text" name="scffname" id="scffname" class="form-control" />
+                      <span id="error_scffname" class="text-danger"></span>
+                      </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                      <label>Middle Name<span class="text-danger">*</span></label>
+                      <input type="text" name="scfmname" id="scfmname" class="form-control" />
+                      <span id="error_scfmname" class="text-danger"></span>
                     </div>
-							    <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="scmmname" id="scmmname" class="form-control" />
-                    <span id="error_scmmname" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Status<span class="text-danger">*</label>
-                    <select name="scmstatus" id="scmstatus" class="form-control" required>
-                      <option value="">-Select-</option>
-                      <option value="Living">Living</option>
-                      <option value="Deceased">Deceased</option>
-                    </select>
-                    <span id="error_scmstatus" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-8">
-                    <label>Address<span class="text-danger">*</span></label>
-                    <textarea type="text" name="scmaddress" id="scmaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_scmaddress" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Occupation<span class="text-danger">*</span></label>
-                    <textarea type="text" name="scmoccu" id="scmoccu" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_scmoccu" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Educational Attainment<span class="text-danger">*</span></label>
-                    <input type="text" name="scmeduc" id="scmeduc" class="form-control" />
-                    <span id="error_scmeduc" class="text-danger"></span>
-                    </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Total Parent Gross Income<span class="text-danger">*</span></label>
-                    <input type="text" name="scptgross" id="scptgross" class="form-control" />
-                    <span id="error_scptgross" class="text-danger"></span>
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                      <label>Status<span class="text-danger">*</label>
+                      <select name="scfstatus" id="scfstatus" class="form-control" required>
+                        <option value="">-Select-</option>
+                        <option value="Living">Living</option>
+                        <option value="Deceased">Deceased</option>
+                      </select>
+                      <span id="error_scfstatus" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>No. of Siblings in the family<span class="text-danger">*</span></label>
-                    <input type="text" name="scnsibling" id="scnsibling" class="form-control" />
-                    <span id="error_scnsibling" class="text-danger"></span>
+                      <label>Address<span class="text-danger">*</span></label>
+                      <textarea type="text" name="scfaddress" id="scfaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                      <span id="pob" class="text-danger"></span>
+                      <span id="error_scfaddress" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                      <label>Occupation<span class="text-danger">*</span></label>
+                      <textarea type="text" name="scfoccu" id="scfoccu" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                      <span id="pob" class="text-danger"></span>
+                      <span id="error_scfoccu" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                      <label>Educational Attainment<span class="text-danger">*</span></label>
+                      <textarea type="text" name="scfeduc" id="scfeduc" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                      <span id="error_scfeduc" class="text-danger"></span>
+                    </div>
+                </div>
+                <h4 class="sub-title">Mother's Details</h4>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                      <label>Last Name<span class="text-danger">*</span></label>
+                      <input type="text" name="scmlname" id="scmlname" class="form-control" />
+                      <span id="error_scmlname" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                      <label>Given Name<span class="text-danger">*</span></label>
+                      <input type="text" name="scmfname" id="scmfname" class="form-control" />
+                      <span id="error_scmfname" class="text-danger"></span>
+                      </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                      <label>Middle Name<span class="text-danger">*</span></label>
+                      <input type="text" name="scmmname" id="scmmname" class="form-control" />
+                      <span id="error_scmmname" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                      <label>Status<span class="text-danger">*</label>
+                      <select name="scmstatus" id="scmstatus" class="form-control" required>
+                        <option value="">-Select-</option>
+                        <option value="Living">Living</option>
+                        <option value="Deceased">Deceased</option>
+                      </select>
+                      <span id="error_scmstatus" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-8">
+                      <label>Address<span class="text-danger">*</span></label>
+                      <textarea type="text" name="scmaddress" id="scmaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                      <span id="error_scmaddress" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                      <label>Occupation<span class="text-danger">*</span></label>
+                      <textarea type="text" name="scmoccu" id="scmoccu" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                      <span id="error_scmoccu" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                      <label>Educational Attainment<span class="text-danger">*</span></label>
+                      <input type="text" name="scmeduc" id="scmeduc" class="form-control" />
+                      <span id="error_scmeduc" class="text-danger"></span>
+                      </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                      <label>Total Parent Gross Income<span class="text-danger">*</span></label>
+                      <input type="text" name="scptgross" id="scptgross" class="form-control" />
+                      <span id="error_scptgross" class="text-danger"></span>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-4">
+                      <label>No. of Siblings in the family<span class="text-danger">*</span></label>
+                      <input type="text" name="scnsibling" id="scnsibling" class="form-control" />
+                      <span id="error_scnsibling" class="text-danger"></span>
                     </div>
                   </div>
-               </div>
-              <div align="center">
-                <button type="button" name="previous_btn_family_details" id="previous_btn_family_details" class="btn btn-default btn-md">Previous</button>
-                <button type="button" name="btn_family_details" id="btn_family_details" class="btn btn-info btn-md">Next</button>
+                </div>
+                <div align="center">
+                  <button type="button" name="previous_btn_family_details" id="previous_btn_family_details" class="btn btn-default btn-md">Previous</button>
+                  <button type="button" name="btn_family_details" id="btn_family_details" class="btn btn-info btn-md">Next</button>
+                </div>
               </div>
-            </div>
+          </div>
         </div>
-      </div>
       <!-- Education Details -->
       <div class="tab-pane fade" id="education_details">
         <div class="panel panel-default">
@@ -429,7 +429,7 @@ $object->execute($data);
             </div>
         </div>
       </div>
-      <!-- Requirement Details -->
+<!-- Requirement Details -->
       <div class="tab-pane fade" id="requirement_details">
         <div class="panel panel-default">
           <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Applicant Must Be:</div>
@@ -466,7 +466,7 @@ $object->execute($data);
           </div>
         </div>
       </div>
-      <!-- Account Details -->
+<!-- Account Details -->
       <div class="tab-pane fade" id="account_details">
         <div class="panel panel-default">
           <div class="panel-heading">Account Details</div>
@@ -491,12 +491,12 @@ $object->execute($data);
      </div>
    </form>
   </div>
-</body>
-</html>
-
-<script>
+  </body>
+  </html>
+<!-- script -->
+  <script>
 // Student Details
-$(document).ready(function(){
+ $(document).ready(function(){
  
  $('#btn_personal_details').click(function(){
   var error_scfname = '';
@@ -537,7 +537,7 @@ $(document).ready(function(){
    $('#scfname').removeClass('has-error');
   }
 
-//Middlename
+  //Middlename
 
 if($.trim($('#scmname').val()).length == 0)
   {

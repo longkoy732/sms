@@ -84,8 +84,8 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
-                                    <label  >Student ID NO.<span class="text-danger">*</span></label>
-                                    <input  type="text" name="sustudent_id" id="sustudent_id" class="form-control" />
+                                    <label>Student ID NO.<span class="text-danger">*</span></label>
+                                    <input type="text" name="sustudent_id" id="sustudent_id" class="form-control" required/>
                                     <span id="error_sustudent_id" class="text-danger"></span>
                                 </div>
                             </div>
@@ -101,17 +101,17 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Last Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="suslname" id="suslname" class="form-control" />
+                                    <input type="text" name="suslname" id="suslname" class="form-control" required/>
                                     <span id="error_suslname" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Given Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="susfname" id="susfname" class="form-control" />
+                                    <input type="text" name="susfname" id="susfname" class="form-control" required/>
                                     <span id="error_susfname" class="text-danger"></span>
                                 </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Middle Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="susmname" id="susmname" class="form-control" />
+                                    <input type="text" name="susmname" id="susmname" class="form-control" placeholder="Put N/A if none" required/>
                                     <span id="error_susmname" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3">
@@ -128,19 +128,19 @@
                                 <label>Gender<span class="text-danger">*</label>
                                     <select name="susgender" id="susgender" class="form-control" required>
                                     <option value="">-Select-</option>
-                                    <option value="Male.">Male</option>
+                                    <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     </select>
                                     <span id="error_susgender" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <label>Date of Birth<span class="text-danger">*</label>
-                                    <input type='text' name="susdbirth" id="susdbirth" class="form-control">
+                                    <input type="date" name="susdbirth" id="susdbirth" autocomplete="off" class="form-control" required>
                                     <span id="error_susdbirth" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <label>Contact No.<span class="text-danger">*</span></label>
-                                    <input type="text" name="suscontact" id="suscontact" class="form-control" />
+                                    <input type="text" name="suscontact" id="suscontact" class="form-control" required/>
                                     <span id="error_suscontact" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -155,17 +155,17 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                 <label>Course/Program<span class="text-danger">*</span></label>
-                                    <input type="text" name="suscp" id="suscp" class="form-control" />
+                                    <input type="text" name="suscp" id="suscp" class="form-control" required/>
                                     <span id="error_suscp" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                 <label>Year Level<span class="text-danger">*</span></label>
-                                    <input type="text" name="susyl" id="susyl" class="form-control" />
+                                    <input type="text" name="susyl" id="susyl" class="form-control" required/>
                                     <span id="error_susyl" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                 <label>Email Address<span class="text-danger">*</span></label>
-                                    <input type="text" name="suspemail" id="suspemail" class="form-control" />
+                                    <input type="text" name="suspemail" id="suspemail" class="form-control" required/>
                                     <span id="error_suspemail" class="text-danger"></span>
                                 </div>
                             </div>
@@ -182,17 +182,17 @@
                                 <div class="row" >
                                 <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Last Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="susflname" id="susflname" class="form-control" />
+                                    <input type="text" name="susflname" id="susflname" class="form-control" required/>
                                     <span id="error_susflname" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Given Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="susffname" id="susffname" class="form-control" />
+                                    <input type="text" name="susffname" id="susffname" class="form-control" required/>
                                     <span id="error_susffname" class="text-danger"></span>
                                     </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Middle Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="susfmname" id="susfmname" class="form-control" />
+                                    <input type="text" name="susfmname" id="susfmname" class="form-control" placeholder="Put N/A if none" required/>
                                     <span id="error_susfmname" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3">
@@ -212,17 +212,17 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Last Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="susmlname" id="susmlname" class="form-control" />
+                                    <input type="text" name="susmlname" id="susmlname" class="form-control" required/>
                                     <span id="error_susmlname" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Given Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="susmfname" id="susmfname" class="form-control" />
+                                    <input type="text" name="susmfname" id="susmfname" class="form-control" required/>
                                     <span id="error_susmfname" class="text-danger"></span>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-3">
                                     <label>Middle Name<span class="text-danger">*</span></label>
-                                    <input type="text" name="susmmname" id="susmmname" class="form-control" />
+                                    <input type="text" name="susmmname" id="susmmname" class="form-control" placeholder="Put N/A if none" required/>
                                     <span id="error_susmmname" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3">
@@ -237,25 +237,22 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                     <label>DSWD Household / 4ps No.<span class="text-danger">*</label>
-                                    <input type="text" name="susdswd" id="susdswd" class="form-control" />
+                                    <input type="text" name="susdswd" id="susdswd" class="form-control" placeholder="Put N/A if none" required/>
                                     <span id="error_susdswd" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                     <label>Household Capital Income<span class="text-danger">*</label>
-                                    <input type="text" name="sushci" id="sushci" class="form-control" />
+                                    <input type="text" name="sushci" id="sushci" class="form-control" required/>
                                     <span id="error_sushci" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                     <label>Specify Disability / Attached PWD Id<span class="text-danger">*</label>
-                                    <input type="text" name="susdid" id="susdid" class="form-control" />
+                                    <input type="text" name="susdid" id="susdid" class="form-control" placeholder="Put N/A if none" required/>
                                     <span id="error_susdid" class="text-danger"></span>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                 <label>Date Filed<span class="text-danger">*</label>
-                                <div class='input-group date' id='datetimepicker2'>
-                                        <input type='text' name="susdfilled" id="susdfilled" class="form-control">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                    </div>
+                                    <input type="date" name="susdfilled" id="susdfilled" autocomplete="off" class="form-control" required>
                                     <span id="error_susdfilled" class="text-danger"></span>
                                 </div>
                             </div>
@@ -271,15 +268,15 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <label>Date Recv. Phoc. PSA<span class="text-danger">*</span></label>
-                                            <input type="text" name="sudrpic" id="sudrpic" readonly class="form-control" />
+                                            <input type="date" name="sudrpic" id="sudrpic" autocomplete="off" class="form-control" />
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <label>Date Recv. 2x2 ID Picture<span class="text-danger">*</span></label>
-                                            <input type="text" name="sudrpsa" id="sudrpsa" readonly class="form-control" />
+                                            <input type="date" name="sudrpsa" id="sudrpsa" autocomplete="off" class="form-control" />
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <label>Date Recv. Brgy. Indigency<span class="text-danger">*</span></label>
-                                            <input type="text" name="sudrobr" id="sudrobr" readonly class="form-control" />
+                                            <input type="date" name="sudrobr" id="sudrobr" autocomplete="off" class="form-control" />
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <label>Select Phoc. PSA Status<span class="text-danger">*</span></label>
@@ -318,13 +315,13 @@
                             <div class="card-header" style="font-weight: bold; font-size: 18px;">Account Details</div>
                                 <div class="card-body">
                                     <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" name="susaemail" id="susaemail" class="form-control" />
+                                    <label>Email<span class="text-danger">*</span></label>
+                                    <input type="text" name="susaemail" id="susaemail" class="form-control" required/>
                                     <span id="error_susaemail" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" name="susapass" id="susapass" class="form-control" />
+                                    <label>Password<span class="text-danger">*</span></label>
+                                    <input type="password" name="susapass" id="susapass" class="form-control" required/>
                                     <span id="error_susapass" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -335,7 +332,7 @@
                             <div class="card-header" style="font-weight: bold; font-size: 18px;">Scholarship Details</div>
                                 <div class="card-body">
                                     <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
-                                        <label>Select Grant Status</label>
+                                        <label>Select Grant Status<span class="text-danger">*</span></label>
                                         <select name="susgrantstat" id="susgrantstat" class="form-control" required>
                                         <option value="">-Select-</option>
                                         <option value="New">New</option>
@@ -411,28 +408,28 @@
             // 'order': [[1, 'asc']]	
         });
 
-        $('#susdbirth').datepicker({
-            format: "yyyy-mm-dd",
-            autoclose: true
-        });
-        $('#sudrpic').datepicker({
-            format: "yyyy-mm-dd",
-            autoclose: true
-        });
-        $('#sudrpsa').datepicker({
-            format: "yyyy-mm-dd",
-            autoclose: true
-        });
-        $('#sudrobr').datepicker({
-            format: "yyyy-mm-dd",
-            autoclose: true
-        });
-        $('#susdfilled').datepicker({
-            format: "yyyy-mm-dd",
-            autoclose: true
-        });
+        // $('#susdbirth').datepicker({
+        //     format: "yyyy-mm-dd",
+        //     autoclose: true
+        // });
+        // $('#sudrpic').datepicker({
+        //     format: "yyyy-mm-dd",
+        //     autoclose: true
+        // });
+        // $('#sudrpsa').datepicker({
+        //     format: "yyyy-mm-dd",
+        //     autoclose: true
+        // });
+        // $('#sudrobr').datepicker({
+        //     format: "yyyy-mm-dd",
+        //     autoclose: true
+        // });
+        // $('#susdfilled').datepicker({
+        //     format: "yyyy-mm-dd",
+        //     autoclose: true
+        // });
 
-// Add Validation&Submit
+// Add 
     $('#add_unifast').click(function(){
 
         $('#unifast_form')[0].reset();

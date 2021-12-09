@@ -473,7 +473,7 @@
 
         $object->execute();
 
-        echo '<div class="alert alert-success">Non-Academic Applicant Data Deleted</div>';
+        echo '<div class="alert alert-success">Applicant Data Deleted</div>';
     }
     }
 

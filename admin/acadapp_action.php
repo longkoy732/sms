@@ -214,7 +214,7 @@ $object = new sms;
 
 				$object->execute($data);
 
-				$success = '<div class="alert alert-success">Academic Scholar Applicant Added</div>';
+				$success = '<div class="alert alert-success">Applicant Data Added</div>';
 			}
 		}
 
