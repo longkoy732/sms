@@ -226,7 +226,7 @@
                                         <option value="Jr.">Jr.</option>
                                         <option value="Sr.">Sr.</option>
                                         </select>
-                                        <span id="error_snnext" class="text-danger"></span>
+                                        <span id="error_scmnext" class="text-danger"></span>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <label>Status<span class="text-danger">*</label>
@@ -281,7 +281,7 @@
                                         <option value="Jr.">Jr.</option>
                                         <option value="Sr.">Sr.</option>
                                         </select>
-                                        <span id="error_snnext" class="text-danger"></span>
+                                        <span id="error_scmnext" class="text-danger"></span>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <label>Status<span class="text-danger">*</label>
@@ -580,7 +580,7 @@
 // Edit
     $(document).on('click', '.edit_button', function(){
 
-        var snacad_id = $(this).data('id');
+        var sched_id = $(this).data('id');
 
         $('#ched_form')[0].reset();
 
@@ -594,7 +594,7 @@
 
             method:"POST",
 
-            data:{snacad_id:snacad_id, action:'fetch_single'},
+            data:{sched_id:sched_id, action:'fetch_single'},
 
             dataType:'JSON',
 
@@ -604,72 +604,63 @@
                 $('#scaemail').val(data.scaemail);
                 $('#scapass').val(data.scapass);
     // Personal Details
-                $('#snfname').val(data.snfname);
-                $('#snmname').val(data.snmname);
-                $('#snlname').val(data.snlname);
-                $('#snnext').val(data.snnext);
-                $('#sndbirth').val(data.sndbirth);
-                $('#snctship').val(data.snctship);
-                $('#snaddress').val(data.snaddress);
-                $('#snpemail').val(data.snpemail);
-                $('#sncontact').val(data.sncontact);
-                $('#sncourse').val(data.sncourse);
-                $('#snyrlvl').val(data.snyrlvl);
-                $('#sngender').val(data.sngender);
+                $('#scfname').val(data.scfname);
+                $('#scmname').val(data.scmname);
+                $('#sclname').val(data.sclname);
+                $('#scnext').val(data.scnext);
+                $('#scdbirth').val(data.scdbirth);
+                $('#scgender').val(data.scgender);
+                $('#sccivilstat').val(data.sccivilstat);
+                $('#scpbirth').val(data.scpbirth);
+                $('#scaddress').val(data.scaddress);
+                $('#sczcode').val(data.sczcode);
+                $('#scschname').val(data.scschname);
+                $('#scsaddress').val(data.scsaddress);
+                $('#scstype').val(data.scstype);
+                $('#schygrade').val(data.schygrade);
+                $('#scctship').val(data.scctship);
+                $('#scmnum').val(data.scmnum);
+                $('#scpemail').val(data.scpemail);
+                $('#scdisability').val(data.scdisability);
     // Family Details
-        // Guardian Details
-                $('#sngfname').val(data.sngfname);
-                $('#sngmname').val(data.sngmname);
-                $('#snglname').val(data.snglname);
-                $('#sngnext').val(data.sngnext);
-                $('#sngaddress').val(data.sngaddress);
-                $('#sngcontact').val(data.sngcontact);
-                $('#sngoccu').val(data.sngoccu);
-                $('#sngcompany').val(data.sngcompany);
         // Father Details
-                $('#snffname').val(data.snffname);
-                $('#snfmname').val(data.snfmname);
-                $('#snflname').val(data.snflname);
-                $('#snfnext').val(data.snfnext);
-                $('#snfaddress').val(data.snfaddress);
-                $('#snfcontact').val(data.snfcontact);
-                $('#snfoccu').val(data.snfoccu);
-                $('#snfcompany').val(data.snfcompany);
+                $('#scffname').val(data.scffname);
+                $('#scfmname').val(data.scfmname);
+                $('#scflname').val(data.scflname);
+                $('#scfnext').val(data.scfnext);
+                $('#scfstatus').val(data.scfstatus);
+                $('#scfaddress').val(data.scfaddress);
+                $('#scfoccu').val(data.scfoccu);
+                $('#scfeduc').val(data.scfeduc);
         // Mother Details
-                $('#snmfname').val(data.snmfname);
-                $('#snmmname').val(data.snmmname);
-                $('#snmlname').val(data.snmlname);
-                $('#snmnext').val(data.snmnext);
-                $('#snmaddress').val(data.snmaddress);
-                $('#snmcontact').val(data.snmcontact);
-                $('#snmoccu').val(data.snmoccu);
-                $('#snmcompany').val(data.snmcompany);
-                $('#snspcyincome').val(data.snspcyincome);
-    // Application Details
-                $('#snrappnas').val(data.snrappnas);
-                $('#snbos').val(data.snbos);
-                $('#snsskills').val(data.snsskills);
-                $('#sntwinterest').val(data.sntwinterest);
+                $('#scmfname').val(data.scmfname);
+                $('#scmmname').val(data.scmmname);
+                $('#scmlname').val(data.scmlname);
+                $('#scmnext').val(data.scmnext);
+                $('#scmstatus').val(data.scmstatus);
+                $('#scmaddress').val(data.scmaddress);
+                $('#scmoccu').val(data.scmoccu);
+                $('#scmeduc').val(data.scmeduc);
+                $('#scptgross').val(data.scptgross);
+                $('#scnsibling').val(data.scnsibling);
     // Education Details
-                $('#snpschatt').val(data.snpschatt);
-                $('#snpschadd').val(data.snpschadd);
-                $('#snpyrlvl').val(data.snpyrlvl);
+                $('#scsintend').val(data.scsintend);
+                $('#scsadd').val(data.scsadd);
+                $('#scschooltype').val(data.scschooltype);
+                $('#sccourse').val(data.sccourse);
+                $('#sccoursestat').val(data.sccoursestat);
     // Requirement Details
                 $('#scdrprc').val(data.scdrprc);
                 $('#scdrprcstat').val(data.scdrprcstat);
                 $('#scdrpgm').val(data.scdrpgm);
                 $('#scdrpgmstat').val(data.scdrpgmstat);
-                $('#sntbytpic').val(data.sntbytpic);
-                $('#sntbytpicstat').val(data.sntbytpicstat);
                 $('#scdrbrgyin').val(data.scdrbrgyin);
                 $('#scdrbrgyinstat').val(data.scdrbrgyinstat);
-                $('#snpscef').val(data.snpscef);
-                $('#snpscefstat').val(data.snpscefstat);
     // Scholarship Details
-                $('#snacapstype').val(data.snacapstype);
+                $('#scschtype').val(data.scschtype);
                 $('#scgrantstat').val(data.scgrantstat);
-                $('#snascholarstat').val(data.snascholarstat);
-                $('#snadapply').val(data.snadapply);
+                $('#scschstat').val(data.scschstat);
+                $('#scdapply').val(data.scdapply);
 
                 $('#modal_title').text('Edit Applicant Info');
 
@@ -679,7 +670,7 @@
 
                 $('#chedModal').modal('show');
 
-                $('#hidden_id').val(snacad_id);
+                $('#hidden_id').val(sched_id);
 
             }
 
@@ -766,7 +757,7 @@
 
 // View Function
     $(document).on('click', '.view_button', function(){
-        var snacad_id = $(this).data('id');
+        var sched_id = $(this).data('id');
 
         $.ajax({
 
@@ -774,7 +765,7 @@
 
             method:"POST",
 
-            data:{snacad_id:snacad_id, action:'fetch_single'},
+            data:{sched_id:sched_id, action:'fetch_single'},
 
             dataType:'JSON',
 
@@ -787,80 +778,68 @@
                 html += '<tr><th width="40%" class="text-right">Email Address</th><td width="60%">'+data.scaemail+'</td></tr>';
             // Personal Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Personal Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.snfname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.snmname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.snlname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.snnext+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date of Birth</th><td width="60%">'+data.sndbirth+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Gender</th><td width="60%">'+data.sngender+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Citizenship</th><td width="60%">'+data.snctship+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.snaddress+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Email Address</th><td width="60%">'+data.snpemail+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.sncontact+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Course</th><td width="60%">'+data.sncourse+'</td></tr>'; 
-                html += '<tr><th width="40%" class="text-right">Grade/Year Level</th><td width="60%">'+data.snyrlvl+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.scfname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.scmname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.sclname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.scnext+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date of Birth</th><td width="60%">'+data.scdbirth+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Gender</th><td width="60%">'+data.scgender+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Civil Status</th><td width="60%">'+data.sccivilstat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Place of birth</th><td width="60%">'+data.scpbirth+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Permanent Mailing Address</th><td width="60%">'+data.scaddress+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Zip Code</th><td width="60%">'+data.sczcode+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">School Name</th><td width="60%">'+data.scschname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">School Address</th><td width="60%">'+data.scsaddress+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">School Type</th><td width="60%">'+data.scstype+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Highest Grade/Year</th><td width="60%">'+data.schygrade+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Citizenship</th><td width="60%">'+data.scctship+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Mobile Number</th><td width="60%">'+data.scmnum+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Email</th><td width="60%">'+data.scpemail+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Type of Disability(if applicable)</th><td width="60%">'+data.scdisability+'</td></tr>'; 
             // Family Details
-                // Guardian Details
-                html += '<tr><th width="40%" class="text-left" style="font-size:20px">Family Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-left" style="font-size:18px">Guardian Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.sngfname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.sngmname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.snglname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.sngnext+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.sngaddress+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.sngcontact+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Occupation/Position</th><td width="60%">'+data.sngoccu+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Company</th><td width="60%">'+data.sngcompany+'</td></tr>';
                 // Father Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:18px">Father Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.snffname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.snfmname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.snflname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.snfnext+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.snfaddress+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.snfcontact+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Occupation/Position</th><td width="60%">'+data.snfoccu+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Company</th><td width="60%">'+data.snfcompany+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.scffname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.scfmname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.scflname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.scfnext+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Status</th><td width="60%">'+data.scfstatus+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Occupation</th><td width="60%">'+data.scfoccu+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Educational Attainment</th><td width="60%">'+data.scfeduc+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.scfaddress+'</td></tr>';
                 // Mother Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:18px">Mother Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.snmfname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.snmmname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.snmlname+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.snmnext+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.snmaddress+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.snmcontact+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Occupation/Position</th><td width="60%">'+data.snmoccu+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Company</th><td width="60%">'+data.snmcompany+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Parents Combine Yearly Income</th><td width="60%">'+data.snspcyincome+'</td></tr>';
-            // Achievement Details
-                html += '<tr><th width="40%" class="text-left" style="font-size:20px">Application Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">Grade/GWA</th><td width="60%">'+data.snrappnas+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Award Received</th><td width="60%">'+data.snbos+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Received</th><td width="60%">'+data.snsskills+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Received</th><td width="60%">'+data.sntwinterest+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">First Name</th><td width="60%">'+data.scmfname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Middle Name</th><td width="60%">'+data.scmmname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Last Name</th><td width="60%">'+data.scmlname+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Suffix</th><td width="60%">'+data.scmnext+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Status</th><td width="60%">'+data.scmstatus+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Occupation</th><td width="60%">'+data.scmoccu+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Educational Attainment</th><td width="60%">'+data.scmeduc+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.scmaddress+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Total Parent Gross Income</th><td width="60%">'+data.scptgross+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">No. of Siblings in the family</th><td width="60%">'+data.scnsibling+'</td></tr>';
             // Education Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Education Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">Grade/GWA</th><td width="60%">'+data.snpschatt+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Award Received</th><td width="60%">'+data.snpschadd+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Received</th><td width="60%">'+data.snpyrlvl+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">School intended to enroll in</th><td width="60%">'+data.scsintend+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">School Address</th><td width="60%">'+data.scsadd+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Type of School</th><td width="60%">'+data.scschooltype+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Course</th><td width="60%">'+data.sccourse+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Course Priority/Not Priority</th><td width="60%">'+data.sccoursestat+'</td></tr>';
             // Requirement Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Requirement Details</th><td width="60%"></td></tr>';
                 html += '<tr><th width="40%" class="text-right">Date Receive Report Card</th><td width="60%">'+data.scdrprc+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Report Card Status</th><td width="60%">'+data.scdrprcstat+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Date Receive Good Moral</th><td width="60%">'+data.scdrpgm+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Good Moral Status</th><td width="60%">'+data.scdrpgmstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Certificate of Recognition</th><td width="60%">'+data.sntbytpic+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Certificate of Recognition Status</th><td width="60%">'+data.sntbytpicstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Good Moral</th><td width="60%">'+data.scdrbrgyin+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Good Moral Status</th><td width="60%">'+data.scdrbrgyinstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Receive Certificate of Recognition</th><td width="60%">'+data.snpscef+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Certificate of Recognition Status</th><td width="60%">'+data.snpscefstat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date Receive Brgy. Indigency</th><td width="60%">'+data.scdrbrgyin+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Brgy. Indigency Status</th><td width="60%">'+data.scdrbrgyinstat+'</td></tr>';
             // Scholarship Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Details</th><td width="60%"></td></tr>';
-                html += '<tr><th width="40%" class="text-right">Scholarship Type</th><td width="60%">'+data.snacapstype+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Scholarship Type</th><td width="60%">'+data.scschtype+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Grant Status</th><td width="60%">'+data.scgrantstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Scholarship Status</th><td width="60%">'+data.snascholarstat+'</td></tr>';
-                html += '<tr><th width="40%" class="text-right">Date Applied</th><td width="60%">'+data.snadapply+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Scholarship Status</th><td width="60%">'+data.scschstat+'</td></tr>';
+                html += '<tr><th width="40%" class="text-right">Date Applied</th><td width="60%">'+data.scdapply+'</td></tr>';
                 html += '</table></div>';
 
                 $('#viewModal').modal('show');

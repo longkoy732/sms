@@ -9,13 +9,13 @@ if(isset($_POST["scfname"]))
   $object->query = "
      INSERT INTO tbl_ched
      (scfname, scmname, sclname, scnext, scdbirth, scgender, sccivilstat, scpbirth, scaddress, sczcode, scschname, scsaddress,  
-     scstype, schygrade, scctship, scmnum, scpemail, scdisability, scflname, scffname, scfmname, scfstatus, scfaddress, scfoccu, 
-     scfeduc, scmlname, scmfname, scmmname, scmstatus, scmaddress, scmoccu, scmeduc, scptgross, scnsibling, scsintend, scsadd, 
+     scstype, schygrade, scctship, scmnum, scpemail, scdisability, scflname, scffname, scfmname, scfnext, scfstatus, scfaddress, scfoccu, 
+     scfeduc, scmlname, scmfname, scmnext, scmmname, scmstatus, scmaddress, scmoccu, scmeduc, scptgross, scnsibling, scsintend, scsadd, 
      scschooltype, sccourse, sccoursestat, scdrprcstat, scdrbrgyinstat, scdrpgmstat, scschtype, scaemail, scapass, scgrantstat, 
      scschstat, scdapply) 
      VALUES (:scfname, :scmname, :sclname, :scnext, :scdbirth, :scgender, :sccivilstat, :scpbirth, :scaddress, :sczcode, 
       :scschname, :scsaddress, :scstype, :schygrade, :scctship, :scmnum, :scpemail, :scdisability, :scflname, :scffname, :scfmname, 
-      :scfstatus, :scfaddress, :scfoccu, :scfeduc, :scmlname, :scmfname, :scmmname, :scmstatus, :scmaddress, :scmoccu, :scmeduc, 
+      :scfnext, :scfstatus, :scfaddress, :scfoccu, :scfeduc, :scmlname, :scmfname, :scmmname, :scmnext, :scmstatus, :scmaddress, :scmoccu, :scmeduc, 
       :scptgross, :scnsibling, :scsintend, :scsadd, :scschooltype, :sccourse, :sccoursestat, 'Not-Received', 'Not-Received', 
       'Not-Received', 'CHED', :scaemail, :scapass, 'New', 'Pending', '$object->now')
      ";
@@ -43,6 +43,7 @@ if(isset($_POST["scfname"]))
                     ':scflname'					      =>	$_POST["scflname"],
                     ':scffname'					      =>	$_POST["scffname"],
 					          ':scfmname'				        =>	$_POST["scfmname"],
+                    ':scfnext'					      =>	$_POST["scfnext"],
                     ':scfstatus'					    =>	$_POST["scfstatus"],
                     ':scfaddress'					    =>	$_POST["scfaddress"],
                     ':scfoccu'					      =>	$_POST["scfoccu"],
@@ -50,6 +51,7 @@ if(isset($_POST["scfname"]))
                     ':scmlname'					      =>	$_POST["scmlname"],
 					          ':scmfname'				        =>	$_POST["scmfname"],
 					          ':scmmname'				        =>	$_POST["scmmname"],
+                    ':scmnext'					      =>	$_POST["scmnext"],
 					          ':scmstatus'				      =>	$_POST["scmstatus"],
                     ':scmaddress'					    =>	$_POST["scmaddress"],
                     ':scmoccu'					      =>	$_POST["scmoccu"],
@@ -278,99 +280,118 @@ $object->execute($data);
                   <h4 class="sub-title">Father's Details</h4>
                   <div class="row" >
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Last Name<span class="text-danger">*</span></label>
-                      <input type="text" name="scflname" id="scflname" class="form-control" />
-                      <span id="error_scflname" class="text-danger"></span>
+                        <label>Last Name<span class="text-danger">*</span></label>
+                        <input type="text" name="scflname" id="scflname" class="form-control" required/>
+                        <span id="error_scflname" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Given Name<span class="text-danger">*</span></label>
-                      <input type="text" name="scffname" id="scffname" class="form-control" />
-                      <span id="error_scffname" class="text-danger"></span>
-                      </div>
+                        <label>First Name<span class="text-danger">*</span></label>
+                        <input type="text" name="scffname" id="scffname" class="form-control" required/>
+                        <span id="error_scffname" class="text-danger"></span>
+                        </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Middle Name<span class="text-danger">*</span></label>
-                      <input type="text" name="scfmname" id="scfmname" class="form-control" />
-                      <span id="error_scfmname" class="text-danger"></span>
+                        <label>Middle Name<span class="text-danger">*</span></label>
+                        <input type="text" name="scfmname" id="scfmname" class="form-control" required/>
+                        <span id="error_scfmname" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Status<span class="text-danger">*</label>
-                      <select name="scfstatus" id="scfstatus" class="form-control" required>
+                        <label>Select Suffix<span class="text-danger">*</span></label>
+                        <select name="scfnext" id="scfnext" class="form-control" required>
+                        <option value="">-Select-</option>
+                        <option value="N/A">N/A</option>
+                        <option value="Jr.">Jr.</option>
+                        <option value="Sr.">Sr.</option>
+                        </select>
+                        <span id="error_scfnext" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Status<span class="text-danger">*</label>
+                        <select name="scfstatus" id="scfstatus" class="form-control" required>
                         <option value="">-Select-</option>
                         <option value="Living">Living</option>
                         <option value="Deceased">Deceased</option>
-                      </select>
-                      <span id="error_scfstatus" class="text-danger"></span>
+                        </select>
+                        <span id="error_scfstatus" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
-                      <label>Address<span class="text-danger">*</span></label>
-                      <textarea type="text" name="scfaddress" id="scfaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                      <span id="pob" class="text-danger"></span>
-                      <span id="error_scfaddress" class="text-danger"></span>
+                        <label>Occupation<span class="text-danger">*</span></label>
+                        <input type="text" name="scfoccu" id="scfoccu" class="form-control" required/>
+                        <span id="error_scfoccu" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
-                      <label>Occupation<span class="text-danger">*</span></label>
-                      <textarea type="text" name="scfoccu" id="scfoccu" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                      <span id="pob" class="text-danger"></span>
-                      <span id="error_scfoccu" class="text-danger"></span>
+                        <label>Educational Attainment<span class="text-danger">*</span></label>
+                        <input type="text" name="scfeduc" id="scfeduc" class="form-control" required/>
+                        <span id="error_scfeduc" class="text-danger"></span>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4">
-                      <label>Educational Attainment<span class="text-danger">*</span></label>
-                      <textarea type="text" name="scfeduc" id="scfeduc" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                      <span id="error_scfeduc" class="text-danger"></span>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <label>Address<span class="text-danger">*</span></label>
+                        <textarea type="text" name="scfaddress" id="scfaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                        <span id="pob" class="text-danger"></span>
+                        <span id="error_scfaddress" class="text-danger"></span>
                     </div>
                 </div>
                 <h4 class="sub-title">Mother's Details</h4>
-                  <div class="row">
+                <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Last Name<span class="text-danger">*</span></label>
-                      <input type="text" name="scmlname" id="scmlname" class="form-control" />
-                      <span id="error_scmlname" class="text-danger"></span>
+                        <label>Last Name<span class="text-danger">*</span></label>
+                        <input type="text" name="scmlname" id="scmlname" class="form-control" required/>
+                        <span id="error_scmlname" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Given Name<span class="text-danger">*</span></label>
-                      <input type="text" name="scmfname" id="scmfname" class="form-control" />
-                      <span id="error_scmfname" class="text-danger"></span>
-                      </div>
+                        <label>First Name<span class="text-danger">*</span></label>
+                        <input type="text" name="scmfname" id="scmfname" class="form-control" required/>
+                        <span id="error_scmfname" class="text-danger"></span>
+                        </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Middle Name<span class="text-danger">*</span></label>
-                      <input type="text" name="scmmname" id="scmmname" class="form-control" />
-                      <span id="error_scmmname" class="text-danger"></span>
+                        <label>Middle Name<span class="text-danger">*</span></label>
+                        <input type="text" name="scmmname" id="scmmname" class="form-control" required/>
+                        <span id="error_scmmname" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Status<span class="text-danger">*</label>
-                      <select name="scmstatus" id="scmstatus" class="form-control" required>
+                        <label>Select Suffix<span class="text-danger">*</span></label>
+                        <select name="scmnext" id="scmnext" class="form-control" required>
+                        <option value="">-Select-</option>
+                        <option value="N/A">N/A</option>
+                        <option value="Jr.">Jr.</option>
+                        <option value="Sr.">Sr.</option>
+                        </select>
+                        <span id="error_scmnext" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Status<span class="text-danger">*</label>
+                        <select name="scmstatus" id="scmstatus" class="form-control" required>
                         <option value="">-Select-</option>
                         <option value="Living">Living</option>
                         <option value="Deceased">Deceased</option>
-                      </select>
-                      <span id="error_scmstatus" class="text-danger"></span>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-8">
-                      <label>Address<span class="text-danger">*</span></label>
-                      <textarea type="text" name="scmaddress" id="scmaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                      <span id="error_scmaddress" class="text-danger"></span>
+                        </select>
+                        <span id="error_scmstatus" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
-                      <label>Occupation<span class="text-danger">*</span></label>
-                      <textarea type="text" name="scmoccu" id="scmoccu" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                      <span id="error_scmoccu" class="text-danger"></span>
+                        <label>Occupation<span class="text-danger">*</span></label>
+                        <input type="text" name="scmoccu" id="scmoccu" class="form-control" required/>
+                        <span id="error_scmoccu" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
-                      <label>Educational Attainment<span class="text-danger">*</span></label>
-                      <input type="text" name="scmeduc" id="scmeduc" class="form-control" />
-                      <span id="error_scmeduc" class="text-danger"></span>
-                      </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4">
-                      <label>Total Parent Gross Income<span class="text-danger">*</span></label>
-                      <input type="text" name="scptgross" id="scptgross" class="form-control" />
-                      <span id="error_scptgross" class="text-danger"></span>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-md-4">
-                      <label>No. of Siblings in the family<span class="text-danger">*</span></label>
-                      <input type="text" name="scnsibling" id="scnsibling" class="form-control" />
-                      <span id="error_scnsibling" class="text-danger"></span>
+                        <label>Educational Attainment<span class="text-danger">*</span></label>
+                        <input type="text" name="scmeduc" id="scmeduc" class="form-control" required/>
+                        <span id="error_scmeduc" class="text-danger"></span>
                     </div>
-                  </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <label>Address<span class="text-danger">*</span></label>
+                        <textarea type="text" name="scmaddress" id="scmaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                        <span id="error_scmaddress" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Total Parent Gross Income<span class="text-danger">*</span></label>
+                        <input type="text" name="scptgross" id="scptgross" class="form-control" required/>
+                        <span id="error_scptgross" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
+                        <label>No. of Siblings in the family<span class="text-danger">*</span></label>
+                        <input type="text" name="scnsibling" id="scnsibling" class="form-control" required/>
+                        <span id="error_scnsibling" class="text-danger"></span>
+                    </div>
+                </div>
                 </div>
                 <div align="center">
                   <button type="button" name="previous_btn_family_details" id="previous_btn_family_details" class="btn btn-default btn-md">Previous</button>
@@ -827,7 +848,8 @@ if($.trim($('#scmname').val()).length == 0)
  $('#btn_family_details').click(function(){
   var error_scflname = '';
   var error_scffname = '';
-  var error_scfmname= '';
+  var error_scfmname = '';
+  var error_scfnext = '';
   var error_scfstatus = '';
   var error_scfaddress = '';
   var error_scfoccu = '';
@@ -835,6 +857,7 @@ if($.trim($('#scmname').val()).length == 0)
   var error_scmlname = '';
   var error_scmfname = '';
   var error_scmmname = '';
+  var error_scmnext = '';
   var error_scmstatus = '';
   var error_scmaddress = '';
   var error_scmoccu = '';
@@ -872,7 +895,7 @@ if($.trim($('#scmname').val()).length == 0)
 
   //Father's Middle Name
 
-  if($.trim($('#scfmname').val()).length == 0)
+  if($.trim($('#scfnext').val()).length == 0)
   {
    error_scfmname = 'Put N/A if none';
    $('#error_scfmname').text(error_scfmname);
@@ -883,6 +906,20 @@ if($.trim($('#scmname').val()).length == 0)
    error_scfmname= '';
    $('#error_scfmname').text(error_scfmname);
    $('#scfmname').removeClass('has-error');
+  }
+
+  // Father Suffix
+  if($.trim($('#scfnext').val()).length == 0)
+  {
+   error_scfnext = 'Put N/A if none';
+   $('#error_scfnext').text(error_scfnext);
+   $('#scfnext').addClass('has-error');
+  }
+  else
+  {
+   error_scfnext = '';
+   $('#error_scfnext').text(error_scfnext);
+   $('#scfnext').removeClass('has-error');
   }
 
   //Father Status
@@ -990,6 +1027,20 @@ if($.trim($('#scmname').val()).length == 0)
    $('#scmmname').removeClass('has-error');
   }
 
+  // Father Suffix
+  if($.trim($('#scmnext').val()).length == 0)
+  {
+   error_scmnext = 'Put N/A if none';
+   $('#error_scmnext').text(error_scmnext);
+   $('#scmnext').addClass('has-error');
+  }
+  else
+  {
+   error_scmnext = '';
+   $('#error_scmnext').text(error_scmnext);
+   $('#scmnext').removeClass('has-error');
+  }
+
   //Mother Status
 
   if($.trim($('#scmstatus').val()).length == 0)
@@ -1090,6 +1141,7 @@ if($.trim($('#scmname').val()).length == 0)
   if( error_scflname != '' ||
   error_scffname != '' ||
   error_scfmname != '' ||
+  error_scfnext != '' ||
   error_scfstatus != '' ||
   error_scfaddress != '' ||
   error_scfoccu != '' ||
@@ -1097,6 +1149,7 @@ if($.trim($('#scmname').val()).length == 0)
   error_scmlname != '' ||
   error_scmfname != '' ||
   error_scmmname != '' ||
+  error_scmnext != '' ||
   error_scmstatus != '' ||
   error_scmaddress != '' ||
   error_scmoccu != '' ||
