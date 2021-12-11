@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2021 at 05:00 PM
+-- Generation Time: Dec 11, 2021 at 11:14 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -45,7 +45,7 @@ CREATE TABLE `tbl_acad` (
   `sagmname` varchar(50) DEFAULT NULL,
   `saglname` varchar(50) DEFAULT NULL,
   `sagnext` varchar(10) DEFAULT NULL,
-  `sagaddress` varchar(50) DEFAULT NULL,
+  `sagaddress` varchar(100) DEFAULT NULL,
   `sagcontact` varchar(50) DEFAULT NULL,
   `sagoccu` varchar(50) DEFAULT NULL,
   `sagcompany` varchar(50) DEFAULT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE `tbl_acad` (
   `safmname` varchar(50) DEFAULT NULL,
   `saflname` varchar(50) DEFAULT NULL,
   `safnext` varchar(10) DEFAULT NULL,
-  `safaddress` varchar(100) DEFAULT NULL,
+  `safaddress` varchar(50) DEFAULT NULL,
   `safcontact` varchar(50) DEFAULT NULL,
   `safoccu` varchar(50) DEFAULT NULL,
   `safcompany` varchar(50) DEFAULT NULL,
@@ -102,11 +102,11 @@ INSERT INTO `tbl_acad` (`sacad_id`, `safname`, `samname`, `salname`, `sanext`, `
 
 CREATE TABLE `tbl_admin` (
   `admin_id` int(11) NOT NULL,
-  `admin_email_address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `admin_email_address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `admin_password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `admin_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `admin_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `school_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `school_address` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `school_address` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `school_contact_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `school_logo` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -128,7 +128,7 @@ CREATE TABLE `tbl_ched` (
   `sched_id` int(11) NOT NULL,
   `scfname` varchar(50) DEFAULT NULL,
   `scmname` varchar(50) DEFAULT NULL,
-  `sclname` varchar(100) DEFAULT NULL,
+  `sclname` varchar(50) DEFAULT NULL,
   `scnext` varchar(20) DEFAULT NULL,
   `scdbirth` varchar(10) DEFAULT NULL,
   `scgender` varchar(20) DEFAULT NULL,
@@ -152,8 +152,8 @@ CREATE TABLE `tbl_ched` (
   `scfaddress` varchar(100) DEFAULT NULL,
   `scfoccu` varchar(50) DEFAULT NULL,
   `scfeduc` varchar(50) DEFAULT NULL,
-  `scmlname` varchar(100) DEFAULT NULL,
-  `scmfname` varchar(100) DEFAULT NULL,
+  `scmlname` varchar(50) DEFAULT NULL,
+  `scmfname` varchar(50) DEFAULT NULL,
   `scmmname` varchar(50) DEFAULT NULL,
   `scmnext` varchar(20) DEFAULT NULL,
   `scmstatus` varchar(20) DEFAULT NULL,
@@ -175,7 +175,7 @@ CREATE TABLE `tbl_ched` (
   `scdrpgmstat` varchar(50) DEFAULT NULL,
   `scschtype` varchar(50) DEFAULT NULL,
   `scaemail` varchar(50) DEFAULT NULL,
-  `scapass` varchar(100) DEFAULT NULL,
+  `scapass` varchar(50) DEFAULT NULL,
   `scgrantstat` varchar(50) DEFAULT NULL,
   `scschstat` varchar(10) DEFAULT NULL,
   `scdapply` date DEFAULT NULL
@@ -186,9 +186,9 @@ CREATE TABLE `tbl_ched` (
 --
 
 INSERT INTO `tbl_ched` (`sched_id`, `scfname`, `scmname`, `sclname`, `scnext`, `scdbirth`, `scgender`, `sccivilstat`, `scpbirth`, `scaddress`, `sczcode`, `scschname`, `scsaddress`, `scstype`, `schygrade`, `scctship`, `scmnum`, `scpemail`, `scdisability`, `scflname`, `scffname`, `scfmname`, `scfnext`, `scfstatus`, `scfaddress`, `scfoccu`, `scfeduc`, `scmlname`, `scmfname`, `scmmname`, `scmnext`, `scmstatus`, `scmaddress`, `scmoccu`, `scmeduc`, `scptgross`, `scnsibling`, `scsintend`, `scsadd`, `scschooltype`, `sccourse`, `sccoursestat`, `scdrprc`, `scdrprcstat`, `scdrbrgyin`, `scdrbrgyinstat`, `scdrpgm`, `scdrpgmstat`, `scschtype`, `scaemail`, `scapass`, `scgrantstat`, `scschstat`, `scdapply`) VALUES
-(11, 'Camden Rivas', 'Aphrodite Brown', 'Shay James', 'N/A', '1992-09-04', 'Male', 'Single', 'Est ipsam aliquam q', 'Doloribus nemo conse', 'Culpa error deserunt', 'Commodo quo placeat', 'In quia sint enim d', 'Private', 'In maiores molestiae', 'Cum est ea voluptas', 'Eveniet quidem quia', 'kifilehom@mailinator.com', 'Suscipit in voluptat', 'Amy Gay', 'Athena Perez', 'Jin Odom', 'N/A', 'Living', 'Voluptatum eiusmod d', 'Et a excepteur vitae', 'Quo ullamco labore e', 'Lucius Ray', 'Basia Wolfe', 'Justin Barton', 'N/A', 'Deceased', 'Dolor ipsa est nequ', 'Molestiae quisquam s', 'Voluptatibus provide', 'Omnis at quam veniam', 'Explicabo Voluptate', 'Vero ut ab ipsum deb', 'Consequat Voluptas', 'Public', 'Suscipit deserunt ut', 'Not Priority', '1987-11-21', 'Not-Received', '1970-12-12', 'Received', '1992-03-06', 'Received', 'CHED', 'calerelizu@mailinator.com', '$2y$10$rAe88fVrC/5hL4qCtZUt0OqVNScCVzxtgFZzsf25Sj6tA1189F4f2', 'New', 'Pending', '2021-12-09'),
-(14, '1', '2', '3', 'N/A', '2021-12-01', 'Male', 'Single', '4', '5', '6', '7', '8', 'Private', '9', '10', '11', '12', '13', '14', '15', '16', 'Jr.', 'Living', '19', '17', '18', '20', '21', '22', 'Sr.', 'Living', '25', '23', '24', '26', '27', '28', '29', 'Public', '30', 'Priority', '2021-12-02', 'Received', '2021-12-04', 'Received', '2021-12-03', 'Received', 'CHED', '31', '$2y$10$EqYgnDcxrsraCfliI1xdT.Whzt0S.J7U/ZySeGcWnc1yqBdwRLJDS', 'New', 'Pending', '2021-12-09'),
-(16, 'Tasha Ramos', 'Martin Stanton', 'Camille Franco', 'Sr.', '2021-12-09', 'Male', 'Single', 'Tempora qui eveniet', 'Omnis irure quae ips', 'Quod et dolorem offi', 'Modi quod omnis tota', 'Quo porro laboris do', 'Public', 'Enim rerum voluptate', 'Esse blanditiis qua', 'Maiores sed dolore d', 'babunadok@mailinator.com', 'Culpa sed omnis con', 'Shaeleigh Vasquez', 'Keely Frank', 'Wyoming Chase', 'N/A', 'Living', 'Et eos illo quod ad ', 'Officiis qui praesen', 'Amet non ipsam magn', 'Aretha Carney', 'Jesse Watkins', 'Jr.', 'Iliana Watson', 'Living', 'Sed voluptas hic mol', 'Incidunt ducimus v', 'In fuga Aliquid ass', 'Veritatis rerum dolo', 'Officia doloribus qu', 'Doloribus dolorem vo', 'Error suscipit proid', 'Private', 'Est labore nihil des', 'Priority', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'CHED', 'jyvaly@mailinator.com', '$2y$10$7lYDrLNvnEIxciurbrB8O.RXF4u8qwaznbCf.dSJ.W2zrJBcnFBD.', 'New', 'Pending', '2021-12-09');
+(11, 'Camden Rivas', 'Aphrodite Brown', 'Shay James', 'N/A', '1992-09-04', 'Male', 'Single', 'Est ipsam aliquam q', 'Doloribus nemo conse', 'Culpa error deserunt', 'Commodo quo placeat', 'In quia sint enim d', 'Private', 'In maiores molestiae', 'Cum est ea voluptas', 'Eveniet quidem quia', 'kifilehom@mailinator.com', 'Suscipit in voluptat', 'Amy Gay', 'Athena Perez', 'Jin Odom', 'N/A', 'Living', 'Voluptatum eiusmod d', 'Et a excepteur vitae', 'Quo ullamco labore e', 'Lucius Ray', 'Basia Wolfe', 'Justin Barton', 'N/A', 'Deceased', 'Dolor ipsa est nequ', 'Molestiae quisquam s', 'Voluptatibus provide', 'Omnis at quam veniam', 'Explicabo Voluptate', 'Vero ut ab ipsum deb', 'Consequat Voluptas', 'Public', 'Suscipit deserunt ut', 'Not Priority', '1987-11-21', 'Not-Received', '1970-12-12', 'Received', '1992-03-06', 'Received', 'CHED', 'calerelizu@mailinator.com', '$2y$10$rAe88fVrC/5hL4qCtZUt0OqVNScCVzxtgFZzsf25Sj6', 'New', 'Pending', '2021-12-09'),
+(14, '1', '2', '3', 'N/A', '2021-12-01', 'Male', 'Single', '4', '5', '6', '7', '8', 'Private', '9', '10', '11', '12', '13', '14', '15', '16', 'Jr.', 'Living', '19', '17', '18', '20', '21', '22', 'Sr.', 'Living', '25', '23', '24', '26', '27', '28', '29', 'Public', '30', 'Priority', '2021-12-02', 'Received', '2021-12-04', 'Received', '2021-12-03', 'Received', 'CHED', '31', '$2y$10$EqYgnDcxrsraCfliI1xdT.Whzt0S.J7U/ZySeGcWnc1', 'New', 'Pending', '2021-12-09'),
+(16, 'Tasha Ramos', 'Martin Stanton', 'Camille Franco', 'Sr.', '2021-12-09', 'Male', 'Single', 'Tempora qui eveniet', 'Omnis irure quae ips', 'Quod et dolorem offi', 'Modi quod omnis tota', 'Quo porro laboris do', 'Public', 'Enim rerum voluptate', 'Esse blanditiis qua', 'Maiores sed dolore d', 'babunadok@mailinator.com', 'Culpa sed omnis con', 'Shaeleigh Vasquez', 'Keely Frank', 'Wyoming Chase', 'N/A', 'Living', 'Et eos illo quod ad ', 'Officiis qui praesen', 'Amet non ipsam magn', 'Aretha Carney', 'Jesse Watkins', 'Jr.', 'Iliana Watson', 'Living', 'Sed voluptas hic mol', 'Incidunt ducimus v', 'In fuga Aliquid ass', 'Veritatis rerum dolo', 'Officia doloribus qu', 'Doloribus dolorem vo', 'Error suscipit proid', 'Private', 'Est labore nihil des', 'Priority', NULL, 'Not-Received', NULL, 'Not-Received', NULL, 'Not-Received', 'CHED', 'jyvaly@mailinator.com', '$2y$10$7lYDrLNvnEIxciurbrB8O.RXF4u8qwaznbCf.dSJ.W2', 'New', 'Pending', '2021-12-09');
 
 -- --------------------------------------------------------
 
@@ -208,7 +208,7 @@ CREATE TABLE `tbl_nonacad` (
   `snpemail` varchar(50) DEFAULT NULL,
   `sncontact` varchar(50) DEFAULT NULL,
   `sngender` varchar(50) DEFAULT NULL,
-  `sncourse` varchar(100) DEFAULT NULL,
+  `sncourse` varchar(50) DEFAULT NULL,
   `snyrlvl` varchar(10) DEFAULT NULL,
   `sngfname` varchar(50) DEFAULT NULL,
   `sngmname` varchar(50) DEFAULT NULL,
@@ -271,66 +271,23 @@ INSERT INTO `tbl_nonacad` (`snacad_id`, `snfname`, `snmname`, `snlname`, `snnext
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_secretary`
---
-
-CREATE TABLE `tbl_secretary` (
-  `doctor_id` int(11) NOT NULL,
-  `doctor_email_address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `doctor_password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `doctor_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `doctor_profile_image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `doctor_phone_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `doctor_address` mediumtext COLLATE utf8_unicode_ci NOT NULL,
-  `doctor_date_of_birth` date NOT NULL,
-  `doctor_degree` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `doctor_expert_in` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `doctor_status` enum('Active','Inactive') COLLATE utf8_unicode_ci NOT NULL,
-  `doctor_added_on` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `tbl_secretary`
---
-
-INSERT INTO `tbl_secretary` (`doctor_id`, `doctor_email_address`, `doctor_password`, `doctor_name`, `doctor_profile_image`, `doctor_phone_no`, `doctor_address`, `doctor_date_of_birth`, `doctor_degree`, `doctor_expert_in`, `doctor_status`, `doctor_added_on`) VALUES
-(1, 'peterparker@gmail.com', 'password', 'Dr. Peter Parker', '../images/10872.jpg', '7539518520', '102, Sky View, NYC', '1985-10-29', 'MBBS MS', 'Sergen', 'Active', '2021-02-15 17:04:59'),
-(2, 'adambrodly@gmail.com', 'password', 'Dr. Adam Broudly', '../images/21336.jpg', '753852963', '105, Fort, NYC', '1982-08-10', 'MBBS MD(Cardiac)', 'Cardiologist', 'Active', '2021-02-18 15:00:32'),
-(3, 'sophia.parker@gmail.com', 'password', 'Dr. Sophia Parker', '../images/13838.jpg', '7417417410', '50, Best street CA', '1989-04-03', 'MBBS', 'Gynacologist', 'Active', '2021-02-18 15:05:02'),
-(4, 'williampeterson@gmail.com', 'password', 'Dr. William Peterson', '../images/9498.jpg', '8523698520', '32, Green City, NYC', '1984-06-11', 'MBBS MD', 'Nurologist', 'Active', '2021-02-18 15:08:24'),
-(5, 'emmalarsdattor@gmail.com', 'password', 'Dr. Emma Larsdattor', '../images/1613641523.png', '9635852025', '25, Silver Arch', '1988-03-03', 'MBBS MD', 'General Physian', 'Active', '2021-02-18 15:15:23'),
-(6, 'manuel.armstrong@gmail.com', 'password', 'Dr. Manuel Armstrong', '../images/1614081376.png', '8523697410', '2378 Fire Access Road Asheboro, NC 27203', '1989-03-01', 'MBBS MD (Medicine)', 'General Physician', 'Active', '2021-02-23 17:26:16');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_student`
 --
 
 CREATE TABLE `tbl_student` (
-  `patient_id` int(11) NOT NULL,
-  `patient_email_address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `patient_password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `patient_first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `patient_last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `patient_date_of_birth` date NOT NULL,
-  `patient_gender` enum('Male','Female','Other') COLLATE utf8_unicode_ci NOT NULL,
-  `patient_address` mediumtext COLLATE utf8_unicode_ci NOT NULL,
-  `patient_phone_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `patient_maritial_status` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `patient_added_on` datetime NOT NULL,
-  `patient_verification_code` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `email_verify` enum('No','Yes') COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `tbl_student`
---
-
-INSERT INTO `tbl_student` (`patient_id`, `patient_email_address`, `patient_password`, `patient_first_name`, `patient_last_name`, `patient_date_of_birth`, `patient_gender`, `patient_address`, `patient_phone_no`, `patient_maritial_status`, `patient_added_on`, `patient_verification_code`, `email_verify`) VALUES
-(3, 'jacobmartin@gmail.com', 'password', 'Jacob', 'Martin', '2021-02-26', 'Male', 'Green view, 1025, NYC', '85745635210', 'Single', '2021-02-18 16:34:55', 'b1f3f8409f7687072adb1f1b7c22d4b0', 'Yes'),
-(4, 'oliviabaker@gmail.com', 'password', 'Olivia', 'Baker', '2001-04-05', 'Female', 'Diamond street, 115, NYC', '7539518520', 'Married', '2021-02-19 18:28:23', '8902e16ef62a556a8e271c9930068fea', 'Yes'),
-(5, 'web-tutorial@programmer.net', 'password', 'Amber', 'Anderson', '1995-07-25', 'Female', '2083 Cameron Road Buffalo, NY 14202', '75394511442', 'Single', '2021-02-23 17:50:06', '1909d59e254ab7e433d92f014d82ba3d', 'Yes');
+  `s_id` int(11) NOT NULL,
+  `sidnum` varchar(30) NOT NULL,
+  `sfname` varchar(50) NOT NULL,
+  `smname` varchar(50) NOT NULL,
+  `slname` varchar(50) NOT NULL,
+  `saddress` varchar(200) NOT NULL,
+  `scourse` varchar(50) NOT NULL,
+  `syearlvl` varchar(50) NOT NULL,
+  `semail` varchar(50) NOT NULL,
+  `scontact` varchar(30) NOT NULL,
+  `saemail` varchar(50) NOT NULL,
+  `spass` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -350,7 +307,7 @@ CREATE TABLE `tbl_unifast` (
   `suscontact` varchar(20) DEFAULT NULL,
   `susaddress` varchar(100) DEFAULT NULL,
   `susspattended` varchar(100) DEFAULT NULL,
-  `suscp` varchar(100) DEFAULT NULL,
+  `suscp` varchar(50) DEFAULT NULL,
   `susyl` varchar(50) DEFAULT NULL,
   `suspemail` varchar(20) DEFAULT NULL,
   `susflname` varchar(50) DEFAULT NULL,
@@ -417,18 +374,6 @@ ALTER TABLE `tbl_nonacad`
   ADD PRIMARY KEY (`snacad_id`);
 
 --
--- Indexes for table `tbl_secretary`
---
-ALTER TABLE `tbl_secretary`
-  ADD PRIMARY KEY (`doctor_id`);
-
---
--- Indexes for table `tbl_student`
---
-ALTER TABLE `tbl_student`
-  ADD PRIMARY KEY (`patient_id`);
-
---
 -- Indexes for table `tbl_unifast`
 --
 ALTER TABLE `tbl_unifast`
@@ -461,18 +406,6 @@ ALTER TABLE `tbl_ched`
 --
 ALTER TABLE `tbl_nonacad`
   MODIFY `snacad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
---
--- AUTO_INCREMENT for table `tbl_secretary`
---
-ALTER TABLE `tbl_secretary`
-  MODIFY `doctor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tbl_student`
---
-ALTER TABLE `tbl_student`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_unifast`
