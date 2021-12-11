@@ -30,6 +30,10 @@
 					<div class="col">
 						<h6 class="m-0 font-weight-bold text-primary">Applicant List</h6>
 					</div>
+					<div class="col" align="center">
+						<button type="button" name="add_csv" id="add_csv" class="btn btn-success btn-circle btn-sm"><i class="fas fa-file-excel"></i></button>
+						<button type="button" name="add_pdf" id="add_pdf" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-file-pdf"></i></button>
+					</div> 
 					<div class="col" align="right">
 						<button type="button" name="add_acad" id="add_acad" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></button>
 						<button type="button" name="delete_all" id="delete_all" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-times"></i></button>
@@ -454,6 +458,37 @@
 			</div>
 		</div>
 	</div>
+<!-- CSV Modal -->
+	<div id="csvModal" class="modal fade">
+		<div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+			<form method="post" id="upload_form">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modal_title">Select CSV File</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<span id="csv_message"></span>
+						<div class="form-group">
+							<div class="row justify-content-md-center" id="upload_area">
+								<div class="col-md-auto">
+									<input type="file" name="file" id="csv_file" />
+								</div>
+							</div>
+							<div class="table-responsive" id="process_area">
+						</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" name="hidden_id" id="hidden_id" />
+						<input type="hidden" name="action" id="action" value="Upload" />
+						<input type="submit" name="upload_file" id="upload_file" class="btn btn-success" value="Upload" />
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 <!-- CSS Style -->
 	<style>
 	.removeRow
@@ -489,27 +524,6 @@
 		// 'order': [[1, 'asc']]	
 	});
 
-    // $('#sadbirth').datepicker({
-    //     format: "dd-mm-yyyy",
-    //     autoclose: true
-    // });
-	// $('#sadawardrceive').datepicker({
-    //     format: "yyyy-mm-dd",
-    //     autoclose: true
-    // });
-	// $('#sadsprc').datepicker({
-    //     format: "yyyy-mm-dd",
-    //     autoclose: true
-    // });
-	// $('#sadspgm').datepicker({
-    //     format: "yyyy-mm-dd",
-    //     autoclose: true
-    // });
-	// $('#sadspcr').datepicker({
-    //     format: "yyyy-mm-dd",
-    //     autoclose: true
-    // });
-
 // Add
 	$('#add_acad').click(function(){
 
@@ -528,6 +542,141 @@
 		$('#form_message').html('');
 
 	});
+// Import CSV
+		$('#add_csv').click(function(){
+		
+		$('#upload_form')[0].reset();
+
+		$('#upload_form').parsley().reset();
+
+		$('#action').val('Upload');
+
+		$('#upload_file').val('Upload');
+
+		$('#csvModal').modal('show');
+
+		$('#csv_message').html('');
+
+		});
+// Upload Form
+
+$('#upload_form').parsley();
+		
+		$('#upload_form').on('submit', function(event){
+		event.preventDefault();
+
+			if($('#upload_form').parsley().isValid())
+			{	
+				$.ajax({
+				url:"acadapp_action.php",
+				method:"POST",
+				data:new FormData(this),
+				dataType:'json',
+				contentType:false,
+				cache:false,
+				processData:false,
+				success:function(data)
+				{
+					if(data.error != '')
+					{
+					$('#message').html('<div class="alert alert-danger">'+data.error+'</div>');
+					}
+					else
+					{
+					$('#process_area').html(data.output);
+					$('#upload_area').css('display', 'none');
+					}
+				}
+				});
+			}
+
+		});
+// Other
+		var total_selection = 0;
+
+		var first_name = 0;
+
+		var last_name = 0;
+
+		var email = 0;
+
+		var column_data = [];
+
+		$(document).on('change', '.set_column_data', function(){
+
+		var column_name = $(this).val();
+
+		var column_number = $(this).data('column_number');
+
+		if(column_name in column_data)
+		{
+		alert('You have already define '+column_name+ ' column');
+
+		$(this).val('');
+
+		return false;
+		}
+
+		if(column_name != '')
+		{
+		column_data[column_name] = column_number;
+		}
+		else
+		{
+		const entries = Object.entries(column_data);
+
+		for(const [key, value] of entries)
+		{
+			if(value == column_number)
+			{
+			delete column_data[key];
+			}
+		}
+		}
+
+		total_selection = Object.keys(column_data).length;
+
+		if(total_selection == 3)
+		{
+		$('#import').attr('disabled', false);
+
+		first_name = column_data.first_name;
+
+		last_name = column_data.last_name;
+
+		email = column_data.email;
+		}
+		else
+		{
+		$('#import').attr('disabled', 'disabled');
+		}
+
+		});
+
+		$(document).on('click', '#import', function(event){
+
+		event.preventDefault();
+
+		$.ajax({
+		url:"import.php",
+		method:"POST",
+		data:{first_name:first_name, last_name:last_name, email:email},
+		beforeSend:function(){
+			$('#import').attr('disabled', 'disabled');
+			$('#import').text('Importing...');
+		},
+		success:function(data)
+		{
+			$('#import').attr('disabled', false);
+			$('#import').text('Import');
+			$('#process_area').css('display', 'none');
+			$('#upload_area').css('display', 'block');
+			$('#upload_form')[0].reset();
+			$('#message').html("<div class='alert alert-success'>"+data+"</div>");
+		}
+		})
+
+		});
 // Submit
 	$('#acad_form').parsley();
 
