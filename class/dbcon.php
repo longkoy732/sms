@@ -1,7 +1,5 @@
 <?php
 
-//Appointment.php
-
 class sms
 {
 	public $base_url = 'http://localhost/sms/';

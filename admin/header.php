@@ -69,14 +69,14 @@
             </li>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
                     <i class="fas fa-user-clock"></i>
                     <span>Applications</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h4 class="collapse-header">Scholarship Applications:</h4>
+                        <h4 class="collapse-header">Scholarship Applications</h4>
                         <a class="collapse-item" href="acadapp.php">Academic</a>
                         <a class="collapse-item" href="nonacadapp.php">Non-Academic</a>
                         <a class="collapse-item" href="unifastapp.php">UNIFAST</a>
@@ -85,14 +85,36 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="acadgrants.php">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-user-check"></i>
-                    <span>Approved Scholars</span></a>
+                    <span>Approved Scholars</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h4 class="collapse-header">Scholarship Grantees</h4>
+                        <a class="collapse-item" href="acadgrants.php">Academic</a>
+                        <a class="collapse-item" href="nonacadgrants.php">Non-Academic</a>
+                        <a class="collapse-item" href="unifastgrants.php">UNIFAST</a>
+                        <a class="collapse-item" href="chedgrants.php">CHED</a>
+                    </div>
+                </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="acadreject.php">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                aria-expanded="true" aria-controls="collapseThree">
                     <i class="fas fa-user-times"></i>
-                    <span>Rejected Scholars</span></a>
+                    <span>Rejected Scholars</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h4 class="collapse-header">Scholarship Rejections</h4>
+                        <a class="collapse-item" href="acadreject.php">Academic</a>
+                        <a class="collapse-item" href="nonacadreject.php">Non-Academic</a>
+                        <a class="collapse-item" href="unifastreject.php">UNIFAST</a>
+                        <a class="collapse-item" href="chedreject.php">CHED</a>
+                    </div>
+                </div>
             </li>
             <?php
             }

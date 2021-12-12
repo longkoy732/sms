@@ -226,11 +226,9 @@ $object = new sms;
 		echo json_encode($output);
 
 	}
-
+// Upload
 	if($_POST["action"] == 'Upload')
 	{
-		// session_start();
-
 		$error = '';
 
 		$html = '';
@@ -247,17 +245,17 @@ $object = new sms;
 
 		$file_header = fgetcsv($file_data);
 
-		$html .= '<table class="table table-bordered"><tr>';
+		$html .= '<table class="table table-bordered" style="min-width: 200px;"><tr style="min-width: 200px;">';
 
 		for($count = 0; $count < count($file_header); $count++)
 		{
 		$html .= '
-		<th>
+		<th style="min-width: 200px;">
 			<select name="set_column_data" class="form-control set_column_data" data-column_number="'.$count.'">
-			<option value="">Set Count Data</option>
-			<option value="first_name">First Name</option>
-			<option value="last_name">Last Name</option>
-			<option value="email">Email</option>
+				<option value="">Set Count Data</option>
+				<option value="safname">First Name</option>
+				<option value="salname">Last Name</option>
+				<option value="sapemail">Email</option>
 			</select>
 		</th>
 		';
@@ -271,13 +269,13 @@ $object = new sms;
 		{
 		$limit++;
 
-		if($limit < 6)
+		if($limit < 4)
 		{
-			$html .= '<tr>';
+			$html .= '<tr style="min-width: 200px;">';
 
 			for($count = 0; $count < count($row); $count++)
 			{
-			$html .= '<td>'.$row[$count].'</td>';
+			$html .= '<td style="min-width: 200px;">'.$row[$count].'</td>';
 			}
 
 			$html .= '</tr>';
@@ -299,17 +297,55 @@ $object = new sms;
 		}
 		else
 		{
-		$error = 'Only <b>.csv</b> file allowed';
+			$error = '<div class="alert alert-danger">Only <b>.csv</b> file allowed</div>';
 		}
 		}
 		else
 		{
-		$error = 'Please Select CSV File';
+			$error = '<div class="alert alert-danger">Please Select CSV File</div>';
 		}
 
 		$output = array(
 		'error'  => $error,
 		'output' => $html
+		);
+
+		echo json_encode($output);
+
+	}
+// Import
+	if($_POST["action"] == 'Import'){
+
+		$error = '';
+
+		$success = '';
+
+		if($error == '')
+		{
+		$file_data = $_SESSION['file_data'];
+
+		unset($_SESSION['file_data']);
+
+		foreach($file_data as $row)
+		{
+		$data[] = '("'.$row[$_POST["safname"]].'", "'.$row[$_POST["salname"]].'", "'.$row[$_POST["sapemail"]].'")';
+		}
+
+		$object->query = "
+		INSERT INTO tbl_acad 
+		(safname, salname, sapemail) 
+		VALUES ".implode(",", $data)."
+		";
+
+		$object->execute($data);
+
+		echo 'Data Imported Successfully';
+
+		}
+
+		$output = array(
+			'error'		=>	$error,
+			'success'	=>	$success
 		);
 
 		echo json_encode($output);
@@ -571,7 +607,7 @@ $object = new sms;
 
 		$object->execute($data);
 
-		echo '<div class="alert alert-success">Class Status change to '.$_POST['next_status'].'</div>';
+		echo '<div class="alert alert-success">Status change to '.$_POST['next_status'].' Successfully</div>';
 	}
 
 	if($_POST["action"] == 'approve_all')

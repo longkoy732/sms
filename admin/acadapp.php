@@ -458,25 +458,23 @@
 			</div>
 		</div>
 	</div>
-<!-- CSV Modal -->
-	<div id="csvModal" class="modal fade">
-		<div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+<!-- CSV Upload Modal -->
+	<div id="csvUPModal" class="modal fade">
+		<div class="modal-dialog modal-sm modal-dialog-centered">
 			<form method="post" id="upload_form">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title" id="modal_title">Select CSV File</h4>
+						<h4 class="modal-title" id="modal_title" style="font-weight: bold; font-size: 20px;">Upload CSV File</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-						<span id="csv_message"></span>
-						<div class="form-group">
-							<div class="row justify-content-md-center" id="upload_area">
-								<div class="col-md-auto">
+						<div id="upload_message"></div>
+							<div class="row justify-content-center" id="upload_area">
+							<form method="post" id="upload_form" enctype="multipart/form-data">
+								<div class="col-md-6">
 									<input type="file" name="file" id="csv_file" />
 								</div>
-							</div>
-							<div class="table-responsive" id="process_area">
-						</div>
+							</form>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -489,12 +487,54 @@
 			</form>
 		</div>
 	</div>
+	<div id="csvIMPModal" class="modal fade">
+		<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modal_title" style="font-weight: bold; font-size: 20px;">Import Selected CSV File</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div id="import_message"></div>
+						<div class="card">
+							<div class="card-header">
+								<h5 class="card-title" style="font-weight: bold; font-size: 16px;">Select Column Target Data</h5>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive" id="process_area">
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+		</div>
+	</div>
 <!-- CSS Style -->
 	<style>
 	.removeRow
 	{
 		background-color: #FF0000;
 		color:#FFFFFF;
+	}
+	.modal.modal-fullscreen .modal-dialog {
+	width:100vw;
+	height:100vh;
+	margin:0;
+	padding:0;
+	max-width:none;
+	}
+	.modal.modal-fullscreen .modal-content {
+	height:auto;
+	height:100vh;
+	border-radius:0;
+	border:none;
+	}
+	.modal.modal-fullscreen .modal-body {
+	overflow-y:auto;
 	}
 	</style>
 	<script>
@@ -542,7 +582,7 @@
 		$('#form_message').html('');
 
 	});
-// Import CSV
+// Upload CSV
 		$('#add_csv').click(function(){
 		
 		$('#upload_form')[0].reset();
@@ -553,14 +593,14 @@
 
 		$('#upload_file').val('Upload');
 
-		$('#csvModal').modal('show');
+		$('#csvUPModal').modal('show');
 
-		$('#csv_message').html('');
+		$('#upload_message').html('');
 
 		});
-// Upload Form
 
-$('#upload_form').parsley();
+// Upload Form
+	$('#upload_form').parsley();
 		
 		$('#upload_form').on('submit', function(event){
 		event.preventDefault();
@@ -568,25 +608,31 @@ $('#upload_form').parsley();
 			if($('#upload_form').parsley().isValid())
 			{	
 				$.ajax({
-				url:"acadapp_action.php",
-				method:"POST",
-				data:new FormData(this),
-				dataType:'json',
-				contentType:false,
-				cache:false,
-				processData:false,
-				success:function(data)
-				{
-					if(data.error != '')
+					url:"upload.php",
+					method:"POST",
+					data:new FormData(this),
+					dataType:'json',
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(data)
 					{
-					$('#message').html('<div class="alert alert-danger">'+data.error+'</div>');
+						if(data.error != '')
+						{
+							$('#upload_message').html(data.error);
+							setTimeout(function(){
+
+							$('#upload_message').html('');
+
+							}, 5000);
+						}
+						else
+						{
+							$('#csvUPModal').modal('hide');
+							$('#csvIMPModal').modal('show');
+							$('#process_area').html(data.output);
+						}
 					}
-					else
-					{
-					$('#process_area').html(data.output);
-					$('#upload_area').css('display', 'none');
-					}
-				}
 				});
 			}
 
@@ -652,31 +698,33 @@ $('#upload_form').parsley();
 		}
 
 		});
+// Import
+	$(document).on('click', '.import', function(event){
+								
+		event.preventDefault();	
+		
+		$('#import.php')[0].reset();
 
-		$(document).on('click', '#import', function(event){
-
-		event.preventDefault();
-
-		$.ajax({
-		url:"import.php",
-		method:"POST",
-		data:{first_name:first_name, last_name:last_name, email:email},
-		beforeSend:function(){
-			$('#import').attr('disabled', 'disabled');
-			$('#import').text('Importing...');
-		},
-		success:function(data)
-		{
-			$('#import').attr('disabled', false);
-			$('#import').text('Import');
-			$('#process_area').css('display', 'none');
-			$('#upload_area').css('display', 'block');
-			$('#upload_form')[0].reset();
-			$('#message').html("<div class='alert alert-success'>"+data+"</div>");
-		}
-		})
-
-		});
+		$('#upload_form').parsley().reset();
+			$.ajax({
+			url:"acadapp_action.php",
+			method:"POST",
+			data:{safname:safname, salname:salname, sapemail:sapemail},
+			beforeSend:function(){
+				$('.import').attr('disabled', 'disabled');
+				$('.import').text('Importing...');
+			},
+			success:function(data)
+			{
+				$('#csvUPModal').modal('hide');
+				$('#message').html(data.success);
+				dataTable.ajax.reload();
+				setTimeout(function(){
+					$('#message').html('');
+				}, 5000);
+			}
+			})
+		});	
 // Submit
 	$('#acad_form').parsley();
 
