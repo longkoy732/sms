@@ -20,7 +20,7 @@ include('header.php');
 ?>
 <!-- Table -->
 	<!-- Page Heading -->
-	<h1 class="h3 mb-4 text-gray-800">Academic Application Management</h1>
+	<h1 class="h3 mb-4 text-gray-800">Academic Rejected Grantees Management</h1>
 
 	<!-- DataTales Example -->
 	<span id="message"></span>
