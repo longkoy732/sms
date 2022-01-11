@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 05:51 PM
+-- Generation Time: Jan 11, 2022 at 11:53 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -102,21 +102,23 @@ INSERT INTO `tbl_acad` (`sacad_id`, `safname`, `samname`, `salname`, `sanext`, `
 
 CREATE TABLE `tbl_admin` (
   `admin_id` int(11) NOT NULL,
+  `admin_idno` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `admin_email_address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `admin_password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `admin_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `school_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `school_address` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `school_contact_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `school_logo` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+  `admin_position` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `admin_schname` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `admin_schaddress` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `admin_contact_no` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `admin_profile` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_admin`
 --
 
-INSERT INTO `tbl_admin` (`admin_id`, `admin_email_address`, `admin_password`, `admin_name`, `school_name`, `school_address`, `school_contact_no`, `school_logo`) VALUES
-(1, 'admin@gmail.com', 'password', 'Administrator', 'St. Cecilia\'s College Cebu, Inc.', 'Natalio B. Bacalso S National Hwy, Minglanilla, Cebu', '(032) 490 8511', '../images/1940074418.png');
+INSERT INTO `tbl_admin` (`admin_id`, `admin_idno`, `admin_email_address`, `admin_password`, `admin_name`, `admin_position`, `admin_schname`, `admin_schaddress`, `admin_contact_no`, `admin_profile`) VALUES
+(1, 'SCC-0001368', 'admin@gmail.com', 'password', 'Administrator', '', 'St. Cecilia\'s College Cebu, Inc.', 'Natalio B. Bacalso S National Hwy, Minglanilla, Cebu', '(032) 490 8511', '../images/1940074418.png');
 
 -- --------------------------------------------------------
 
@@ -272,22 +274,134 @@ INSERT INTO `tbl_nonacad` (`snacad_id`, `snfname`, `snmname`, `snlname`, `snnext
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_requirements`
+--
+
+CREATE TABLE `tbl_requirements` (
+  `ss_rid` int(11) NOT NULL,
+  `sdrprc` varchar(20) DEFAULT NULL,
+  `sdrprcstat` varchar(30) NOT NULL,
+  `sdrpgm` varchar(20) DEFAULT NULL,
+  `sdrpgmstat` varchar(30) NOT NULL,
+  `sdrpbrgyin` varchar(20) DEFAULT NULL,
+  `sdrpbrgyinstat` varchar(30) NOT NULL,
+  `sdrobr` varchar(20) DEFAULT NULL,
+  `sdrobrstat` varchar(30) NOT NULL,
+  `sdrpsa` varchar(20) DEFAULT NULL,
+  `sdrpsastat` varchar(30) NOT NULL,
+  `sdrpscef` varchar(20) DEFAULT NULL,
+  `sdrpscefstat` varchar(30) NOT NULL,
+  `sdrtbytpic` varchar(20) DEFAULT NULL,
+  `sdrtbytpicstat` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_sample`
+--
+
+CREATE TABLE `tbl_sample` (
+  `s_id` int(11) NOT NULL,
+  `sfname` varchar(50) NOT NULL,
+  `smname` varchar(50) NOT NULL,
+  `slname` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_schship_info`
+--
+
+CREATE TABLE `tbl_schship_info` (
+  `sshipinfo_id` int(11) NOT NULL,
+  `sscapstype` varchar(20) NOT NULL,
+  `ssgrantstat` varchar(20) NOT NULL,
+  `ssscholarstat` varchar(30) NOT NULL,
+  `ssdrejected` varchar(20) DEFAULT NULL,
+  `ssdapprove` varchar(20) DEFAULT NULL,
+  `ssdapply` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_student`
 --
 
 CREATE TABLE `tbl_student` (
   `s_id` int(11) NOT NULL,
-  `sidnum` varchar(30) NOT NULL,
-  `sfname` varchar(50) NOT NULL,
-  `smname` varchar(50) NOT NULL,
-  `slname` varchar(50) NOT NULL,
-  `saddress` varchar(200) NOT NULL,
-  `scourse` varchar(50) NOT NULL,
-  `syearlvl` varchar(50) NOT NULL,
-  `semail` varchar(50) NOT NULL,
-  `scontact` varchar(30) NOT NULL,
-  `saemail` varchar(50) NOT NULL,
-  `spass` varchar(50) NOT NULL
+  `ss_id` varchar(20) DEFAULT NULL,
+  `sfname` varchar(50) DEFAULT NULL,
+  `smname` varchar(50) DEFAULT NULL,
+  `slname` varchar(50) DEFAULT NULL,
+  `snext` varchar(10) DEFAULT NULL,
+  `sdbirth` date DEFAULT NULL,
+  `sgender` varchar(10) DEFAULT NULL,
+  `saddress` text DEFAULT NULL,
+  `szcode` varchar(10) DEFAULT NULL,
+  `scontact` varchar(20) DEFAULT NULL,
+  `semail` varchar(50) DEFAULT NULL,
+  `sctship` varchar(20) DEFAULT NULL,
+  `scivilstat` varchar(20) DEFAULT NULL,
+  `sdisability` varchar(20) DEFAULT NULL,
+  `s4psno` varchar(20) DEFAULT NULL,
+  `spwdid` varchar(20) DEFAULT NULL,
+  `srappsship` text DEFAULT NULL,
+  `srappnas` text DEFAULT NULL,
+  `sbos` text DEFAULT NULL,
+  `ssskills` text DEFAULT NULL,
+  `stwinterest` text DEFAULT NULL,
+  `ssdfilled` date DEFAULT NULL,
+  `sgfname` varchar(50) DEFAULT NULL,
+  `sgmname` varchar(50) DEFAULT NULL,
+  `sglname` varchar(50) DEFAULT NULL,
+  `sgnext` varchar(10) DEFAULT NULL,
+  `sglstatus` varchar(10) DEFAULT NULL,
+  `sgaddress` text DEFAULT NULL,
+  `sgeduc` varchar(30) DEFAULT NULL,
+  `sgcontact` varchar(20) DEFAULT NULL,
+  `sgoccu` varchar(30) DEFAULT NULL,
+  `sgcompany` varchar(30) DEFAULT NULL,
+  `sffname` varchar(50) DEFAULT NULL,
+  `sfmname` varchar(50) DEFAULT NULL,
+  `sflname` varchar(50) DEFAULT NULL,
+  `sfnext` varchar(10) DEFAULT NULL,
+  `sflstatus` varchar(10) DEFAULT NULL,
+  `sfaddress` text DEFAULT NULL,
+  `sfeduc` varchar(30) DEFAULT NULL,
+  `sfcontact` varchar(20) DEFAULT NULL,
+  `sfoccu` varchar(30) DEFAULT NULL,
+  `sfcompany` varchar(30) DEFAULT NULL,
+  `smfname` varchar(50) DEFAULT NULL,
+  `smmname` varchar(50) DEFAULT NULL,
+  `smlname` varchar(50) DEFAULT NULL,
+  `smnext` varchar(10) DEFAULT NULL,
+  `smlstatus` varchar(10) DEFAULT NULL,
+  `smaddress` text DEFAULT NULL,
+  `smeduc` varchar(30) DEFAULT NULL,
+  `smcontact` varchar(20) DEFAULT NULL,
+  `smoccu` varchar(30) DEFAULT NULL,
+  `smcompany` varchar(30) DEFAULT NULL,
+  `snsibling` varchar(10) DEFAULT NULL,
+  `spcyincome` varchar(50) DEFAULT NULL,
+  `spschname` text DEFAULT NULL,
+  `spsaddress` text DEFAULT NULL,
+  `spstype` varchar(20) DEFAULT NULL,
+  `spscourse` varchar(50) DEFAULT NULL,
+  `spsyrlvl` varchar(20) DEFAULT NULL,
+  `spsgwa` int(10) DEFAULT NULL,
+  `spsraward` text DEFAULT NULL,
+  `spsdawardrceive` date DEFAULT NULL,
+  `scsintend` text DEFAULT NULL,
+  `scsadd` text DEFAULT NULL,
+  `scschooltype` varchar(20) DEFAULT NULL,
+  `sccourse` varchar(50) DEFAULT NULL,
+  `sccourseprio` varchar(50) DEFAULT NULL,
+  `scsyrlvl` varchar(20) DEFAULT NULL,
+  `spass` varchar(50) DEFAULT NULL,
+  `student_added_on` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -375,6 +489,24 @@ ALTER TABLE `tbl_nonacad`
   ADD PRIMARY KEY (`snacad_id`);
 
 --
+-- Indexes for table `tbl_requirements`
+--
+ALTER TABLE `tbl_requirements`
+  ADD PRIMARY KEY (`ss_rid`);
+
+--
+-- Indexes for table `tbl_schship_info`
+--
+ALTER TABLE `tbl_schship_info`
+  ADD PRIMARY KEY (`sshipinfo_id`);
+
+--
+-- Indexes for table `tbl_student`
+--
+ALTER TABLE `tbl_student`
+  ADD PRIMARY KEY (`s_id`);
+
+--
 -- Indexes for table `tbl_unifast`
 --
 ALTER TABLE `tbl_unifast`
@@ -388,7 +520,7 @@ ALTER TABLE `tbl_unifast`
 -- AUTO_INCREMENT for table `tbl_acad`
 --
 ALTER TABLE `tbl_acad`
-  MODIFY `sacad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `sacad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin`
