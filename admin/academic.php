@@ -82,7 +82,7 @@ $object->execute($data);
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>SMS | AS</title>
   <!-- Javascript -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
@@ -141,7 +141,7 @@ $object->execute($data);
      </li>
     </ul>
     <div class="tab-content" style="margin-top:16px;">
-    <!-- Personal Details -->
+  <!-- Personal Details -->
     <div class="tab-content" style="margin-top:16px;">
       <div class="tab-pane active" id="personal_details">
         <div class="panel panel-default">
@@ -231,174 +231,7 @@ $object->execute($data);
             </div>
         </div>
       </div>
-<!-- Family Details -->
-    <div class="tab-pane fade" id="family_details">
-      <div class="panel panel-default">
-       <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Family Details</div>
-        <div class="panel-body">
-          <div class="form-group">
-					      <h4 class="sub-title">Guardian Details</h4>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>First Name<span class="text-danger">*</span></label>
-                    <input type="text" name="sagfname" id="sagfname" class="form-control" />
-                    <span id="error_sagfname" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="sagmname" id="sagmname" class="form-control" />
-                    <span id="error_sagmname" class="text-danger"></span>
-                    </div>
-							    <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Last Name<span class="text-danger">*</span></label>
-                    <input type="text" name="saglname" id="saglname" class="form-control" />
-                    <span id="error_saglname" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Select Suffix</label>
-                    <select name="sagnext" id="sagnext" class="form-control" required>
-                    <option value="">-Select-</option>
-                    <option value="N/A">N/A</option>
-                      <option value="Jr.">Jr.</option>
-                      <option value="Sr.">Sr.</option>
-                    </select>
-                    <span id="error_sagnext" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label>Address<span class="text-danger">*</span></label>
-                    <textarea type="text" name="sagaddress" id="sagaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_sagaddress" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Contact Number<span class="text-danger">*</span></label>
-                    <input type="text" name="sagcontact" id="sagcontact" class="form-control" />
-                    <span id="error_sagcontact" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Occupation<span class="text-danger">*</span></label>
-                    <input type="text" name="sagoccu" id="sagoccu" class="form-control" />
-                    <span id="error_sagoccu" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Company<span class="text-danger">*</span></label>
-                    <input type="text" name="sagcompany" id="sagcompany" class="form-control" />
-                    <span id="error_sagcompany" class="text-danger"></span>
-                  </div>
-              </div>
-            </div>
-            <div class="form-group">
-					      <h4 class="sub-title">Father Details</h4>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>First Name<span class="text-danger">*</span></label>
-                    <input type="text" name="saffname" id="saffname" class="form-control" />
-                    <span id="error_saffname" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="safmname" id="safmname" class="form-control" />
-                    <span id="error_safmname" class="text-danger"></span>
-                    </div>
-							    <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Last Name<span class="text-danger">*</span></label>
-                    <input type="text" name="saflname" id="saflname" class="form-control" />
-                    <span id="error_saflname" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Select Suffix</label>
-                    <select name="safnext" id="safnext" class="form-control" required>
-                    <option value="">-Select-</option>
-                    <option value="N/A">N/A</option>
-                      <option value="Jr.">Jr.</option>
-                      <option value="Sr.">Sr.</option>
-                    </select>
-                    <span id="error_safnext" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label>Address<span class="text-danger">*</span></label>
-                    <textarea type="text" name="safaddress" id="safaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_safaddress" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Contact Number<span class="text-danger">*</span></label>
-                    <input type="text" name="safcontact" id="safcontact" class="form-control" />
-                    <span id="error_safcontact" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Occupation<span class="text-danger">*</span></label>
-                    <input type="text" name="safoccu" id="safoccu" class="form-control" />
-                    <span id="error_safoccu" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Company<span class="text-danger">*</span></label>
-                    <input type="text" name="safcompany" id="safcompany" class="form-control" />
-                    <span id="error_safcompany" class="text-danger"></span>
-                  </div>
-              </div>
-            </div>
-            <div class="form-group">
-					      <h4 class="sub-title">Mother Details</h4>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>First Name<span class="text-danger">*</span></label>
-                    <input type="text" name="samfname" id="samfname" class="form-control" />
-                    <span id="error_samfname" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="sammname" id="sammname" class="form-control" />
-                    <span id="error_sammname" class="text-danger"></span>
-                    </div>
-							    <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Last Name<span class="text-danger">*</span></label>
-                    <input type="text" name="samlname" id="samlname" class="form-control" />
-                    <span id="error_samlname" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-3">
-                    <label>Select Suffix</label>
-                    <select name="samnext" id="samnext" class="form-control" required>
-                    <option value="">-Select-</option>
-                    <option value="N/A">N/A</option>
-                      <option value="Jr.">Jr.</option>
-                      <option value="Sr.">Sr.</option>
-                    </select>
-                    <span id="error_samnext" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label>Address<span class="text-danger">*</span></label>
-                    <textarea type="text" name="samaddress" id="samaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
-                    <span id="error_samaddress" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Contact Number<span class="text-danger">*</span></label>
-                    <input type="text" name="samcontact" id="samcontact" class="form-control" />
-                    <span id="error_samcontact" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Occupation<span class="text-danger">*</span></label>
-                    <input type="text" name="samoccu" id="samoccu" class="form-control" />
-                    <span id="error_samoccu" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Company<span class="text-danger">*</span></label>
-                    <input type="text" name="samcompany" id="samcompany" class="form-control" />
-                    <span id="error_samcompany" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4">
-                    <label>Parents Combine Yearly Income<span class="text-danger">*</span></label>
-                    <input type="text" name="saspcyincome" id="saspcyincome" class="form-control" />
-                    <span id="error_saspcyincome" class="text-danger"></span>
-                  </div>
-              </div>
-            </div>
-            <div align="center">
-              <button type="button" name="previous_btn_family_details" id="previous_btn_family_details" class="btn btn-default btn-md">Previous</button>
-              <button type="button" name="btn_family_details" id="btn_family_details" class="btn btn-info btn-md">Next</button>
-            </div>
-        </div>
-      </div>
-    </div>
-<!-- Achievements Details -->
+  <!-- Achievements Details -->
      <div class="tab-pane fade" id="achievements_details">
       <div class="panel panel-default">
        <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Fill Achievement Details</div>
@@ -432,65 +265,65 @@ $object->execute($data);
        </div>
       </div>
      </div>
-<!-- Requirement Details -->
-<div class="tab-pane fade" id="require_details">
-    <div class="panel panel-default">
-      <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Applicant Must Be:</div>
-        <div class="panel-body">
-          <ul class="list-group d-flex justify-content-center">
-            <li class="list-group-item">1. Senior High Graduate</li>
-            <li class="list-group-item">2. College Level</li>
-            <li class="list-group-item">3. 4th year High School Graduate(Old Curriculum)</li>
-            <li class="list-group-item">4. ALS Passer Promoted to College</li>
-            <li class="list-group-item">5. Enrolled of the said Institution</li>
-          </ul>
+  <!-- Requirement Details -->
+    <div class="tab-pane fade" id="require_details">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Applicant Must Be:</div>
+            <div class="panel-body">
+              <ul class="list-group d-flex justify-content-center">
+                <li class="list-group-item">1. Senior High Graduate</li>
+                <li class="list-group-item">2. College Level</li>
+                <li class="list-group-item">3. 4th year High School Graduate(Old Curriculum)</li>
+                <li class="list-group-item">4. ALS Passer Promoted to College</li>
+                <li class="list-group-item">5. Enrolled of the said Institution</li>
+              </ul>
+            </div>
+        </div>
+        <div class="panel panel-default">
+        <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
+          <div class="panel-body">
+            <ul class="list-group d-flex justify-content-center">
+              <li class="list-group-item">1. Photocopy of Report Card</li>
+              <li class="list-group-item">2. Photocopy of Certificate of Good Moral</li>
+              <li class="list-group-item">3. Photocopy of Certificate of Recognition</li>
+            </ul>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault" style="font-style: italic; font-weight: normal;">
+                I agree that the requirements above are legit and will submit it on time.
+              </label><br>
+              <span id="error_flexCheckDefault" class="text-danger"></span>
+              <div class="alert alert-warning" role="alert" style="font-style: italic;"><b>Note:</b> Please provide the hard copy of the following requirements, bring it to the Scholarship Office, and hand it over to Mr. Gemini Daguplo or Ms. Grabrielle Heruela.</div>
+              </div>
+              <div align="center">
+                <button type="button" name="previous_btn_requirement" id="previous_btn_requirement" class="btn btn-default btn-md">Previous</button>
+                <button type="button" name="btn_requirement" id="btn_requirement" class="btn btn-info btn-md">Next</button>
+              </div>
+          </div>
         </div>
     </div>
-    <div class="panel panel-default">
-    <div class="panel-heading" style="font-weight: bold; font-size: 16px;">List of Requirements</div>
-      <div class="panel-body">
-        <ul class="list-group d-flex justify-content-center">
-          <li class="list-group-item">1. Photocopy of Report Card</li>
-          <li class="list-group-item">2. Photocopy of Certificate of Good Moral</li>
-          <li class="list-group-item">3. Photocopy of Certificate of Recognition</li>
-        </ul>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault" style="font-style: italic; font-weight: normal;">
-            I agree that the requirements above are legit and will submit it on time.
-          </label><br>
-          <span id="error_flexCheckDefault" class="text-danger"></span>
-          <div class="alert alert-warning" role="alert" style="font-style: italic;"><b>Note:</b> Please provide the hard copy of the following requirements, bring it to the Scholarship Office, and hand it over to Mr. Gemini Daguplo or Ms. Grabrielle Heruela.</div>
+  <!-- Account Details -->
+    <div class="tab-pane fade" id="account_details">
+      <div class="panel panel-default">
+      <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Account Details</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="saaemail" id="saaemail" class="form-control" />
+            <span id="error_saaemail" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+          <label>Password</label>
+          <input type="text" name="sapass" id="sapass" class="form-control" />
+          <span id="error_sapass" class="text-danger"></span>
           </div>
           <div align="center">
-            <button type="button" name="previous_btn_requirement" id="previous_btn_requirement" class="btn btn-default btn-md">Previous</button>
-            <button type="button" name="btn_requirement" id="btn_requirement" class="btn btn-info btn-md">Next</button>
+          <button type="button" name="previous_btn_account" id="previous_btn_account" class="btn btn-default btn-md">Previous</button>
+          <button type="submit" name="btn_submit" id="btn_submit" class="btn btn-success">Submit</button>
           </div>
+        </div>
+        </div>
       </div>
-    </div>
-</div>
-<!-- Account Details -->
-  <div class="tab-pane fade" id="account_details">
-    <div class="panel panel-default">
-    <div class="panel-heading" style="font-weight: bold; font-size: 16px;">Account Details</div>
-      <div class="panel-body">
-        <div class="form-group">
-          <label>Email</label>
-          <input type="text" name="saaemail" id="saaemail" class="form-control" />
-          <span id="error_saaemail" class="text-danger"></span>
-        </div>
-         <div class="form-group">
-         <label>Password</label>
-         <input type="text" name="sapass" id="sapass" class="form-control" />
-         <span id="error_sapass" class="text-danger"></span>
-        </div>
-        <div align="center">
-        <button type="button" name="previous_btn_account" id="previous_btn_account" class="btn btn-default btn-md">Previous</button>
-        <button type="submit" name="btn_submit" id="btn_submit" class="btn btn-success">Submit</button>
-        </div>
-       </div>
-      </div>
-     </div>
     </div>
    </form>
   </div>

@@ -98,7 +98,7 @@ if($object->is_login())
                 <button type="submit" name="login_button" id="login_button" class="btn btn-primary btn-user btn-block">Login</button>
             </div>
             <div class="form-group">
-                <button type="button" name="cscho_button" id="cscho_button" class="btn btn-success btn-user btn-block">Apply</button>
+                <button type="button" name="register_button" id="register_button" class="btn btn-success btn-user btn-block">Register</button>
             </div>
         </form>
     </main>
@@ -160,8 +160,8 @@ $(document).ready(function(){
 
 });
 
-document. getElementById("cscho_button"). onclick = function () {
-location. href = "apply.php";
+document. getElementById("register_button"). onclick = function () {
+location. href = "reg.php";
 };
 
 </script>
