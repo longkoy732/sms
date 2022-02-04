@@ -4,7 +4,7 @@ include('../class/dbcon.php');
 
 $object = new sms;
 
-if($_POST["action"] == 'doctor_profile')
+if($_POST["action"] == 'student_profile')
 {
 	sleep(2);
 
@@ -12,17 +12,17 @@ if($_POST["action"] == 'doctor_profile')
 
 	$success = '';
 
-	$doctor_profile_image = '';
+	$student_profile_image = '';
 
 	$data = array(
-		':doctor_email_address'	=>	$_POST["doctor_email_address"],
-		':doctor_id'			=>	$_POST['hidden_id']
+		':semail'		=>	$_POST["semail"],
+		':s_id'			=>	$_POST['hidden_id']
 	);
 
 	$object->query = "
-	SELECT * FROM doctor_table 
-	WHERE doctor_email_address = :doctor_email_address 
-	AND doctor_id != :doctor_id
+	SELECT * FROM tbl_student 
+	WHERE semail = :semail 
+	AND s_id != :s_id
 	";
 
 	$object->execute($data);
@@ -33,19 +33,19 @@ if($_POST["action"] == 'doctor_profile')
 	}
 	else
 	{
-		$doctor_profile_image = $_POST["hidden_doctor_profile_image"];
+		$student_profile_image = $_POST["hidden_student_profile_image"];
 
-		if($_FILES['doctor_profile_image']['name'] != '')
+		if($_FILES['student_profile_image']['name'] != '')
 		{
 			$allowed_file_format = array("jpg", "png");
 
-	    	$file_extension = pathinfo($_FILES["doctor_profile_image"]["name"], PATHINFO_EXTENSION);
+	    	$file_extension = pathinfo($_FILES["student_profile_image"]["name"], PATHINFO_EXTENSION);
 
 	    	if(!in_array($file_extension, $allowed_file_format))
 		    {
 		        $error = "<div class='alert alert-danger'>Upload valiid file. jpg, png</div>";
 		    }
-		    else if (($_FILES["doctor_profile_image"]["size"] > 2000000))
+		    else if (($_FILES["student_profile_image"]["size"] > 2000000))
 		    {
 		       $error = "<div class='alert alert-danger'>File size exceeds 2MB</div>";
 		    }
@@ -55,57 +55,59 @@ if($_POST["action"] == 'doctor_profile')
 
 				$destination = '../images/' . $new_name;
 
-				move_uploaded_file($_FILES['doctor_profile_image']['tmp_name'], $destination);
+				move_uploaded_file($_FILES['student_profile_image']['tmp_name'], $destination);
 
-				$doctor_profile_image = $destination;
+				$student_profile_image = $destination;
 		    }
 		}
 
 		if($error == '')
 		{
 			$data = array(
-				':doctor_email_address'			=>	$object->clean_input($_POST["doctor_email_address"]),
-				':doctor_password'				=>	$_POST["doctor_password"],
-				':doctor_name'					=>	$object->clean_input($_POST["doctor_name"]),
-				':doctor_profile_image'			=>	$doctor_profile_image,
-				':doctor_phone_no'				=>	$object->clean_input($_POST["doctor_phone_no"]),
-				':doctor_address'				=>	$object->clean_input($_POST["doctor_address"]),
-				':doctor_date_of_birth'			=>	$object->clean_input($_POST["doctor_date_of_birth"]),
-				':doctor_degree'				=>	$object->clean_input($_POST["doctor_degree"]),
-				':doctor_expert_in'				=>	$object->clean_input($_POST["doctor_expert_in"])
+				':sfname'						=>	$object->clean_input($_POST["sfname"]),
+				':smname'						=>	$object->clean_input($_POST["smname"]),
+				':slname'						=>	$object->clean_input($_POST["slname"]),
+				':sdbirth'						=>	$object->clean_input($_POST["sdbirth"]),
+				':saddress'						=>	$object->clean_input($_POST["saddress"]),
+				':sccourse'						=>	$object->clean_input($_POST["sccourse"]),
+				':scsyrlvl'						=>	$object->clean_input($_POST["scsyrlvl"]),
+				':semail'						=>	$object->clean_input($_POST["semail"]),
+				// ':spass'						=>	$object->clean_input($_POST["spass"]),
+				// ':student_profile_image'		=>	$student_profile_image,
 			);
 
 			$object->query = "
-			UPDATE doctor_table  
-			SET doctor_email_address = :doctor_email_address, 
-			doctor_password = :doctor_password, 
-			doctor_name = :doctor_name, 
-			doctor_profile_image = :doctor_profile_image, 
-			doctor_phone_no = :doctor_phone_no, 
-			doctor_address = :doctor_address, 
-			doctor_date_of_birth = :doctor_date_of_birth, 
-			doctor_degree = :doctor_degree,  
-			doctor_expert_in = :doctor_expert_in 
-			WHERE doctor_id = '".$_POST['hidden_id']."'
+			UPDATE tbl_student  
+			SET sfname = :sfname, 
+			smname = :smname, 
+			slname = :slname, 
+			sdbirth = :sdbirth, 
+			saddress = :saddress, 
+			sccourse = :sccourse, 
+			scsyrlvl = :scsyrlvl, 
+			semail = :semail,  
+			student_profile_image = :student_profile_image 
+			WHERE s_id = '".$_POST['hidden_id']."'
 			";
 			$object->execute($data);
 
-			$success = '<div class="alert alert-success">Doctor Data Updated</div>';
+			$success = '<div class="alert alert-success">student Data Updated</div>';
 		}			
 	}
 
 	$output = array(
 		'error'					=>	$error,
 		'success'				=>	$success,
-		'doctor_email_address'	=>	$_POST["doctor_email_address"],
-		'doctor_password'		=>	$_POST["doctor_password"],
-		'doctor_name'			=>	$_POST["doctor_name"],
-		'doctor_profile_image'	=>	$doctor_profile_image,
-		'doctor_phone_no'		=>	$_POST["doctor_phone_no"],
-		'doctor_address'		=>	$_POST["doctor_address"],
-		'doctor_date_of_birth'	=>	$_POST["doctor_date_of_birth"],
-		'doctor_degree'			=>	$_POST["doctor_degree"],
-		'doctor_expert_in'		=>	$_POST["doctor_expert_in"],
+		'sfname'				=>	$_POST["sfname"],
+		'smname'				=>	$_POST["smname"],
+		'slname'				=>	$_POST["slname"],
+		'sdbirth'				=>	$_POST["sdbirth"],
+		'saddress'				=>	$_POST["saddress"],
+		'sccourse'				=>	$_POST["sccourse"],
+		'scsyrlvl'				=>	$_POST["scsyrlvl"],
+		'semail'				=>	$_POST["semail"],
+		'student_profile_image'	=>	$student_profile_image,
+		
 	);
 
 	echo json_encode($output);
@@ -153,10 +155,10 @@ if($_POST["action"] == 'admin_profile')
 			':admin_email_address'			=>	$object->clean_input($_POST["admin_email_address"]),
 			':admin_password'				=>	$_POST["admin_password"],
 			':admin_name'					=>	$object->clean_input($_POST["admin_name"]),
-			':school_name'				=>	$object->clean_input($_POST["school_name"]),
+			':school_name'					=>	$object->clean_input($_POST["school_name"]),
 			':school_address'				=>	$object->clean_input($_POST["school_address"]),
 			':school_contact_no'			=>	$object->clean_input($_POST["school_contact_no"]),
-			':school_logo'				=>	$school_logo
+			':school_logo'					=>	$school_logo
 		);
 
 		$object->query = "
@@ -182,7 +184,7 @@ if($_POST["action"] == 'admin_profile')
 			'admin_name'			=>	$_POST["admin_name"], 
 			'school_name'			=>	$_POST["school_name"],
 			'school_address'		=>	$_POST["school_address"],
-			'school_contact_no'	=>	$_POST["school_contact_no"],
+			'school_contact_no'		=>	$_POST["school_contact_no"],
 			'school_logo'			=>	$school_logo
 		);
 

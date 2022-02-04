@@ -46,8 +46,6 @@ include('header.php');
                                 </div>
                             </div>
                             <div class="card-body">
-                                <!--<div class="row">
-                                    <div class="col-md-6">!-->
                                         <div class="form-group">
                                             <label>Admin Name</label>
                                             <input type="text" name="admin_name" id="admin_name" class="form-control" required data-parsley-pattern="/^[a-zA-Z0-9 \s]+$/" data-parsley-maxlength="175" data-parsley-trigger="keyup" />
@@ -62,23 +60,21 @@ include('header.php');
                                         </div>
                                         <div class="form-group">
                                             <label>School Name</label>
-                                            <input type="text" name="school_name" id="school_name" class="form-control" required  data-parsley-trigger="keyup" />
+                                            <input type="text" name="admin_schname" id="admin_schname" class="form-control" required  data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
                                             <label>School Address</label>
-                                            <textarea name="school_address" id="school_address" class="form-control" required ></textarea>
+                                            <textarea name="admin_schaddress" id="admin_schaddress" class="form-control" required ></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>School Contact No.</label>
-                                            <input type="text" name="school_contact_no" id="school_contact_no" class="form-control" required  data-parsley-trigger="keyup" />
+                                            <input type="text" name="admin_contact_no" id="admin_contact_no" class="form-control" required  data-parsley-trigger="keyup" />
                                         </div>
                                         <div class="form-group">
                                             <label>School Logo</label><br />
                                             <input type="file" name="school_logo" id="school_logo" />
                                             <span id="uploaded_school_logo"></span>
                                         </div>
-                                    <!--</div>
-                                </div>!-->
                             </div>
                         </div></div></div>
                     </form>
@@ -96,14 +92,15 @@ $(document).ready(function(){
     $('#admin_email_address').val("<?php echo $row['admin_email_address']; ?>");
     $('#admin_password').val("<?php echo $row['admin_password']; ?>");
     $('#admin_name').val("<?php echo $row['admin_name']; ?>");
-    $('#school_name').val("<?php echo $row['school_name']; ?>");
-    $('#school_address').val("<?php echo $row['school_address']; ?>");
-    $('#school_contact_no').val("<?php echo $row['school_contact_no']; ?>");
+    $('#admin_schname').val("<?php echo $row['admin_schname']; ?>");
+    $('#admin_schaddress').val("<?php echo $row['admin_schaddress']; ?>");
+    $('#admin_contact_no').val("<?php echo $row['admin_contact_no']; ?>");
+    $('#admin_profile').val("<?php echo $row['admin_profile']; ?>");
     <?php
-        if($row['school_logo'] != '')
+        if($row['admin_profile'] != '')
         {
     ?>
-    $("#uploaded_school_logo").html("<img src='<?php echo $row["school_logo"]; ?>' class='img-thumbnail' width='100' /><input type='hidden' name='hidden_school_logo' value='<?php echo $row['school_logo']; ?>' />");
+    $("#uploaded_school_logo").html("<img src='<?php echo $row["admin_profile"]; ?>' class='img-thumbnail' width='100' /><input type='hidden' name='hidden_school_logo' value='<?php echo $row['admin_profile']; ?>' />");
 
     <?php
         }

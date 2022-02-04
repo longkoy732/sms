@@ -58,11 +58,8 @@
     <!-- Page level plugins -->
     <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
     <script type="text/javascript" src="../vendor/parsley/dist/parsley.min.js"></script>
-
     <script type="text/javascript" src="../vendor/bootstrap-select/bootstrap-select.min.js"></script>
-
     <script type="text/javascript" src="../vendor/datepicker/bootstrap-datepicker.js"></script>
 
 </body>

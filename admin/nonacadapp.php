@@ -568,31 +568,6 @@
             // 'order': [[1, 'asc']]	
         });
 
-        // $('#sndbirth').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#snasprc').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#snapgm').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#sntbytpic').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#snpbrgyin').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#snpscef').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-
 // Add
     $('#add_nonacad').click(function(){
 

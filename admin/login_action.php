@@ -27,19 +27,10 @@ if(isset($_POST["admin_email_address"]))
 	if($total_row == 0)
 	{
 		$object->query = "
-			SELECT * FROM tbl_secretary 
-			WHERE doctor_email_address = :admin_email_address
+			SELECT * FROM tbl_student 
+			WHERE semail = :admin_email_address
 		";
 		$object->execute($data);
-
-	$total_row = $object->row_count();
-
-    // if($total_row == 0){
-	// 	$object->query = "
-	// 		SELECT * FROM tbl_student 
-	// 		WHERE patient_email_address = :admin_email_address
-	// 	";
-	// 	$object->execute($data);
 
 		if($object->row_count() == 0)
 		{
@@ -51,32 +42,31 @@ if(isset($_POST["admin_email_address"]))
 
 			foreach($result as $row)
 			{
-				if($row["doctor_status"] == 'Inactive')
+				if($row["s_account_status"] == 'Inactive')
 				{
 					$error = '<div class="alert alert-danger">Your account is Inactive, Contact Admin</div>';
 				}
+				if($row["s_email_verify"] == 'No')
+				{
+					$error = '<div class="alert alert-danger">Your Email is not verified, Please click link receive from your Email</div>';
+				}
 				else
 				{
-					if($_POST["admin_password"] == $row["doctor_password"])
+					
+					if(password_verify($_POST["admin_password"], $row["spass"]))
 					{
-						$_SESSION['admin_id'] = $row['doctor_id'];
-						$_SESSION['type'] = 'Doctor';
-						$url = $object->base_url . 'admin/doctor_schedule.php';
+						$_SESSION['admin_id'] = $row['s_id'];
+						$_SESSION['type'] = 'Student';
+						$url = $object->base_url . 'admin/student_dashboard.php';
 					}
-					// if($_POST["admin_password"] == $row["patient_password"])
-					// {
-					// 	$_SESSION['admin_id'] = $row['patient_id'];
-					// 	$_SESSION['type'] = 'Patient';
-					// 	$url = $object->base_url . 'admin/dashboard.php';
-					// }
 					else
 					{
 						$error = '<div class="alert alert-danger">Wrong Password</div>';
 					}
+
 				}
 			}
 		}
-	// }
 	}
 	else
 	{
@@ -86,7 +76,7 @@ if(isset($_POST["admin_email_address"]))
 
 		foreach($result as $row)
 		{
-			if($_POST["admin_password"] == $row["admin_password"])
+			if(password_verify($_POST["admin_password"], $row["admin_password"]))
 			{
 				$_SESSION['admin_id'] = $row['admin_id'];
 				$_SESSION['type'] = 'Admin';

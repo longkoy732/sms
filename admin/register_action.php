@@ -3,113 +3,170 @@
 // register_action.php
 
 include('../class/dbcon.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 $object = new sms;
 
-if($_POST['action'] == 'student_register')
+    
+
+if(isset($_POST["action"]))
 {
-    $error = '';
-
-    $success = '';
-
-    $data = array(
-        ':ss_id'	=>	$_POST["ss_id"]
-    );
-
-    $object->query = "
-    SELECT * FROM tbl_sample
-    WHERE ss_id = :ss_id
-    ";
-
-    $object->execute($data);
-
-    if($object->row_count() > 0)
+    if($_POST['action'] == 'ssid_verify')
     {
-        $error = '<div class="alert alert-danger">School ID Number Already Exists</div>';
-    }
-    else
-    {
+      $error = '';
+  
+      $success = '';
+  
+      $data = array(
+          ':vss_id'	    =>	$_POST["vss_id"],
+          ':vslname'	=>	$_POST["vslname"],
+          ':vsdbirth'	=>	$_POST["vsdbirth"]
+      );
+  
+      $object->query = "
+      SELECT * FROM tbl_student
+      WHERE ss_id = :vss_id AND slname = :vslname AND sdbirth = :vsdbirth
+      ";
+  
+      $object->execute($data);
+  
+      if($object->row_count() == 0)
+      {
+          $error = '<div class="alert alert-danger">School Data Not Exists</div>';
+      }
+      else{
+
+          if($error == ''){
+
+            $success = '<div class="alert alert-success">School Data Exists</div>';
         
+          } 
+      }
+    
+      $output = array(
+          'error'	=>	$error,
+          'success'	=>	$success
+      );
+      
+      echo json_encode($output);
+    }
+
+    if($_POST['action'] == 'student_register')
+    {
+        $error = '';
+
+        $success = '';
+
+        $pass = '';
+
         $data = array(
-            ':ss_id'		                =>	$object->clean_input($_POST["ss_id"]),
-            ':sfname'				        =>	$object->clean_input($_POST["sfname"]),
-            ':smname'			            =>	$object->clean_input($_POST["smname"]),
-            ':slname'			            =>	$object->clean_input($_POST["slname"])
-            // ':snext'		                =>	$object->clean_input($_POST["snext"])
-            // ':sdbirth'				        =>	$object->clean_input($_POST["sdbirth"]),
-            // ':sgender'				        =>	$object->clean_input($_POST["sgender"]),
-            // ':saddress'				        =>	$object->clean_input($_POST["saddress"]),
-            // ':szcode'		                =>	$object->clean_input($_POST["szcode"]),
-            // ':scontact'				        =>	$object->clean_input($_POST["scontact"]),
-            // ':semail'			            =>	$object->clean_input($_POST["semail"]),
-            // ':sctship'			            =>	$object->clean_input($_POST["sctship"]),
-            // ':scivilstat'		            =>	$object->clean_input($_POST["scivilstat"]),
-            // ':sdisability'		            =>	$object->clean_input($_POST["sdisability"]),
-            // ':s4psno'			            =>	$object->clean_input($_POST["s4psno"]),
-            // ':spwdid'			            =>	$object->clean_input($_POST["spwdid"]),
-            // ':srappsship'		            =>	$object->clean_input($_POST["srappsship"]),
-            // ':sgfname'		                =>	$object->clean_input($_POST["sgfname"]),
-            // ':sgmname'				        =>	$object->clean_input($_POST["sgmname"]),
-            // ':sglname'			            =>	$object->clean_input($_POST["sglname"]),
-            // ':sgnext'			            =>	$object->clean_input($_POST["sgnext"]),
-            // ':sglstatus'		            =>	$object->clean_input($_POST["sglstatus"]),
-            // ':sgaddress'			        =>	$object->clean_input($_POST["sgaddress"]),
-            // ':sgeduc'				        =>	$object->clean_input($_POST["sgeduc"]),
-            // ':sgcontact'			        =>	$object->clean_input($_POST["sgcontact"]),
-            // ':sgoccu'		                =>	$object->clean_input($_POST["sgoccu"]),
-            // ':sgcompany'			        =>	$object->clean_input($_POST["sgcompany"]),
-            // ':sffname'			            =>	$object->clean_input($_POST["sffname"]),
-            // ':sfmname'			            =>	$object->clean_input($_POST["sfmname"]),
-            // ':sflname'		                =>	$object->clean_input($_POST["sflname"]),
-            // ':sfnext'				        =>	$object->clean_input($_POST["sfnext"]),
-            // ':sflstatus'			        =>	$object->clean_input($_POST["sflstatus"]),
-            // ':sfaddress'			        =>	$object->clean_input($_POST["sfaddress"]),
-            // ':sfeduc'		                =>	$object->clean_input($_POST["sfeduc"]),
-            // ':sfcontact'		            =>	$object->clean_input($_POST["sfcontact"]),
-            // ':sfoccu'			            =>	$object->clean_input($_POST["sfoccu"]),
-            // ':sfcompany'			        =>	$object->clean_input($_POST["sfcompany"]),
-            // ':smfname'			            =>	$object->clean_input($_POST["smfname"]),
-            // ':smmname'			            =>	$object->clean_input($_POST["smmname"]),
-            // ':smlname'		                =>	$object->clean_input($_POST["smlname"]),
-            // ':smnext'				        =>	$object->clean_input($_POST["smnext"]),
-            // ':smlstatus'			        =>	$object->clean_input($_POST["smlstatus"]),
-            // ':smaddress'			        =>	$object->clean_input($_POST["smaddress"]),
-            // ':scsadd'		                =>	$object->clean_input($_POST["scsadd"]),
-            // ':scschooltype'		            =>	$object->clean_input($_POST["scschooltype"]),
-            // ':sccourse'			            =>	$object->clean_input($_POST["sccourse"]),
-            // ':sccourseprio'			        =>	$object->clean_input($_POST["sccourseprio"]),
-            // ':snsibling'			        =>	$object->clean_input($_POST["snsibling"]),
-            // ':spcyincome'			        =>	$object->clean_input($_POST["spcyincome"]),
-            // ':spschname'			        =>	$object->clean_input($_POST["spschname"]),
-            // ':spsaddress'			        =>	$object->clean_input($_POST["spsaddress"]),
-            // ':spstype'		                =>	$object->clean_input($_POST["spstype"]),
-            // ':spscourse'	                =>	$object->clean_input($_POST["spscourse"]),
-            // ':spsyrlvl'			            =>	$object->clean_input($_POST["spsyrlvl"]),
-            // ':scsintend'			        =>	$object->clean_input($_POST["scsintend"]),
-            // ':scsadd'		                =>	$object->clean_input($_POST["scsadd"]),
-            // ':scschooltype'	                =>	$object->clean_input($_POST["scschooltype"]),
-            // ':sccourse'			            =>	$object->clean_input($_POST["sccourse"]),
-            // ':sccourseprio'			        =>	$object->clean_input($_POST["sccourseprio"]),
-            // ':scsyrlvl'			            =>	$object->clean_input($_POST["scsyrlvl"]),
-            // ':spass'			            =>	$object->clean_input($_POST["spass"]),
-            // ':student_added_on'				=>	$object->now
+            ':semail'	=>	$_POST["semail"]
         );
 
         $object->query = "
-        INSERT INTO tbl_sample 
-        (ss_id, sfname, smname, slname) 
-        VALUES (:ss_id, :sfname, :smname, :slname)
+        SELECT * FROM tbl_student
+        WHERE semail = :semail AND s_email_verify = 'Yes'
         ";
 
         $object->execute($data);
 
+        if($object->row_count() > 0)
+        {
+            $error = '<div class="alert alert-danger">Email Already Exists</div>';
+        }
+        else
+        {
+
+            $object->query = "
+            UPDATE tbl_student 
+            SET spass = :spass, 
+            s_added_on = :s_added_on,
+            s_verification_code = :s_verification_code,
+            s_email_verify = :s_email_verify
+            WHERE ss_id = '".$_POST["vss_id"]."'          
+            ";
+
+            // Generate Verifcation Code
+            $s_verification_code = md5(uniqid());
+            // Generate Random Password
+            $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*_";
+            $password = substr( str_shuffle( $chars ), 0, 8 );
+
+            $hash = password_hash($password, PASSWORD_ARGON2I);
+
+            $data = array(
+                ':spass'				        =>	$hash,
+                ':s_added_on'				    =>	$object->now,
+                ':s_verification_code'	        =>	$s_verification_code,
+                ':s_email_verify'			    =>	'No'
+            );
+
+                // Load composer's autoloader
+                require '../vendor/autoload.php';
+            
+                $mail = new PHPMailer(true);                            
+                try {
+                    //Server settings
+                    $mail->isSMTP();                                     
+                    $mail->Host = 'smtp.gmail.com';                      
+                    $mail->SMTPAuth = true;                             
+                    $mail->Username = 'unswaa20@gmail.com';     
+                    $mail->Password = 'sio@1231999';             
+                    $mail->SMTPOptions = array(
+                        'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                        )
+                    );                         
+                    $mail->SMTPSecure = 'ssl';                           
+                    $mail->Port = 465;                                   
+            
+                    //Send Email
+                    $mail->setFrom('unswaa20@gmail.com');
+                    $mail->FromName = 'Unswaa20';
+                    
+                    //Recipients
+                    $mail->addAddress($_POST["semail"]);            
+                    $mail->addReplyTo('unswaa20@gmail.com');
+                    $mail->WordWrap = 50;
+
+                    //Content
+                    $mail->isHTML(true);                                  
+                    $mail->Subject = 'Verification code for Verify Your Email Address';
+                    $message_body = '
+                    <p>For verify your email address, Please click on this <a href="'.$object->base_url.'admin/register_verify.php?code='.$s_verification_code.'"><b>link</b></a>.</p>
+                    <p>Input this information to login.</p>
+                    <p>Username: '.$_POST["semail"].'</p>
+                    <p>Password: '.$password.'</p>
+                    <p>Sincerely,</p>
+                    <p>Unswaa20</p>
+                    ';
+                    $mail->Body = $message_body;
+            
+                    $mail->send();
+
+                    $success = '<div class="alert alert-success">Please Check Your Email for email Verification</div>';
+
+                } catch (Exception $e) {
+                    $error = '<div class="alert alert-danger">' . $mail->ErrorInfo . '</div>';
+                }
+                // echo $hash;
+                
+                // $pass = $password;
+
+                $object->execute($data);
+        }
+
+        $output = array(
+            'pass'		=>	$pass,
+            'error'		=>	$error,
+            'success'	=>	$success
+        );
+        echo json_encode($output);
     }
 
-    $output = array(
-        'error'		=>	$error,
-        'success'	=>	$success
-    );
-    echo json_encode($output);
 }
 
 ?>

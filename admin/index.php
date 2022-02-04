@@ -7,7 +7,7 @@ $object = new sms;
 
 if($object->is_login())
 {
-    header("location:".$object->base_url."admin/dashboard.php");
+  header("location:".$object->base_url."admin/dashboard.php");
 }
 
 ?>
@@ -27,9 +27,7 @@ if($object->is_login())
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -88,6 +86,14 @@ if($object->is_login())
          <form method="post" id="login_form">
             <h1 class="h3 mb-3 fw-normal">Scholarship Management System</h1>
             <span id="error"></span>
+            <?php
+              if(isset($_SESSION["success_message"]))
+              {
+                echo $_SESSION["success_message"];
+                unset($_SESSION["success_message"]);
+              }
+            ?>
+            <span id="message"></span>
             <div class="form-group">
                 <input type="text" name="admin_email_address" id="admin_email_address" class="form-control" required autofocus data-parsley-type="email" data-parsley-trigger="keyup" placeholder="Enter Email Address..." />
             </div>
@@ -161,7 +167,7 @@ $(document).ready(function(){
 });
 
 document. getElementById("register_button"). onclick = function () {
-location. href = "reg.php";
+location. href = "register.php";
 };
 
 </script>

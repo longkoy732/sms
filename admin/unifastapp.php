@@ -408,27 +408,6 @@
             // 'order': [[1, 'asc']]	
         });
 
-        // $('#susdbirth').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#sudrpic').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#sudrpsa').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#sudrobr').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-        // $('#susdfilled').datepicker({
-        //     format: "yyyy-mm-dd",
-        //     autoclose: true
-        // });
-
 // Add 
     $('#add_unifast').click(function(){
 
