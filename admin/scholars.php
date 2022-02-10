@@ -15,6 +15,13 @@
 		header("location:".$object->base_url."");
 	}
 
+	// $object->query = "
+    // SELECT DISTINCT s_scholarship_type FROM tbl_student 
+	// ORDER BY s_scholarship_type ASC
+    // ";
+
+	// $result = $object->get_result();
+
 	include('header.php');
 
 	?>
@@ -33,6 +40,7 @@
 					<div class="col" align="center">
 						<button type="button" name="add_csv" id="add_csv" class="btn btn-success btn-circle btn-sm"><i class="fas fa-file-excel"></i></button>
 						<button type="button" name="add_pdf" id="add_pdf" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-file-pdf"></i></button>
+						<button type="button" name="bulk_email" id="bulk_email" class="btn btn-info btn-circle btn-sm"><i class="fas fa-envelope"></i></button>
 					</div>
 					<div class="col" align="right">
 						<div class="dropdown">
@@ -51,14 +59,26 @@
 				</div>
 			</div>
 			<div class="card-body">
+				<!-- <select name="multi_search_filter" id="multi_search_filter" multiple class="form-control selectpicker">
+				<?php
+				foreach($result as $row)
+				{
+					// echo '<option value="'.$row["s_scholarship_type"].'">'.$row["s_scholarship_type"].'</option>';	
+				}
+				?>
+				</select>
+				<input type="hidden" name="hidden_s_scholarship_type" id="hidden_s_scholarship_type" />
+				<div style="clear:both"></div>
+				<br /> -->
 				<div class="table-responsive">
-					<table class="table table-bordered" id="acad_table" width="100%" cellspacing="0">
+					<table class="table table-bordered" id="scholars_table" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 								<th>Select</th>
 								<th>Last Name</th>
 								<th>First Name</th>
-								<th>Address</th>
+								<th>Current Course</th>
+								<th>Current Year Level</th>
 								<th>Contact No.</th>
 								<th>Email</th>
 								<th>Status</th>
@@ -757,7 +777,7 @@
                                     <option value="Sr.">Sr.</option>
                                     </select>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="col-xs-12 col-sm-12 col-md-5">
                                 <label>Gender<span class="text-danger">*</label>
                                     <select name="susgender" id="susgender" class="form-control" required>
                                     <option value="">-Select-</option>
@@ -765,13 +785,17 @@
                                     <option value="Female">Female</option>
                                     </select>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="col-xs-12 col-sm-12 col-md-5 offset-md-2">
                                     <label>Date of Birth<span class="text-danger">*</label>
                                     <input type="date" name="susdbirth" id="susdbirth" autocomplete="off" class="form-control" required>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="col-xs-12 col-sm-12 col-md-5">
                                     <label>Contact No.<span class="text-danger">*</span></label>
                                     <input type="text" name="suscontact" id="suscontact" class="form-control" required/>
+                                </div>
+								<div class="col-xs-12 col-sm-12 col-md-5 offset-md-2">
+                                	<label>Email Address<span class="text-danger">*</span></label>
+                                    <input type="text" name="susemail" id="susemail" class="form-control" required/>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <label>Permanent Home Address<span class="text-danger">*</span></label>
@@ -781,19 +805,38 @@
                                     <label>Previous School Attended<span class="text-danger">*</span></label>
                                     <textarea type="text" name="suspschname" id="suspschname" class="form-control" required data-parsley-trigger="keyup"></textarea>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="col-xs-12 col-sm-12 col-md-5">
                                 	<label>Course/Program<span class="text-danger">*</span></label>
                                     <input type="text" name="suspscourse" id="suspscourse" class="form-control" required/>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="col-xs-12 col-sm-12 col-md-5 offset-md-2">
                                 	<label>Year Level<span class="text-danger">*</span></label>
                                     <input type="text" name="suspsyrlvl" id="suspsyrlvl" class="form-control" required/>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                	<label>Email Address<span class="text-danger">*</span></label>
-                                    <input type="text" name="susemail" id="susemail" class="form-control" required/>
-                                </div>
-                            </div>
+								<div class="col-xs-12 col-sm-12 col-md-5">
+									<label>Student Current Course<span class="text-danger">*</span></label>
+									<select name="susccourse" id="susccourse" class="form-control" required>
+									<option value="">-Select-</option>
+									<option value="BSIT">BSIT</option>
+									<option value="BSBA">BSBA</option>
+									<option value="BEED">BEED</option>
+									<option value="BSED">BSED</option>
+									<option value="BSCRIM">BSCRIM</option>
+									<option value="BSHM">BSHM</option>
+									<option value="BSTM">BSTM</option>
+									</select>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-5 offset-md-2">
+									<label>Student Current Year Level<span class="text-danger">*</span></label>
+									<select name="suscsyrlvl" id="suscsyrlvl" class="form-control" required>
+									<option value="">-Select-</option>
+									<option value="1st Year">1st Year</option>
+									<option value="2nd Year">2nd Year</option>
+									<option value="3rd Year">3rd Year</option>
+									<option value="4th Year">4th Year</option>
+									</select>
+								</div>
+                        </div>
                         </div>
                         </div>
                         </div>
@@ -1110,19 +1153,38 @@
                                             <label>School Address <span class="text-danger">*</span></label>
                                             <textarea type="text" name="scscsadd" id="scscsadd" class="form-control" required data-parsley-trigger="keyup"></textarea>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-4">
-                                        <label>Type of School<span class="text-danger">*</span></label>
+                                        <div class="col-xs-12 col-sm-12 col-md-5">
+                                        	<label>Type of School<span class="text-danger">*</span></label>
                                             <select name="scscschooltype" id="scscschooltype" class="form-control" required>
                                             <option value="">Select Type</option>
                                             <option value="Private">Private</option>
                                             <option value="Public">Public</option>
                                             </select>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-4">
-                                            <label>Course<span class="text-danger">*</span></label>
-                                            <input type="text" name="scsccourse" id="scsccourse" class="form-control" required/>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-4">
+										<div class="col-xs-12 col-sm-12 col-md-5 offset-md-2">
+											<label>Current Course<span class="text-danger">*</span></label>
+											<select name="scsccourse" id="scsccourse" class="form-control" required>
+											<option value="">-Select-</option>
+											<option value="BSIT">BSIT</option>
+											<option value="BSBA">BSBA</option>
+											<option value="BEED">BEED</option>
+											<option value="BSED">BSED</option>
+											<option value="BSCRIM">BSCRIM</option>
+											<option value="BSHM">BSHM</option>
+											<option value="BSTM">BSTM</option>
+											</select>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-5">
+											<label>Current Year Level<span class="text-danger">*</span></label>
+											<select name="scscsyrlvl" id="scscsyrlvl" class="form-control" required>
+											<option value="">-Select-</option>
+											<option value="1st Year">1st Year</option>
+											<option value="2nd Year">2nd Year</option>
+											<option value="3rd Year">3rd Year</option>
+											<option value="4th Year">4th Year</option>
+											</select>
+										</div>
+                                        <div class="col-xs-12 col-sm-12 col-md-5 offset-md-2">
                                         	<label>Course Priority/Not Priority<span class="text-danger">*</span></label>
                                             <select name="scsccourseprio" id="scsccourseprio" class="form-control" required>
                                             <option value="">Select </option>
@@ -1193,6 +1255,46 @@
             </form>
         </div>
     </div>
+<!-- Send Email Modal -->
+	<div id="emailModal" class="modal fade">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable">
+			<form method="post" id="email_form">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modal_title" style="font-weight: bold; font-size: 20px;">Send Email</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="card">
+							<div class="card-header" style="font-weight: bold; font-size: 18px;">Message</div>
+							<div class="card-body">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<label>Send to:<span class="text-danger">*</span></label>
+											<input type="text" name="semail" id="semail" class="form-control" autocomplete="off" required/>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<label>Subject:<span class="text-danger">*</span></label>
+											<input type="text" name="emailsubject" id="emailsubject" class="form-control" autocomplete="off" required/>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<label>Message:<span class="text-danger">*</span></label>
+											<textarea type="text" name="emailmessage" id="emailmessage" rows="3" autocomplete="off" class="form-control" required data-parsley-trigger="keyup"></textarea>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" name="email_send" id="email_send" class="btn btn-success">Send</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 <!-- View Acad Modal -->
 	<div id="viewacadModal" class="modal fade">
 		<div class="modal-dialog modal-dialog-scrollable">
@@ -1346,7 +1448,7 @@
 	<script>
 	$(document).ready(function(){
 // Table Function
-	var dataTable = $('#acad_table').DataTable({
+	var dataTable = $('#scholars_table').DataTable({
 		"processing" : true,
 		"serverSide" : true,
 		"order" : [],
@@ -1369,6 +1471,28 @@
 		},
 		// 'order': [[1, 'asc']]	
 	});
+
+// Multi Search Filter
+	// load_data();
+	
+	// function load_data(query='')
+	// {
+	// 	$.ajax({
+	// 		url:"scholars_action.php",
+	// 		method:"POST",
+	// 		data:{query:query},
+	// 		success:function(data)
+	// 		{
+	// 			$('tbody').html(data);
+	// 		}
+	// 	})
+	// }
+
+	// $('#multi_search_filter').change(function(){
+	// 	$('#hidden_s_scholarship_type').val($('#multi_search_filter').val());
+	// 	var query = $('#hidden_s_scholarship_type').val();
+	// 	load_data(query);
+	// });
 
 // add_acad
 	$('#add_acad').click(function(){
@@ -1424,7 +1548,7 @@
 
 	$('#unifastModal').modal('show');
 
-	$('#sns_id').attr('disabled', false);
+	$('#sus_id').attr('disabled', false);
 
 	$('#form_message').html('');
 
@@ -1824,6 +1948,86 @@
 			})
 			
 		});	
+// Bulk Email
+	$('#bulk_email').click(function(){
+
+		$('#email_form')[0].reset();
+
+		$('#email_form').parsley().reset();
+
+		var checkbox = $('.checkbox:checked');
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).data("email"));
+            });
+
+			$("input[name='semail']").val(checkbox_value.join(", "));
+
+			$('#emailModal').modal('show');
+
+        }
+        else
+        {
+            alert("Please select at least one records");
+        }
+
+	});
+// Send Email
+	$('#email_send').click(function(){
+
+	$(this).attr('disabled', 'disabled');
+	var id  = $(this).attr("id");
+	var action = $(this).data("action");
+	var email_data = [];
+		$('.checkbox').each(function(){
+			if($(this).prop("checked") == true)
+			{
+				email_data.push({
+					email: $(this).data("email")
+				});
+			} 
+		});
+	var emailsubject = $('#emailsubject').val();
+	var emailmessage = $('#emailmessage').val();
+
+	$.ajax({
+		url:"scholars_action.php",
+		method:"POST",
+		data:{email_data:email_data, emailmessage:emailmessage, emailsubject:emailsubject, action:'send_email'},
+		dataType:'JSON',
+		beforeSend:function(){
+			$('#email_send').html('Sending...');
+			$('#email_send').addClass('btn-danger');
+		},
+		success:function(data){
+			if(data.error !== '')
+			{
+				$('#message').html(data.error);
+			}
+			if(data.success != '')
+			{
+				$('#emailModal').modal('hide');
+				$('#message').html(data.success);
+
+				setTimeout(function(){
+
+					$('#message').html('');
+
+				}, 3000);
+
+				setTimeout(function(){
+
+					location.reload();  //Refresh page
+
+				}, 5000);
+			}
+
+		}
+	})
+
+	});
 
 // Edit 
 	$(document).on('click', '.edit_button', function(){
@@ -2044,6 +2248,8 @@
 									$('#suspschname').val(data.suspschname);
 									$('#suspscourse').val(data.suspscourse);
 									$('#suspsyrlvl').val(data.suspsyrlvl);
+									$('#susccourse').val(data.susccourse);
+									$('#suscsyrlvl').val(data.suscsyrlvl);
 									$('#susemail').val(data.susemail);     
 						// Family Details
 							// Father Details
@@ -2143,6 +2349,7 @@
 						$('#scscsadd').val(data.scscsadd);
 						$('#scscschooltype').val(data.scscschooltype);
 						$('#scsccourse').val(data.scsccourse);
+						$('#scscsyrlvl').val(data.scscsyrlvl);
 						$('#scsccourseprio').val(data.scsccourseprio);
 				// Requirement Details
 						$('#scsdsprc').val(data.scsdsprc);
@@ -2286,9 +2493,11 @@
 					html += '<tr><th width="40%" class="text-right">Date of Birth</th><td width="60%">'+data.sdbirth+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Citizenship</th><td width="60%">'+data.sctship+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.saddress+'</td></tr>';
-					html += '<tr><th width="40%" class="text-right">smname Address</th><td width="60%">'+data.semail+'</td></tr>';
+					html += '<tr><th width="40%" class="text-right">Email Address</th><td width="60%">'+data.semail+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.scontact+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Gender</th><td width="60%">'+data.sgender+'</td></tr>';
+					html += '<tr><th width="40%" class="text-right">Current Course</th><td width="60%">'+data.sccourse+'</td></tr>';
+					html += '<tr><th width="40%" class="text-right">Current Year Level</th><td width="60%">'+data.scsyrlvl+'</td></tr>';
 				// Family Details
 					// Guardian Details
 					html += '<tr><th width="40%" class="text-left" style="font-size:20px">Family Details</th><td width="60%"></td></tr>';
@@ -2373,6 +2582,8 @@
 				html += '<tr><th width="40%" class="text-right">Address</th><td width="60%">'+data.snaddress+'</td></tr>';
 				html += '<tr><th width="40%" class="text-right">Email Address</th><td width="60%">'+data.snemail+'</td></tr>';
 				html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.sncontact+'</td></tr>';
+				html += '<tr><th width="40%" class="text-right">Current Course</th><td width="60%">'+data.snccourse+'</td></tr>';
+				html += '<tr><th width="40%" class="text-right">Current Year Level</th><td width="60%">'+data.sncsyrlvl+'</td></tr>';
 			// Family Details
                 // Guardian Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Family Details</th><td width="60%"></td></tr>';
@@ -2467,9 +2678,11 @@
 					html += '<tr><th width="40%" class="text-right">Contact Number</th><td width="60%">'+data.suscontact+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Permanent Home Address</th><td width="60%">'+data.susaddress+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Previous School Attended</th><td width="60%">'+data.suspschname+'</td></tr>';
-					html += '<tr><th width="40%" class="text-right">Course/Program</th><td width="60%">'+data.suspscourse+'</td></tr>';
-					html += '<tr><th width="40%" class="text-right">Year Level</th><td width="60%">'+data.suspsyrlvl+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Email Address</th><td width="60%">'+data.susemail+'</td></tr>';
+					html += '<tr><th width="40%" class="text-right">Previous Course/Program</th><td width="60%">'+data.suspscourse+'</td></tr>';
+					html += '<tr><th width="40%" class="text-right">Previous Year Level</th><td width="60%">'+data.suspsyrlvl+'</td></tr>';
+					html += '<tr><th width="40%" class="text-right">Current Course</th><td width="60%">'+data.susccourse+'</td></tr>';
+					html += '<tr><th width="40%" class="text-right">Current Year Level</th><td width="60%">'+data.suscsyrlvl+'</td></tr>';
 				// Family Details
 					// Father Details
 					html += '<tr><th width="40%" class="text-left" style="font-size:18px">Father Details</th><td width="60%"></td></tr>';
@@ -2570,6 +2783,7 @@
 					html += '<tr><th width="40%" class="text-right">School Address</th><td width="60%">'+data.scscsadd+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Type of School</th><td width="60%">'+data.scscschooltype+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Course</th><td width="60%">'+data.scsccourse+'</td></tr>';
+					html += '<tr><th width="40%" class="text-right">Year Level</th><td width="60%">'+data.scscsyrlvl+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Course Priority/Not Priority</th><td width="60%">'+data.scsccourseprio+'</td></tr>';
 				// Requirement Details
 					html += '<tr><th width="40%" class="text-left" style="font-size:20px">Requirement Details</th><td width="60%"></td></tr>';

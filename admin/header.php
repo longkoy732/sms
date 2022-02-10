@@ -73,26 +73,31 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    
-                </div>
-                <i class="fas fa-laugh-wink"></i>
+                <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="student_dashboard.php"> -->
+                <!-- <div class="sidebar-brand-icon rotate-n-15">
+                </div> -->
+                <!-- <i class="fas fa-laugh-wink"></i> -->
                 <?php 
                 if($_SESSION['type'] == 'Admin')
                 {
                 ?>
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
+                    <i class="fas fa-laugh-wink"></i>
                     <div class="sidebar-brand-text mx-3">Admin</div>
+                    </a>
                 <?php 
                 }
-                else
+                if($_SESSION['type'] == 'Student')
                 {
                 ?>
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="student_dashboard.php">
+                    <i class="fas fa-laugh-wink"></i>
                     <div class="sidebar-brand-text mx-3">Student</div>
+                    </a>
                 <?php 
                 }
                 ?>
-            </a>
+                
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -113,6 +118,12 @@
                 <a class="nav-link collapsed" href="scholars.php">
                     <i class="fas fa-user-clock"></i>
                     <span>Scholars</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="csv.php">
+                    <i class="fas fa-file-excel"></i>
+                    <span>CSV</span>
                 </a>
             </li>
             <!-- <li class="nav-item">
@@ -261,7 +272,7 @@
                             foreach($user_result as $row)
                             {
                                 $user_name = $row['semail'];
-                                // $user_profile_image = $row['doctor_profile_image'];
+                                $user_profile_image = '../img/undraw_profile.svg';
                             }
                         }
 

@@ -11,26 +11,30 @@ $object = new sms;
 	{
 		if($_POST["action"] == 'fetch')
 		{
-			$order_column = array('slname', 'sfname', 'smname', 'saddress', 'semail', 'scontact', 'sgender', 's_scholar_stat', 's_applied_on');
+
+			$order_column = array('slname', 'sfname', 'scontact', 'semail', 's_scholar_stat', 's_applied_on');
 			/* Common Data
 				+slname, +sfname, +smname, +sdbirth, +scontact, +sgender, +semail, +s_scholar_stat		
 			*/
 			$output = array();
 			
 			$main_query = "
-			SELECT * FROM tbl_student WHERE s_scholar_stat = 'Pending' OR s_scholar_stat = 'Approved' OR s_scholar_stat = 'Rejected'
+			SELECT * FROM tbl_student WHERE s_scholar_stat != ''
 			";
 
 			$search_query = '';
 			
 			if(isset($_POST['search']['value']))
 			{
-				$search_query .= 'AND (slname LIKE "%'.$_POST['search']['value'].'%" 
-				OR sfname LIKE "%'.$_POST['search']['value'].'%" 
-				OR smname LIKE "%'.$_POST['search']['value'].'%" 
-				OR saddress LIKE "%'.$_POST['search']['value'].'%" 
-				OR scontact LIKE "%'.$_POST['search']['value'].'%"
-				OR semail LIKE "%'.$_POST['search']['value'].'%")';
+				
+				$search_query .= 'AND(slname LIKE "%'.$_POST['search']['value'].'%" '; 
+				$search_query .= 'OR sfname LIKE "%'.$_POST['search']['value'].'%" ';
+				$search_query .= 'OR sccourse LIKE "%'.$_POST['search']['value'].'%" ';
+				$search_query .= 'OR scsyrlvl LIKE "%'.$_POST['search']['value'].'%" ';
+				$search_query .= 'OR scontact LIKE "%'.$_POST['search']['value'].'%" ';
+				$search_query .= 'OR semail LIKE "%'.$_POST['search']['value'].'%" ';
+				$search_query .= 'OR s_scholar_stat LIKE "%'.$_POST['search']['value'].'%" ';
+				$search_query .= 'OR s_scholarship_type LIKE "%'.$_POST['search']['value'].'%" )';
 			}
 
 			if(isset($_POST["order"]))
@@ -39,7 +43,7 @@ $object = new sms;
 			}
 			else
 			{
-				$order_query = 'ORDER BY s_id ASC ';
+				$order_query = 'ORDER BY slname ASC ';
 			}
 
 			$limit_query = '';
@@ -70,13 +74,12 @@ $object = new sms;
 					foreach($result as $row)
 					{
 						$sub_array = array();
-						$sub_array[] = $check = '<div style="text-align: center;"><input type="checkbox" class="checkbox" value="'.$row["s_id"].'" /></div>';
+						$sub_array[] = $check = '<div style="text-align: center;"><input type="checkbox" name="checkbox" id="checkbox" class="checkbox" value="'.$row["s_id"].'" data-email="'.$row["semail"].'" /></div>';
 						$sub_array[] = $row["slname"];
 						$sub_array[] = $row["sfname"];
-						// $sub_array[] = $row["smname"];
-						$sub_array[] = $row["saddress"];
+						$sub_array[] = $row["sccourse"];
+						$sub_array[] = $row["scsyrlvl"];
 						$sub_array[] = $row["scontact"];
-						// $sub_array[] = $row["sgender"];
 						$sub_array[] = $row["semail"];
 						$status = '';
 						if($row["s_scholar_stat"] == 'Pending')
@@ -484,12 +487,12 @@ $object = new sms;
 			{
 				$object->query = "
 				INSERT INTO tbl_student
-				(s_id, slname, sfname, smname, snext, sgender, sdbirth, scontact, saddress, spschname, spscourse, 
-				spsyrlvl, semail, sffname, smfname, s4psno, spcyincome, spwdid, ssdfile, sdstbytpic, sdstbytpicstat, 
+				(s_id, slname, sfname, smname, snext, sgender, sdbirth, scontact, saddress, spschname, semail, spscourse, 
+				spsyrlvl, sccourse, scsyrlvl, sffname, smfname, s4psno, spcyincome, spwdid, ssdfile, sdstbytpic, sdstbytpicstat, 
 				sdspsa, sdspsastat, sdsbrgyin, sdsbrgyinstat, spass, s_verification_code, s_email_verify, 
 				s_account_status, s_scholar_stat, s_scholarship_type, s_applied_on) 
 				VALUES (:sus_id, :suslname, :susfname, :susmname, :susnext, :susgender, :susdbirth, :suscontact, 
-				:susaddress, :suspschname, :suspscourse, :suspsyrlvl, :susemail, :susffname, :susmfname, :sus4psno, 
+				:susaddress, :suspschname, :susemail, :suspscourse, :suspsyrlvl, :susccourse, :suscsyrlvl, :susffname, :susmfname, :sus4psno, 
 				:suspcyincome, :suspwdid, :sussdfile, :susdstbytpic, :susdstbytpicstat, :susdspsa, :susdspsastat, 
 				:susdsbrgyin, :susdsbrgyinstat, :suspass, :sus_verification_code, 'No', 'Active', 'Pending', 
 				'UNIFAST', '$object->now')";
@@ -516,10 +519,12 @@ $object = new sms;
 						':susdbirth'					=>	$object->clean_input($_POST["susdbirth"]),
 						':suscontact'					=>	$object->clean_input($_POST["suscontact"]),
 						':susaddress'					=>	$object->clean_input($_POST["susaddress"]),
+						':susemail'				    	=>	$object->clean_input($_POST["susemail"]),
 						':suspschname'					=>	$object->clean_input($_POST["suspschname"]),
 						':suspscourse'					=>	$object->clean_input($_POST["suspscourse"]),
 						':suspsyrlvl'				    =>	$object->clean_input($_POST["suspsyrlvl"]),
-						':susemail'				    	=>	$object->clean_input($_POST["susemail"]),
+						':susccourse'					=>	$object->clean_input($_POST["susccourse"]),
+						':suscsyrlvl'				    =>	$object->clean_input($_POST["suscsyrlvl"]),
 					// Family Details
 						// Father Details
 						':susffname'					=>	$object->clean_input($_POST["susffname"]),
@@ -638,12 +643,12 @@ $object = new sms;
 				(ss_id, sfname, smname, slname, snext, sdbirth, sgender, scivilstat, spbirth, saddress, szcode, 
 				spschname, spsaddress,  spstype, spsyrlvl, sctship, scontact, semail, sdisability, sffname, sflstatus, 
 				sfaddress, sfoccu, sfeduc, smfname, smlstatus, smaddress, smoccu, smeduc, spcyincome, snsibling, scsintend, 
-				scsadd, scschooltype, sccourse, sccourseprio, sdsprc, sdsprcstat, sdsbrgyin, sdsbrgyinstat, sdspgm, sdspgmstat, 
+				scsadd, scschooltype, sccourse, scsyrlvl, sccourseprio, sdsprc, sdsprcstat, sdsbrgyin, sdsbrgyinstat, sdspgm, sdspgmstat, 
 				spass, s_verification_code, s_email_verify, s_account_status, s_scholar_stat, s_scholarship_type, s_applied_on) 
 				VALUES (:scss_id, :scsfname, :scsmname, :scslname, :scsnext, :scsdbirth, :scsgender, :scscivilstat, :scspbirth, 
 				:scsaddress, :scszcode, :scspschname, :scspsaddress, :scspstype, :scspsyrlvl, :scsctship, :scscontact, :scsemail, 
 				:scsdisability, :scsffname, :scsflstatus, :scsfaddress, :scsfoccu, :scsfeduc, :scsmfname, :scsmlstatus, :scsmaddress, 
-				:scsmoccu, :scsmeduc, :scspcyincome, :scsnsibling, :scscsintend, :scscsadd, :scscschooltype, :scsccourse, 
+				:scsmoccu, :scsmeduc, :scspcyincome, :scsnsibling, :scscsintend, :scscsadd, :scscschooltype, :scsccourse, :scscsyrlvl, 
 				:scsccourseprio, :scsdsprc, :scsdsprcstat, :scsdsbrgyin, :scsdsbrgyinstat, :scsdspgm, :scsdspgmstat, :scspass, 
 				:sc_verification_code, 'No', 'Active', 'Pending', 'CHED', '$object->now')";
 				
@@ -699,6 +704,7 @@ $object = new sms;
 						':scscsadd'					    =>	$object->clean_input($_POST["scscsadd"]),
 						':scscschooltype'		  		=>	$object->clean_input($_POST["scscschooltype"]),
 						':scsccourse'				    =>	$object->clean_input($_POST["scsccourse"]),
+						':scscsyrlvl'				    =>	$object->clean_input($_POST["scscsyrlvl"]),
 						':scsccourseprio'				=>	$object->clean_input($_POST["scsccourseprio"]),
 					// Requirements Details
 						':scsdsprc'				   		=>	$object->clean_input($_POST["scsdsprc"]),
@@ -1088,65 +1094,65 @@ $object = new sms;
 
 		foreach($result as $row)
 		{
-	// Student ID Details
-			$data['sns_id'] = $row['ss_id'];
-	// Personal Details
-			$data['snfname'] = $row['sfname'];
-			$data['snmname'] = $row['smname'];
-			$data['snlname'] = $row['slname'];
-			$data['snnext'] = $row['snext'];
-			$data['sndbirth'] = $row['sdbirth'];
-			$data['sngender'] = $row['sgender'];
-			$data['snctship'] = $row['sctship'];
-			$data['snaddress'] = $row['saddress'];
-			$data['snemail'] = $row['semail'];
-			$data['sncontact'] = $row['scontact'];
-			$data['snccourse'] = $row['sccourse'];
-			$data['sncsyrlvl'] = $row['scsyrlvl'];
-	// Family Details
-		// Guardian Details
-			$data['sngfname'] = $row['sgfname'];
-			$data['sngaddress'] = $row['sgaddress'];
-			$data['sngcontact'] = $row['sgcontact'];
-			$data['sngoccu'] = $row['sgoccu'];
-			$data['sngcompany'] = $row['sgcompany'];
-		// Father Details
-			$data['snffname'] = $row['sffname'];
-			$data['snfaddress'] = $row['sfaddress'];
-			$data['snfcontact'] = $row['sfcontact'];
-			$data['snfoccu'] = $row['sfoccu'];
-			$data['snfcompany'] = $row['sfcompany'];
-		// Mother Details
-			$data['snmfname'] = $row['smfname'];
-			$data['snmaddress'] = $row['smaddress'];
-			$data['snmcontact'] = $row['smcontact'];
-			$data['snmoccu'] = $row['smoccu'];
-			$data['snmcompany'] = $row['smcompany'];
-			$data['snpcyincome'] = $row['spcyincome'];
-	// Application Details
-			$data['snrappnas'] = $row['srappnas'];
-			$data['snbos'] = $row['sbos'];
-			$data['snsskills'] = $row['ssskills'];
-			$data['sntwinterest'] = $row['stwinterest'];
-	// Education Details
-			$data['snpschname'] = $row['spschname'];
-			$data['snpsaddress'] = $row['spsaddress'];
-			$data['snpsyrlvl'] = $row['spsyrlvl']; 
-	// Requirement Details
-			$data['sndsprc'] = $row['sdsprc'];
-			$data['sndsprcstat'] = $row['sdsprcstat'];
-			$data['sndspgm'] = $row['sdspgm'];
-			$data['sndspgmstat'] = $row['sdspgmstat'];
-			$data['sndstbytpic'] = $row['sdstbytpic'];
-			$data['sndstbytpicstat'] = $row['sdstbytpicstat'];
-			$data['sndsbrgyin'] = $row['sdsbrgyin'];
-			$data['sndsbrgyinstat'] = $row['sdsbrgyinstat'];
-			$data['sndscef'] = $row['sdscef'];
-			$data['sndscefstat'] = $row['sdscefstat'];
-	// Scholar Type
-			$data['sn_scholarship_type'] = $row['s_scholarship_type'];
-			$data['sn_scholar_stat'] = $row['s_scholar_stat'];
-			$data['sn_applied_on'] = $row['s_applied_on'];
+		// Student ID Details
+				$data['sns_id'] = $row['ss_id'];
+		// Personal Details
+				$data['snfname'] = $row['sfname'];
+				$data['snmname'] = $row['smname'];
+				$data['snlname'] = $row['slname'];
+				$data['snnext'] = $row['snext'];
+				$data['sndbirth'] = $row['sdbirth'];
+				$data['sngender'] = $row['sgender'];
+				$data['snctship'] = $row['sctship'];
+				$data['snaddress'] = $row['saddress'];
+				$data['snemail'] = $row['semail'];
+				$data['sncontact'] = $row['scontact'];
+				$data['snccourse'] = $row['sccourse'];
+				$data['sncsyrlvl'] = $row['scsyrlvl'];
+		// Family Details
+			// Guardian Details
+				$data['sngfname'] = $row['sgfname'];
+				$data['sngaddress'] = $row['sgaddress'];
+				$data['sngcontact'] = $row['sgcontact'];
+				$data['sngoccu'] = $row['sgoccu'];
+				$data['sngcompany'] = $row['sgcompany'];
+			// Father Details
+				$data['snffname'] = $row['sffname'];
+				$data['snfaddress'] = $row['sfaddress'];
+				$data['snfcontact'] = $row['sfcontact'];
+				$data['snfoccu'] = $row['sfoccu'];
+				$data['snfcompany'] = $row['sfcompany'];
+			// Mother Details
+				$data['snmfname'] = $row['smfname'];
+				$data['snmaddress'] = $row['smaddress'];
+				$data['snmcontact'] = $row['smcontact'];
+				$data['snmoccu'] = $row['smoccu'];
+				$data['snmcompany'] = $row['smcompany'];
+				$data['snpcyincome'] = $row['spcyincome'];
+		// Application Details
+				$data['snrappnas'] = $row['srappnas'];
+				$data['snbos'] = $row['sbos'];
+				$data['snsskills'] = $row['ssskills'];
+				$data['sntwinterest'] = $row['stwinterest'];
+		// Education Details
+				$data['snpschname'] = $row['spschname'];
+				$data['snpsaddress'] = $row['spsaddress'];
+				$data['snpsyrlvl'] = $row['spsyrlvl']; 
+		// Requirement Details
+				$data['sndsprc'] = $row['sdsprc'];
+				$data['sndsprcstat'] = $row['sdsprcstat'];
+				$data['sndspgm'] = $row['sdspgm'];
+				$data['sndspgmstat'] = $row['sdspgmstat'];
+				$data['sndstbytpic'] = $row['sdstbytpic'];
+				$data['sndstbytpicstat'] = $row['sdstbytpicstat'];
+				$data['sndsbrgyin'] = $row['sdsbrgyin'];
+				$data['sndsbrgyinstat'] = $row['sdsbrgyinstat'];
+				$data['sndscef'] = $row['sdscef'];
+				$data['sndscefstat'] = $row['sdscefstat'];
+		// Scholar Type
+				$data['sn_scholarship_type'] = $row['s_scholarship_type'];
+				$data['sn_scholar_stat'] = $row['s_scholar_stat'];
+				$data['sn_applied_on'] = $row['s_applied_on'];
 		}
 
 		echo json_encode($data);
@@ -1179,6 +1185,8 @@ $object = new sms;
 			$data['suspschname'] = $row['spschname'];
 			$data['suspscourse'] = $row['spscourse'];
 			$data['suspsyrlvl'] = $row['spsyrlvl'];
+			$data['susccourse'] = $row['sccourse'];
+			$data['suscsyrlvl'] = $row['scsyrlvl'];
 			$data['susemail'] = $row['semail'];
 		// Family Details
 			// Father Details
@@ -1220,62 +1228,63 @@ $object = new sms;
 
         foreach($result as $row)
         {
-    // Student ID Details
-            $data['scss_id'] = $row['ss_id'];
-    // Personal Details
-            $data['scsfname'] = $row['sfname'];
-            $data['scsmname'] = $row['smname'];
-            $data['scslname'] = $row['slname'];
-            $data['scsnext'] = $row['snext'];
-            $data['scsdbirth'] = $row['sdbirth'];
-            $data['scsgender'] = $row['sgender'];
-            $data['scscivilstat'] = $row['scivilstat'];
-            $data['scspbirth'] = $row['spbirth'];
-            $data['scsaddress'] = $row['saddress'];
-            $data['scszcode'] = $row['szcode'];
-            $data['scspschname'] = $row['spschname'];
-            $data['scspsaddress'] = $row['spsaddress'];
-            $data['scspstype'] = $row['spstype'];
-            $data['scspsyrlvl'] = $row['spsyrlvl'];
-            $data['scsctship'] = $row['sctship'];
-            $data['scscontact'] = $row['scontact'];
-            $data['scsemail'] = $row['semail'];
-            $data['scsdisability'] = $row['sdisability'];
-    // Family Details
-        // Father Details
-            $data['scsffname'] = $row['sffname'];
-            $data['scsflstatus'] = $row['sflstatus'];
-            $data['scsfaddress'] = $row['sfaddress'];
-            $data['scsfoccu'] = $row['sfoccu'];
-            $data['scsfeduc'] = $row['sfeduc'];
-        // Mother Details
-            $data['scsmfname'] = $row['smfname'];
-            $data['scsmlstatus'] = $row['smlstatus'];
-            $data['scsmaddress'] = $row['smaddress'];
-            $data['scsmoccu'] = $row['smoccu'];
-            $data['scsmeduc'] = $row['smeduc'];
-            $data['scspcyincome'] = $row['spcyincome'];
-            $data['scsnsibling'] = $row['snsibling'];
-    // Education Details
-            $data['scscsintend'] = $row['scsintend'];
-            $data['scscsadd'] = $row['scsadd'];
-            $data['scscschooltype'] = $row['scschooltype']; 
-            $data['scsccourse'] = $row['sccourse'];
-            $data['scsccourseprio'] = $row['sccourseprio']; 
-    // Requirement Details
-            $data['scsdsprc'] = $row['sdsprc'];
-            $data['scsdsprcstat'] = $row['sdsprcstat'];
-            $data['scsdspgm'] = $row['sdspgm'];
-            $data['scsdspgmstat'] = $row['sdspgmstat'];
-            $data['scsdsbrgyin'] = $row['sdsbrgyin'];
-            $data['scsdsbrgyinstat'] = $row['sdsbrgyinstat'];
-	// Scholar Type
+		// Student ID Details
+				$data['scss_id'] = $row['ss_id'];
+		// Personal Details
+				$data['scsfname'] = $row['sfname'];
+				$data['scsmname'] = $row['smname'];
+				$data['scslname'] = $row['slname'];
+				$data['scsnext'] = $row['snext'];
+				$data['scsdbirth'] = $row['sdbirth'];
+				$data['scsgender'] = $row['sgender'];
+				$data['scscivilstat'] = $row['scivilstat'];
+				$data['scspbirth'] = $row['spbirth'];
+				$data['scsaddress'] = $row['saddress'];
+				$data['scszcode'] = $row['szcode'];
+				$data['scspschname'] = $row['spschname'];
+				$data['scspsaddress'] = $row['spsaddress'];
+				$data['scspstype'] = $row['spstype'];
+				$data['scspsyrlvl'] = $row['spsyrlvl'];
+				$data['scsctship'] = $row['sctship'];
+				$data['scscontact'] = $row['scontact'];
+				$data['scsemail'] = $row['semail'];
+				$data['scsdisability'] = $row['sdisability'];
+		// Family Details
+			// Father Details
+				$data['scsffname'] = $row['sffname'];
+				$data['scsflstatus'] = $row['sflstatus'];
+				$data['scsfaddress'] = $row['sfaddress'];
+				$data['scsfoccu'] = $row['sfoccu'];
+				$data['scsfeduc'] = $row['sfeduc'];
+			// Mother Details
+				$data['scsmfname'] = $row['smfname'];
+				$data['scsmlstatus'] = $row['smlstatus'];
+				$data['scsmaddress'] = $row['smaddress'];
+				$data['scsmoccu'] = $row['smoccu'];
+				$data['scsmeduc'] = $row['smeduc'];
+				$data['scspcyincome'] = $row['spcyincome'];
+				$data['scsnsibling'] = $row['snsibling'];
+		// Education Details
+				$data['scscsintend'] = $row['scsintend'];
+				$data['scscsadd'] = $row['scsadd'];
+				$data['scscschooltype'] = $row['scschooltype']; 
+				$data['scsccourse'] = $row['sccourse'];
+				$data['scscsyrlvl'] = $row['scsyrlvl'];
+				$data['scsccourseprio'] = $row['sccourseprio']; 
+		// Requirement Details
+				$data['scsdsprc'] = $row['sdsprc'];
+				$data['scsdsprcstat'] = $row['sdsprcstat'];
+				$data['scsdspgm'] = $row['sdspgm'];
+				$data['scsdspgmstat'] = $row['sdspgmstat'];
+				$data['scsdsbrgyin'] = $row['sdsbrgyin'];
+				$data['scsdsbrgyinstat'] = $row['sdsbrgyinstat'];
+		// Scholar Type
 			$data['scs_scholarship_type'] = $row['s_scholarship_type'];
 			$data['scs_scholar_stat'] = $row['s_scholar_stat'];
 			$data['scs_applied_on'] = $row['s_applied_on'];
-        }
+    	}
 
-        echo json_encode($data);
+    	echo json_encode($data);
     }
 
 // Edit Acad Query
@@ -1313,6 +1322,7 @@ $object = new sms;
 			sdbirth = :sdbirth,
 			sctship = :sctship,
 			saddress = :saddress,
+			semail = :semail,
 			scontact = :scontact,
 			sccourse = :sccourse,
 			scsyrlvl = :scsyrlvl,
@@ -1358,6 +1368,7 @@ $object = new sms;
 					':sgender'					  	=>	$object->clean_input($_POST["sgender"]),
 					':sctship'				    	=>	$object->clean_input($_POST["sctship"]),
 					':saddress'						=>	$object->clean_input($_POST["saddress"]),
+					':semail'						=>	$object->clean_input($_POST["semail"]),
 					':scontact'						=>	$object->clean_input($_POST["scontact"]),
 					':sccourse'						=>	$object->clean_input($_POST["sccourse"]),
 					':scsyrlvl'						=>	$object->clean_input($_POST["scsyrlvl"]),
@@ -1444,6 +1455,7 @@ $object = new sms;
 			sgender = :sgender,
 			sctship = :sctship,
 			saddress = :saddress,
+			semail = :semail,
 			scontact = :scontact,
 			sccourse = :sccourse,
 			scsyrlvl = :scsyrlvl,
@@ -1496,6 +1508,7 @@ $object = new sms;
 						':sgender'					  	=>	$object->clean_input($_POST["sngender"]),
 						':sctship'				    	=>	$object->clean_input($_POST["snctship"]),
 						':saddress'						=>	$object->clean_input($_POST["snaddress"]),
+						':semail'						=>	$object->clean_input($_POST["snemail"]),
 						':scontact'						=>	$object->clean_input($_POST["sncontact"]),
 						':sccourse'						=>	$object->clean_input($_POST["snccourse"]),
 						':scsyrlvl'						=>	$object->clean_input($_POST["sncsyrlvl"]),
@@ -1594,6 +1607,9 @@ $object = new sms;
 			spschname = :suspschname,
 			spscourse = :suspscourse,
 			spsyrlvl = :suspsyrlvl,
+			sccourse = :susccourse,
+			scsyrlvl = :suscsyrlvl,
+			semail = :susemail,
 			sffname = :susffname, 
 			smfname = :susmfname,
 			s4psno = :sus4psno,
@@ -1625,6 +1641,9 @@ $object = new sms;
 						':suspschname'					=>	$object->clean_input($_POST["suspschname"]),
 						':suspscourse'					=>	$object->clean_input($_POST["suspscourse"]),
 						':suspsyrlvl'				    =>	$object->clean_input($_POST["suspsyrlvl"]),
+						':susccourse'					=>	$object->clean_input($_POST["susccourse"]),
+						':suscsyrlvl'				    =>	$object->clean_input($_POST["suscsyrlvl"]),
+						':susemail'				    	=>	$object->clean_input($_POST["susemail"]),
 					// Family Details
 						// Father Details
 						':susffname'					=>	$object->clean_input($_POST["susffname"]),
@@ -1725,6 +1744,7 @@ $object = new sms;
                 scsadd = :scscsadd,
                 scschooltype = :scscschooltype,
                 sccourse = :scsccourse,
+				scsyrlvl = :scscsyrlvl,
                 sccourseprio = :scsccourseprio,
                 sdsprc = :scsdsprc,
                 sdsprcstat = :scsdsprcstat,
@@ -1775,6 +1795,7 @@ $object = new sms;
                     ':scscsadd'					    =>	$object->clean_input($_POST["scscsadd"]),
                     ':scscschooltype'		  		=>	$object->clean_input($_POST["scscschooltype"]),
                     ':scsccourse'				    =>	$object->clean_input($_POST["scsccourse"]),
+					':scscsyrlvl'				    =>	$object->clean_input($_POST["scscsyrlvl"]),
                     ':scsccourseprio'				=>	$object->clean_input($_POST["scsccourseprio"]),
             // Requirements Details
                     ':scsdsprc'				   		=>	$object->clean_input($_POST["scsdsprc"]),
@@ -1817,7 +1838,93 @@ $object = new sms;
 
 		echo '<div class="alert alert-success">Status change to '.$_POST['next_status'].' Successfully</div>';
 	}
+// Send Bulk Email
+	if($_POST["action"] == 'send_email')
+	{
+		$error = '';
 
+		$success = '';
+
+			foreach($_POST['email_data'] as $row)
+			{
+
+				// Load composer's autoloader
+				require '../vendor/autoload.php';	
+				$mail = new PHPMailer(true);                            
+				try {
+					//Server settings
+					$mail->isSMTP();                                     
+					$mail->Host = 'smtp.gmail.com';                      
+					$mail->SMTPAuth = true;                             
+					$mail->Username = 'unswaa20@gmail.com';     
+					$mail->Password = 'sio@1231999';             
+					$mail->SMTPOptions = array(
+						'ssl' => array(
+						'verify_peer' => false,
+						'verify_peer_name' => false,
+						'allow_self_signed' => true
+						)
+					);                         
+					$mail->SMTPSecure = 'ssl';                           
+					$mail->Port = 465;                                   
+			
+					//Send Email
+					$mail->setFrom('unswaa20@gmail.com');
+					$mail->FromName = 'Unswaa20';
+					
+					//Recipients
+					$mail->addAddress($row["email"]);            
+					$mail->addReplyTo('unswaa20@gmail.com');
+					$mail->WordWrap = 50;
+
+					//Content
+					$mail->isHTML(true);                                  
+					$mail->Subject = ''.$_POST["emailsubject"].'';
+					$message_body = ''.$_POST["emailmessage"].'';
+					$mail->Body = $message_body;
+			
+					$mail->send();
+
+					$success = '<div class="alert alert-success">Email Send Successfully</div>';
+
+				} catch (Exception $e) {
+					$error = '<div class="alert alert-danger">' . $mail->ErrorInfo . '</div>';
+				}
+
+			}
+
+		$output = array(
+			'error'		=>	$error,
+			'success'	=>	$success
+		);
+		echo json_encode($output);
+	}
+// Delete
+	if($_POST["action"] == 'delete')
+	{
+		$object->query = "
+		DELETE FROM tbl_student 
+		WHERE s_id = '".$_POST["id"]."'
+		";
+
+		$object->execute();
+
+		echo '<div class="alert alert-success">Student Data Deleted</div>';
+	}
+// Delete All
+	if($_POST["action"] == 'delete_all')
+	{
+		for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
+		{
+		$object->query = "
+			DELETE FROM tbl_student 
+			WHERE s_id = '".$_POST["checkbox_value"][$count]."'";
+
+			$object->execute();
+		}
+		echo '<div class="alert alert-success">Selected Student Data Deleted</div>';
+	}
+// Approve All
 	if($_POST["action"] == 'approve_all')
 	{
 		for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
@@ -1829,9 +1936,9 @@ $object = new sms;
 
 			$object->execute();
 		}
-		echo '<div class="alert alert-success">Selected Applicant Data Approved</div>';
+		echo '<div class="alert alert-success">Selected Student Data Approved</div>';
 	}
-
+// Reject All
 	if($_POST["action"] == 'reject_all')
 	{
 		for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
@@ -1843,33 +1950,10 @@ $object = new sms;
 
 			$object->execute();
 		}
-		echo '<div class="alert alert-success">Selected Applicant Data Rejected</div>';
+		echo '<div class="alert alert-success">Selected Student Data Rejected</div>';
 	}
 
-	if($_POST["action"] == 'delete_all')
-	{
-		for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
-		{
-		$object->query = "
-			DELETE FROM tbl_student 
-			WHERE s_id = '".$_POST["checkbox_value"][$count]."'";
 
-			$object->execute();
-		}
-		echo '<div class="alert alert-success">Selected Applicant Data Deleted</div>';
-	}
-
-	if($_POST["action"] == 'delete')
-	{
-		$object->query = "
-		DELETE FROM tbl_student 
-		WHERE s_id = '".$_POST["id"]."'
-		";
-
-		$object->execute();
-
-		echo '<div class="alert alert-success">Academic Applicant Data Deleted</div>';
-	}
 	}
 
 	?>
