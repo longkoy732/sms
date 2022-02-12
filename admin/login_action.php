@@ -57,6 +57,7 @@ if(isset($_POST["admin_email_address"]))
 					{
 						$_SESSION['admin_id'] = $row['s_id'];
 						$_SESSION['type'] = 'Student';
+						$_SESSION['s_stat'] = $row['s_scholar_stat'];
 						$url = $object->base_url . 'admin/student_dashboard.php';
 					}
 					else

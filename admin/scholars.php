@@ -389,6 +389,34 @@
 							</div>
 							</div>
 						</div>
+						<div class="form-group">
+							<div class="card">
+							<div class="card-header" style="font-weight: bold; font-size: 18px;">Scholars Note</div>
+								<div class="card-body">
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<label>Note:</label>
+										<textarea type="text" name="s_scholarship_note" id="s_scholarship_note" placeholder="Put N/A if None" class="form-control" required data-parsley-trigger="keyup"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="card">
+							<div class="card-header" style="font-weight: bold; font-size: 18px;">Scholarship Details</div>
+								<div class="card-body">
+									<div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
+										<label>Scholarship Status<span class="text-danger">*</span></label>
+										<select name="s_scholar_stat" id="s_scholar_stat" class="form-control" required>
+										<option value="">-Select-</option>
+										<option value="Pending">Pending</option>
+										<option value="Approved">Approved</option>
+										<option value="Rejected">Rejected</option>
+										<option value="Renewal">Renewal</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="hidden" name="acad_hidden_id" id="acad_hidden_id" />
@@ -713,6 +741,34 @@
 									</div>
 								</div>
 							</div>
+							<div class="form-group">
+							<div class="card">
+								<div class="card-header" style="font-weight: bold; font-size: 18px;">Scholars Note</div>
+									<div class="card-body">
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<label>Note:</label>
+											<textarea type="text" name="sn_scholarship_note" id="sn_scholarship_note" placeholder="Put N/A if None" class="form-control" required data-parsley-trigger="keyup"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="card">
+								<div class="card-header" style="font-weight: bold; font-size: 18px;">Scholarship Details</div>
+									<div class="card-body">
+										<div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
+											<label>Scholarship Status<span class="text-danger">*</span></label>
+											<select name="sn_scholar_stat" id="sn_scholar_stat" class="form-control" required>
+											<option value="">-Select-</option>
+											<option value="Pending">Pending</option>
+											<option value="Approved">Approved</option>
+											<option value="Rejected">Rejected</option>
+											<option value="Renewal">Renewal</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
 					</div>
 					<div class="modal-footer">
 						<input type="hidden" name="nonacad_hidden_id" id="nonacad_hidden_id" />
@@ -929,6 +985,34 @@
                             </div>
                             </div>
                         </div>
+						<div class="form-group">
+							<div class="card">
+								<div class="card-header" style="font-weight: bold; font-size: 18px;">Scholars Note</div>
+									<div class="card-body">
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<label>Note:</label>
+											<textarea type="text" name="sus_scholarship_note" id="sus_scholarship_note" placeholder="Put N/A if None" class="form-control" required data-parsley-trigger="keyup"></textarea>
+										</div>
+									</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="card">
+							<div class="card-header" style="font-weight: bold; font-size: 18px;">Scholarship Details</div>
+								<div class="card-body">
+									<div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
+										<label>Scholarship Status<span class="text-danger">*</span></label>
+										<select name="sus_scholar_stat" id="sus_scholar_stat" class="form-control" required>
+										<option value="">-Select-</option>
+										<option value="Pending">Pending</option>
+										<option value="Approved">Approved</option>
+										<option value="Rejected">Rejected</option>
+										<option value="Renewal">Renewal</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="unifast_hidden_id" id="unifast_hidden_id" />
@@ -1244,6 +1328,34 @@
                             </div>
                             </div>
                         </div>
+						<div class="form-group">
+							<div class="card">
+								<div class="card-header" style="font-weight: bold; font-size: 18px;">Scholars Note</div>
+									<div class="card-body">
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<label>Note:</label>
+											<textarea type="text" name="scs_scholarship_note" id="scs_scholarship_note" placeholder="Put N/A if None" class="form-control" required data-parsley-trigger="keyup"></textarea>
+										</div>
+									</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="card">
+							<div class="card-header" style="font-weight: bold; font-size: 18px;">Scholarship Details</div>
+								<div class="card-body">
+									<div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
+										<label>Scholarship Status<span class="text-danger">*</span></label>
+										<select name="scs_scholar_stat" id="scs_scholar_stat" class="form-control" required>
+										<option value="">-Select-</option>
+										<option value="Pending">Pending</option>
+										<option value="Approved">Approved</option>
+										<option value="Rejected">Rejected</option>
+										<option value="Renewal">Renewal</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="ched_hidden_id" id="ched_hidden_id" />
@@ -1509,8 +1621,10 @@
 
 		$('#acadModal').modal('show');
 
-		$('#form_message').html('');
+		$('#ss_id').attr('disabled', false);
 
+		$('#form_message').html('');
+		
 	});
 
 // add_nonacad
@@ -2102,6 +2216,10 @@
 							$('#sdspgmstat').val(data.sdspgmstat);
 							$('#sdspcr').val(data.sdspcr);
 							$('#sdspcrstat').val(data.sdspcrstat);
+							// Scholarship Note
+							$('#s_scholarship_note').val(data.s_scholarship_note);
+							// Scholarship Details
+							$('#s_scholar_stat').val(data.s_scholar_stat);
 
 							$('#acadModal').modal('show');
 
@@ -2142,7 +2260,7 @@
 					success:function(data)
 					{
 							$('#sns_id').val(data.sns_id);
-							// Personal Details
+				// Personal Details
 							$('#snfname').val(data.snfname);
 							$('#snmname').val(data.snmname);
 							$('#snlname').val(data.snlname);
@@ -2195,6 +2313,10 @@
 							$('#sndsbrgyinstat').val(data.sndsbrgyinstat);
 							$('#sndscef').val(data.sndscef);
 							$('#sndscefstat').val(data.sndscefstat);
+				// Scholarship Note
+							$('#sn_scholarship_note').val(data.sn_scholarship_note);
+				// Scholarship Details
+							$('#sn_scholar_stat').val(data.sn_scholar_stat);
 
 							$('#nonacadModal').modal('show');
 
@@ -2268,6 +2390,10 @@
 							$('#susdstbytpicstat').val(data.susdstbytpicstat);
 							$('#susdsbrgyin').val(data.susdsbrgyin);
 							$('#susdsbrgyinstat').val(data.susdsbrgyinstat);
+						// Scholarship Note
+							$('#sus_scholarship_note').val(data.sus_scholarship_note);
+						// Scholarship Details
+							$('#sus_scholar_stat').val(data.sus_scholar_stat);
 							
 						$('#unifastModal').modal('show');
 						
@@ -2358,10 +2484,10 @@
 						$('#scsdspgmstat').val(data.scsdspgmstat);
 						$('#scsdsbrgyin').val(data.scsdsbrgyin);
 						$('#scsdsbrgyinstat').val(data.scsdsbrgyinstat);
+				// Scholarship Note
+						$('#scs_scholarship_note').val(data.scs_scholarship_note);
 				// Scholarship Details
-						$('#scs_scholarship_type').val(data.scs_scholarship_type);
 						$('#scs_scholar_stat').val(data.scs_scholar_stat);
-						$('#scs_applied_on').val(data.scs_applied_on);
 
 				$('#chedModal').modal('show');
 
@@ -2535,6 +2661,9 @@
 					html += '<tr><th width="40%" class="text-right">Good Moral Status</th><td width="60%">'+data.sdspgmstat+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Date Receive Certificate of Recognition</th><td width="60%">'+data.sdspcr+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Certificate of Recognition Status</th><td width="60%">'+data.sdspcrstat+'</td></tr>';
+				// Scholarship Note
+					html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Note</th><td width="60%"></td></tr>';
+					html += '<tr><th width="40%" class="text-right">Note:</th><td width="60%">'+data.s_scholarship_note+'</td></tr>';
 				// Scholarship Details
 					html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Details</th><td width="60%"></td></tr>';
 					html += '<tr><th width="40%" class="text-right">Scholarship Type</th><td width="60%">'+data.s_scholarship_type+'</td></tr>';
@@ -2632,6 +2761,9 @@
                 html += '<tr><th width="40%" class="text-right">Barangay Indigency Status</th><td width="60%">'+data.sndsbrgyinstat+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Date Receive Student Copy Enrollment Form</th><td width="60%">'+data.sndscef+'</td></tr>';
                 html += '<tr><th width="40%" class="text-right">Student Copy Enrollment Form Status</th><td width="60%">'+data.sndscefstat+'</td></tr>';
+			// Scholarship Note
+				html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Note</th><td width="60%"></td></tr>';
+				html += '<tr><th width="40%" class="text-right">Note:</th><td width="60%">'+data.sn_scholarship_note+'</td></tr>';
             // Scholarship Details
                 html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Details</th><td width="60%"></td></tr>';
 				html += '<tr><th width="40%" class="text-right">Scholarship Type</th><td width="60%">'+data.sn_scholarship_type+'</td></tr>';
@@ -2704,6 +2836,9 @@
 					html += '<tr><th width="40%" class="text-right">2x2 ID Picture Status</th><td width="60%">'+data.susdstbytpicstat+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Date Receive Brgy. Residency</th><td width="60%">'+data.susdsbrgyin+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Brgy. Residency Status</th><td width="60%">'+data.susdsbrgyinstat+'</td></tr>';
+				// Scholarship Note
+					html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Note</th><td width="60%"></td></tr>';
+					html += '<tr><th width="40%" class="text-right">Note:</th><td width="60%">'+data.sus_scholarship_note+'</td></tr>';
 				// Scholarship Details
 					html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Details</th><td width="60%"></td></tr>';
 					html += '<tr><th width="40%" class="text-right">Scholarship Type</th><td width="60%">'+data.sus_scholarship_type+'</td></tr>';
@@ -2793,6 +2928,9 @@
 					html += '<tr><th width="40%" class="text-right">Good Moral Status</th><td width="60%">'+data.scsdspgmstat+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Date Receive Brgy. Indigency</th><td width="60%">'+data.scsdsbrgyin+'</td></tr>';
 					html += '<tr><th width="40%" class="text-right">Brgy. Indigency Status</th><td width="60%">'+data.scsdsbrgyinstat+'</td></tr>';
+				// Scholarship Note
+					html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Note</th><td width="60%"></td></tr>';
+					html += '<tr><th width="40%" class="text-right">Note:</th><td width="60%">'+data.scs_scholarship_note+'</td></tr>';
 				// Scholarship Details
 					html += '<tr><th width="40%" class="text-left" style="font-size:20px">Scholarship Details</th><td width="60%"></td></tr>';
 					html += '<tr><th width="40%" class="text-right">Scholarship Type</th><td width="60%">'+data.scs_scholarship_type+'</td></tr>';

@@ -183,6 +183,20 @@
                     <i class="fas fa-user-clock"></i>
                     <span>Dashboard</span></a>
             </li>
+            <?php
+            if($_SESSION['s_stat'] == 'Approved' || $_SESSION['s_stat'] == 'Renewal')
+            {
+            ?>
+            <li class="nav-item">
+                <a class="nav-link" href="renew.php">
+                    <i class="fas fa-notes-medical"></i>
+                    <span>Renew Scholarship</span></a>
+            </li>
+            <?php
+            }
+            else
+            {
+            ?>
             <li class="nav-item">
                 <a class="nav-link" href="apply.php">
                     <i class="fas fa-notes-medical"></i>
@@ -192,6 +206,7 @@
             }
             ?>
             <?php
+            }
             if($_SESSION['type'] == 'Admin')
             {
             ?>

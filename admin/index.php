@@ -106,6 +106,11 @@ if($object->is_login())
             <div class="form-group">
                 <button type="button" name="register_button" id="register_button" class="btn btn-success btn-user btn-block">Register</button>
             </div>
+            <div class="form-group">
+                <div class="text-center">
+                    <a class="small" href="forgot_password.php">Forgot Password?</a>
+                </div>
+            </div>
         </form>
     </main>
 

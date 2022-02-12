@@ -1,8 +1,8 @@
 <!-- Includes&Header -->
-  <html>
+<html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>SMS | Register</title>
+    <title>SMS | Forgot Password</title>
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/bootstrap.min.css"/>
       <!-- <link rel="stylesheet" type="text/css" href="../vendor/fontawesome-free/all.min.css"/> -->
@@ -39,12 +39,12 @@
   <br />
     <div class="container box">
     <br />
-    <h2 align="center">Create Account</h2><br />
+    <h2 align="center">Forgot Password</h2><br />
     <span id="message"></span>
     <form method="post" id="student_register_form">
           <ul class="nav nav-tabs">
               <li class="nav-item">
-                  <a class="nav-link active_tab1" id="list_ss_details" style="border:1px solid #ccc">Student Details</a>
+                  <a class="nav-link active_tab1" id="list_ss_details" style="border:1px solid #ccc">Account Details</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link inactive_tab1" id="list_account_details" style="border:1px solid #ccc">Account Details</a>
@@ -58,26 +58,16 @@
           <div class="card-body">
               <div class="form-group">
                   <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-md-4">
-                          <label>Student ID NO.<span class="text-danger">*</span></label>
+                      <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
+                          <label>Email Address<span class="text-danger">*</span></label>
                           <input type="text" name="vss_id" id="vss_id" class="form-control" required/>
                           <span id="error_vss_id" class="text-danger"></span>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-md-4">
-                        <label>Last Name<span class="text-danger">*</span></label>
-                        <input type="text" name="vslname" id="vslname" class="form-control" />
-                        <span id="error_vslname" class="text-danger"></span>
-                      </div>
-                      <div class="col-xs-10 col-sm-12 col-md-4">
-                        <label>Date of Birth<span class="text-danger">*</span></label>
-                          <input type="date" name="vsdbirth" id="vsdbirth" autocomplete="off" class="form-control" />
-                        <span id="error_vsdbirth" class="text-danger"></span>
                       </div>
                   </div>
               </div>
               <div class="form-group text-center">
               <a class="btn btn-primary" href="index.php" role="button">Back</a>
-              <!-- <input type="hidden" name="action" value="ssid_verify" /> -->
+              <input type="hidden" name="action" value="ssid_verify" />
               <input type="button" name="btn_ss_details" id="btn_ss_details" class="btn btn-success" value="Next" />
               <!-- <button type="button" name="btn_ss_details" id="btn_ss_details" class="btn btn-success btn-md">Next</button> -->
               </div>

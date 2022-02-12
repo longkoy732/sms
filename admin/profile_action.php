@@ -1,203 +1,607 @@
 <?php
 
 include('../class/dbcon.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 $object = new sms;
 
-if($_POST["action"] == 'student_profile')
+if(isset($_POST["action"]))
 {
-	sleep(2);
 
-	$error = '';
-
-	$success = '';
-
-	$student_profile_image = '';
-
-	$data = array(
-		':semail'		=>	$_POST["semail"],
-		':s_id'			=>	$_POST['hidden_id']
-	);
-
-	$object->query = "
-	SELECT * FROM tbl_student 
-	WHERE semail = :semail 
-	AND s_id != :s_id
-	";
-
-	$object->execute($data);
-
-	if($object->row_count() > 0)
-	{
-		$error = '<div class="alert alert-danger">Email Address Already Exists</div>';
-	}
-	else
-	{
-		$student_profile_image = $_POST["hidden_student_profile_image"];
-
-		if($_FILES['student_profile_image']['name'] != '')
+// Admin
+	// Admin Profile
+		if($_POST["action"] == 'admin_profile')
 		{
-			$allowed_file_format = array("jpg", "png");
+			sleep(2);
 
-	    	$file_extension = pathinfo($_FILES["student_profile_image"]["name"], PATHINFO_EXTENSION);
+			$error = '';
 
-	    	if(!in_array($file_extension, $allowed_file_format))
-		    {
-		        $error = "<div class='alert alert-danger'>Upload valiid file. jpg, png</div>";
-		    }
-		    else if (($_FILES["student_profile_image"]["size"] > 2000000))
-		    {
-		       $error = "<div class='alert alert-danger'>File size exceeds 2MB</div>";
-		    }
-		    else
-		    {
-		    	$new_name = rand() . '.' . $file_extension;
+			$success = '';
 
-				$destination = '../images/' . $new_name;
+			if($error == '')
+			{
+				$data = array(
+					':admin_name'					=>	$object->clean_input($_POST["admin_name"]),
+					':admin_position'				=>	$object->clean_input($_POST["admin_position"]),
+					':admin_address'				=>	$object->clean_input($_POST["admin_address"]),
+					':admin_contact_no'				=>	$object->clean_input($_POST["admin_contact_no"]),
+				);
 
-				move_uploaded_file($_FILES['student_profile_image']['tmp_name'], $destination);
+				$object->query = "
+				UPDATE tbl_admin  
+				SET admin_name = :admin_name, 
+				admin_position = :admin_position, 
+				admin_address = :admin_address, 
+				admin_contact_no = :admin_contact_no
+				WHERE admin_id = '".$_SESSION["admin_id"]."'
+				";
+				$object->execute($data);
 
-				$student_profile_image = $destination;
-		    }
+				$success = '<div class="alert alert-success">Admin Data Updated</div>';
+
+				$output = array(
+					'error'					=>	$error,
+					'success'				=>	$success,
+					'admin_name'			=>	$_POST["admin_name"], 
+					'admin_position'		=>	$_POST["admin_position"],
+					'admin_address'			=>	$_POST["admin_address"],
+					'admin_contact_no'		=>	$_POST["admin_contact_no"]
+				);
+
+				echo json_encode($output);
+			}
+			else
+			{
+				$output = array(
+					'error'					=>	$error,
+					'success'				=>	$success
+				);
+				echo json_encode($output);
+			}
 		}
-
-		if($error == '')
+	// Admin Input New Email
+		if($_POST['action'] == 'caemail')
 		{
+			$error = '';
+
+			$success = '';
+
 			$data = array(
-				':sfname'						=>	$object->clean_input($_POST["sfname"]),
-				':smname'						=>	$object->clean_input($_POST["smname"]),
-				':slname'						=>	$object->clean_input($_POST["slname"]),
-				':sdbirth'						=>	$object->clean_input($_POST["sdbirth"]),
-				':saddress'						=>	$object->clean_input($_POST["saddress"]),
-				':sccourse'						=>	$object->clean_input($_POST["sccourse"]),
-				':scsyrlvl'						=>	$object->clean_input($_POST["scsyrlvl"]),
-				':semail'						=>	$object->clean_input($_POST["semail"]),
-				// ':spass'						=>	$object->clean_input($_POST["spass"]),
-				// ':student_profile_image'		=>	$student_profile_image,
+				':admin_email_address'	=>	$_POST["canemail"]
 			);
 
 			$object->query = "
-			UPDATE tbl_student  
-			SET sfname = :sfname, 
-			smname = :smname, 
-			slname = :slname, 
-			sdbirth = :sdbirth, 
-			saddress = :saddress, 
-			sccourse = :sccourse, 
-			scsyrlvl = :scsyrlvl, 
-			semail = :semail,  
-			student_profile_image = :student_profile_image 
-			WHERE s_id = '".$_POST['hidden_id']."'
+			SELECT * FROM tbl_admin
+			WHERE admin_email_address = :admin_email_address
 			";
+
 			$object->execute($data);
 
-			$success = '<div class="alert alert-success">student Data Updated</div>';
-		}			
-	}
+			if($object->row_count() > 0)
+			{
+				$error = '<div class="alert alert-danger">Email Already Exists</div>';
+			}
+			else
+			{
 
-	$output = array(
-		'error'					=>	$error,
-		'success'				=>	$success,
-		'sfname'				=>	$_POST["sfname"],
-		'smname'				=>	$_POST["smname"],
-		'slname'				=>	$_POST["slname"],
-		'sdbirth'				=>	$_POST["sdbirth"],
-		'saddress'				=>	$_POST["saddress"],
-		'sccourse'				=>	$_POST["sccourse"],
-		'scsyrlvl'				=>	$_POST["scsyrlvl"],
-		'semail'				=>	$_POST["semail"],
-		'student_profile_image'	=>	$student_profile_image,
-		
-	);
+				$object->query = "
+				UPDATE tbl_admin 
+				SET admin_email_address = :admin_email_address,
+				admin_verification_code = :admin_verification_code,
+				admin_email_verify = :admin_email_verify
+				WHERE admin_id = '".$_SESSION["admin_id"]."'       
+				";
 
-	echo json_encode($output);
-}
+				// Generate Verifcation Code
+				$admin_verification_code = rand(100000, 999999);
 
-if($_POST["action"] == 'admin_profile')
-{
-	sleep(2);
+				$data = array(
+					':admin_email_address'			=>	$_POST["canemail"],
+					':admin_verification_code'	    =>	$admin_verification_code,
+					':admin_email_verify'			=>	'No'
+					
+				);
 
-	$error = '';
+					// Load composer's autoloader
+					require '../vendor/autoload.php';
+				
+					$mail = new PHPMailer(true);                            
+					try {
+						//Server settings
+						$mail->isSMTP();                                     
+						$mail->Host = 'smtp.gmail.com';                      
+						$mail->SMTPAuth = true;                             
+						$mail->Username = 'unswaa20@gmail.com';     
+						$mail->Password = 'sio@1231999';             
+						$mail->SMTPOptions = array(
+							'ssl' => array(
+							'verify_peer' => false,
+							'verify_peer_name' => false,
+							'allow_self_signed' => true
+							)
+						);                         
+						$mail->SMTPSecure = 'ssl';                           
+						$mail->Port = 465;                                   
+				
+						//Send Email
+						$mail->setFrom('unswaa20@gmail.com');
+						$mail->FromName = 'Unswaa20';
+						
+						//Recipients
+						$mail->addAddress($_POST["canemail"]);            
+						$mail->addReplyTo('unswaa20@gmail.com');
+						$mail->WordWrap = 50;
 
-	$success = '';
+						//Content
+						$mail->isHTML(true);                                  
+						$mail->Subject = 'Verification code for Verify Your Email Address';
+						$message_body = '
+						<p>For verify your email address, Please enter this verification code when prompted: <b>'.$admin_verification_code.'</b>.</p>
+						';
+						$mail->Body = $message_body;
+				
+						$mail->send();
 
-	$school_logo = $_POST['hidden_school_logo'];
+						$success = '<div class="alert alert-success">Please Check Your Email for email Verification</div>';
 
-	if($_FILES['school_logo']['name'] != '')
-	{
-		$allowed_file_format = array("jpg", "png");
+					} catch (Exception $e) {
+						$error = '<div class="alert alert-danger">' . $mail->ErrorInfo . '</div>';
+					}
 
-	    $file_extension = pathinfo($_FILES["school_logo"]["name"], PATHINFO_EXTENSION);
+					$object->execute($data);
+			}
 
-	    if(!in_array($file_extension, $allowed_file_format))
-		{
-		    $error = "<div class='alert alert-danger'>Upload valiid file. jpg, png</div>";
+			$output = array(
+				'error'		=>	$error,
+				'success'	=>	$success
+			);
+			echo json_encode($output);
 		}
-		else if (($_FILES["school_logo"]["size"] > 2000000))
+	// Admin Input Email OTP
+		if($_POST['action'] == 'otpcaaemail')
 		{
-		   $error = "<div class='alert alert-danger'>File size exceeds 2MB</div>";
-	    }
-		else
-		{
-		    $new_name = rand() . '.' . $file_extension;
+			$error = '';
 
-			$destination = '../images/' . $new_name;
+			$success = '';
 
-			move_uploaded_file($_FILES['school_logo']['tmp_name'], $destination);
+			$data = array(
+				':admin_verification_code'	=>	$_POST["otpcaemail"]
+			);
 
-			$school_logo = $destination;
+			$object->query = "
+			SELECT * FROM tbl_admin
+			WHERE admin_verification_code = :admin_verification_code
+			";
+
+			$object->execute($data);
+
+			if($object->row_count() > 0)
+			{
+				$object->query = "
+				UPDATE tbl_admin
+				SET admin_email_verify = :admin_email_verify
+				WHERE admin_id = '".$_SESSION["admin_id"]."'       
+				";
+
+				$data = array(
+					':admin_email_verify'			    =>	'Yes'
+				);
+
+				$success = '<div class="alert alert-success">Email Successfully Changed</div>';
+
+				$object->execute($data);
+			}
+			else
+			{
+				$error = '<div class="alert alert-danger">Invalid OTP Number</div>';	
+			}
+
+			$output = array(
+				'error'		=>	$error,
+				'success'	=>	$success
+			);
+			echo json_encode($output);
 		}
-	}
+	// Old Password
+			if($_POST['action'] == 'coapass')
+			{
+				$error = '';
 
-	if($error == '')
-	{
-		$data = array(
-			':admin_email_address'			=>	$object->clean_input($_POST["admin_email_address"]),
-			':admin_password'				=>	$_POST["admin_password"],
-			':admin_name'					=>	$object->clean_input($_POST["admin_name"]),
-			':school_name'					=>	$object->clean_input($_POST["school_name"]),
-			':school_address'				=>	$object->clean_input($_POST["school_address"]),
-			':school_contact_no'			=>	$object->clean_input($_POST["school_contact_no"]),
-			':school_logo'					=>	$school_logo
-		);
+				$success = '';
 
-		$object->query = "
-		UPDATE tbl_admin  
-		SET admin_email_address = :admin_email_address, 
-		admin_password = :admin_password, 
-		admin_name = :admin_name, 
-		school_name = :school_name, 
-		school_address = :school_address, 
-		school_contact_no = :school_contact_no, 
-		school_logo = :school_logo 
-		WHERE admin_id = '".$_SESSION["admin_id"]."'
-		";
-		$object->execute($data);
+				$object->query = "
+				SELECT * FROM tbl_admin
+				WHERE admin_id = '".$_SESSION["admin_id"]."' 
+				";
 
-		$success = '<div class="alert alert-success">Admin Data Updated</div>';
+				$result = $object->get_result();
 
-		$output = array(
-			'error'					=>	$error,
-			'success'				=>	$success,
-			'admin_email_address'	=>	$_POST["admin_email_address"],
-			'admin_password'		=>	$_POST["admin_password"],
-			'admin_name'			=>	$_POST["admin_name"], 
-			'school_name'			=>	$_POST["school_name"],
-			'school_address'		=>	$_POST["school_address"],
-			'school_contact_no'		=>	$_POST["school_contact_no"],
-			'school_logo'			=>	$school_logo
-		);
+				foreach($result as $row)
+				{
 
-		echo json_encode($output);
-	}
-	else
-	{
-		$output = array(
-			'error'					=>	$error,
-			'success'				=>	$success
-		);
-		echo json_encode($output);
-	}
-}
+					if(password_verify($_POST["ocapass"], $row["admin_password"]))
+					{
+						$success = '<div class="alert alert-success">Password Match</div>';
+					}
+					else
+					{
+						$error = '<div class="alert alert-danger">Wrong Password</div>';	
+					}
+					
+				}
 
-?>
+				$output = array(
+					'error'		=>	$error,
+					'success'	=>	$success
+				);
+				echo json_encode($output);
+			}
+	// New Password
+			if($_POST['action'] == 'ncccapass')
+			{
+				$error = '';
+
+				$success = '';
+
+				$object->query = "
+				SELECT * FROM tbl_admin
+				WHERE admin_id = '".$_SESSION["admin_id"]."' 
+				";
+
+				$result = $object->get_result();
+
+				foreach($result as $row)
+				{
+
+					if(password_verify($_POST["ncapass"], $row["admin_password"]))
+					{
+						$error = '<div class="alert alert-danger">Old Password, Please Use Another Password</div>';
+					}
+					else
+					{
+						$new_password = $_POST["ncapass"];
+						$confirm_password = $_POST["nccapass"];
+					
+						if($new_password == $confirm_password)
+						{
+					
+							$object->query = "
+							UPDATE tbl_admin 
+							SET admin_password = '".password_hash($new_password, PASSWORD_ARGON2I)."'
+							WHERE admin_id = '".$_SESSION["admin_id"]."'       
+							";
+					
+							$success = '<div class="alert alert-success">Password Change Successfully</div>';
+					
+							$object->execute();
+						}
+						else
+						{
+							$error = '<div class="alert alert-danger">Password Not Match</div>';
+						}	
+					}
+					
+				}
+
+				$output = array(
+					'error'		=>	$error,
+					'success'	=>	$success
+				);
+				echo json_encode($output);
+			}
+
+
+// Student
+	// Student Profile
+		if($_POST["action"] == 'student_profile')
+		{
+			sleep(2);
+
+			$error = '';
+
+			$success = '';
+
+			$student_profile_image = '';
+
+			$data = array(
+				':semail'		=>	$_POST["semail"],
+				':s_id'			=>	$_POST['hidden_id']
+			);
+
+			$object->query = "
+			SELECT * FROM tbl_student 
+			WHERE semail = :semail 
+			AND s_id != :s_id
+			";
+
+			$object->execute($data);
+
+			if($object->row_count() > 0)
+			{
+				$error = '<div class="alert alert-danger">Email Address Already Exists</div>';
+			}
+			else
+			{
+
+				if($error == '')
+				{
+					$data = array(
+						':sfname'						=>	$object->clean_input($_POST["sfname"]),
+						':smname'						=>	$object->clean_input($_POST["smname"]),
+						':slname'						=>	$object->clean_input($_POST["slname"]),
+						':sdbirth'						=>	$object->clean_input($_POST["sdbirth"]),
+						':saddress'						=>	$object->clean_input($_POST["saddress"]),
+						':sccourse'						=>	$object->clean_input($_POST["sccourse"]),
+						':scsyrlvl'						=>	$object->clean_input($_POST["scsyrlvl"]),
+						':semail'						=>	$object->clean_input($_POST["semail"]),
+					);
+
+					$object->query = "
+					UPDATE tbl_student  
+					SET sfname = :sfname, 
+					smname = :smname, 
+					slname = :slname, 
+					sdbirth = :sdbirth, 
+					saddress = :saddress, 
+					sccourse = :sccourse, 
+					scsyrlvl = :scsyrlvl, 
+					semail = :semail,  
+					student_profile_image = :student_profile_image 
+					WHERE s_id = '".$_POST['hidden_id']."'
+					";
+					$object->execute($data);
+
+					$success = '<div class="alert alert-success">student Data Updated</div>';
+				}			
+			}
+
+			$output = array(
+				'error'					=>	$error,
+				'success'				=>	$success,
+				'sfname'				=>	$_POST["sfname"],
+				'smname'				=>	$_POST["smname"],
+				'slname'				=>	$_POST["slname"],
+				'sdbirth'				=>	$_POST["sdbirth"],
+				'saddress'				=>	$_POST["saddress"],
+				'sccourse'				=>	$_POST["sccourse"],
+				'scsyrlvl'				=>	$_POST["scsyrlvl"],
+				'semail'				=>	$_POST["semail"],
+				'student_profile_image'	=>	$student_profile_image,
+				
+			);
+
+			echo json_encode($output);
+		}
+	// Input New Email
+		if($_POST['action'] == 'cemail')
+		{
+			$error = '';
+
+			$success = '';
+
+			$data = array(
+				':nssemail'	=>	$_POST["nssemail"]
+			);
+
+			$object->query = "
+			SELECT * FROM tbl_student
+			WHERE semail = :nssemail
+			";
+
+			$object->execute($data);
+
+			if($object->row_count() > 0)
+			{
+				$error = '<div class="alert alert-danger">Email Already Exists</div>';
+			}
+			else
+			{
+
+				$object->query = "
+				UPDATE tbl_student 
+				SET semail = :nssemail,
+				s_verification_code = :s_verification_code,
+				s_email_verify = :s_email_verify
+				WHERE s_id = '".$_SESSION["admin_id"]."'       
+				";
+
+				// Generate Verifcation Code
+				$s_verification_code = rand(100000, 999999);
+
+				$data = array(
+					':nssemail'			    		=>	$_POST["nssemail"],
+					':s_verification_code'	        =>	$s_verification_code,
+					':s_email_verify'			    =>	'No'
+					
+				);
+
+					// Load composer's autoloader
+					require '../vendor/autoload.php';
+				
+					$mail = new PHPMailer(true);                            
+					try {
+						//Server settings
+						$mail->isSMTP();                                     
+						$mail->Host = 'smtp.gmail.com';                      
+						$mail->SMTPAuth = true;                             
+						$mail->Username = 'unswaa20@gmail.com';     
+						$mail->Password = 'sio@1231999';             
+						$mail->SMTPOptions = array(
+							'ssl' => array(
+							'verify_peer' => false,
+							'verify_peer_name' => false,
+							'allow_self_signed' => true
+							)
+						);                         
+						$mail->SMTPSecure = 'ssl';                           
+						$mail->Port = 465;                                   
+				
+						//Send Email
+						$mail->setFrom('unswaa20@gmail.com');
+						$mail->FromName = 'Unswaa20';
+						
+						//Recipients
+						$mail->addAddress($_POST["nssemail"]);            
+						$mail->addReplyTo('unswaa20@gmail.com');
+						$mail->WordWrap = 50;
+
+						//Content
+						$mail->isHTML(true);                                  
+						$mail->Subject = 'Verification code for Verify Your Email Address';
+						$message_body = '
+						<p>For verify your email address, Please enter this verification code when prompted: <b>'.$s_verification_code.'</b>.</p>
+						';
+						$mail->Body = $message_body;
+				
+						$mail->send();
+
+						$success = '<div class="alert alert-success">Please Check Your Email for email Verification</div>';
+
+					} catch (Exception $e) {
+						$error = '<div class="alert alert-danger">' . $mail->ErrorInfo . '</div>';
+					}
+
+					$object->execute($data);
+			}
+
+			$output = array(
+				'error'		=>	$error,
+				'success'	=>	$success
+			);
+			echo json_encode($output);
+		}
+	// Input Email OTP
+		if($_POST['action'] == 'otpcemail')
+		{
+			$error = '';
+
+			$success = '';
+
+			$data = array(
+				':otpcemail'	=>	$_POST["otpcemail"]
+			);
+
+			$object->query = "
+			SELECT * FROM tbl_student
+			WHERE s_verification_code = :otpcemail
+			";
+
+			$object->execute($data);
+
+			if($object->row_count() > 0)
+			{
+				$object->query = "
+				UPDATE tbl_student 
+				SET s_email_verify = :s_email_verify
+				WHERE s_id = '".$_SESSION["admin_id"]."'       
+				";
+
+				$data = array(
+					':s_email_verify'			    =>	'Yes'
+				);
+
+				$success = '<div class="alert alert-success">Email Successfully Changed</div>';
+
+				$object->execute($data);
+			}
+			else
+			{
+				$error = '<div class="alert alert-danger">Invalid OTP Number</div>';	
+			}
+
+			$output = array(
+				'error'		=>	$error,
+				'success'	=>	$success
+			);
+			echo json_encode($output);
+		}
+	// Old Password
+		if($_POST['action'] == 'copass')
+		{
+			$error = '';
+
+			$success = '';
+
+			$object->query = "
+			SELECT * FROM tbl_student
+			WHERE s_id = '".$_SESSION["admin_id"]."' 
+			";
+
+			$result = $object->get_result();
+
+			foreach($result as $row)
+			{
+
+				if(password_verify($_POST["ocpass"], $row["spass"]))
+				{
+					$success = '<div class="alert alert-success">Password Match</div>';
+				}
+				else
+				{
+					$error = '<div class="alert alert-danger">Wrong Password</div>';	
+				}
+				
+			}
+
+			$output = array(
+				'error'		=>	$error,
+				'success'	=>	$success
+			);
+			echo json_encode($output);
+		}
+	// New Password
+		if($_POST['action'] == 'ncapass')
+		{
+			$error = '';
+
+			$success = '';
+
+			$object->query = "
+			SELECT * FROM tbl_student
+			WHERE s_id = '".$_SESSION["admin_id"]."' 
+			";
+
+			$result = $object->get_result();
+
+			foreach($result as $row)
+			{
+
+				if(password_verify($_POST["ncapass"], $row["spass"]))
+				{
+					$error = '<div class="alert alert-danger">Old Password, Please Use Another Password</div>';
+				}
+				else
+				{
+					$new_password = $_POST["ncapass"];
+					$confirm_password = $_POST["nccpass"];
+				
+					if($new_password == $confirm_password)
+					{
+				
+						$object->query = "
+						UPDATE tbl_student 
+						SET spass = '".password_hash($new_password, PASSWORD_ARGON2I)."'
+						WHERE s_id = '".$_SESSION["admin_id"]."'       
+						";
+				
+						$success = '<div class="alert alert-success">Password Change Successfully</div>';
+				
+						$object->execute();
+					}
+					else
+					{
+						$error = '<div class="alert alert-danger">Password Not Match</div>';
+					}	
+				}
+				
+			}
+
+			$output = array(
+				'error'		=>	$error,
+				'success'	=>	$success
+			);
+			echo json_encode($output);
+		}
+		}
+		?>
