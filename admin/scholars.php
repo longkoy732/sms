@@ -38,9 +38,15 @@
 						<h6 class="m-0 font-weight-bold text-primary">Scholars List</h6>
 					</div>
 					<div class="col" align="center">
-						<button type="button" name="add_csv" id="add_csv" class="btn btn-success btn-circle btn-sm"><i class="fas fa-file-excel"></i></button>
-						<button type="button" name="add_pdf" id="add_pdf" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-file-pdf"></i></button>
-						<button type="button" name="bulk_email" id="bulk_email" class="btn btn-info btn-circle btn-sm"><i class="fas fa-envelope"></i></button>
+						<div class="dropdown">
+						<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-success btn-circle btn-sm"><i class="fas fa-file-excel"></i></button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+								<button class="dropdown-item" type="button" name="add_csv" id="add_csv">Import CSV</button>
+								<button class="dropdown-item" type="button" name="export_csv" id="export_csv">Export CSV</button>
+							</div>
+							<button type="button" name="add_pdf" id="add_pdf" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-file-pdf"></i></button>
+							<button type="button" name="bulk_email" id="bulk_email" class="btn btn-info btn-circle btn-sm"><i class="fas fa-envelope"></i></button>
+						</div>
 					</div>
 					<div class="col" align="right">
 						<div class="dropdown">
@@ -59,22 +65,13 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<!-- <select name="multi_search_filter" id="multi_search_filter" multiple class="form-control selectpicker">
-				<?php
-				foreach($result as $row)
-				{
-					// echo '<option value="'.$row["s_scholarship_type"].'">'.$row["s_scholarship_type"].'</option>';	
-				}
-				?>
-				</select>
-				<input type="hidden" name="hidden_s_scholarship_type" id="hidden_s_scholarship_type" />
-				<div style="clear:both"></div>
-				<br /> -->
 				<div class="table-responsive">
 					<table class="table table-bordered" id="scholars_table" width="100%" cellspacing="0">
 						<thead>
 							<tr>
-								<th>Select</th>
+								<th>
+									<input type="checkbox" name="select_all" id="select_all" />
+								</th>
 								<th>Last Name</th>
 								<th>First Name</th>
 								<th>Current Course</th>
@@ -1476,7 +1473,7 @@
         </div>
     </div>
 <!-- CSV Upload Modal -->
-	<div id="csvUPModal" class="modal fade">
+	<!-- <div id="csvUPModal" class="modal fade">
 		<div class="modal-dialog modal-sm modal-dialog-centered">
 			<form method="post" id="upload_form">
 				<div class="modal-content">
@@ -1487,11 +1484,9 @@
 					<div class="modal-body">
 						<div id="upload_message"></div>
 							<div class="row justify-content-center" id="upload_area">
-							<!-- <form method="post" id="upload_form" enctype="multipart/form-data"> -->
 								<div class="col-md-6">
 									<input type="file" name="file" id="csv_file" />
 								</div>
-							<!-- </form> -->
 							</div>
 					</div>
 					<div class="modal-footer">
@@ -1502,8 +1497,8 @@
 				</div>
 			</form>
 		</div>
-	</div>
-	<div id="csvIMPModal" class="modal fade">
+	</div> -->
+	<!-- <div id="csvIMPModal" class="modal fade">
 	<form method="post" id="import_form">
 		<div class="modal-dialog modal-xl modal-dialog-scrollable">
 				<div class="modal-content">
@@ -1531,7 +1526,80 @@
 				</div>
 		</div>
 	</form>
-	</div>
+	</div> -->
+		<div id="csvUPModal" class="modal fade">
+			<!-- <form method="post" id="import_form"> -->
+			<div class="modal-dialog modal-xl modal-dialog-scrollable">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="modal_title" style="font-weight: bold; font-size: 20px;">Import CSV File</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+						<!-- <div id="import_message"></div> -->
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title" style="font-weight: bold; font-size: 16px;">Select CSV File</h5>
+								</div>
+								<div class="card-body">
+									<span id="upload_message"></span>
+									<form id="sample_form" method="POST" enctype="multipart/form-data" class="form-horizontal">
+										<div class="form-group">
+											<input type="file" name="file" id="file" />
+										</div>
+										<!-- <div class="form-group" align="center">
+											<input type="hidden" name="hidden_field" value="1" />
+											<input type="submit" name="import" id="import" class="btn btn-info" value="Import" />
+										</div> -->
+									</form>
+									<div class="form-group" id="process" style="display:none;">
+										<div class="progress">
+											<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+												<span id="process_data">0</span> - <span id="total_data">0</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<input type="hidden" name="hidden_field" value="1" />
+  							<input type="submit" name="import" id="import" class="btn btn-success" value="Import" />
+							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			<!-- </form> -->
+		</div>
+	<!-- <div id="csvUPModal" class="modal fade">
+		<div class="modal-dialog modal-xl modal-dialog-scrollable">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Import CSV File Data</h3>
+				</div>
+				<div class="panel-body">
+					<span id="message"></span>
+					<form id="sample_form" method="POST" enctype="multipart/form-data" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-md-4 control-label">Select CSV File</label>
+							<input type="file" name="file" id="file" />
+						</div>
+						<div class="form-group" align="center">
+							<input type="hidden" name="hidden_field" value="1" />
+							<input type="submit" name="import" id="import" class="btn btn-info" value="Import" />
+						</div>
+					</form>
+					<div class="form-group" id="process" style="display:none;">
+						<div class="progress">
+							<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+								<span id="process_data">0</span> - <span id="total_data">0</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
 	
 <!-- CSS Style -->
 	<style>
@@ -1869,21 +1937,111 @@
 
 
 // Upload CSV
-		$('#add_csv').click(function(){
+		// $('#add_csv').click(function(){
 		
-		$('#upload_form')[0].reset();
+		// $('#upload_form')[0].reset();
 
-		$('#upload_form').parsley().reset();
+		// $('#upload_form').parsley().reset();
+
+		// $('#action').val('Upload');
+
+		// $('#upload_file').val('Upload');
+
+		// $('#csvUPModal').modal('show');
+
+		// $('#upload_message').html('');
+
+		// });
+// Upload CSV
+	$('#add_csv').click(function(){
+		
+		$('#sample_form')[0].reset();
+
+		$('#sample_form').parsley().reset();
 
 		$('#action').val('Upload');
 
-		$('#upload_file').val('Upload');
+		$('#import').val('Import');
 
 		$('#csvUPModal').modal('show');
 
 		$('#upload_message').html('');
 
 		});
+// Upload Form
+		var clear_timer;
+
+		$('#sample_form').on('submit', function(event){
+			$('#message').html('');
+			event.preventDefault();
+			$.ajax({
+				url:"upload.php",
+				method:"POST",
+				data: new FormData(this),
+				dataType:"json",
+				contentType:false,
+				cache:false,
+				processData:false,
+				beforeSend:function(){
+					$('#import').attr('disabled','disabled');
+					$('#import').val('Importing');
+				},
+				success:function(data)
+				{
+					if(data.success)
+					{
+						$('#total_data').text(data.total_line);
+
+						start_import();
+
+						clear_timer = setInterval(get_import_data, 2000);
+
+						//$('#message').html('<div class="alert alert-success">CSV File Uploaded</div>');
+					}
+					if(data.error)
+					{
+						$('#message').html('<div class="alert alert-danger">'+data.error+'</div>');
+						$('#import').attr('disabled',false);
+						$('#import').val('Import');
+					}
+				}
+			})
+		});
+
+		function start_import()
+		{
+			$('#process').css('display', 'block');
+			$.ajax({
+				url:"import.php",
+				success:function()
+				{
+
+				}
+			})
+		}
+
+		function get_import_data()
+		{
+			$.ajax({
+				url:"process.php",
+				success:function(data)
+				{
+					var total_data = $('#total_data').text();
+					var width = Math.round((data/total_data)*100);
+					$('#process_data').text(data);
+					$('.progress-bar').css('width', width + '%');
+					if(width >= 100)
+					{
+						clearInterval(clear_timer);
+						$('#process').css('display', 'none');
+						$('#file').val('');
+						$('#message').html('<div class="alert alert-success">Data Successfully Imported</div>');
+						$('#import').attr('disabled',false);
+						$('#import').val('Import');
+					}
+				}
+			})
+		}
 
 // Upload Form
 	$('#upload_form').parsley();
@@ -1924,29 +2082,105 @@
 
 		});
 
-	// Other
+// Other
 		var total_selection = 0;
 
-		var ss_id = 0;
-		var sfname = 0;
-		var slname = 0;
-		var smname = 0;
-		var sgender = 0;
-		var scontact = 0;
-		var sdbirth = 0;
-		var saddress = 0;
-		var scivilstat = 0;
-		var sgfname = 0;
-		var sffname = 0;
-		var sfoccu = 0;
-		var smfname = 0;
-		var smoccu = 0;
-		var spschname = 0;
-		var scsyrlvl = 0;
-		var sccourse = 0;
-		var s_scholarship_type = 0;
-
-
+		var	ss_id	    		=	0
+		var	sfname	    		=	0
+		var	smname	    		=	0
+		var	slname	    		=	0
+		var	snext	    		=	0
+		var	sdbirth	    		=	0
+		var	sgender	    		=	0
+		var	saddress			=	0
+		var	szcode	    		=	0
+		var	scontact			=	0
+		var	semail	    		=	0
+		var	sctship	    		=	0
+		var	scivilstat			=	0
+		var	spbirth	    		=	0
+		var	sdisability			=	0
+		var	s4psno	    		=	0
+		var	spwdid	    		=	0
+		var	srappsship			=	0
+		var	srappnas			=	0
+		var	sbos	    		=	0
+		var	ssskills			=	0
+		var	stwinterest			=	0
+		var	ssdfile	    		=	0
+		var	sgfname	    		=	0
+		var	sgmname	    		=	0
+		var	sglname	    		=	0
+		var	sgnext	    		=	0
+		var	sglstatus			=	0
+		var	sgeduc	    		=	0
+		var	sgcontact			=	0
+		var	sgaddress			=	0
+		var	sgoccu	    		=	0
+		var	sgcompany			=	0
+		var	sffname	    		=	0
+		var	sfmname	    		=	0
+		var	sflname	    		=	0
+		var	sfnext	    		=	0
+		var	sflstatus			=	0
+		var	sfeduc	    		=	0
+		var	sfcontact			=	0
+		var	sfaddress			=	0
+		var	sfoccu	    		=	0
+		var	sfcompany			=	0
+		var	smfname	    		=	0
+		var	smmname	    		=	0
+		var	smlname	    		=	0
+		var	smnext	    		=	0
+		var	smlstatus			=	0
+		var	smeduc	    		=	0
+		var	smcontact			=	0
+		var	smaddress			=	0
+		var	smoccu	    		=	0
+		var	smcompany			=	0
+		var	snsibling			=	0
+		var	spcyincome			=	0
+		var	spschname			=	0
+		var	spsaddress			=	0
+		var	spstype	    		=	0
+		var	spscourse			=	0
+		var	spsyrlvl			=	0
+		var	spsgwa	    		=	0
+		var	spsraward			=	0
+		var	spsdawardrceive		=	0
+		var	scsintend			=	0
+		var	scsadd	    		=	0
+		var	scschooltype    	=	0
+		var	sccourse	    	=	0
+		var	sccourseprio		=	0
+		var	scsyrlvl	    	=	0
+		var	spass	        	=	0
+		var	sdsprc	        	=	0
+		var	sdsprcstat	    	=	0
+		var	sdspgm	        	=	0
+		var	sdspgmstat	    	=	0
+		var	sdspcr	        	=	0
+		var	sdspcrstat	    	=	0
+		var	sdstbytpic	    	=	0
+		var	sdstbytpicstat		=	0
+		var	sdsbrgyin	    	=	0
+		var	sdsbrgyinstat		=	0
+		var	sdscef	        	=	0
+		var	sdscefstat	    	=	0
+		var	sdspsa	        	=	0
+		var	sdspsastat	    	=	0
+		var	sdsobr	        	=	0
+		var	sdsobrstat	    	=	0
+		var	s_scholarship_note	=	0
+		var	s_added_on	    	=	0
+		var	s_applied_on		=	0
+		var	s_verification_code	=	0
+		var	s_user_otp	    	=	0
+		var	s_email_verify		=	0
+		var	s_account_status	=	0
+		var	s_grant_stat	    =	0
+		var	s_scholar_stat	    =	0
+		var	s_scholarship_type	=	0
 
 		var column_data = [];
 
@@ -1987,28 +2221,108 @@
 
 		total_selection = Object.keys(column_data).length;
 
-		if(total_selection >= 3)
+		if(total_selection >= 96)
 		{
+
 		$('#import').attr('disabled', false);
 
-		ss_id = column_data.ss_id;
-		slname = column_data.slname;
-		sfname = column_data.sfname;
-		smname = column_data.smname;
-		sgender = column_data.sgender;
-		scontact = column_data.scontact;
-		sdbirth = column_data.sdbirth;
-		saddress = column_data.saddress;
-		scivilstat = column_data.scivilstat;
-		sgfname = column_data.sgfname;
-		sffname = column_data.sffname;
-		sfoccu = column_data.sfoccu;
-		smfname = column_data.smfname;
-		smoccu = column_data.smoccu;
-		spschname = column_data.spschname;
-		scsyrlvl = column_data.scsyrlvl;
-		sccourse = column_data.sccourse;
-		s_scholarship_type = column_data.s_scholarship_type;
+		ss_id				=	column_data.ss_id;
+		sfname				=	column_data.sfname;
+		smname				=	column_data.smname;
+		slname				=	column_data.slname;
+		snext				=	column_data.snext;
+		sdbirth				=	column_data.sdbirth;
+		sgender				=	column_data.sgender;
+		saddress			=	column_data.saddress;
+		szcode				=	column_data.szcode;
+		scontact			=	column_data.scontact;
+		semail				=	column_data.semail;
+		sctship				=	column_data.sctship;
+		scivilstat			=	column_data.scivilstat;
+		spbirth				=	column_data.spbirth;
+		sdisability			=	column_data.sdisability;
+		s4psno				=	column_data.s4psno;
+		spwdid				=	column_data.spwdid;
+		srappsship			=	column_data.srappsship;
+		srappnas			=	column_data.srappnas;
+		sbos				=	column_data.sbos;
+		ssskills			=	column_data.ssskills;
+		stwinterest			=	column_data.stwinterest;
+		ssdfile				=	column_data.ssdfile;
+		sgfname				=	column_data.sgfname;
+		sgmname				=	column_data.sgmname;
+		sglname				=	column_data.sglname;
+		sgnext				=	column_data.sgnext;
+		sglstatus			=	column_data.sglstatus;
+		sgeduc				=	column_data.sgeduc;
+		sgcontact			=	column_data.sgcontact;
+		sgaddress			=	column_data.sgaddress;
+		sgoccu				=	column_data.sgoccu;
+		sgcompany			=	column_data.sgcompany;
+		sffname				=	column_data.sffname;
+		sfmname				=	column_data.sfmname;
+		sflname				=	column_data.sflname;
+		sfnext				=	column_data.sfnext;
+		sflstatus			=	column_data.sflstatus;
+		sfeduc				=	column_data.sfeduc;
+		sfcontact			=	column_data.sfcontact;
+		sfaddress			=	column_data.sfaddress;
+		sfoccu				=	column_data.sfoccu;
+		sfcompany			=	column_data.sfcompany;
+		smfname				=	column_data.smfname;
+		smmname				=	column_data.smmname;
+		smlname				=	column_data.smlname;
+		smnext				=	column_data.smnext;
+		smlstatus			=	column_data.smlstatus;
+		smeduc				=	column_data.smeduc;
+		smcontact			=	column_data.smcontact;
+		smaddress			=	column_data.smaddress;
+		smoccu				=	column_data.smoccu;
+		smcompany			=	column_data.smcompany;
+		snsibling			=	column_data.snsibling;
+		spcyincome			=	column_data.spcyincome;
+		spschname			=	column_data.spschname;
+		spsaddress			=	column_data.spsaddress;
+		spstype				=	column_data.spstype;
+		spscourse			=	column_data.spscourse;
+		spsyrlvl			=	column_data.spsyrlvl;
+		spsgwa				=	column_data.spsgwa;
+		spsraward			=	column_data.spsraward;
+		spsdawardrceive		=	column_data.spsdawardrceive;
+		scsintend			=	column_data.scsintend;
+		scsadd				=	column_data.scsadd;
+		scschooltype		=	column_data.scschooltype;
+		sccourse			=	column_data.sccourse;
+		sccourseprio		=	column_data.sccourseprio;
+		scsyrlvl			=	column_data.scsyrlvl;
+		spass				=	column_data.spass;
+		sdsprc				=	column_data.sdsprc;
+		sdsprcstat			=	column_data.sdsprcstat;
+		sdspgm				=	column_data.sdspgm;
+		sdspgmstat			=	column_data.sdspgmstat;
+		sdspcr				=	column_data.sdspcr;
+		sdspcrstat			=	column_data.sdspcrstat;
+		sdstbytpic			=	column_data.sdstbytpic;
+		sdstbytpicstat		=	column_data.sdstbytpicstat;
+		sdsbrgyin			=	column_data.sdsbrgyin;
+		sdsbrgyinstat		=	column_data.sdsbrgyinstat;
+		sdscef				=	column_data.sdscef;
+		sdscefstat			=	column_data.sdscefstat;
+		sdspsa				=	column_data.sdspsa;
+		sdspsastat			=	column_data.sdspsastat;
+		sdsobr				=	column_data.sdsobr;
+		sdsobrstat			=	column_data.sdsobrstat;
+		s_scholarship_note	=	column_data.s_scholarship_note;
+		s_added_on			=	column_data.s_added_on;
+		s_applied_on		=	column_data.s_applied_on;
+		s_verification_code	=	column_data.s_verification_code;
+		s_user_otp			=	column_data.s_user_otp;
+		s_email_verify		=	column_data.s_email_verify;
+		s_account_status	=	column_data.s_account_status;
+		s_grant_stat		=	column_data.s_grant_stat;
+		s_scholar_stat		=	column_data.s_scholar_stat;
+		s_scholarship_type	=	column_data.s_scholarship_type;
+
 
 		}
 		else
@@ -2019,7 +2333,7 @@
 		});
 		
 
-	// Import
+// Import
 		$(document).on('click', '#import', function(event){
 
 			event.preventDefault();
@@ -2027,13 +2341,29 @@
 			$.ajax({
 			url:"scholars_action.php",
 			method:"POST",
-			data:{ss_id:ss_id, slname:slname, sfname:sfname,
-				smname:smname, sgender:sgender, scontact:scontact, 
-				sdbirth:sdbirth, saddress:saddress, scivilstat:scivilstat, 
-				sgfname:sgfname, sffname:sffname, sfoccu:sfoccu, smfname:smfname, 
-				smoccu:smoccu, spschname:spschname, scsyrlvl:scsyrlvl,
-				sccourse:sccourse, s_scholarship_type:s_scholarship_type,
-				action:'import'},
+			data:
+			{ss_id:ss_id, sfname:sfname, smname:smname, slname:slname, snext:snext, 
+			sdbirth:sdbirth, sgender:sgender, saddress:saddress, szcode:szcode, scontact:scontact, 
+			semail:semail, sctship:sctship, scivilstat:scivilstat, spbirth:spbirth, sdisability:sdisability, 
+			s4psno:s4psno, spwdid:spwdid, srappsship:srappsship, srappnas:srappnas, sbos:sbos, ssskills:ssskills, 
+			stwinterest:stwinterest, ssdfile:ssdfile, sgfname:sgfname, sgmname:sgmname, sglname:sglname, sgnext:sgnext, 
+			sglstatus:sglstatus, sgeduc:sgeduc, sgcontact:sgcontact, sgaddress:sgaddress, sgoccu:sgoccu, sgcompany:sgcompany, 
+			sffname:sffname, sfmname:sfmname, sflname:sflname, sfnext:sfnext, sflstatus:sflstatus, sfeduc:sfeduc, 
+			sfcontact:sfcontact, sfaddress:sfaddress, sfoccu:sfoccu, sfcompany:sfcompany, smfname:smfname, 
+			smmname:smmname, smlname:smlname, smnext:smnext, smlstatus:smlstatus, smeduc:smeduc, 
+			smcontact:smcontact, smaddress:smaddress, smoccu:smoccu, smcompany:smcompany, snsibling:snsibling, 
+			spcyincome:spcyincome, spschname:spschname, spsaddress:spsaddress, spstype:spstype, spscourse:spscourse, 
+			spsyrlvl:spsyrlvl, spsgwa:spsgwa, spsraward:spsraward, spsdawardrceive:spsdawardrceive, scsintend:scsintend, 
+			scsadd:scsadd, scschooltype:scschooltype, sccourse:sccourse, sccourseprio:sccourseprio, 
+			scsyrlvl:scsyrlvl, spass:spass, sdsprc:sdsprc, sdsprcstat:sdsprcstat, sdspgm:sdspgm, 
+			sdspgmstat:sdspgmstat, sdspcr:sdspcr, sdspcrstat:sdspcrstat, sdstbytpic:sdstbytpic, 
+			sdstbytpicstat:sdstbytpicstat, sdsbrgyin:sdsbrgyin, sdsbrgyinstat:sdsbrgyinstat, sdscef:sdscef, 
+			sdscefstat:sdscefstat, sdspsa:sdspsa, sdspsastat:sdspsastat, sdsobr:sdsobr, sdsobrstat:sdsobrstat, 
+			s_scholarship_note:s_scholarship_note, s_added_on:s_added_on, s_applied_on:s_applied_on, 
+			s_verification_code:s_verification_code, s_user_otp:s_user_otp, s_email_verify:s_email_verify, 
+			s_account_status:s_account_status, s_grant_stat:s_grant_stat, s_scholar_stat:s_scholar_stat, 
+			s_scholarship_type:s_scholarship_type, action:'import'},
+			dataType:'JSON',
 			beforeSend:function(){
 				$('#import').attr('disabled', 'disabled');
 				$('#import').text('Importing...');
@@ -2042,14 +2372,14 @@
 			{
 				$('#import_form')[0].reset();
 
-				if(data.error !== '')
-				{
-					$('#message').html(data.error);
-					$('#csvIMPModal').modal('hide');
-					$('#import_form')[0].reset();
-				}
-				if(data.success != '')
-				{
+				// if(data.error !== '')
+				// {
+				// 	$('#message').html(data.error);
+				// 	$('#csvIMPModal').modal('hide');
+				// 	$('#import_form')[0].reset();
+				// }
+				// if(data.success != '')
+				// {
 					$('#message').html(data.success);
 					$('#csvIMPModal').modal('hide');
 					$('#import_form')[0].reset();
@@ -2057,11 +2387,67 @@
                     // {
                     //   location.reload();  //Refresh page
                     // }, 5000);
-				}	
+				// }	
 			}
 			})
 			
 		});	
+// Export
+	$('#export_csv').click(function(){
+        var checkbox = $('.checkbox:checked');
+		var currentDate = new Date();
+		var day = currentDate.getDate()
+		var month = currentDate.getMonth() + 1
+		var year = currentDate.getFullYear()
+		var hours = currentDate.getHours()
+		var minutes = currentDate.getMinutes()
+		var seconds = currentDate.getSeconds()
+		var times ="";
+
+		if(hours>12){
+		times = "0" + hours%12 + ":" + minutes + ":" + seconds +" PM"
+		}
+		else{
+		times = "0" + hours%12 + ":" + minutes + ":" + seconds +" AM"
+		}
+
+		var d = day + "-" + month + "-" + year + " at " + times;
+
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+
+			const DownloadCsv = (function() {
+			const a = document.createElement("a");
+			document.body.appendChild(a);
+			a.style = "display: none";
+			return function(data, fileName) {
+				const blob = new Blob([data], {type: "octet/stream"}),
+				url = window.URL.createObjectURL(blob);
+				a.href = url;
+				a.download = fileName;
+				a.click();
+				window.URL.revokeObjectURL(url);
+			};
+			}());
+			
+            $.ajax({
+                url:"scholars_action.php",
+                method:"POST",
+                data:{checkbox_value:checkbox_value, action:'export_csv'},
+				success: function(response) {
+					DownloadCsv(response, 'Scholar Master List('+d+').csv')
+				}
+            });
+        }
+        else
+        {
+            alert("Please select at least one records");
+        }
+    });
 // Bulk Email
 	$('#bulk_email').click(function(){
 
@@ -2949,35 +3335,9 @@
     	});
 
 // Select All
-	  $(document).on('click', '.select_all', function(){
-    	var inputs = $("check_all");
-		for(var i = 0; i < inputs.length; i++) 
-		{ 
-			var id = inputs[i].getAttribute("id");
-			if(type == "check_all") 
-			{
-				if(this.checked) 
-				{
-					inputs[i].checked = true;
-				} 
-				else 
-				{
-					inputs[i].checked = false;
-				}
-			} 
-		}
-		});
-
-	  $(document).on('click', '.checkbox', function(){
-        if($(this).is(':checked'))
-        {
-            $(this).closest('tr').addClass('removeRow');
-        }
-        else
-        {
-            $(this).closest('tr').removeClass('removeRow');
-        }
-    	});
+	$('#select_all').on('click', function(){;
+		$(".checkbox").prop('checked', $(this).prop("checked"));
+	});
 // Approve All
 	$('#approve_all').click(function(){
         var checkbox = $('.checkbox:checked');
@@ -2995,6 +3355,7 @@
                 data:{checkbox_value:checkbox_value, approve_status:approve_status, action:'approve_all'},
                 success:function(data)
                 {
+					$("#select_all").prop('checked', false); 
                     $('.removeRow').fadeOut(1500);
 					$('#message').html(data);
 
@@ -3030,6 +3391,7 @@
                 data:{checkbox_value:checkbox_value, reject_status:reject_status, action:'reject_all'},
                 success:function(data)
                 {
+					$("#select_all").prop('checked', false); 
                     $('.removeRow').fadeOut(1500);
 					$('#message').html(data);
 
@@ -3064,6 +3426,7 @@
                 data:{checkbox_value:checkbox_value, action:'delete_all'},
                 success:function(data)
                 {
+					$("#select_all").prop('checked', false); 
                     $('.removeRow').fadeOut(1500);
 					$('#message').html(data);
 

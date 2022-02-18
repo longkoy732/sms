@@ -499,7 +499,7 @@ $object = new sms;
 			{
 				$object->query = "
 				INSERT INTO tbl_student
-				(s_id, slname, sfname, smname, snext, sgender, sdbirth, scontact, saddress, spschname, semail, spscourse, 
+				(ss_id, slname, sfname, smname, snext, sgender, sdbirth, scontact, saddress, spschname, semail, spscourse, 
 				spsyrlvl, sccourse, scsyrlvl, sffname, smfname, s4psno, spcyincome, spwdid, ssdfile, sdstbytpic, sdstbytpicstat, 
 				sdspsa, sdspsastat, sdsbrgyin, sdsbrgyinstat, spass, s_verification_code, s_email_verify, 
 				s_account_status, s_scholarship_note, s_scholar_stat, s_scholarship_type, s_applied_on) 
@@ -831,25 +831,103 @@ $object = new sms;
 		$html .= '
 		<th style="min-width: 200px;">
 			<select name="set_column_data" class="form-control set_column_data" data-column_number="'.$count.'">
-				<option value="">Set Count Data</option>
+				<option value="">Select Data</option>
 				<option value="ss_id">Student ID No.</option>
-				<option value="slname">Last Name</option>
 				<option value="sfname">First Name</option>
 				<option value="smname">Middle Name</option>
-				<option value="sgender">Gender</option>
-				<option value="scsyrlvl">Year Level/Grade</option>
-				<option value="sccourse">Course</option>
-				<option value="spschname">Previous School Attended</option>
+				<option value="slname">Last Name</option>
+				<option value="snext">Name Ext.</option>
 				<option value="sdbirth">Date of Birth</option>
-				<option value="sfoccu">Father Occupation</option>
-				<option value="sffname">Father Full Name</option>
-				<option value="scontact">Contact Number</option>
-				<option value="sgfname">Guardian Full Name</option>
-				<option value="smfname">Mother Full Name</option>
+				<option value="sgender">Gender</option>
 				<option value="saddress">Address</option>
-				<option value="s_scholarship_type">Student Scholarship Type</option>
-				<option value="smoccu">Mother Occupation</option>
+				<option value="szcode">Zip Code</option>
+				<option value="scontact">Contact Number</option>
+				<option value="semail">Email</option>
+				<option value="sctship">Citizenship</option>
 				<option value="scivilstat">Civil Status</option>
+				<option value="spbirth">Place of Birth</option>
+				<option value="sdisability">Disability ID No.</option>
+				<option value="s4psno">4PS No.</option>
+				<option value="spwdid">PWD ID</option>
+				<option value="srappsship">Reason Applying Scholarship</option>
+				<option value="srappnas">Reason Applying Non-Academic</option>
+				<option value="sbos">Basic Office Skills</option>
+				<option value="ssskills">Special Skills</option>
+				<option value="stwinterest">Type of Work Interested In</option>
+				<option value="ssdfile">Date Filed</option>
+				<option value="sgfname">Guardian Full Name</option>
+				<option value="sgmname">Guardian Middle Name</option>
+				<option value="sglname">Guardian Last Name</option>
+				<option value="sgnext">Guardian Name Ext.</option>
+				<option value="sglstatus">Guardian Life Status</option>
+				<option value="sgeduc">Guardian Educational Attainment</option>
+				<option value="sgcontact">Guardian Contact Number</option>
+				<option value="sgaddress">Guardian Address</option>
+				<option value="sgoccu">Guardian Occupation</option>
+				<option value="sgcompany">Guardian Company</option>
+				<option value="sffname">Father Full Name</option>
+				<option value="sfmname">Father Middle Name</option>
+				<option value="sflname">Father Last Name</option>
+				<option value="sfnext">Father Name Ext.</option>
+				<option value="sflstatus">Father Life Status</option>
+				<option value="sfeduc">Father Educational Attainment</option>
+				<option value="sfcontact">Father Contact</option>
+				<option value="sfaddress">Father Address</option>
+				<option value="sfoccu">Father Occupation</option>
+				<option value="sfcompany">Father Company</option>
+				<option value="smfname">Mother Full Name</option>
+				<option value="smmname">Mother Middle Name</option>
+				<option value="smlname">Mother Last Name</option>
+				<option value="smnext">Mother Name Ext.</option>
+				<option value="smlstatus">Mother Life Status</option>
+				<option value="smeduc">Mother Educational Attainment</option>
+				<option value="smcontact">Mother Contact</option>
+				<option value="smaddress">Mother Address</option>
+				<option value="smoccu">Mother Occupation</option>
+				<option value="smcompany">Mother Company</option>
+				<option value="snsibling">Number of Sibling</option>
+				<option value="spcyincome">Parents Combine Yearly Income</option>
+				<option value="spschname">Previous School Attended</option>
+				<option value="spsaddress">Previous School Address</option>
+				<option value="spstype">Previous School Type</option>
+				<option value="spscourse">Previous Course</option>
+				<option value="spsyrlvl">Previous Year Level</option>
+				<option value="spsgwa">Previous Genereal Weight Average</option>
+				<option value="spsraward">Previous Received Award</option>
+				<option value="spsdawardrceive">Previous Date Award Received</option>
+				<option value="scsintend">Current School Intended to Enroll</option>
+				<option value="scsadd">Current School Address</option>
+				<option value="scschooltype">Current School Type</option>
+				<option value="sccourse">Current Course</option>
+				<option value="sccourseprio">Current Course Priority</option>
+				<option value="scsyrlvl">Current Year Level</option>
+				<option value="spass">Password</option>
+				<option value="sdsprc">Date Submit Report Card</option>
+				<option value="sdsprcstat">Date Submit Report Card Status</option>
+				<option value="sdspgm">Date Submit Good Moral</option>
+				<option value="sdspgmstat">Date Submit Good Moral Status</option>
+				<option value="sdspcr">Date Submit Certificate of Recognition</option>
+				<option value="sdspcrstat">Date Submit Certificate of Recognition Status</option>
+				<option value="sdstbytpic">Date Submit Two by Two Picture</option>
+				<option value="sdstbytpicstat">Date Submit Two by Two Picture Status</option>
+				<option value="sdsbrgyin">Date Submit Brgy. Indegency</option>
+				<option value="sdsbrgyinstat">Date Submit Brgy. Indegency Status</option>
+				<option value="sdscef">Date Submit Enrollment Form</option>
+				<option value="sdscefstat">Date Submit Enrollment Form Status</option>
+				<option value="sdspsa">Date Submit PSA</option>
+				<option value="sdspsastat">Date Submit PSA Status</option>
+				<option value="sdsobr">Date Submit Brgy. Residency</option>
+				<option value="sdsobrstat">Date Submit Brgy. Residency Status</option>
+				<option value="s_scholarship_note">Scholars Note</option>
+				<option value="s_added_on">Student Added On</option>
+				<option value="s_applied_on">Student Applied On</option>
+				<option value="s_verification_code">Student Verification Code</option>
+				<option value="s_user_otp">Student OTP</option>
+				<option value="s_email_verify">Student Email Verification Status</option>
+				<option value="s_account_status">Student Account Status</option>
+				<option value="s_grant_stat">Student Grant Status</option>
+				<option value="s_scholar_stat">Student Scholarship Status</option>
+				<option value="s_scholarship_type">Student Scholarship Type</option>			
 			</select>
 		</th>
 		';
@@ -880,14 +958,6 @@ $object = new sms;
 
 		$_SESSION['file_data'] = $temp_data;
 
-		// $html .= '
-		// </table>
-		// <br />
-		// <div align="center">
-		// <button type="button" name="import" id="import" class="btn btn-success" disbled>Import</button>
-		// </div>
-		// <br />
-		// ';
 		}
 		else
 		{
@@ -908,42 +978,15 @@ $object = new sms;
 
 	}
 
-// Import
+// Import CSV
 	if($_POST["action"] == 'import')
 	{
-		$error = '';
+		// $error = '';
 
 		$success = '';
 
-		if(isset($_POST["ss_id"]))
-        {
-
-		// $file_data = $_SESSION['file_data'];
-
-		// unset($_SESSION['file_data']);
-
-		// foreach($file_data as $row){
-
-		// $data = array(
-		// 	':sfname'	 =>	 $row[$_POST["sfname"]],
-		// );
-
-		// }
-
-		// $object->query = "
-		// SELECT * FROM tbl_student
-		// WHERE sfname = :sfname
-		// ";
-
-		// $object->execute($data);
-
-		// if($object->row_count() > 0)
-		// {
-		// 	$error = '<div class="alert alert-danger">First Name Already Exists</div>';
-		// }
-		// else
-		// {
-			
+		// if(isset($_POST["ss_id"]))
+        // {
 
             $file_data = $_SESSION['file_data'];
 
@@ -958,7 +1001,6 @@ $object = new sms;
 					':slname'	 				=>	 $row[$_POST["slname"]],
 					':sdbirth'	 				=>	 $row[$_POST["sdbirth"]]
 
-
 				);
 				
 				$object->query = "
@@ -970,46 +1012,134 @@ $object = new sms;
 				
 			if($object->row_count() == 0)
 			{
-
 				$data = array(
-
-					':ss_id'	 				=>	 $row[$_POST["ss_id"]],
-					':slname'	 				=>	 $row[$_POST["slname"]],
-					':sfname'	 				=>	 $row[$_POST["sfname"]],
-					':smname'	 				=>	 $row[$_POST["smname"]],
-					':sgender'	 				=>	 $row[$_POST["sgender"]],
-					':scontact'	 				=>	 $row[$_POST["scontact"]],
-					':sdbirth'	 				=>	 $row[$_POST["sdbirth"]],
-					':saddress'	 				=>	 $row[$_POST["saddress"]],
-					':scivilstat'	 			=>	 $row[$_POST["scivilstat"]],
-					':sgfname'	 				=>	 $row[$_POST["sgfname"]],
-					':sffname'	 				=>	 $row[$_POST["sffname"]],
-					':sfoccu'	 				=>	 $row[$_POST["sfoccu"]],
-					':smfname'	 				=>	 $row[$_POST["smfname"]],
-					':smoccu'					=>	 $row[$_POST["smoccu"]],
-					':spschname'	 			=>	 $row[$_POST["spschname"]],
-					':scsyrlvl'	 				=>	 $row[$_POST["scsyrlvl"]],
-					':sccourse'	 				=>	 $row[$_POST["sccourse"]],
-					':s_scholarship_type'	 	=>	 $row[$_POST["s_scholarship_type"]]
-
-
+					':ss_id'					=>	$row[$_POST["ss_id"]],
+					':sfname'					=>	$row[$_POST["sfname"]],
+					':smname'					=>	$row[$_POST["smname"]],
+					':slname'					=>	$row[$_POST["slname"]],
+					':snext'					=>	$row[$_POST["snext"]],
+					':sdbirth'					=>	$row[$_POST["sdbirth"]],
+					':sgender'					=>	$row[$_POST["sgender"]],
+					':saddress'					=>	$row[$_POST["saddress"]],
+					':szcode'					=>	$row[$_POST["szcode"]],
+					':scontact'					=>	$row[$_POST["scontact"]],
+					':semail'					=>	$row[$_POST["semail"]],
+					':sctship'					=>	$row[$_POST["sctship"]],
+					':scivilstat'				=>	$row[$_POST["scivilstat"]],
+					':spbirth'					=>	$row[$_POST["spbirth"]],
+					':sdisability'				=>	$row[$_POST["sdisability"]],
+					':s4psno'					=>	$row[$_POST["s4psno"]],
+					':spwdid'					=>	$row[$_POST["spwdid"]],
+					':srappsship'				=>	$row[$_POST["srappsship"]],
+					':srappnas'					=>	$row[$_POST["srappnas"]],
+					':sbos'						=>	$row[$_POST["sbos"]],	
+					':ssskills'					=>	$row[$_POST["ssskills"]],
+					':stwinterest'				=>	$row[$_POST["stwinterest"]],
+					':ssdfile'					=>	$row[$_POST["ssdfile"]],
+					':sgfname'					=>	$row[$_POST["sgfname"]],
+					':sgmname'					=>	$row[$_POST["sgmname"]],
+					':sglname'					=>	$row[$_POST["sglname"]],
+					':sgnext'					=>	$row[$_POST["sgnext"]],
+					':sglstatus'				=>	$row[$_POST["sglstatus"]],
+					':sgeduc'					=>	$row[$_POST["sgeduc"]],
+					':sgcontact'				=>	$row[$_POST["sgcontact"]],
+					':sgaddress'				=>	$row[$_POST["sgaddress"]],
+					':sgoccu'					=>	$row[$_POST["sgoccu"]],	
+					':sgcompany'				=>	$row[$_POST["sgcompany"]],
+					':sffname'					=>	$row[$_POST["sffname"]],
+					':sfmname'					=>	$row[$_POST["sfmname"]],
+					':sflname'					=>	$row[$_POST["sflname"]],
+					':sfnext'					=>	$row[$_POST["sfnext"]],
+					':sflstatus'				=>	$row[$_POST["sflstatus"]],
+					':sfeduc'					=>	$row[$_POST["sfeduc"]],
+					':sfcontact'				=>	$row[$_POST["sfcontact"]],
+					':sfaddress'				=>	$row[$_POST["sfaddress"]],
+					':sfoccu'					=>	$row[$_POST["sfoccu"]],
+					':sfcompany'				=>	$row[$_POST["sfcompany"]],
+					':smfname'					=>	$row[$_POST["smfname"]],
+					':smmname'					=>	$row[$_POST["smmname"]],
+					':smlname'					=>	$row[$_POST["smlname"]],
+					':smnext'					=>	$row[$_POST["smnext"]],
+					':smlstatus'				=>	$row[$_POST["smlstatus"]],
+					':smeduc'					=>	$row[$_POST["smeduc"]],
+					':smcontact'				=>	$row[$_POST["smcontact"]],
+					':smaddress'				=>	$row[$_POST["smaddress"]],
+					':smoccu'					=>	$row[$_POST["smoccu"]],
+					':smcompany'				=>	$row[$_POST["smcompany"]],
+					':snsibling'				=>	$row[$_POST["snsibling"]],
+					':spcyincome'				=>	$row[$_POST["spcyincome"]],
+					':spschname'				=>	$row[$_POST["spschname"]],
+					':spsaddress'				=>	$row[$_POST["spsaddress"]],
+					':spstype'					=>	$row[$_POST["spstype"]],
+					':spscourse'				=>	$row[$_POST["spscourse"]],
+					':spsyrlvl'					=>	$row[$_POST["spsyrlvl"]],
+					':spsgwa'					=>	$row[$_POST["spsgwa"]],
+					':spsraward'				=>	$row[$_POST["spsraward"]],
+					':spsdawardrceive'			=>	$row[$_POST["spsdawardrceive"]],
+					':scsintend	'				=>	$row[$_POST["scsintend"]],
+					':scsadd'					=>	$row[$_POST["scsadd"]],
+					':scschooltype'				=>	$row[$_POST["scschooltype"]],
+					':sccourse'					=>	$row[$_POST["sccourse"]],
+					':sccourseprio'				=>	$row[$_POST["sccourseprio"]],
+					':scsyrlvl'					=>	$row[$_POST["scsyrlvl"]],
+					':spass'					=>	$row[$_POST["spass"]],
+					':sdsprc'					=>	$row[$_POST["sdsprc"]],
+					':sdsprcstat'				=>	$row[$_POST["sdsprcstat"]],
+					':sdspgm'					=>	$row[$_POST["sdspgm"]],
+					':sdspgmstat'				=>	$row[$_POST["sdspgmstat"]],
+					':sdspcr'					=>	$row[$_POST["sdspcr"]],
+					':sdspcrstat'				=>	$row[$_POST["sdspcrstat"]],
+					':sdstbytpic'				=>	$row[$_POST["sdstbytpic"]],
+					':sdstbytpicstat'			=>	$row[$_POST["sdstbytpicstat"]],
+					':sdsbrgyin'				=>	$row[$_POST["sdsbrgyin"]],
+					':sdsbrgyinstat'			=>	$row[$_POST["sdsbrgyinstat"]],
+					':sdscef'					=>	$row[$_POST["sdscef"]],
+					':sdscefstat'				=>	$row[$_POST["sdscefstat"]],
+					':sdspsa'					=>	$row[$_POST["sdspsa"]],
+					':sdspsastat'				=>	$row[$_POST["sdspsastat"]],
+					':sdsobr'					=>	$row[$_POST["sdsobr"]],
+					':sdsobrstat'				=>	$row[$_POST["sdsobrstat"]],
+					':s_scholarship_note'		=>	$row[$_POST["s_scholarship_note"]],
+					':s_added_on'				=>	$row[$_POST["s_added_on"]],
+					':s_applied_on'				=>	$row[$_POST["s_applied_on"]],
+					':s_verification_code'		=>	$row[$_POST["s_verification_code"]],
+					':s_user_otp'				=>	$row[$_POST["s_user_otp"]],
+					':s_email_verify'			=>	$row[$_POST["s_email_verify"]],
+					':s_account_status'			=>	$row[$_POST["s_account_status"]],
+					':s_grant_stat'				=>	$row[$_POST["s_grant_stat"]],
+					':s_scholar_stat'			=>	$row[$_POST["s_scholar_stat"]],
+					':s_scholarship_type'		=>	$row[$_POST["s_scholarship_type"]]
 				);
 
 				$object->query = "
 				INSERT INTO tbl_student 
-				(ss_id, slname, sfname, smname, sgender, scontact, sdbirth,
-				saddress, scivilstat, sgfname, sffname, sfoccu, smfname, smoccu,
-				spschname, scsyrlvl, sccourse, s_scholarship_type) 
-				VALUES (:ss_id, :slname, :sfname, :smname, :sgender, :scontact, :sdbirth,
-				:saddress, :scivilstat, :sgfname, :sffname, :sfoccu, :smfname, :smoccu,
-				:spschname, :scsyrlvl, :sccourse, :s_scholarship_type)
+				(ss_id, sfname, smname, slname, snext, sdbirth, sgender, 
+				saddress, szcode, scontact, semail, sctship, scivilstat, spbirth, 
+				sdisability, s4psno, spwdid, srappsship, srappnas, sbos, ssskills, 
+				stwinterest, ssdfile, sgfname, sgmname, sglname, sgnext, sglstatus, 
+				sgeduc, sgcontact, sgaddress, sgoccu, sgcompany, sffname, sfmname, sflname, 
+				sfnext, sflstatus, sfeduc, sfcontact, sfaddress, sfoccu, sfcompany, smfname, 
+				smmname, smlname, smnext, smlstatus, smeduc, smcontact, smaddress, smoccu, 
+				smcompany, snsibling, spcyincome, spschname, spsaddress, spstype, spscourse, 
+				spsyrlvl, spsgwa, spsraward, spsdawardrceive, scsintend, scsadd, scschooltype, 
+				sccourse, sccourseprio, scsyrlvl, spass, sdsprc, sdsprcstat, sdspgm, sdspgmstat, 
+				sdspcr, sdspcrstat, sdstbytpic, sdstbytpicstat, sdsbrgyin, sdsbrgyinstat, sdscef, 
+				sdscefstat, sdspsa, sdspsastat, sdsobr, sdsobrstat, s_scholarship_note, s_added_on, 
+				s_applied_on, s_verification_code, s_user_otp, s_email_verify, s_account_status, s_grant_stat, 
+				s_scholar_stat, s_scholarship_type) 
+				VALUES (:ss_id, :sfname, :smname, :slname, :snext, :sdbirth, :sgender, :saddress, 
+				:szcode, :scontact, :semail, :sctship, :scivilstat, :spbirth, :sdisability, :s4psno, 
+				:spwdid, :srappsship, :srappnas, :sbos, :ssskills, :stwinterest, :ssdfile, :sgfname, 
+				:sgmname, :sglname, :sgnext, :sglstatus, :sgeduc, :sgcontact, :sgaddress, :sgoccu, :sgcompany, 
+				:sffname, :sfmname, :sflname, :sfnext, :sflstatus, :sfeduc, :sfcontact, :sfaddress, :sfoccu, 
+				:sfcompany, :smfname, :smmname, :smlname, :smnext, :smlstatus, :smeduc, :smcontact, :smaddress, 
+				:smoccu, :smcompany, :snsibling, :spcyincome, :spschname, :spsaddress, :spstype, :spscourse, 
+				:spsyrlvl, :spsgwa, :spsraward, :spsdawardrceive, :scsintend, :scsadd, :scschooltype, :sccourse, 
+				:sccourseprio, :scsyrlvl, :spass, :sdsprc, :sdsprcstat, :sdspgm	 :sdspgmstat, :sdspcr, :sdspcrstat, 
+				:sdstbytpic, :sdstbytpicstat, :sdsbrgyin, :sdsbrgyinstat, :sdscef, :sdscefstat, :sdspsa, :sdspsastat, 
+				:sdsobr, :sdsobrstat, :s_scholarship_note, :s_added_on, :s_applied_on, :s_verification_code, 
+				:s_user_otp, :s_email_verify, :s_account_status, :s_grant_stat, :s_scholar_stat, :s_scholarship_type)
 				";
-
-				// $object->query = "
-				// INSERT INTO tbl_student 
-				// (ss_id, slname, sfname, smname) 
-				// VALUES (:ss_id, :slname, :sfname, :smname)
-				// ";
 
 				$object->execute($data);
 
@@ -1019,17 +1149,192 @@ $object = new sms;
 			
 		}
         
-		}
-
+		// }
 		$output = array(
-			'error'		=>	$error,
 			'success'	=>	$success
 		);
 
 		echo json_encode($output);
     }
 
+// Export CSV
+	if($_POST["action"] == 'export_csv')
+	{
+		$title = array("Student ID No.",
+		"First Name", "Middle Name", 
+		"Last Name", "Name Ext.", 
+		"Date of Birth", "Gender", 
+		"Address", "Zip Code", 
+		"Contact Number", "Email", 
+		"Citizenship", "Civil Status", 
+		"Place of Birth", "Disability ID No.", 
+		"4PS No.", "PWD ID", 
+		"Reason Applying Scholarship", "Reason Applying Non-Academic",
+		"Basic Office Skills", "Special Skills", 
+		"Type of Work Interested In", "Date Filed", 
+		"Guardian Full Name", "Guardian Middle Name", 
+		"Guardian Last Name", "Guardian Name Ext.", 
+		"Guardian Life Status", "Guardian Educational Attainment", 
+		"Guardian Contact Number", "Guardian Address", 
+		"Guardian Occupation", "Guardian Company", 
+		"Father Full Name", "Father Middle Name", 
+		"Father Last Name", "Father Name Ext.",
+		"Father Life Status", "Father Educational Attainment", 
+		"Father Contact", "Father Address", 
+		"Father Occupation", "Father Company", 
+		"Mother Full Name", "Mother Middle Name", 
+		"Mother Last Name", "Mother Name Ext.", 
+		"Mother Life Status", "Mother Educational Attainment", 
+		"Mother Contact", "Mother Address", 
+		"Mother Occupation", "Mother Company",
+		"Number of Sibling", "Parents Combine Yearly Income", 
+		"Previous School Attended", "Previous School Address", 
+		"Previous School Type", "Previous Course", 
+		"Previous Year Level", "Previous Genereal Weight Average", 
+		"Previous Received Award", "Previous Date Award Received", 
+		"Current School Intended to Enroll", "Current School Address", 
+		"Current School Type", "Current Course", 
+		"Current Course Priority", "Current Year Level",  
+		"Password", "Date Submit Report Card", 
+		"Date Submit Report Card Status", "Date Submit Good Moral", 
+		"Date Submit Good Moral Status", "Date Submit Certificate of Recognition", 
+		"Date Submit Certificate of Recognition Status", "Date Submit Two by Two Picture", 
+		"Date Submit Two by Two Picture Status", "Date Submit Brgy. Indegency", 
+		"Date Submit Brgy. Indegency Status", "Date Submit Enrollment Form", 
+		"Date Submit Enrollment Form Status", "Date Submit PSA", 
+		"Date Submit PSA Status", "Date Submit Brgy. Residency",
+		"Date Submit Brgy. Residency Status", "Scholars Note", 
+		"Student Added On", "Student Applied On", 
+		"Student Verification Code", "Student OTP", 
+		"Student Email Verification Status", "Student Account Status", 
+		"Student Grant Status", "Student Scholarship Status", 
+		"Student Scholarship Type" 
+		);
+		$output = fopen('php://output', 'w');
+		fputcsv($output, $title);			
+		for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
+		{
+			
+			$object->query = "
+			SELECT * FROM tbl_student
+			WHERE s_id = '".$_POST["checkbox_value"][$count]."'
+			";
 
+			$object->execute();
+			$result = $object->get_result();
+			
+			$content = array();
+			foreach ($result as $rows) {
+				$row = array();
+				$row[] = $rows["ss_id"];
+				$row[] = $rows["sfname"];
+				$row[] = $rows["smname"];
+				$row[] = $rows["slname"];
+				$row[] = $rows["snext"];
+				$row[] = $rows["sdbirth"];
+				$row[] = $rows["sgender"];
+				$row[] = $rows["saddress"];
+				$row[] = $rows["szcode"];
+				$row[] = $rows["scontact"];
+				$row[] = $rows["semail"];
+				$row[] = $rows["sctship"];
+				$row[] = $rows["scivilstat"];
+				$row[] = $rows["spbirth"];
+				$row[] = $rows["sdisability"];
+				$row[] = $rows["s4psno"];
+				$row[] = $rows["spwdid"];
+				$row[] = $rows["srappsship"];
+				$row[] = $rows["srappnas"];
+				$row[] = $rows["sbos"];
+				$row[] = $rows["ssskills"];
+				$row[] = $rows["stwinterest"];
+				$row[] = $rows["ssdfile"];
+				$row[] = $rows["sgfname"];
+				$row[] = $rows["sgmname"];
+				$row[] = $rows["sglname"];
+				$row[] = $rows["sgnext"];
+				$row[] = $rows["sglstatus"];
+				$row[] = $rows["sgeduc"];
+				$row[] = $rows["sgcontact"];
+				$row[] = $rows["sgaddress"];
+				$row[] = $rows["sgoccu"];
+				$row[] = $rows["sgcompany"];
+				$row[] = $rows["sffname"];
+				$row[] = $rows["sfmname"];
+				$row[] = $rows["sflname"];
+				$row[] = $rows["sfnext"];
+				$row[] = $rows["sflstatus"];
+				$row[] = $rows["sfeduc"];
+				$row[] = $rows["sfcontact"];
+				$row[] = $rows["sfaddress"];
+				$row[] = $rows["sfoccu"];
+				$row[] = $rows["sfcompany"];
+				$row[] = $rows["smfname"];
+				$row[] = $rows["smmname"];
+				$row[] = $rows["smlname"];
+				$row[] = $rows["smnext"];
+				$row[] = $rows["smlstatus"];
+				$row[] = $rows["smeduc"];
+				$row[] = $rows["smcontact"];
+				$row[] = $rows["smaddress"];
+				$row[] = $rows["smoccu"];
+				$row[] = $rows["smcompany"];
+				$row[] = $rows["snsibling"];
+				$row[] = $rows["spcyincome"];
+				$row[] = $rows["spschname"];
+				$row[] = $rows["spsaddress"];
+				$row[] = $rows["spstype"];
+				$row[] = $rows["spscourse"];
+				$row[] = $rows["spsyrlvl"];
+				$row[] = $rows["spsgwa"];
+				$row[] = $rows["spsraward"];
+				$row[] = $rows["spsdawardrceive"];
+				$row[] = $rows["scsintend"];
+				$row[] = $rows["scsadd"];
+				$row[] = $rows["scschooltype"];
+				$row[] = $rows["sccourse"];
+				$row[] = $rows["sccourseprio"];
+				$row[] = $rows["scsyrlvl"];
+				$row[] = $rows["spass"];
+				$row[] = $rows["sdsprc"];
+				$row[] = $rows["sdsprcstat"];
+				$row[] = $rows["sdspgm"];
+				$row[] = $rows["sdspgmstat"];
+				$row[] = $rows["sdspcr"];
+				$row[] = $rows["sdspcrstat"];
+				$row[] = $rows["sdstbytpic"];
+				$row[] = $rows["sdstbytpicstat"];
+				$row[] = $rows["sdsbrgyin"];
+				$row[] = $rows["sdsbrgyinstat"];
+				$row[] = $rows["sdscef"];
+				$row[] = $rows["sdscefstat"];
+				$row[] = $rows["sdspsa"];
+				$row[] = $rows["sdspsastat"];
+				$row[] = $rows["sdsobr"];
+				$row[] = $rows["sdsobrstat"];
+				$row[] = $rows["s_scholarship_note"];
+				$row[] = $rows["s_added_on"];
+				$row[] = $rows["s_applied_on"];
+				$row[] = $rows["s_verification_code"];
+				$row[] = $rows["s_user_otp"];
+				$row[] = $rows["s_email_verify"];
+				$row[] = $rows["s_account_status"];
+				$row[] = $rows["s_grant_stat"];
+				$row[] = $rows["s_scholar_stat"];
+				$row[] = $rows["s_scholarship_type"];
+
+				$content[] = $row;
+				
+			}
+
+			foreach ($content as $con) {
+				fputcsv($output, $con);
+			}
+
+		}
+		fclose($output);
+
+	}
 
 // Single Acad Fetch Query
 	if($_POST["action"] == 'acad_fetch_single')
@@ -1196,7 +1501,7 @@ $object = new sms;
 		foreach($result as $row)
 		{
 		// Student ID Details
-			$data['sus_id'] = $row['s_id'];
+			$data['sus_id'] = $row['ss_id'];
 		// Personal Details
 			$data['susfname'] = $row['sfname'];
 			$data['susmname'] = $row['smname'];

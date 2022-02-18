@@ -302,30 +302,8 @@ if(isset($_POST["action"]))
 
 			$success = '';
 
-			$student_profile_image = '';
-
-			$data = array(
-				':semail'		=>	$_POST["semail"],
-				':s_id'			=>	$_POST['hidden_id']
-			);
-
-			$object->query = "
-			SELECT * FROM tbl_student 
-			WHERE semail = :semail 
-			AND s_id != :s_id
-			";
-
-			$object->execute($data);
-
-			if($object->row_count() > 0)
+			if($error == '')
 			{
-				$error = '<div class="alert alert-danger">Email Address Already Exists</div>';
-			}
-			else
-			{
-
-				if($error == '')
-				{
 					$data = array(
 						':sfname'						=>	$object->clean_input($_POST["sfname"]),
 						':smname'						=>	$object->clean_input($_POST["smname"]),
@@ -333,8 +311,7 @@ if(isset($_POST["action"]))
 						':sdbirth'						=>	$object->clean_input($_POST["sdbirth"]),
 						':saddress'						=>	$object->clean_input($_POST["saddress"]),
 						':sccourse'						=>	$object->clean_input($_POST["sccourse"]),
-						':scsyrlvl'						=>	$object->clean_input($_POST["scsyrlvl"]),
-						':semail'						=>	$object->clean_input($_POST["semail"]),
+						':scsyrlvl'						=>	$object->clean_input($_POST["scsyrlvl"])
 					);
 
 					$object->query = "
@@ -345,33 +322,35 @@ if(isset($_POST["action"]))
 					sdbirth = :sdbirth, 
 					saddress = :saddress, 
 					sccourse = :sccourse, 
-					scsyrlvl = :scsyrlvl, 
-					semail = :semail,  
-					student_profile_image = :student_profile_image 
-					WHERE s_id = '".$_POST['hidden_id']."'
+					scsyrlvl = :scsyrlvl
+					WHERE s_id = '".$_SESSION["admin_id"]."'
 					";
 					$object->execute($data);
 
-					$success = '<div class="alert alert-success">student Data Updated</div>';
-				}			
+					$success = '<div class="alert alert-success">Student Data Updated</div>';			
+
+				$output = array(
+					'error'					=>	$error,
+					'success'				=>	$success,
+					'sfname'				=>	$_POST["sfname"],
+					'smname'				=>	$_POST["smname"],
+					'slname'				=>	$_POST["slname"],
+					'sdbirth'				=>	$_POST["sdbirth"],
+					'saddress'				=>	$_POST["saddress"],
+					'sccourse'				=>	$_POST["sccourse"],
+					'scsyrlvl'				=>	$_POST["scsyrlvl"]
+				);
+
+				echo json_encode($output);
 			}
-
-			$output = array(
-				'error'					=>	$error,
-				'success'				=>	$success,
-				'sfname'				=>	$_POST["sfname"],
-				'smname'				=>	$_POST["smname"],
-				'slname'				=>	$_POST["slname"],
-				'sdbirth'				=>	$_POST["sdbirth"],
-				'saddress'				=>	$_POST["saddress"],
-				'sccourse'				=>	$_POST["sccourse"],
-				'scsyrlvl'				=>	$_POST["scsyrlvl"],
-				'semail'				=>	$_POST["semail"],
-				'student_profile_image'	=>	$student_profile_image,
-				
-			);
-
-			echo json_encode($output);
+			else
+			{
+				$output = array(
+					'error'					=>	$error,
+					'success'				=>	$success
+				);
+				echo json_encode($output);
+			}
 		}
 	// Input New Email
 		if($_POST['action'] == 'cemail')
@@ -551,7 +530,7 @@ if(isset($_POST["action"]))
 			echo json_encode($output);
 		}
 	// New Password
-		if($_POST['action'] == 'ncapass')
+		if($_POST['action'] == 'ncspass')
 		{
 			$error = '';
 
@@ -567,13 +546,13 @@ if(isset($_POST["action"]))
 			foreach($result as $row)
 			{
 
-				if(password_verify($_POST["ncapass"], $row["spass"]))
+				if(password_verify($_POST["ncpass"], $row["spass"]))
 				{
 					$error = '<div class="alert alert-danger">Old Password, Please Use Another Password</div>';
 				}
 				else
 				{
-					$new_password = $_POST["ncapass"];
+					$new_password = $_POST["ncpass"];
 					$confirm_password = $_POST["nccpass"];
 				
 					if($new_password == $confirm_password)

@@ -77,6 +77,46 @@ class sms
 	  	return $string;
 	}
 
+	function get_total_application()
+	{
+		$this->query = "
+		SELECT * FROM tbl_student 
+		WHERE s_scholar_stat = 'Pending'
+		";
+		$this->execute();
+		return $this->row_count();
+	}
+
+	function get_total_grantees()
+	{
+		$this->query = "
+		SELECT * FROM tbl_student 
+		WHERE s_scholar_stat = 'Approved'
+		";
+		$this->execute();
+		return $this->row_count();
+	}
+
+	function get_total_rejected()
+	{
+		$this->query = "
+		SELECT * FROM tbl_student 
+		WHERE s_scholar_stat = 'Rejected'
+		";
+		$this->execute();
+		return $this->row_count();
+	}
+
+	function get_total_renewal()
+	{
+		$this->query = "
+		SELECT * FROM tbl_student 
+		WHERE s_scholar_stat = 'Renewal'
+		";
+		$this->execute();
+		return $this->row_count();
+	}
+
 	function Generate_appointment_no()
 	{
 		$this->query = "

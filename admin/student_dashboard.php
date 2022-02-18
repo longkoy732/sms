@@ -34,15 +34,11 @@ include('header.php');
             <!-- Page Heading -->
             <h1 class="h3 mb-4 text-gray-800">Student Details Management</h1> 
             <div class="form-group">
-              <div class="form-row align-items-center">
-                <div class="col-auto">
-                <label class="sinfo-lbl">Scholarship Type:</label>
-                  <input class="scholar-info" type="text" name="s_scholarship_type" id="s_scholarship_type"/>
-                </div>
-                <div class="col-auto">
-                  <label class="sinfo-lbl">Scholarship Status:</label>
-                  <input class="scholar-info" type="text" name="s_scholar_stat" id="s_scholar_stat"/>
-                </div>
+              <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                    <label class="sinfo-lbl">Scholarship Status:</label>
+                    <input class="scholar-info" type="text" name="s_scholar_stat" id="s_scholar_stat"/> 
+                  </div>
               </div>
             </div>
               <span id="message"></span>
@@ -95,7 +91,7 @@ include('header.php');
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <label>Middle Name<span class="text-danger">*</span></label>
-                    <input type="text" name="smname" id="smname" class="form-control" />
+                    <input type="text" name="smname" id="smname" placeholder="Put N/A if None" class="form-control" />
                     <span id="error_smname" class="text-danger"></span>
                     </div>
 							    <div class="col-xs-12 col-sm-12 col-md-3">
@@ -143,11 +139,6 @@ include('header.php');
                     <span id="error_scontact" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
-                    <label>Email Address<span class="text-danger">*</span></label>
-                    <input type="text" name="semail" id="semail" class="form-control" />
-                    <span id="error_semail" class="text-danger"></span>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Citizenship<span class="text-danger">*</span></label>
                     <input type="text" name="sctship" id="sctship" class="form-control" />
                     <span id="error_sctship" class="text-danger"></span>
@@ -161,24 +152,24 @@ include('header.php');
                     </select>
                     <span id="error_scivilstat" class="text-danger"></span>
                   </div>
-                  <div class="col-xs-12 col-sm-12 col-md-4">
+                  <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
                     <label>DSWD Household/4PS NO.<span class="text-danger">*</span></label>
-                    <input type="text" name="s4psno" id="s4psno" class="form-control" />
+                    <input type="text" name="s4psno" id="s4psno" placeholder="Put N/A if None" class="form-control" />
                     <span id="error_s4psno" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
                     <label>Type of Disability(if applicable)<span class="text-danger">*</span></label>
-                    <input type="text" name="sdisability" id="sdisability" class="form-control" />
+                    <input type="text" name="sdisability" id="sdisability" placeholder="Put N/A if None" class="form-control" />
                     <span id="error_sdisability" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
                     <label>PWD ID<span class="text-danger">*</span></label>
-                    <input type="text" name="spwdid" id="spwdid" class="form-control" />
+                    <input type="text" name="spwdid" id="spwdid" placeholder="Put N/A if None" class="form-control" />
                     <span id="error_spwdid" class="text-danger"></span>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <label>Reasons/Circumtances Applying for Scholarship<span class="text-danger">*</span></label>
-                    <textarea type="text" name="srappsship" id="srappsship" class="form-control" required data-parsley-trigger="keyup"></textarea>
+                    <textarea type="text" name="srappsship" id="srappsship" placeholder="Put N/A if None" class="form-control" required data-parsley-trigger="keyup"></textarea>
                     <span id="error_srappsship" class="text-danger"></span>
                   </div>
                 </div>
@@ -205,7 +196,7 @@ include('header.php');
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
                       <label>Middle Name<span class="text-danger">*</span></label>
-                      <input type="text" name="sgmname" id="sgmname" class="form-control" />
+                      <input type="text" name="sgmname" id="sgmname" placeholder="Put N/A if None" class="form-control" />
                       <span id="error_sgmname" class="text-danger"></span>
                       </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
@@ -250,12 +241,12 @@ include('header.php');
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
                       <label>Occupation<span class="text-danger">*</span></label>
-                      <input type="text" name="sgoccu" id="sgoccu" class="form-control" />
+                      <input type="text" name="sgoccu" id="sgoccu" placeholder="Put N/A if None" class="form-control" />
                       <span id="error_sgoccu" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
                       <label>Company<span class="text-danger">*</span></label>
-                      <input type="text" name="sgcompany" id="sgcompany" class="form-control" />
+                      <input type="text" name="sgcompany" id="sgcompany" placeholder="Put N/A if None" class="form-control" />
                       <span id="error_sgcompany" class="text-danger"></span>
                     </div>
                 </div>
@@ -270,7 +261,7 @@ include('header.php');
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
                       <label>Middle Name<span class="text-danger">*</span></label>
-                      <input type="text" name="sfmname" id="sfmname" class="form-control" />
+                      <input type="text" name="sfmname" id="sfmname" placeholder="Put N/A if None" class="form-control" />
                       <span id="error_sfmname" class="text-danger"></span>
                       </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
@@ -315,13 +306,13 @@ include('header.php');
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
                       <label>Occupation<span class="text-danger">*</span></label>
-                      <input type="text" name="sfoccu" id="sfoccu" class="form-control" />
+                      <input type="text" name="sfoccu" id="sfoccu" placeholder="Put N/A if None" class="form-control" />
                       <span id="error_sfoccu" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
                       <label>Company<span class="text-danger">*</span></label>
                       <input type="text" name="sfcompany" id="sfcompany" class="form-control" />
-                      <span id="error_sfcompany" class="text-danger"></span>
+                      <span id="error_sfcompany" placeholder="Put N/A if None" class="text-danger"></span>
                     </div>
                 </div>
               </div>
@@ -335,7 +326,7 @@ include('header.php');
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
                       <label>Middle Name<span class="text-danger">*</span></label>
-                      <input type="text" name="smmname" id="smmname" class="form-control" />
+                      <input type="text" name="smmname" id="smmname" placeholder="Put N/A if None" class="form-control" />
                       <span id="error_smmname" class="text-danger"></span>
                       </div>
                     <div class="col-xs-12 col-sm-12 col-md-3">
@@ -380,12 +371,12 @@ include('header.php');
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
                       <label>Occupation<span class="text-danger">*</span></label>
-                      <input type="text" name="smoccu" id="smoccu" class="form-control" />
+                      <input type="text" name="smoccu" id="smoccu" placeholder="Put N/A if None" class="form-control" />
                       <span id="error_smoccu" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
                       <label>Company<span class="text-danger">*</span></label>
-                      <input type="text" name="smcompany" id="smcompany" class="form-control" />
+                      <input type="text" name="smcompany" id="smcompany" placeholder="Put N/A if None" class="form-control" />
                       <span id="error_smcompany" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
@@ -483,7 +474,7 @@ include('header.php');
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
                       <label>Course Priority<span class="text-danger">*</span></label>
-                      <input type="text" name="sccourseprio" id="sccourseprio" class="form-control" />
+                      <input type="text" name="sccourseprio" id="sccourseprio" placeholder="Put N/A if None" class="form-control" />
                       <span id="error_sccourseprio" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
@@ -534,7 +525,7 @@ include('header.php');
             $('#saddress').val("<?php echo $row['saddress']; ?>");
             $('#szcode').val("<?php echo $row['szcode']; ?>");
             $('#scontact').val("<?php echo $row['scontact']; ?>");
-            $('#semail').val("<?php echo $row['semail']; ?>");
+            // $('#semail').val("<?php echo $row['semail']; ?>");
             $('#sctship').val("<?php echo $row['sctship']; ?>");
             $('#scivilstat').val("<?php echo $row['scivilstat']; ?>");
             $('#sdisability').val("<?php echo $row['sdisability']; ?>");
@@ -659,7 +650,6 @@ include('header.php');
         var error_szcode = '';
         var error_scontact = '';
         var pcnumval = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
-        var error_semail = '';
         var emailval = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!outlook.com)([\w-]+\.)+[\w-]{2,4})?$/;
         var error_sctship = '';
         var error_scivilstat = '';
@@ -899,10 +889,10 @@ include('header.php');
         || error_slname != '' || error_snext != ''
         || error_sdbirth != '' || error_sgender != ''
         || error_saddress != '' || error_szcode != ''
-        || error_scontact != '' || error_semail != '' 
-        || error_sctship != '' || error_scivilstat != '' 
-        || error_sdisability != '' || error_s4psno != ''
-        || error_spwdid != '' || error_srappsship != ''
+        || error_scontact != ''  || error_sctship != '' 
+        || error_scivilstat != '' || error_sdisability != '' 
+        || error_s4psno != ''|| error_spwdid != '' 
+        || error_srappsship != ''
         )
         {
         return false;

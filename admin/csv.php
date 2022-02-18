@@ -15,6 +15,14 @@
 		header("location:".$object->base_url."");
 	}
 
+	$object->query = "
+    SELECT * FROM tbl_student
+    WHERE s_id = '".$_SESSION["admin_id"]."'
+    ";
+
+	$result = $object->get_result();
+
+
 	include('header.php');
 
 	?>
@@ -35,6 +43,7 @@
 						<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-success btn-circle btn-sm"><i class="fas fa-file-excel"></i></button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 							<button class="dropdown-item" type="button" name="add_csv" id="add_csv">Import CSV</button>
+							<button class="dropdown-item" type="button" name="export_csv" id="export_csv">Export CSV</button>
 						</div>
 							<button type="button" name="add_pdf" id="add_pdf" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-file-pdf"></i></button>
 						</div>
@@ -51,7 +60,9 @@
 					<table class="table table-bordered" id="scholars_table" width="100%" cellspacing="0">
 						<thead>
 							<tr>
-								<th>Select</th>
+								<th>
+									<input type="checkbox" name="select_all" id="select_all" />
+								</th>
 								<th>Last Name</th>
 								<th>First Name</th>
 								<th>Middle Name</th>
@@ -396,42 +407,13 @@
 			type:"POST",
 			data:{action:'fetch'}
 		},
-		"columnDefs":[
-			{
-				"targets":[0],
-				"orderable":false,
-				'checkboxes': {
-               	'selectRow': true
-            }
-			},
-		],
-		'select': {
-         'style': 'multi'
-		},
-		// 'order': [[1, 'asc']]	
+		'columnDefs': [{
+				'targets': 0,
+				'searchable':false,
+				'orderable':false,
+			}],
+			'order': [1, 'asc']
 	});
-
-
-	// load_data();
-	
-	// function load_data(query='')
-	// {
-	// 	$.ajax({
-	// 		url:"csv_action.php",
-	// 		method:"POST",
-	// 		data:{query:query},
-	// 		success:function(data)
-	// 		{
-	// 			$('tbody').html(data);
-	// 		}
-	// 	})
-	// }
-
-	// $('#multi_search_filter').change(function(){
-	// 	$('#hidden_s_scholarship_type').val($('#multi_search_filter').val());
-	// 	var query = $('#hidden_s_scholarship_type').val();
-	// 	load_data(query);
-	// });
 
 // add_acad
 	$('#add_acad').click(function(){
@@ -584,14 +566,12 @@
 
 		var column_number = $(this).data('column_number');
 
-			if(column_name in column_data)
+		if(column_name in column_data)
 		{
 
 			alert('You have already define '+column_name+ ' column');
 
 			$(this).val('');
-
-			column_data[$(this).val(column_name)].reset();
 
 			return false;	
 	
@@ -684,12 +664,68 @@
 					setTimeout(function() 
 					{
 						location.reload();  //Refresh page
-					}, 5000);
+					}, 3000);
 				}	
 			}
 			})
 			
 		});	
+// Export
+		$('#export_csv').click(function(){
+        var checkbox = $('.checkbox:checked');
+		var currentDate = new Date();
+		var day = currentDate.getDate()
+		var month = currentDate.getMonth() + 1
+		var year = currentDate.getFullYear()
+		var hours = currentDate.getHours()
+		var minutes = currentDate.getMinutes()
+		var seconds = currentDate.getSeconds()
+		var times ="";
+
+		if(hours>12){
+		times = "0" + hours%12 + ":" + minutes + ":" + seconds +" PM"
+		}
+		else{
+		times = "0" + hours%12 + ":" + minutes + ":" + seconds +" AM"
+		}
+
+		var d = day + "-" + month + "-" + year + " at " + times;
+
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+
+			const DownloadCsv = (function() {
+			const a = document.createElement("a");
+			document.body.appendChild(a);
+			a.style = "display: none";
+			return function(data, fileName) {
+				const blob = new Blob([data], {type: "octet/stream"}),
+				url = window.URL.createObjectURL(blob);
+				a.href = url;
+				a.download = fileName;
+				a.click();
+				window.URL.revokeObjectURL(url);
+			};
+			}());
+			
+            $.ajax({
+                url:"csv_action.php",
+                method:"POST",
+                data:{checkbox_value:checkbox_value, action:'exportsl_csv'},
+				success: function(response) {
+					DownloadCsv(response, 'Student List('+d+').csv')
+				}
+            });
+        }
+        else
+        {
+            alert("Please select at least one records");
+        }
+    });
 
 // Edit 
 	$(document).on('click', '.edit_button', function(){
@@ -902,35 +938,9 @@
     	});
 
 // Select All
-	  $(document).on('click', '.select_all', function(){
-    	var inputs = $("check_all");
-		for(var i = 0; i < inputs.length; i++) 
-		{ 
-			var id = inputs[i].getAttribute("id");
-			if(type == "check_all") 
-			{
-				if(this.checked) 
-				{
-					inputs[i].checked = true;
-				} 
-				else 
-				{
-					inputs[i].checked = false;
-				}
-			} 
-		}
-		});
-
-	  $(document).on('click', '.checkbox', function(){
-        if($(this).is(':checked'))
-        {
-            $(this).closest('tr').addClass('removeRow');
-        }
-        else
-        {
-            $(this).closest('tr').removeClass('removeRow');
-        }
-    	});
+   $('#select_all').on('click', function(){;
+	  $(".checkbox").prop('checked', $(this).prop("checked"));
+   });
 // Active All
 	$('#active_all').click(function(){
         var checkbox = $('.checkbox:checked');
@@ -948,11 +958,13 @@
                 data:{checkbox_value:checkbox_value, active_status:active_status, action:'active_all'},
                 success:function(data)
                 {
+
+					$("#select_all").prop('checked', false); 
                     $('.removeRow').fadeOut(1500);
 					$('#message').html(data);
 
           			dataTable.ajax.reload();
-
+					
           			setTimeout(function(){
 
             			$('#message').html('');
@@ -983,6 +995,7 @@
                 data:{checkbox_value:checkbox_value, inactive_status:inactive_status, action:'inactive_all'},
                 success:function(data)
                 {
+					$("#select_all").prop('checked', false); 
                     $('.removeRow').fadeOut(1500);
 					$('#message').html(data);
 
@@ -1017,6 +1030,7 @@
                 data:{checkbox_value:checkbox_value, action:'delete_all'},
                 success:function(data)
                 {
+					$("#select_all").prop('checked', false); 
                     $('.removeRow').fadeOut(1500);
 					$('#message').html(data);
 

@@ -25,13 +25,20 @@ if(isset($_POST["action"]))
             $error = '';
 
             $success = '';
+    
+            $data = array(
+
+            ':slname'	 			=>	 $_POST["slname"],
+            ':sdbirth'	 			=>	 $_POST["sdbirth"]
+    
+            );
 
             $object->query = "
             SELECT * FROM tbl_student
-            WHERE s_scholar_stat = 'Pending' OR s_scholar_stat = 'Approved' OR s_scholar_stat = 'Rejected'
+            WHERE slname = :slname AND sdbirth = :sdbirth AND s_scholar_stat != ''
             ";
 
-            $object->execute();
+            $object->execute($data);
 
             if($object->row_count() > 0)
             {
@@ -56,7 +63,6 @@ if(isset($_POST["action"]))
                     spschname = :spschname,
                     spscourse = :spscourse,
                     spsyrlvl = :spsyrlvl,
-                    semail = :semail,
                     sffname = :sffname,
                     sfmname = :sfmname,
                     sflname = :sflname,
@@ -88,7 +94,6 @@ if(isset($_POST["action"]))
                         ':spschname'				    =>	$object->clean_input($_POST["spschname"]),
                         ':spscourse'				    =>	$object->clean_input($_POST["saddress"]),
                         ':spsyrlvl'				        =>	$object->clean_input($_POST["spsyrlvl"]),
-                        ':semail'			            =>	$object->clean_input($_POST["semail"]),
                         ':sffname'			            =>	$object->clean_input($_POST["sffname"]),
                         ':sfmname'			            =>	$object->clean_input($_POST["sfmname"]),
                         ':sflname'		                =>	$object->clean_input($_POST["sflname"]),

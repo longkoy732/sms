@@ -72,7 +72,7 @@ $object = new sms;
 					foreach($result as $row)
 					{
 						$sub_array = array();
-						$sub_array[] = $check = '<div style="text-align: center;"><input type="checkbox" class="checkbox" value="'.$row["s_id"].'" /></div>';
+						$sub_array[] = $check = '<div style="text-align: center;"><input type="checkbox" name="checkbox"class="checkbox" value="'.$row["s_id"].'" /></div>';
 						$sub_array[] = $row["slname"];
 						$sub_array[] = $row["sfname"];
 						$sub_array[] = $row["smname"];
@@ -206,39 +206,12 @@ $object = new sms;
 
 	}
 
-// Import
+// Import CSV
 	if($_POST["action"] == 'import')
 	{
 		// $error = '';
 
-		$success = '';
-
-		// $file_data = $_SESSION['file_data'];
-
-		// unset($_SESSION['file_data']);
-
-		// foreach($file_data as $row){
-
-		// $data = array(
-		// 	':sfname'	 =>	 $row[$_POST["sfname"]],
-		// );
-
-		// }
-
-		// $object->query = "
-		// SELECT * FROM tbl_student
-		// WHERE sfname = :sfname
-		// ";
-
-		// $object->execute($data);
-
-		// if($object->row_count() > 0)
-		// {
-		// 	$error = '<div class="alert alert-danger">First Name Already Exists</div>';
-		// }
-		// else
-		// {
-			
+		$success = '';			
 
             $file_data = $_SESSION['file_data'];
 
@@ -246,13 +219,13 @@ $object = new sms;
 
             foreach($file_data as $row)
             {
+				$seldate = date('Y-m-d', strtotime($row[$_POST["sdbirth"]])); 
 				
 				$data = array(
 
 					':ss_id'	 				=>	 $row[$_POST["ss_id"]],
 					':slname'	 				=>	 $row[$_POST["slname"]],
-					':sdbirth'	 				=>	 $row[$_POST["sdbirth"]]
-
+					':sdbirth'	 				=>	 $seldate
 
 				);
 				
@@ -266,6 +239,8 @@ $object = new sms;
 			if($object->row_count() == 0)
 			{
 
+				$insertdate = date('Y-m-d', strtotime($row[$_POST["sdbirth"]])); 
+
 				$data = array(
 
 					':ss_id'	 				=>	 $row[$_POST["ss_id"]],
@@ -274,7 +249,7 @@ $object = new sms;
 					':smname'	 				=>	 $row[$_POST["smname"]],
 					':sgender'	 				=>	 $row[$_POST["sgender"]],
 					':scontact'	 				=>	 $row[$_POST["scontact"]],
-					':sdbirth'	 				=>	 $row[$_POST["sdbirth"]],
+					':sdbirth'	 				=>	 $insertdate,
 					':saddress'	 				=>	 $row[$_POST["saddress"]],
 					':scivilstat'	 			=>	 $row[$_POST["scivilstat"]],
 					':sgfname'	 				=>	 $row[$_POST["sgfname"]],
@@ -316,7 +291,64 @@ $object = new sms;
 		echo json_encode($output);
     }
 
+// Export CSV
+	if($_POST["action"] == 'exportsl_csv')
+	{
+		$title = array("Student ID No.", "Last Name", "First Name", "Middle Name", "Gender", "Year Level/Grade", "Course", "Previous School Attended", "Date of Birth", "Father Occupation", "Father Full Name", "Contact Number", "Guardian Full Name", "Mother Full Name", "Address", "Scholarship Type", "Mother Occupation", "Civil Status");
+		$output = fopen('php://output', 'w');
+		fputcsv($output, $title);			
+		for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
+		{
 
+			$filename = 'reports.csv';
+
+			header("Content-type: text/csv");
+			header("Content-Disposition: attachment; filename=$filename");
+			header("Pragma: no-cache");
+			header("Expires: 0");
+			
+			$object->query = "
+			SELECT * FROM tbl_student
+			WHERE s_id = '".$_POST["checkbox_value"][$count]."'
+			";
+
+			$object->execute();
+			$result = $object->get_result();
+			
+			$content = array();
+			foreach ($result as $rows) {
+				$row = array();
+				$row[] = $rows["ss_id"];
+				$row[] = $rows["slname"];
+				$row[] = $rows["sfname"];
+				$row[] = $rows["smname"];
+				$row[] = $rows["sgender"];
+				$row[] = $rows["scsyrlvl"];
+				$row[] = $rows["sccourse"];
+				$row[] = $rows["spschname"];
+				$row[] = $rows["sdbirth"];
+				$row[] = $rows["sfoccu"];
+				$row[] = $rows["sffname"];
+				$row[] = $rows["scontact"];
+				$row[] = $rows["sgfname"];
+				$row[] = $rows["smfname"];
+				$row[] = $rows["saddress"];
+				$row[] = $rows["s_scholarship_type"];
+				$row[] = $rows["smoccu"];
+				$row[] = $rows["scivilstat"];
+
+				$content[] = $row;
+				
+			}
+
+			foreach ($content as $con) {
+				fputcsv($output, $con);
+			}
+
+		}
+		fclose($output);
+
+	}
 
 // Single Student Fetch Query
 	if($_POST["action"] == 'student_fetch_single')
@@ -501,7 +533,7 @@ $object = new sms;
 
 			$object->execute();
 		}
-		echo '<div class="alert alert-success">Selected Student Data Account Actived</div>';
+		echo '<div class="alert alert-success">Selected Student Data Account Activated</div>';
 	}
 // Inactive All
 	if($_POST["action"] == 'inactive_all')

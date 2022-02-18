@@ -107,7 +107,7 @@ include('header.php');
                       <label>Gender<span class="text-danger">*</label>
                         <select name="sgender" id="sgender" class="form-control" required>
                           <option value="">-Select-</option>
-                          <option value="Male.">Male</option>
+                          <option value="Male">Male</option>
                           <option value="Female">Female</option>
                         </select>
                         <span id="error_sgender" class="text-danger"></span>
@@ -124,7 +124,7 @@ include('header.php');
                       </div>
                       <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
                         <label>Email<span class="text-danger">*</span></label>
-                        <input type="text" name="semail" id="semail" class="form-control" />
+                        <input type="text" name="semail" id="semail" disabled class="form-control" />
                         <span id="error_semail" class="text-danger"></span>
                       </div>
                       <div class="col-xs-12 col-sm-12 col-md-12">
@@ -414,7 +414,6 @@ include('header.php');
         var error_sdbirth = '';
         var error_scontact = '';
         var error_saddress = '';
-        var error_semail = '';
         
         if($.trim($('#slname').val()).length == 0)
         {
@@ -494,27 +493,6 @@ include('header.php');
         $('#saddress').removeClass('has-error');
         }
 
-        if($.trim($('#semail').val()).length == 0)
-        {
-        error_semail = 'Email is required';
-        $('#error_semail').text(error_semail);
-        $('#semail').addClass('has-error');
-        }
-        else
-        {
-      //     if(emailval.test($('#semail').val()))
-      //    {
-      //     error_semail = 'Invalid Email Only(gmail, hotmail, outlook or yahoo is allowed).';
-      //     $('#error_semail').text(error_semail);
-      //     $('#semail').addClass('has-error');
-      //    }
-      //    else {
-        error_semail = '';
-        $('#error_semail').text(error_semail);
-        $('#semail').removeClass('has-error');
-        }
-      //   }
-
         if($.trim($('#sgender').val()).length == 0)
         {
         error_sgender = 'Gender is required';
@@ -546,7 +524,6 @@ include('header.php');
         || error_smname != '' || error_snext != ''
         || error_sgender != '' || error_sdbirth != ''
         || error_scontact != '' || error_saddress != ''
-        || error_semail != '' 
         )
         
         {

@@ -21,6 +21,10 @@
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="../vendor/datatables/dataTables.bootstrap4.min.css"/>
+
+    <!-- <link rel="stylesheet" type="text/css" href="../vendor/datatables/dataTables.checkboxes.css"/> -->
+
     <link rel="stylesheet" type="text/css" href="../vendor/parsley/parsley.css"/>
 
     <!-- <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/bootstrap.min.css"/> -->
@@ -126,80 +130,33 @@
                     <span>CSV</span>
                 </a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    <i class="fas fa-user-clock"></i>
-                    <span>Scholars</span>
-                </a>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h4 class="collapse-header">Scholarship Applications</h4>
-                        <a class="collapse-item" href="acadapp.php">Academic</a>
-                        <a class="collapse-item" href="nonacadapp.php">Non-Academic</a>
-                        <a class="collapse-item" href="unifastapp.php">UNIFAST</a>
-                        <a class="collapse-item" href="chedapp.php">CHED</a>
-                    </div>
-                </div>
-            </li> -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-user-check"></i>
-                    <span>Approved Scholars</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h4 class="collapse-header">Scholarship Grantees</h4>
-                        <a class="collapse-item" href="acadgrants.php">Academic</a>
-                        <a class="collapse-item" href="nonacadgrants.php">Non-Academic</a>
-                        <a class="collapse-item" href="unifastgrants.php">UNIFAST</a>
-                        <a class="collapse-item" href="chedgrants.php">CHED</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                aria-expanded="true" aria-controls="collapseThree">
-                    <i class="fas fa-user-times"></i>
-                    <span>Rejected Scholars</span>
-                </a>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h4 class="collapse-header">Scholarship Rejections</h4>
-                        <a class="collapse-item" href="acadreject.php">Academic</a>
-                        <a class="collapse-item" href="nonacadreject.php">Non-Academic</a>
-                        <a class="collapse-item" href="unifastreject.php">UNIFAST</a>
-                        <a class="collapse-item" href="chedreject.php">CHED</a>
-                    </div>
-                </div>
-            </li> -->
+
             <?php
             }
             else{
             ?>
              <li class="nav-item">
                 <a class="nav-link" href="student_dashboard.php">
-                    <i class="fas fa-user-clock"></i>
+                    <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <?php
-            if($_SESSION['s_stat'] == 'Approved' || $_SESSION['s_stat'] == 'Renewal')
+            if($_SESSION['s_stat'] == 'Renewal')
             {
             ?>
             <li class="nav-item">
                 <a class="nav-link" href="renew.php">
-                    <i class="fas fa-notes-medical"></i>
+                    <i class="fas fa-user-clock"></i>
                     <span>Renew Scholarship</span></a>
             </li>
             <?php
             }
-            else
+            if($_SESSION['s_stat'] == 'Pending' || $_SESSION['s_stat'] == 'Rejected' || $_SESSION['s_stat'] == '')
             {
             ?>
             <li class="nav-item">
                 <a class="nav-link" href="apply.php">
-                    <i class="fas fa-notes-medical"></i>
+                    <i class="fas fa-user-clock"></i>
                     <span>Apply Scholarship</span></a>
             </li>
             <?php
@@ -288,22 +245,6 @@
                             {
                                 $user_name = $row['semail'];
                                 $user_profile_image = '../img/undraw_profile.svg';
-                            }
-                        }
-
-                        if($_SESSION['type'] == 'Patient')
-                        {
-                            $object->query = "
-                            SELECT * FROM tbl_patient 
-                            WHERE patient_id = '".$_SESSION['admin_id']."'
-                            ";
-
-                            $user_result = $object->get_result();
-                            
-                            foreach($user_result as $row)
-                            {
-                                $user_name = $row['patient_name'];
-                                // $user_profile_image = $row['patient_profile_image'];
                             }
                         }
 

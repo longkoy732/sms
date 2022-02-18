@@ -58,7 +58,8 @@ if(isset($_POST["admin_email_address"]))
 						$_SESSION['admin_id'] = $row['s_id'];
 						$_SESSION['type'] = 'Student';
 						$_SESSION['s_stat'] = $row['s_scholar_stat'];
-						$url = $object->base_url . 'admin/student_dashboard.php';
+						$url = 'student_dashboard.php';
+						// $url = $object->base_url . 'admin/student_dashboard.php';
 					}
 					else
 					{
@@ -81,7 +82,8 @@ if(isset($_POST["admin_email_address"]))
 			{
 				$_SESSION['admin_id'] = $row['admin_id'];
 				$_SESSION['type'] = 'Admin';
-				$url = $object->base_url . 'admin/dashboard.php';
+				$url = 'dashboard.php';
+				// $url = $object->base_url . 'admin/dashboard.php';
 			}
 			else
 			{

@@ -8,8 +8,6 @@ use PHPMailer\PHPMailer\Exception;
 
 $object = new sms;
 
-    
-
 if(isset($_POST["action"]))
 {
     if($_POST['action'] == 'ssid_verify')
@@ -31,17 +29,13 @@ if(isset($_POST["action"]))
   
       $object->execute($data);
   
-      if($object->row_count() == 0)
+      if($object->row_count() > 0)
       {
-          $error = '<div class="alert alert-danger">School Data Not Exists</div>';
+        $success = '<div class="alert alert-success">School Data Exists</div>';
       }
-      else{
-
-          if($error == ''){
-
-            $success = '<div class="alert alert-success">School Data Exists</div>';
-        
-          } 
+      else
+      {
+        $error = '<div class="alert alert-danger">School Data Not Exists</div>';
       }
     
       $output = array(
@@ -80,7 +74,8 @@ if(isset($_POST["action"]))
 
             $object->query = "
             UPDATE tbl_student 
-            SET spass = :spass, 
+            SET semail = :semail,
+            spass = :spass, 
             s_added_on = :s_added_on,
             s_verification_code = :s_verification_code,
             s_email_verify = :s_email_verify
@@ -96,6 +91,7 @@ if(isset($_POST["action"]))
             $hash = password_hash($password, PASSWORD_ARGON2I);
 
             $data = array(
+                ':semail'				        =>	$_POST["semail"],
                 ':spass'				        =>	$hash,
                 ':s_added_on'				    =>	$object->now,
                 ':s_verification_code'	        =>	$s_verification_code,
@@ -152,15 +148,11 @@ if(isset($_POST["action"]))
                 } catch (Exception $e) {
                     $error = '<div class="alert alert-danger">' . $mail->ErrorInfo . '</div>';
                 }
-                // echo $hash;
-                
-                // $pass = $password;
 
                 $object->execute($data);
         }
 
         $output = array(
-            'pass'		=>	$pass,
             'error'		=>	$error,
             'success'	=>	$success
         );

@@ -125,10 +125,10 @@
   </html>
 <!-- Script -->
   <script>
-// Student Details
+    
     $(document).ready(function(){
 
-  // sid 
+// Student ID Details 
     $('#btn_ss_details').click(function(){
       
 
@@ -190,7 +190,7 @@
         $.ajax({
               url:"register_action.php",
               method:"POST",
-              data:{'vss_id':vss_id, 'vslname':vslname, 'vsdbirth':vsdbirth, action:'ssid_verify'},
+              data:{vss_id:vss_id, vslname:vslname, vsdbirth:vsdbirth, action:'ssid_verify'},
               dataType:'json',
               beforeSend:function(){
                 $('#btn_ss_details').attr('disabled', 'disabled');
@@ -198,19 +198,22 @@
               success:function(data)
               {
                 $('#btn_ss_details').attr('disabled', false);
-                // $('#verify_sid_form')[0].reset();
+
                 if(data.error !== '')
                 {
-                    $('#message').html(data.error);
-                    //For wait 2 seconds
-                    setTimeout(function() 
-                    {
-                    location.reload();  //Refresh page
-                    }, 1000);
-                    }
+                  $('#message').html(data.error);
+                  setTimeout(function() 
+                  {
+                    $('#message').html('');
+                  }, 2000);
+                }
                 if(data.success != '')
                 {
                   $('#message').html(data.success);
+                  setTimeout(function() 
+                  {
+                    $('#message').html('');
+                  }, 2000);
                   
                   $('#list_ss_details').removeClass('active active_tab1');
                   $('#list_ss_details').removeAttr('href data-toggle');
@@ -243,7 +246,7 @@
     $('#btn_submit').click(function(){
       
       var error_semail = '';
-      var error_spass = '';
+      var emailval = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!outlook.com)([\w-]+\.)+[\w-]{2,4})?$/;
       
       if($.trim($('#semail').val()).length == 0)
       {
@@ -253,22 +256,18 @@
       }
       else
       {
-      error_semail = '';
-      $('#error_semail').text(error_semail);
-      $('#semail').removeClass('has-error');
-      }
-      
-      if($.trim($('#spass').val()).length == 0)
-      {
-      error_spass = 'Password is required';
-      $('#error_spass').text(error_spass);
-      $('#spass').addClass('has-error');
-      }
-      else
-      {
-      error_spass = '';
-      $('#error_spass').text(error_spass);
-      $('#spass').removeClass('has-error');
+        if(emailval.test($('#semail').val()))
+        {
+          error_semail = 'Invalid Email Only(gmail, hotmail, outlook or yahoo is allowed).';
+          $('#error_semail').text(error_semail);
+          $('#semail').addClass('has-error');
+        }
+        else 
+        {
+          error_semail = '';
+          $('#error_semail').text(error_semail);
+          $('#semail').removeClass('has-error');
+        }
       }
 
       if( error_semail != '')
@@ -294,19 +293,23 @@
               success:function(data)
               {
                 $('#btn_submit').attr('disabled', false);
-                // $('#student_register_form')[0].reset();
-                // //For wait 2 seconds
-                // setTimeout(function() 
-                // {
-                //   location.reload();  //Refresh page
-                // }, 2000);
+
                 if(data.error !== '')
                 {
                   $('#message').html(data.error);
+                  setTimeout(function() 
+                  {
+                    $('#message').html('');
+                  }, 2000);
                 }
                 if(data.success != '')
                 {
+                  
                   $('#message').html(data.success);
+                  setTimeout(function() 
+                  {
+                    window.location.href = "index.php";
+                  }, 2000);
                 }
               }
             });

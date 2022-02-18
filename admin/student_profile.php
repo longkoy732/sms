@@ -38,7 +38,6 @@ include('header.php');
                     </div>
                     <div class="col" align="right">
                         <input type="hidden" name="action" value="student_profile" />
-                        <!-- <input type="hidden" name="hidden_id" id="hidden_id" /> -->
                         <button type="submit" name="edit_button" id="edit_button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</button>
                         &nbsp;&nbsp;
                     </div>
@@ -257,7 +256,7 @@ include('header.php');
 						</div>
 					</div>
 					<div class="modal-footer">
-                    <input type="hidden" name="action" value="ncpass" />
+                    <input type="hidden" name="action" value="ncspass" />
                     <input type="submit" name="btn_ncpass" id="btn_ncpass" class="btn btn-success" value="Change" />
 					</div>
 				</div>
@@ -284,7 +283,6 @@ include('header.php');
         $('#scsyrlvl').val("<?php echo $row['scsyrlvl']; ?>");
         $('#semail').val("<?php echo $row['semail']; ?>");
         $('#spass').val("<?php echo $row['spass']; ?>");
-        
         <?php
         }
         ?>
@@ -309,35 +307,29 @@ include('header.php');
 				},
 				success:function(data)
 				{
-					$('#edit_button').attr('disabled', false);
+                    $('#edit_button').attr('disabled', false);
                     $('#edit_button').html('<i class="fas fa-edit"></i> Edit');
 
-                    $('#sfname').val(data.sfname);
-                    $('#smname').val(data.smname);
-                    $('#slname').val(data.slname);
-                    $('#sdbirth').val(data.sdbirth);
-                    $('#saddress').text(data.saddress);
-                    $('#sccourse').text(data.sccourse);
-                    $('#scsyrlvl').text(data.scsyrlvl);
-                    $('#semail').text(data.semail);
-                    $('#spass').text(data.spass);
-
-                    if(data.student_profile_image != '')
+                    if(data.error != '')
                     {
-                        $('#uploaded_image').html('<img src="'+data.student_profile_image+'" class="img-thumbnail" width="100" />');
-
-                        $('#user_profile_image').attr('src', data.student_profile_image);
+                        $('#message').html(data.error);
                     }
+                    else
+                    {
+                        $('#message').html(data.success);
 
-                    $('#hidden_student_profile_image').val(data.student_profile_image);
-						
-                    $('#message').html(data.success);
+                        setTimeout(function(){
 
-					setTimeout(function(){
+                            $('#message').html('');
 
-				        $('#message').html('');
+                        }, 2000);
 
-				    }, 5000);
+                        setTimeout(function(){
+
+                        location.reload();
+
+                        }, 4000);
+                    }
 				}
 			})
 		}
