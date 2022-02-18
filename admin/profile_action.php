@@ -1,8 +1,12 @@
 <?php
 
 include('../class/dbcon.php');
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
+
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
 
 $object = new sms;
 
@@ -106,7 +110,7 @@ if(isset($_POST["action"]))
 					// Load composer's autoloader
 					require '../vendor/autoload.php';
 				
-					$mail = new PHPMailer(true);                            
+					$mail = new PHPMailer\PHPMailer\PHPMailer();                            
 					try {
 						//Server settings
 						$mail->isSMTP();                                     
@@ -398,7 +402,7 @@ if(isset($_POST["action"]))
 					// Load composer's autoloader
 					require '../vendor/autoload.php';
 				
-					$mail = new PHPMailer(true);                            
+					$mail = new PHPMailer\PHPMailer\PHPMailer();                            
 					try {
 						//Server settings
 						$mail->isSMTP();                                     

@@ -474,7 +474,11 @@ include('header.php');
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
                       <label>Course Priority<span class="text-danger">*</span></label>
-                      <input type="text" name="sccourseprio" id="sccourseprio" placeholder="Put N/A if None" class="form-control" />
+                      <select name="sccourseprio" id="sccourseprio" class="form-control" required>
+                        <option value="">Select </option>
+                        <option value="Priority">Piority</option>
+                        <option value="Not Priority">Not Priority</option>
+                      </select>
                       <span id="error_sccourseprio" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">

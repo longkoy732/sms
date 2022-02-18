@@ -46,6 +46,7 @@
 							</div>
 							<button type="button" name="add_pdf" id="add_pdf" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-file-pdf"></i></button>
 							<button type="button" name="bulk_email" id="bulk_email" class="btn btn-info btn-circle btn-sm"><i class="fas fa-envelope"></i></button>
+							<button type="button" name="bulk_sms" id="bulk_sms" class="btn btn-info btn-circle btn-sm"><i class="fas fa-sms"></i></button>
 						</div>
 					</div>
 					<div class="col" align="right">
@@ -60,6 +61,7 @@
 						<button type="button" name="delete_all" id="delete_all" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-times"></i></button>
 						<button type="button" name="approve_all" id="approve_all" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-thumbs-up"></i></button>
 						<button type="button" name="reject_all" id="reject_all" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-thumbs-down"></i></button>
+						<button type="button" name="renewal_all" id="renewal_all" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-undo"></i></button>
 						</div>
 					</div>
 				</div>
@@ -1404,6 +1406,42 @@
 			</form>
 		</div>
 	</div>
+<!-- Send SMS Modal -->
+	<div id="smsModal" class="modal fade">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable">
+			<form method="post" id="sms_form">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modal_title" style="font-weight: bold; font-size: 20px;">Send Email</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="card">
+							<div class="card-header" style="font-weight: bold; font-size: 18px;">Message</div>
+							<div class="card-body">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<label>Send to:<span class="text-danger">*</span></label>
+											<input type="text" name="scontact" id="scontact" class="form-control" autocomplete="off" required/>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<label>Message:<span class="text-danger">*</span></label>
+											<textarea type="text" name="smsmessage" id="smsmessage" rows="3" autocomplete="off" class="form-control" required data-parsley-trigger="keyup"></textarea>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" name="sms_send" id="sms_send" class="btn btn-success">Send</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 <!-- View Acad Modal -->
 	<div id="viewacadModal" class="modal fade">
 		<div class="modal-dialog modal-dialog-scrollable">
@@ -2498,7 +2536,7 @@
 		data:{email_data:email_data, emailmessage:emailmessage, emailsubject:emailsubject, action:'send_email'},
 		dataType:'JSON',
 		beforeSend:function(){
-			$('#email_send').html('Sending...');
+			$('#email_send').val('Sending...');
 			$('#email_send').addClass('btn-danger');
 		},
 		success:function(data){
@@ -2528,6 +2566,87 @@
 	})
 
 	});
+
+// Bulk SMS
+	$('#bulk_sms').click(function(){
+
+	$('#sms_form')[0].reset();
+
+	$('#sms_form').parsley().reset();
+
+	var checkbox = $('.checkbox:checked');
+	if(checkbox.length > 0)
+	{
+		var checkbox_value = [];
+		$(checkbox).each(function(){
+			checkbox_value.push($(this).data("sms"));
+		});
+
+		$("input[name='scontact']").val(checkbox_value.join(", "));
+
+		$('#smsModal').modal('show');
+
+	}
+	else
+	{
+		alert("Please select at least one records");
+	}
+
+	});
+
+// Send SMS
+		$('#sms_send').click(function(){
+
+		$(this).attr('disabled', 'disabled');
+		var id  = $(this).attr("id");
+		var action = $(this).data("action");
+		var sms_data = [];
+			$('.checkbox').each(function(){
+				if($(this).prop("checked") == true)
+				{
+					sms_data.push({
+						sms: $(this).data("sms")
+					});
+				} 
+			});
+		var smsmessage = $('#smsmessage').val();
+
+		$.ajax({
+			url:"scholars_action.php",
+			method:"POST",
+			data:{sms_data:sms_data, smsmessage:smsmessage, action:'send_sms'},
+			dataType:'JSON',
+			beforeSend:function(){
+				$('#sms_send').html('Sending...');
+				$('#sms_send').addClass('btn-danger');
+			},
+			success:function(data){
+				if(data.error !== '')
+				{
+					$('#message').html(data.error);
+				}
+				if(data.success != '')
+				{
+					$('#smsModal').modal('hide');
+					$('#message').html(data.success);
+
+					setTimeout(function(){
+
+						$('#message').html('');
+
+					}, 3000);
+
+					setTimeout(function(){
+
+						location.reload();  //Refresh page
+
+					}, 5000);
+				}
+
+			}
+		})
+
+		});
 
 // Edit 
 	$(document).on('click', '.edit_button', function(){
@@ -3353,6 +3472,42 @@
                 url:"scholars_action.php",
                 method:"POST",
                 data:{checkbox_value:checkbox_value, approve_status:approve_status, action:'approve_all'},
+                success:function(data)
+                {
+					$("#select_all").prop('checked', false); 
+                    $('.removeRow').fadeOut(1500);
+					$('#message').html(data);
+
+          			dataTable.ajax.reload();
+
+          			setTimeout(function(){
+
+            			$('#message').html('');
+
+          			}, 5000);
+                }
+            });
+        }
+        else
+        {
+            alert("Please select at least one records");
+        }
+    });
+// Renewal All
+	$('#renewal_all').click(function(){
+        var checkbox = $('.checkbox:checked');
+		var renewal_status = 'Renewal';
+        if(checkbox.length > 0)
+        {
+            var checkbox_value = [];
+            $(checkbox).each(function(){
+                checkbox_value.push($(this).val());
+            });
+
+            $.ajax({
+                url:"scholars_action.php",
+                method:"POST",
+                data:{checkbox_value:checkbox_value, renewal_status:renewal_status, action:'renewal_all'},
                 success:function(data)
                 {
 					$("#select_all").prop('checked', false); 

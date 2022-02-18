@@ -1,8 +1,19 @@
 <?php
 
 include('../class/dbcon.php');
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
+
+// use PHPMailer\PHPMailer\PHPMailer;
+use SMSGatewayMe\Client\ApiClient;
+use SMSGatewayMe\Client\Configuration;
+use SMSGatewayMe\Client\Api\MessageApi;
+use SMSGatewayMe\Client\Model\SendMessageRequest;
 
 $object = new sms;
 
@@ -74,7 +85,7 @@ $object = new sms;
 					foreach($result as $row)
 					{
 						$sub_array = array();
-						$sub_array[] = $check = '<div style="text-align: center;"><input type="checkbox" name="checkbox" id="checkbox" class="checkbox" value="'.$row["s_id"].'" data-email="'.$row["semail"].'" /></div>';
+						$sub_array[] = $check = '<div style="text-align: center;"><input type="checkbox" name="checkbox" id="checkbox" class="checkbox" value="'.$row["s_id"].'" data-email="'.$row["semail"].'" data-sms="'.$row["scontact"].'"/></div>';
 						$sub_array[] = $row["slname"];
 						$sub_array[] = $row["sfname"];
 						$sub_array[] = $row["sccourse"];
@@ -226,7 +237,7 @@ $object = new sms;
 					// // Load composer's autoloader
 					// require '../vendor/autoload.php';
 
-					// $mail = new PHPMailer(true);                            
+					// $mail = new PHPMailer\PHPMailer\PHPMailer();                            
 					// try {
 					// 	//Server settings
 					// 	$mail->isSMTP();                                     
@@ -411,7 +422,7 @@ $object = new sms;
 					// // Load composer's autoloader
 					// require '../vendor/autoload.php';
 
-					// $mail = new PHPMailer(true);                            
+					// $mail = new PHPMailer\PHPMailer\PHPMailer();                            
 					// try {
 					// 	//Server settings
 					// 	$mail->isSMTP();                                     
@@ -568,7 +579,7 @@ $object = new sms;
 					// // Load composer's autoloader
 					// require '../vendor/autoload.php';
 
-					// $mail = new PHPMailer(true);                            
+					// $mail = new PHPMailer\PHPMailer\PHPMailer();                            
 					// try {
 					// 	//Server settings
 					// 	$mail->isSMTP();                                     
@@ -742,7 +753,7 @@ $object = new sms;
 					// // Load composer's autoloader
 					// require '../vendor/autoload.php';
 
-					// $mail = new PHPMailer(true);                            
+					// $mail = new PHPMailer\PHPMailer\PHPMailer();                            
 					// try {
 					// 	//Server settings
 					// 	$mail->isSMTP();                                     
@@ -2206,8 +2217,8 @@ $object = new sms;
 			{
 
 				// Load composer's autoloader
-				require '../vendor/autoload.php';	
-				$mail = new PHPMailer(true);                            
+				require '../vendor/autoload.php';
+				$mail = new PHPMailer\PHPMailer\PHPMailer();                            
 				try {
 					//Server settings
 					$mail->isSMTP();                                     
@@ -2256,6 +2267,87 @@ $object = new sms;
 		);
 		echo json_encode($output);
 	}
+// Send Bulk SMS
+	if($_POST["action"] == 'send_sms')
+	{
+		$error = '';
+
+		$success = '';
+
+			foreach($_POST['sms_data'] as $row)
+			{
+
+				require '../vendor/autoload.php';
+
+				// Configure client
+				$config = Configuration::getDefaultConfiguration();
+				$config->setApiKey('Authorization', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTY0NDMzMjE3MSwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjkyOTExLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.efB_LXKOP8Figa8b_kRrRwQF9j1zcLmP-aP3qygqJi4');
+				$apiClient = new ApiClient($config);
+				$messageClient = new MessageApi($apiClient);
+
+				if(isset($row["sms"]) && isset($_POST["smsmessage"])) {
+					// Sending a SMS Message
+					$sendMessageRequest1 = new SendMessageRequest([
+						'phoneNumber' => $row["sms"],
+						'message' => $_POST["smsmessage"],
+						'deviceId' => 127233
+					]);
+					$sendMessages = $messageClient->sendMessages([
+						$sendMessageRequest1
+					]);
+				}
+
+				// // Load composer's autoloader
+				// require '../vendor/autoload.php';	
+				// $mail = new PHPMailer\PHPMailer\PHPMailer();                            
+				// try {
+				// 	//Server settings
+				// 	$mail->isSMTP();                                     
+				// 	$mail->Host = 'smtp.gmail.com';                      
+				// 	$mail->SMTPAuth = true;                             
+				// 	$mail->Username = 'unswaa20@gmail.com';     
+				// 	$mail->Password = 'sio@1231999';             
+				// 	$mail->SMTPOptions = array(
+				// 		'ssl' => array(
+				// 		'verify_peer' => false,
+				// 		'verify_peer_name' => false,
+				// 		'allow_self_signed' => true
+				// 		)
+				// 	);                         
+				// 	$mail->SMTPSecure = 'ssl';                           
+				// 	$mail->Port = 465;                                   
+			
+				// 	//Send Email
+				// 	$mail->setFrom('unswaa20@gmail.com');
+				// 	$mail->FromName = 'Unswaa20';
+					
+				// 	//Recipients
+				// 	$mail->addAddress($row["email"]);            
+				// 	$mail->addReplyTo('unswaa20@gmail.com');
+				// 	$mail->WordWrap = 50;
+
+				// 	//Content
+				// 	$mail->isHTML(true);                                  
+				// 	$mail->Subject = ''.$_POST["emailsubject"].'';
+				// 	$message_body = ''.$_POST["emailmessage"].'';
+				// 	$mail->Body = $message_body;
+			
+				// 	$mail->send();
+
+					$success = '<div class="alert alert-success">SMS Send Successfully</div>';
+
+				// } catch (Exception $e) {
+				// 	$error = '<div class="alert alert-danger">' . $mail->ErrorInfo . '</div>';
+				// }
+
+			}
+
+		$output = array(
+			'error'		=>	$error,
+			'success'	=>	$success
+		);
+		echo json_encode($output);
+	}
 // Delete
 	if($_POST["action"] == 'delete')
 	{
@@ -2295,6 +2387,21 @@ $object = new sms;
 		}
 		echo '<div class="alert alert-success">Selected Student Data Approved</div>';
 	}
+// Renewal All
+	if($_POST["action"] == 'renewal_all')
+	{
+		for($count = 0; $count < count($_POST["checkbox_value"]); $count++)
+		{
+		$object->query = "
+			UPDATE tbl_student 
+			SET s_scholar_stat = 'Renewal'
+			WHERE s_id = '".$_POST["checkbox_value"][$count]."'";
+
+			$object->execute();
+		}
+		echo '<div class="alert alert-success">Selected Student Data For Renewal</div>';
+	}
+
 // Reject All
 	if($_POST["action"] == 'reject_all')
 	{

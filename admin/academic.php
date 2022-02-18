@@ -109,7 +109,7 @@ include('header.php');
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4 offset-md-4">
                       <label>Email Address<span class="text-danger">*</span></label>
-                      <input type="text" name="semail" id="semail" class="form-control" />
+                      <input type="text" name="semail" id="semail" disabled class="form-control" />
                       <span id="error_semail" class="text-danger"></span>
                     </div>
                   </div>
@@ -302,11 +302,11 @@ include('header.php');
               </div>
               <div class="col-xs-12 col-sm-12 col-4">
                 <label>Award Received</label>
-                <textarea name="spsraward" id="spsraward" class="form-control"></textarea>
+                <textarea name="spsraward" id="spsraward" placeholder="Put N/A if None" class="form-control"></textarea>
                 <span id="error_spsraward" class="text-danger"></span>
               </div>
               <div class="col-xs-10 col-sm-12 col-4">
-                <label>Date of Birth<span class="text-danger">*</span></label>
+                <label>Date Award Receive<span class="text-danger">*</span></label>
                 <input type="date" name="spsdawardrceive" id="spsdawardrceive" autocomplete="off" class="form-control" />
                 <span id="error_spsdawardrceive" class="text-danger"></span>
               </div>
@@ -434,8 +434,6 @@ include('header.php');
     var error_sgender = '';
     var error_sctship = '';
     var error_saddress = '';
-    var error_semail = '';
-    var emailval = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!outlook.com)([\w-]+\.)+[\w-]{2,4})?$/;
     var error_scontact = '';
     var pcnumval = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
     
@@ -545,26 +543,26 @@ include('header.php');
     $('#saddress').removeClass('has-error');
     }
 
-    if($.trim($('#semail').val()).length == 0)
-    {
-    error_semail = 'Email is required';
-    $('#error_semail').text(error_semail);
-    $('#semail').addClass('has-error');
-    }
-    else
-    {
-    //     if(emailval.test($('#semail').val()))
-    //    {
-    //     error_semail = 'Invalid Email Only(gmail, hotmail, outlook or yahoo is allowed).';
-    //     $('#error_semail').text(error_semail);
-    //     $('#semail').addClass('has-error');
-    //    }
-    //    else {
-      error_semail = '';
-      $('#error_semail').text(error_semail);
-      $('#semail').removeClass('has-error');
-      }
+    // if($.trim($('#semail').val()).length == 0)
+    // {
+    // error_semail = 'Email is required';
+    // $('#error_semail').text(error_semail);
+    // $('#semail').addClass('has-error');
+    // }
+    // else
+    // {
+    // //     if(emailval.test($('#semail').val()))
+    // //    {
+    // //     error_semail = 'Invalid Email Only(gmail, hotmail, outlook or yahoo is allowed).';
+    // //     $('#error_semail').text(error_semail);
+    // //     $('#semail').addClass('has-error');
+    // //    }
+    // //    else {
+    //   error_semail = '';
+    //   $('#error_semail').text(error_semail);
+    //   $('#semail').removeClass('has-error');
     //   }
+    // //   }
 
       if($.trim($('#scontact').val()).length == 0)
       {
@@ -591,8 +589,7 @@ include('header.php');
       if(error_sfname != '' || error_smname != '' 
       || error_slname != '' || error_snext != ''
       || error_sdbirth != '' || error_sctship != '' 
-      || error_saddress != '' || error_semail != '' 
-      || error_scontact != ''
+      || error_saddress != '' || error_scontact != ''
       )
       {
       return false;

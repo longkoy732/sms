@@ -13,7 +13,7 @@ $object->query = "
     ";
 
 $result = $object->get_result();
-    
+
 
 if(isset($_POST["action"]))
 {
@@ -26,12 +26,19 @@ if(isset($_POST["action"]))
 
             $success = '';
 
+            $data = array(
+
+                ':slname'	 				=>	 $_POST["slname"],
+                ':sdbirth'	 			=>	 $_POST["sdbirth"]
+      
+            );
+    
             $object->query = "
             SELECT * FROM tbl_student
-            WHERE s_scholar_stat = 'Pending' OR s_scholar_stat = 'Approved' OR s_scholar_stat = 'Rejected'
+            WHERE slname = :slname AND sdbirth = :sdbirth AND s_scholar_stat != ''
             ";
 
-            $object->execute();
+            $object->execute($data);
 
             if($object->row_count() > 0)
             {
@@ -53,28 +60,18 @@ if(isset($_POST["action"]))
                     sgender = :sgender,
                     saddress = :saddress,
                     scontact = :scontact,
-                    semail = :semail,
                     sctship = :sctship,
                     sgfname = :sgfname,
-                    sgmname = :sgmname,
-                    sglname = :sglname,
-                    sgnext = :sgnext,
                     sgaddress = :sgaddress,
                     sgcontact = :sgcontact,
                     sgoccu = :sgoccu,
                     sgcompany = :sgcompany,
                     sffname = :sffname,
-                    sfmname = :sfmname,
-                    sflname = :sflname,
-                    sfnext = :sfnext,
                     sfaddress = :sfaddress,
                     sfcontact = :sfcontact,
                     sfoccu = :sfoccu,
                     sfcompany = :sfcompany,
                     smfname = :smfname,
-                    smmname = :smmname,
-                    smlname = :smlname,
-                    smnext = :smnext,
                     smaddress = :smaddress,
                     smcontact = :smcontact,
                     smoccu = :smoccu,
@@ -84,7 +81,6 @@ if(isset($_POST["action"]))
                     spsraward = :spsraward,
                     spsdawardrceive = :spsdawardrceive,
                     s_scholar_stat = 'Pending',
-                    s_grant_stat = 'New',
                     s_applied_on = :s_applied_on,
                     s_scholarship_type = 'Academic'
                     WHERE s_id = '".$_SESSION["admin_id"]."'         
@@ -100,27 +96,17 @@ if(isset($_POST["action"]))
                         ':sctship'			            =>	$object->clean_input($_POST["sctship"]),
                         ':saddress'				        =>	$object->clean_input($_POST["saddress"]),
                         ':scontact'				        =>	$object->clean_input($_POST["scontact"]),
-                        ':semail'			            =>	$object->clean_input($_POST["semail"]),
                         ':sgfname'		                =>	$object->clean_input($_POST["sgfname"]),
-                        ':sgmname'				        =>	$object->clean_input($_POST["sgmname"]),
-                        ':sglname'			            =>	$object->clean_input($_POST["sglname"]),
-                        ':sgnext'			            =>	$object->clean_input($_POST["sgnext"]),
                         ':sgaddress'			        =>	$object->clean_input($_POST["sgaddress"]),
                         ':sgcontact'			        =>	$object->clean_input($_POST["sgcontact"]),
                         ':sgoccu'		                =>	$object->clean_input($_POST["sgoccu"]),
                         ':sgcompany'			        =>	$object->clean_input($_POST["sgcompany"]),
                         ':sffname'			            =>	$object->clean_input($_POST["sffname"]),
-                        ':sfmname'			            =>	$object->clean_input($_POST["sfmname"]),
-                        ':sflname'		                =>	$object->clean_input($_POST["sflname"]),
-                        ':sfnext'				        =>	$object->clean_input($_POST["sfnext"]),
                         ':sfaddress'			        =>	$object->clean_input($_POST["sfaddress"]),
                         ':sfcontact'		            =>	$object->clean_input($_POST["sfcontact"]),
                         ':sfoccu'			            =>	$object->clean_input($_POST["sfoccu"]),
                         ':sfcompany'			        =>	$object->clean_input($_POST["sfcompany"]),
                         ':smfname'			            =>	$object->clean_input($_POST["smfname"]),
-                        ':smmname'			            =>	$object->clean_input($_POST["smmname"]),
-                        ':smlname'		                =>	$object->clean_input($_POST["smlname"]),
-                        ':smnext'				        =>	$object->clean_input($_POST["smnext"]),
                         ':smaddress'			        =>	$object->clean_input($_POST["smaddress"]),
                         ':smcontact'		            =>	$object->clean_input($_POST["smcontact"]),
                         ':smoccu'			            =>	$object->clean_input($_POST["smoccu"]),

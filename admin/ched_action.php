@@ -26,12 +26,19 @@ if(isset($_POST["action"]))
 
             $success = '';
 
+            $data = array(
+
+                ':slname'	 			=>	 $_POST["slname"],
+                ':sdbirth'	 			=>	 $_POST["sdbirth"]
+      
+            );
+    
             $object->query = "
             SELECT * FROM tbl_student
-            WHERE s_scholar_stat = 'Pending' OR s_scholar_stat = 'Approved' OR s_scholar_stat = 'Rejected'
+            WHERE slname = :slname AND sdbirth = :sdbirth AND s_scholar_stat != ''
             ";
 
-            $object->execute();
+            $object->execute($data);
 
             if($object->row_count() > 0)
             {
@@ -57,20 +64,13 @@ if(isset($_POST["action"]))
                     szcode = :szcode,
                     sctship = :sctship,
                     scontact = :scontact,
-                    semail = :semail,
                     sdisability = :sdisability,
                     sffname = :sffname,
-                    sfmname = :sfmname,
-                    sflname = :sflname,
-                    sfnext = :sfnext,
                     sflstatus = :sflstatus,
                     sfoccu = :sfoccu,
                     sfeduc = :sfeduc,
                     sfaddress = :sfaddress,
                     smfname = :smfname,
-                    smmname = :smmname,
-                    smlname = :smlname,
-                    smnext = :smnext,
                     smlstatus = :smlstatus,
                     smoccu = :smoccu,
                     smeduc = :smeduc,
@@ -87,7 +87,6 @@ if(isset($_POST["action"]))
                     sccourse = :sccourse,
                     sccourseprio = :sccourseprio,
                     s_scholar_stat = 'Pending',
-                    s_grant_stat = 'New',
                     s_applied_on = :s_applied_on,
                     s_scholarship_type = 'CHED'
                     WHERE s_id = '".$_SESSION["admin_id"]."'         
@@ -107,22 +106,15 @@ if(isset($_POST["action"]))
                         ':szcode'			            =>	$object->clean_input($_POST["szcode"]),
                         ':sctship'			            =>	$object->clean_input($_POST["sctship"]),
                         ':scontact'				        =>	$object->clean_input($_POST["scontact"]),
-                        ':semail'			            =>	$object->clean_input($_POST["semail"]),
                         ':sdisability'			        =>	$object->clean_input($_POST["sdisability"]),
                     // Father
                         ':sffname'			            =>	$object->clean_input($_POST["sffname"]),
-                        ':sfmname'			            =>	$object->clean_input($_POST["sfmname"]),
-                        ':sflname'		                =>	$object->clean_input($_POST["sflname"]),
-                        ':sfnext'				        =>	$object->clean_input($_POST["sfnext"]),
                         ':sflstatus'				    =>	$object->clean_input($_POST["sflstatus"]),
                         ':sfoccu'			            =>	$object->clean_input($_POST["sfoccu"]),
                         ':sfeduc'		                =>	$object->clean_input($_POST["sfeduc"]),
                         ':sfaddress'			        =>	$object->clean_input($_POST["sfaddress"]),
                     // Mother
                         ':smfname'			            =>	$object->clean_input($_POST["smfname"]),
-                        ':smmname'			            =>	$object->clean_input($_POST["smmname"]),
-                        ':smlname'		                =>	$object->clean_input($_POST["smlname"]),
-                        ':smnext'				        =>	$object->clean_input($_POST["smnext"]),
                         ':smlstatus'				    =>	$object->clean_input($_POST["smlstatus"]),
                         ':smoccu'			            =>	$object->clean_input($_POST["smoccu"]),
                         ':smeduc'		                =>	$object->clean_input($_POST["smeduc"]),

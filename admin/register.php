@@ -254,21 +254,21 @@
       $('#error_semail').text(error_semail);
       $('#semail').addClass('has-error');
       }
-      else
-      {
-        if(emailval.test($('#semail').val()))
-        {
-          error_semail = 'Invalid Email Only(gmail, hotmail, outlook or yahoo is allowed).';
-          $('#error_semail').text(error_semail);
-          $('#semail').addClass('has-error');
-        }
+      // else
+      // {
+      //   if(emailval.test($('#semail').val()))
+      //   {
+      //     error_semail = 'Invalid Email Only(gmail, hotmail, outlook or yahoo is allowed).';
+      //     $('#error_semail').text(error_semail);
+      //     $('#semail').addClass('has-error');
+      //   }
         else 
         {
           error_semail = '';
           $('#error_semail').text(error_semail);
           $('#semail').removeClass('has-error');
         }
-      }
+      // }
 
       if( error_semail != '')
       {

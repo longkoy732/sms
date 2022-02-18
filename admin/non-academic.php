@@ -133,31 +133,10 @@ include('header.php');
                   <h4 class="sub-title">Guardian Details</h4>
                   <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>First Name<span class="text-danger">*</span></label>
+                      <label>Full Name<span class="text-danger">*</span></label>
                       <input type="text" name="sgfname" id="sgfname" class="form-control" />
                       <span id="error_sgfname" class="text-danger"></span>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Middle Name<span class="text-danger">*</span></label>
-                      <input type="text" name="sgmname" id="sgmname" class="form-control" />
-                      <span id="error_sgmname" class="text-danger"></span>
-                      </div>
-                    <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Last Name<span class="text-danger">*</span></label>
-                      <input type="text" name="sglname" id="sglname" class="form-control" />
-                      <span id="error_sglname" class="text-danger"></span>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Select Suffix</label>
-                      <select name="sgnext" id="sgnext" class="form-control" required>
-                      <option value="">-Select-</option>
-                      <option value="N/A">N/A</option>
-                        <option value="Jr.">Jr.</option>
-                        <option value="Sr.">Sr.</option>
-                      </select>
-                      <span id="error_sgnext" class="text-danger"></span>
-                    </div>
-
                     <div class="col-xs-12 col-sm-12 col-md-12">
                       <label>Address<span class="text-danger">*</span></label>
                       <textarea type="text" name="sgaddress" id="sgaddress" class="form-control" required data-parsley-trigger="keyup"></textarea>
@@ -184,29 +163,9 @@ include('header.php');
                   <h4 class="sub-title">Father Details</h4>
                   <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>First Name<span class="text-danger">*</span></label>
+                      <label>Full Name<span class="text-danger">*</span></label>
                       <input type="text" name="sffname" id="sffname" class="form-control" />
                       <span id="error_sffname" class="text-danger"></span>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Middle Name<span class="text-danger">*</span></label>
-                      <input type="text" name="sfmname" id="sfmname" class="form-control" />
-                      <span id="error_sfmname" class="text-danger"></span>
-                      </div>
-                    <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Last Name<span class="text-danger">*</span></label>
-                      <input type="text" name="sflname" id="sflname" class="form-control" />
-                      <span id="error_sflname" class="text-danger"></span>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Select Suffix</label>
-                      <select name="sfnext" id="sfnext" class="form-control" required>
-                      <option value="">-Select-</option>
-                      <option value="N/A">N/A</option>
-                        <option value="Jr.">Jr.</option>
-                        <option value="Sr.">Sr.</option>
-                      </select>
-                      <span id="error_sfnext" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                       <label>Address<span class="text-danger">*</span></label>
@@ -234,29 +193,9 @@ include('header.php');
                   <h4 class="sub-title">Mother Details</h4>
                   <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>First Name<span class="text-danger">*</span></label>
+                      <label>Full Name<span class="text-danger">*</span></label>
                       <input type="text" name="smfname" id="smfname" class="form-control" />
                       <span id="error_smfname" class="text-danger"></span>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Middle Name<span class="text-danger">*</span></label>
-                      <input type="text" name="smmname" id="smmname" class="form-control" />
-                      <span id="error_smmname" class="text-danger"></span>
-                      </div>
-                    <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Last Name<span class="text-danger">*</span></label>
-                      <input type="text" name="smlname" id="smlname" class="form-control" />
-                      <span id="error_smlname" class="text-danger"></span>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-3">
-                      <label>Select Suffix</label>
-                      <select name="smnext" id="smnext" class="form-control" required>
-                      <option value="">-Select-</option>
-                      <option value="N/A">N/A</option>
-                        <option value="Jr.">Jr.</option>
-                        <option value="Sr.">Sr.</option>
-                      </select>
-                      <span id="error_smnext" class="text-danger"></span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                       <label>Address<span class="text-danger">*</span></label>
@@ -651,9 +590,6 @@ include('header.php');
   // Family Details
     $('#btn_family_details').click(function(){
       var error_sgfname = '';
-      var error_sgmname = '';
-      var error_sglname = '';
-      var error_sgnext = '';
       var error_sglstatus = '';
       var error_sgeduc = '';
       var error_sgcontact = '';
@@ -661,9 +597,6 @@ include('header.php');
       var error_sgoccu = '';
       var error_sgcompany = '';
       var error_sffname = '';
-      var error_sfmname = '';
-      var error_sflname = '';
-      var error_sfnext = '';
       var error_sflstatus = '';
       var error_sfeduc = '';
       var error_sfcontact = '';
@@ -671,9 +604,6 @@ include('header.php');
       var error_sfoccu = '';
       var error_sfcompany = '';
       var error_smfname = '';
-      var error_smmname = '';
-      var error_smlname = '';
-      var error_smnext = '';
       var error_smlstatus = '';
       var error_smeduc = '';
       var error_smcontact = '';
@@ -695,46 +625,6 @@ include('header.php');
       error_sgfname = '';
       $('#error_sgfname').text(error_sgfname);
       $('#sgfname').removeClass('has-error');
-      }
-
-      if($.trim($('#sgmname').val()).length == 0)
-      {
-      error_sgmname = 'Put N/A if None';
-      $('#error_sgmname').text(error_sgmname);
-      $('#sgmname').addClass('has-error');
-      }
-      else
-      {
-      error_sgmname = '';
-      $('#error_sgmname').text(error_sgmname);
-      $('#sgmname').removeClass('has-error');
-      }
-
-      if($.trim($('#sglname').val()).length == 0)
-      {
-      error_sglname = 'Last Name is required';
-      $('#error_sglname').text(error_sglname);
-      $('#sglname').addClass('has-error');
-      }
-      else
-      {
-      error_sglname = '';
-      $('#error_sglname').text(error_sglname);
-      $('#sglname').removeClass('has-error');
-      }
-
-      //Guardian Suffix
-      if($.trim($('#sgnext').val()).length == 0)
-      {
-      error_sgnext = 'Select N/A if none';
-      $('#error_sgnext').text(error_sgnext);
-      $('#sgnext').addClass('has-error');
-      }
-      else
-      {
-      error_sgnext = '';
-      $('#error_sgnext').text(error_sgnext);
-      $('#sgnext').removeClass('has-error');
       }
 
       // Guardian Address
@@ -817,46 +707,6 @@ include('header.php');
       $('#sffname').removeClass('has-error');
       }
 
-      if($.trim($('#sfmname').val()).length == 0)
-      {
-      error_sfmname = 'Put N/A if None';
-      $('#error_sfmname').text(error_sfmname);
-      $('#sfmname').addClass('has-error');
-      }
-      else
-      {
-      error_sfmname = '';
-      $('#error_sfmname').text(error_sfmname);
-      $('#sfmname').removeClass('has-error');
-      }
-
-      if($.trim($('#sflname').val()).length == 0)
-      {
-      error_sflname = 'Last Name is required';
-      $('#error_sflname').text(error_sflname);
-      $('#sflname').addClass('has-error');
-      }
-      else
-      {
-      error_sflname = '';
-      $('#error_sflname').text(error_sflname);
-      $('#sflname').removeClass('has-error');
-      }
-
-      //Father Suffix
-      if($.trim($('#sfnext').val()).length == 0)
-      {
-      error_sfnext = 'Select N/A if none';
-      $('#error_sfnext').text(error_sfnext);
-      $('#sfnext').addClass('has-error');
-      }
-      else
-      {
-      error_sfnext = '';
-      $('#error_sfnext').text(error_sfnext);
-      $('#sfnext').removeClass('has-error');
-      }
-
       // Address
       if($.trim($('#sfaddress').val()).length == 0)
       {
@@ -935,46 +785,6 @@ include('header.php');
       error_smfname = '';
       $('#error_smfname').text(error_smfname);
       $('#smfname').removeClass('has-error');
-      }
-
-      if($.trim($('#smmname').val()).length == 0)
-      {
-      error_smmname = 'Put N/A if None';
-      $('#error_smmname').text(error_smmname);
-      $('#smmname').addClass('has-error');
-      }
-      else
-      {
-      error_smmname = '';
-      $('#error_smmname').text(error_smmname);
-      $('#smmname').removeClass('has-error');
-      }
-
-      if($.trim($('#smlname').val()).length == 0)
-      {
-      error_smlname = 'Last Name is required';
-      $('#error_smlname').text(error_smlname);
-      $('#smlname').addClass('has-error');
-      }
-      else
-      {
-      error_smlname = '';
-      $('#error_smlname').text(error_smlname);
-      $('#smlname').removeClass('has-error');
-      }
-
-      //Mother Suffix
-      if($.trim($('#smnext').val()).length == 0)
-      {
-      error_smnext = 'Select N/A if none';
-      $('#error_smnext').text(error_smnext);
-      $('#smnext').addClass('has-error');
-      }
-      else
-      {
-      error_smnext = '';
-      $('#error_smnext').text(error_smnext);
-      $('#smnext').removeClass('has-error');
       }
 
       // Address
@@ -1057,25 +867,16 @@ include('header.php');
       } 
 
       if( error_sgfname != '' ||
-      error_sgmname != '' ||
-      error_sglname != '' ||
-      error_sgnext != '' ||
       error_sgaddress != '' ||
       error_sgcontact != '' ||
       error_sgoccu != '' ||
       error_sgcompany != '' ||
       error_sffname != '' ||
-      error_sfmname != '' ||
-      error_sflname != '' ||
-      error_sfnext != '' ||
       error_sfaddress != '' ||
       error_sfcontact != '' ||
       error_sfoccu != '' ||
       error_sfcompany != '' ||
       error_smfname != '' ||
-      error_smmname != '' ||
-      error_smlname != '' ||
-      error_smnext != '' ||
       error_smaddress != '' ||
       error_smcontact != '' ||
       error_smoccu != '' ||
