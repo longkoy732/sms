@@ -84,7 +84,7 @@ if($object->is_login())
 <body class="text-center">
     <main class="form-signin">
          <form method="post" id="login_form">
-            <h1 class="h3 mb-3 fw-normal">Scholarship Management System</h1>
+            <h1 class="h3 mb-3 fw-normal">Scholarship Management System for St. Cecilia's College</h1>
             <span id="error"></span>
             <?php
               if(isset($_SESSION["success_message"]))

@@ -45,7 +45,7 @@
 							<button class="dropdown-item" type="button" name="add_csv" id="add_csv">Import CSV</button>
 							<button class="dropdown-item" type="button" name="export_csv" id="export_csv">Export CSV</button>
 						</div>
-							<button type="button" name="add_pdf" id="add_pdf" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-file-pdf"></i></button>
+							<!-- <button type="button" name="add_pdf" id="add_pdf" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-file-pdf"></i></button> -->
 						</div>
 					</div>
 					<div class="col" align="right">
